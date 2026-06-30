@@ -1,0 +1,6997 @@
+[
+  {
+    "repo": "iom-application",
+    "path": "domain/booking.md",
+    "category": "domain",
+    "title": "Booking subtree",
+    "summary": "Captures the customer-facing booking state nested inside ServicePlan, including parties, equipment, references, work processes, and charges.",
+    "primary_for": [
+      "booking-subtree-model"
+    ],
+    "mentions": [
+      "booking model",
+      "work processes",
+      "booking charges",
+      "party roles"
+    ],
+    "scenarios": [
+      "booking domain model",
+      "where booking lives",
+      "booking work process",
+      "booking charges logic",
+      "price owner lookup"
+    ],
+    "capabilities": [
+      "booking-modeling"
+    ],
+    "domains": [
+      "order-management"
+    ],
+    "entities": [
+      "Booking",
+      "BookingEquipment",
+      "WorkProcess"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 49
+  },
+  {
+    "repo": "iom-application",
+    "path": "domain/equipment.md",
+    "category": "domain",
+    "title": "Equipment and cargo requirements",
+    "summary": "Models the physical transport asset requirements for each container or vehicle, including reefer, dangerous-goods, and ownership details.",
+    "primary_for": [
+      "equipment-requirement-model"
+    ],
+    "mentions": [
+      "equipment profile",
+      "transport asset",
+      "reefer",
+      "dangerous goods"
+    ],
+    "scenarios": [
+      "equipment requirement model",
+      "reefer cargo details",
+      "dangerous goods shape",
+      "container asset profile",
+      "shipper owned container",
+      "find equipment requirements"
+    ],
+    "capabilities": [
+      "equipment-modeling"
+    ],
+    "domains": [
+      "order-management"
+    ],
+    "entities": [
+      "TransportAssetRequirement",
+      "EquipmentProfile",
+      "DangerousGoods"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 38
+  },
+  {
+    "repo": "iom-application",
+    "path": "domain/location.md",
+    "category": "domain",
+    "title": "Location and leg endpoints",
+    "summary": "Owns facilities, cities, postal addresses, alternative codes, and the location-association wrapper used across routing and service-plan legs.",
+    "primary_for": [
+      "location-domain-model"
+    ],
+    "mentions": [
+      "facility model",
+      "city model",
+      "postal address",
+      "geo id"
+    ],
+    "scenarios": [
+      "location domain model",
+      "facility and city types",
+      "geo id lookup",
+      "service plan leg locations",
+      "postal address structure"
+    ],
+    "capabilities": [
+      "location-modeling"
+    ],
+    "domains": [
+      "order-management"
+    ],
+    "entities": [
+      "LocationAssociation",
+      "Facility",
+      "City"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 37
+  },
+  {
+    "repo": "iom-application",
+    "path": "domain/party.md",
+    "category": "domain",
+    "title": "Party model",
+    "summary": "Defines the reusable party, role-relationship, and payment structures that travel through bookings, charges, and resolver output.",
+    "primary_for": [
+      "party-domain-model"
+    ],
+    "mentions": [
+      "party association",
+      "customer party",
+      "booked by",
+      "price owner"
+    ],
+    "scenarios": [
+      "party domain model",
+      "customer role structure",
+      "where parties stored",
+      "payment term model",
+      "party relationship fields"
+    ],
+    "capabilities": [
+      "party-modeling"
+    ],
+    "domains": [
+      "order-management"
+    ],
+    "entities": [
+      "PartyAssociation",
+      "Party",
+      "PaymentCondition"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 37
+  },
+  {
+    "repo": "iom-application",
+    "path": "domain/product-offer.md",
+    "category": "domain",
+    "title": "Product offer and charges",
+    "summary": "Represents the priced product tree selected for a service plan, including products, service-plan legs, equipment, and manual/automatic charges.",
+    "primary_for": [
+      "product-offer-model"
+    ],
+    "mentions": [
+      "priced products",
+      "charges",
+      "product legs",
+      "execution charges"
+    ],
+    "scenarios": [
+      "product offer model",
+      "merge charges logic",
+      "pricing structure",
+      "execution charges",
+      "all charges traversal",
+      "find the product offer"
+    ],
+    "capabilities": [
+      "pricing-modeling"
+    ],
+    "domains": [
+      "order-management"
+    ],
+    "entities": [
+      "ProductOffer",
+      "Product",
+      "Charge"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 37
+  },
+  {
+    "repo": "iom-application",
+    "path": "domain/service-plan.md",
+    "category": "domain",
+    "title": "ServicePlan aggregate",
+    "summary": "The root order aggregate links booking, product offer, routing, stage, customs, finance, and event-facing metadata.",
+    "primary_for": [
+      "service-plan-aggregate"
+    ],
+    "mentions": [
+      "order aggregate",
+      "service plan status",
+      "routing",
+      "finops",
+      "customs"
+    ],
+    "scenarios": [
+      "service plan aggregate",
+      "order root model",
+      "amend service plan",
+      "service plan fields",
+      "cancel logic"
+    ],
+    "capabilities": [
+      "domain-modeling"
+    ],
+    "domains": [
+      "order-management"
+    ],
+    "entities": [
+      "ServicePlan",
+      "ServicePlanLeg",
+      "ServicePlanStatus"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 48
+  },
+  {
+    "repo": "iom-application",
+    "path": "architecture/cross-cutting.md",
+    "category": "architecture",
+    "title": "Cross-cutting architecture",
+    "summary": "Highlights the shared patterns that span modules: reactive APIs, versioned contracts, dual persistence, caching, and feature gating.",
+    "primary_for": [
+      "cross-cutting-architecture"
+    ],
+    "mentions": [
+      "reactive stack",
+      "versioned contracts",
+      "dual persistence",
+      "feature flags",
+      "caching"
+    ],
+    "scenarios": [
+      "shared architecture patterns",
+      "cross cutting concerns",
+      "reactive design overview",
+      "where caching fits",
+      "how versions upgrade"
+    ],
+    "capabilities": [
+      "architecture-overview"
+    ],
+    "domains": [
+      "iom-application"
+    ],
+    "entities": [
+      "ServicePlan",
+      "ServicePlanEntity",
+      "ReferenceDataFetcher"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 43
+  },
+  {
+    "repo": "iom-application",
+    "path": "architecture/modules.md",
+    "category": "architecture",
+    "title": "Modules and package tree",
+    "summary": "Summarizes the multi-module Gradle structure, published artifacts, and the main package families owned by each module.",
+    "primary_for": [
+      "multi-module-package-tree"
+    ],
+    "mentions": [
+      "gradle modules",
+      "package tree",
+      "module structure",
+      "artifact map"
+    ],
+    "scenarios": [
+      "list all modules",
+      "show package tree",
+      "understand gradle layout",
+      "map module ownership",
+      "trace package family"
+    ],
+    "capabilities": [
+      "module-topology"
+    ],
+    "domains": [
+      "iom-application"
+    ],
+    "entities": [
+      "application-model",
+      "iom-order-domain",
+      "iom-persistence"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 140
+  },
+  {
+    "repo": "iom-application",
+    "path": "stack/stack.md",
+    "category": "stack",
+    "title": "Stack and build commands",
+    "summary": "Captures the framework stack, library packaging choices, and the smallest useful Gradle commands for this multi-module repo.",
+    "primary_for": [
+      "gradle-stack-profile"
+    ],
+    "mentions": [
+      "spring webflux",
+      "kotlin stack",
+      "gradle commands",
+      "library build"
+    ],
+    "scenarios": [
+      "how to build",
+      "run gradle tests",
+      "stack summary",
+      "what frameworks used",
+      "which java version"
+    ],
+    "capabilities": [
+      "stack-summary"
+    ],
+    "domains": [
+      "iom-application"
+    ],
+    "entities": [
+      "Gradle",
+      "Spring Boot",
+      "WebFlux",
+      "R2DBC"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 70
+  },
+  {
+    "repo": "iom-application",
+    "path": "runtime/order-processing.md",
+    "category": "runtime",
+    "title": "Order processing flow",
+    "summary": "Explains the library-level execution path from inbound service-plan DTOs through enrichment, validation, persistence, and event creation.",
+    "primary_for": [
+      "order-processing-flow"
+    ],
+    "mentions": [
+      "runtime flow",
+      "processing path",
+      "enrichment validation persistence"
+    ],
+    "scenarios": [
+      "trace processing flow",
+      "follow order path",
+      "understand library runtime",
+      "map validation pipeline",
+      "find persistence sequence"
+    ],
+    "capabilities": [
+      "runtime-tracing"
+    ],
+    "domains": [
+      "order-management"
+    ],
+    "entities": [
+      "OrderService",
+      "Resolver",
+      "ServiceDatesValidator",
+      "OrderRepositoryImpl"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 40
+  },
+  {
+    "repo": "iom-application",
+    "path": "contracts/api-contracts.md",
+    "category": "contracts",
+    "title": "API contracts",
+    "summary": "Describes the versioned DTO surfaces and custom validation annotations that this library publishes for consumers.",
+    "primary_for": [
+      "versioned-api-contracts"
+    ],
+    "mentions": [
+      "dto contracts",
+      "v1",
+      "v2",
+      "v3",
+      "validation annotation"
+    ],
+    "scenarios": [
+      "api dto versions",
+      "find request contract",
+      "which dto version",
+      "routing request model",
+      "postal address annotation",
+      "find the api contracts",
+      "check contracts definitions"
+    ],
+    "capabilities": [
+      "contract-mapping"
+    ],
+    "domains": [
+      "api-contracts"
+    ],
+    "entities": [
+      "V1ServicePlanModel",
+      "V2RoutingRequestModel",
+      "V3ServicePlanModel"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 43
+  },
+  {
+    "repo": "iom-application",
+    "path": "contracts/db-schemas.md",
+    "category": "contracts",
+    "title": "Database and document schemas",
+    "summary": "Summarizes the storage contracts implemented in iom-persistence across PostgreSQL tables and the Mongo order document.",
+    "primary_for": [
+      "storage-schema-contracts"
+    ],
+    "mentions": [
+      "service_plans table",
+      "outbox schema",
+      "audit table",
+      "mongo document"
+    ],
+    "scenarios": [
+      "find db schema",
+      "which tables exist",
+      "service plan entity shape",
+      "outbox columns",
+      "customer history table",
+      "find the api contracts"
+    ],
+    "capabilities": [
+      "schema-documentation"
+    ],
+    "domains": [
+      "persistence"
+    ],
+    "entities": [
+      "ServicePlanEntity",
+      "OutboxMessage",
+      "AuditEntity",
+      "IncidentEntity"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 47
+  },
+  {
+    "repo": "iom-application",
+    "path": "integrations/business-rules-and-execution.md",
+    "category": "integrations",
+    "title": "Business rules, Telikos, and notifications",
+    "summary": "Captures the outbound integrations used for appointment-day and commodity-restriction rules, Telikos execution flows, and notification delivery.",
+    "primary_for": [
+      "execution-integration-map"
+    ],
+    "mentions": [
+      "business rules client",
+      "telikos",
+      "notification webhook",
+      "appointment days"
+    ],
+    "scenarios": [
+      "trace telikos flow",
+      "find business rules api",
+      "how notifications sent",
+      "where execution calls live",
+      "commodity restriction endpoint",
+      "trace rule execution"
+    ],
+    "capabilities": [
+      "integration-mapping"
+    ],
+    "domains": [
+      "reference-data"
+    ],
+    "entities": [
+      "BusinessRulesClient",
+      "TelikosClient",
+      "NotificationClient"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 42
+  },
+  {
+    "repo": "iom-application",
+    "path": "integrations/customer-and-facility.md",
+    "category": "integrations",
+    "title": "Customer and facility services",
+    "summary": "Covers the customer-party and facility-lookup integrations used to enrich booking parties and location metadata.",
+    "primary_for": [
+      "customer-facility-integration"
+    ],
+    "mentions": [
+      "customer client",
+      "facility client",
+      "party resolver",
+      "geo id lookup"
+    ],
+    "scenarios": [
+      "party enrichment flow",
+      "facility lookup path",
+      "customer service call",
+      "resolve facility geo ids",
+      "which client owns parties"
+    ],
+    "capabilities": [
+      "integration-mapping"
+    ],
+    "domains": [
+      "reference-data"
+    ],
+    "entities": [
+      "CustomerClient",
+      "CustomerFacilityClient",
+      "FacilityResolver"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 40
+  },
+  {
+    "repo": "iom-application",
+    "path": "integrations/offer-and-routing.md",
+    "category": "integrations",
+    "title": "Offer and routing services",
+    "summary": "Explains how the library requests offered service plans and routing options from external systems using local DTO contracts.",
+    "primary_for": [
+      "offer-routing-integration"
+    ],
+    "mentions": [
+      "offered service plan",
+      "routing client",
+      "route lookup",
+      "offer client"
+    ],
+    "scenarios": [
+      "find routing integration",
+      "trace offer lookup",
+      "which dto drives routing",
+      "how route api called",
+      "where offer maps to domain"
+    ],
+    "capabilities": [
+      "integration-mapping"
+    ],
+    "domains": [
+      "reference-data"
+    ],
+    "entities": [
+      "OfferedServicePlanClientV3",
+      "RoutingClient",
+      "V2RoutingRequestModel"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 38
+  },
+  {
+    "repo": "iom-application",
+    "path": "integrations/reference-cache-and-masters.md",
+    "category": "integrations",
+    "title": "Reference cache and mastered lookups",
+    "summary": "Documents the cached reference-data paths for containers, commodities, charges, VAT partners, reasons, VAS, and ocean carriers.",
+    "primary_for": [
+      "reference-master-cache"
+    ],
+    "mentions": [
+      "reference cache",
+      "commodity master",
+      "container master",
+      "charge master"
+    ],
+    "scenarios": [
+      "how cache warms",
+      "commodity cache lookup",
+      "master data refresh",
+      "reference cache owners",
+      "startup cache logic"
+    ],
+    "capabilities": [
+      "integration-mapping"
+    ],
+    "domains": [
+      "reference-data"
+    ],
+    "entities": [
+      "ReferenceDataFetcher",
+      "CommodityResolver",
+      "CommodityClient"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 39
+  },
+  {
+    "repo": "iom-application",
+    "path": "operations/failure-model.md",
+    "category": "operations",
+    "title": "Failure model",
+    "summary": "Explains how iom-application surfaces validation, integration, resolver, and persistence failures without hiding them.",
+    "primary_for": [
+      "library-failure-model"
+    ],
+    "mentions": [
+      "validation failure",
+      "retry policy",
+      "resolver failure",
+      "optimistic lock"
+    ],
+    "scenarios": [
+      "how errors surface",
+      "why retry happens",
+      "resolver failure behavior",
+      "find lock version",
+      "where incidents stored",
+      "understand the failure model"
+    ],
+    "capabilities": [
+      "failure-analysis"
+    ],
+    "domains": [
+      "operations"
+    ],
+    "entities": [
+      "ValidationException",
+      "ErrorHandler",
+      "OutboxMessage",
+      "IncidentEntity"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 40
+  },
+  {
+    "repo": "iom-application",
+    "path": "operations/flags-and-lists.md",
+    "category": "operations",
+    "title": "Flags and controlled lists",
+    "summary": "Summarizes the feature-flag surface and the major controlled enumerations that shape validation and runtime decisions.",
+    "primary_for": [
+      "flags-and-controlled-lists"
+    ],
+    "mentions": [
+      "launchdarkly",
+      "feature catalog",
+      "enums",
+      "controlled vocabulary"
+    ],
+    "scenarios": [
+      "find feature flags",
+      "which enums exist",
+      "controlled values list",
+      "launchdarkly config",
+      "country flag behavior"
+    ],
+    "capabilities": [
+      "flag-analysis"
+    ],
+    "domains": [
+      "operations"
+    ],
+    "entities": [
+      "FeatureCatalog",
+      "LaunchDarklyFeatureProvider",
+      "LocationFunctionEnum"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 39
+  },
+  {
+    "repo": "iom-application",
+    "path": "navigation/entry-points.md",
+    "category": "navigation",
+    "title": "Library entry points",
+    "summary": "Maps the public APIs exposed by each Gradle module so agents can start from the right interface instead of drilling into implementation code.",
+    "primary_for": [
+      "library-entry-points"
+    ],
+    "mentions": [
+      "orderservice",
+      "orderrepository",
+      "resolver",
+      "webclient",
+      "validator"
+    ],
+    "scenarios": [
+      "find public api",
+      "where to start",
+      "library surface map",
+      "module entry point",
+      "shared jar exports"
+    ],
+    "capabilities": [
+      "entry-point-routing"
+    ],
+    "domains": [
+      "iom-application"
+    ],
+    "entities": [
+      "OrderService",
+      "OrderRepository",
+      "Resolver",
+      "FeatureProvider"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 54
+  },
+  {
+    "repo": "iom-application",
+    "path": "navigation/key-classes.md",
+    "category": "navigation",
+    "title": "Key classes by concern",
+    "summary": "Groups the most important classes by responsibility so agents can jump directly to the relevant module.",
+    "primary_for": [
+      "key-class-map"
+    ],
+    "mentions": [
+      "concern map",
+      "core classes",
+      "important files",
+      "module owners"
+    ],
+    "scenarios": [
+      "which class owns",
+      "find core model",
+      "find client class",
+      "find repository class",
+      "find validation class"
+    ],
+    "capabilities": [
+      "concern-mapping"
+    ],
+    "domains": [
+      "iom-application"
+    ],
+    "entities": [
+      "ServicePlan",
+      "ReferenceDataFetcher",
+      "WebClientConfiguration"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 48
+  },
+  {
+    "repo": "iom-application",
+    "path": "navigation/scenarios.md",
+    "category": "navigation",
+    "title": "Task scenarios",
+    "summary": "Maps common engineering tasks to the best starting class and method inside the iom-application library stack.",
+    "primary_for": [
+      "task-scenario-routing"
+    ],
+    "mentions": [
+      "start-here",
+      "class.method",
+      "resolver flow",
+      "validator flow",
+      "persistence flow"
+    ],
+    "scenarios": [
+      "trace amend flow",
+      "find db save",
+      "follow resolver call",
+      "debug date validation",
+      "locate external client",
+      "find the right scenario",
+      "match a user scenario"
+    ],
+    "capabilities": [
+      "task-routing"
+    ],
+    "domains": [
+      "iom-application"
+    ],
+    "entities": [
+      "OrderService",
+      "OrderRepositoryImpl",
+      "ServiceDatesValidator"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 45
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "domain/charges.md",
+    "category": "domain",
+    "title": "Charge types and VAT partners",
+    "summary": "Charges serves charge type reference data with customer/UOM/VAT enrichment and separate VAT partner query APIs.",
+    "primary_for": [
+      "charge-types-management"
+    ],
+    "mentions": [
+      "charge-types",
+      "vat-partners",
+      "uom",
+      "customer-mapping"
+    ],
+    "scenarios": [
+      "trace charge query",
+      "find vat partner logic",
+      "see charge tables",
+      "inspect uom enrichment",
+      "find default vat partner"
+    ],
+    "capabilities": [
+      "domain-summary"
+    ],
+    "domains": [
+      "charges"
+    ],
+    "entities": [
+      "ChargesController",
+      "ChargeTypeServiceImpl",
+      "VatPartnerController",
+      "VatPartnerServiceImpl"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 42
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "domain/commodity.md",
+    "category": "domain",
+    "title": "Commodity and HS reference data",
+    "summary": "Commodity serves commodity and HS code queries, and can filter commodity sets through the Business Rules restriction service.",
+    "primary_for": [
+      "commodity-data-api"
+    ],
+    "mentions": [
+      "commodities",
+      "hs-codes",
+      "restrictions",
+      "startup-cache"
+    ],
+    "scenarios": [
+      "find commodity route",
+      "trace restriction flow",
+      "see hs table",
+      "inspect commodity cache",
+      "find business rules client"
+    ],
+    "capabilities": [
+      "domain-summary"
+    ],
+    "domains": [
+      "commodity"
+    ],
+    "entities": [
+      "CommodityController",
+      "CommodityServiceImpl",
+      "CommodityByCodeEntity",
+      "HSCommodityByCodeEntity"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 46
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "domain/container.md",
+    "category": "domain",
+    "title": "Container type reference data",
+    "summary": "Container provides read-only container type lookups backed by startup-loaded data from the persistence layer.",
+    "primary_for": [
+      "container-type-reference"
+    ],
+    "mentions": [
+      "container-types",
+      "startup-load",
+      "iso-code",
+      "flags"
+    ],
+    "scenarios": [
+      "find container endpoint",
+      "trace container cache",
+      "see container table",
+      "inspect iso lookup",
+      "find startup loader"
+    ],
+    "capabilities": [
+      "domain-summary"
+    ],
+    "domains": [
+      "container"
+    ],
+    "entities": [
+      "ContainerTypeController",
+      "ContainerLoadService",
+      "ContainerTypeEntity"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 41
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "domain/diesel-price-ranges.md",
+    "category": "domain",
+    "title": "Diesel price range bands",
+    "summary": "Diesel price ranges exposes a single read API for country/customer-specific slab records used by downstream integrations.",
+    "primary_for": [
+      "diesel-price-range-reference"
+    ],
+    "mentions": [
+      "diesel-price-ranges",
+      "country-code",
+      "customer-code",
+      "slabs"
+    ],
+    "scenarios": [
+      "find diesel endpoint",
+      "trace diesel query",
+      "see diesel table",
+      "inspect solar lookup",
+      "find diesel service"
+    ],
+    "capabilities": [
+      "domain-summary"
+    ],
+    "domains": [
+      "diesel-price-ranges"
+    ],
+    "entities": [
+      "DieselPriceRangesController",
+      "DieselPriceRangesServiceImpl",
+      "DieselPriceRangesEntity"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 32
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "domain/location.md",
+    "category": "domain",
+    "title": "Location reference data",
+    "summary": "Location owns location and facility reference lookup, combining cached persistence with live upstream location and facility enrichment.",
+    "primary_for": [
+      "location-reference-data"
+    ],
+    "mentions": [
+      "locations",
+      "facility",
+      "cache",
+      "webclient",
+      "geoId"
+    ],
+    "scenarios": [
+      "trace location search",
+      "inspect location cache",
+      "find facility enrichment",
+      "see location tables",
+      "find location client"
+    ],
+    "capabilities": [
+      "domain-summary"
+    ],
+    "domains": [
+      "location"
+    ],
+    "entities": [
+      "LocationController",
+      "LocationService",
+      "LocationEntity",
+      "LocationCacheEntity"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 48
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "domain/sales.md",
+    "category": "domain",
+    "title": "Sales reference data",
+    "summary": "Sales exposes read-oriented APIs for sales type search and sales object matching against persisted lookup tables.",
+    "primary_for": [
+      "sales-type-reference"
+    ],
+    "mentions": [
+      "sales-types",
+      "sales-objects",
+      "read-only",
+      "matching"
+    ],
+    "scenarios": [
+      "find sales endpoint",
+      "trace sales object lookup",
+      "see sales tables",
+      "inspect read-only flow",
+      "find sales service"
+    ],
+    "capabilities": [
+      "domain-summary"
+    ],
+    "domains": [
+      "sales"
+    ],
+    "entities": [
+      "SalesTypesController",
+      "SalesTypesServiceImpl",
+      "SalesTypeEntity",
+      "SalesObjectEntity"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 34
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "domain/service-reference-domains.md",
+    "category": "domain",
+    "title": "Service-hosted reference domains",
+    "summary": "The service module still hosts smaller reference-data domains such as country, currency, reasons, VAS, layout types, carriers, customs, and IMO classifications.",
+    "primary_for": [
+      "service-hosted-reference-data"
+    ],
+    "mentions": [
+      "service",
+      "country",
+      "currency",
+      "reasons",
+      "vas",
+      "layout-types"
+    ],
+    "scenarios": [
+      "find service controller",
+      "trace reasons data",
+      "inspect vas source",
+      "see thin controllers",
+      "find host module domains",
+      "find reference data",
+      "look up reference domains"
+    ],
+    "capabilities": [
+      "domain-summary"
+    ],
+    "domains": [
+      "service-misc"
+    ],
+    "entities": [
+      "CountryController",
+      "ReasonController",
+      "VasController",
+      "VasEntity"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 36
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "domain/vendors.md",
+    "category": "domain",
+    "title": "Vendor master data",
+    "summary": "Vendors runs parallel V1 and V2 vendor read APIs plus Kafka-driven ingestion pipelines that persist both source payloads and normalized rows.",
+    "primary_for": [
+      "vendor-master-data"
+    ],
+    "mentions": [
+      "vendors",
+      "kafka",
+      "v1",
+      "v2",
+      "avro"
+    ],
+    "scenarios": [
+      "trace vendor kafka",
+      "find vendor v2 search",
+      "see vendor tables",
+      "inspect source tracking",
+      "find consumer groups"
+    ],
+    "capabilities": [
+      "domain-summary"
+    ],
+    "domains": [
+      "vendors"
+    ],
+    "entities": [
+      "VendorController",
+      "VendorV2Controller",
+      "VendorDataConsumer",
+      "VendorV2DataConsumer"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 42
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "domain/vessel.md",
+    "category": "domain",
+    "title": "Vessel reference data",
+    "summary": "Vessel owns searchable vessel master data plus create/update and soft-delete operations over a single reactive table.",
+    "primary_for": [
+      "vessel-reference-api"
+    ],
+    "mentions": [
+      "vessels",
+      "soft-delete",
+      "validation",
+      "active-status"
+    ],
+    "scenarios": [
+      "find vessel endpoint",
+      "trace deactivate flow",
+      "see vessel table",
+      "inspect vessel search",
+      "find vessel validation"
+    ],
+    "capabilities": [
+      "domain-summary"
+    ],
+    "domains": [
+      "vessel"
+    ],
+    "entities": [
+      "VesselController",
+      "VesselServiceImpl",
+      "VesselEntity"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 33
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "architecture/cross-cutting.md",
+    "category": "architecture",
+    "title": "Cross-cutting runtime architecture",
+    "summary": "Spring WebFlux, R2DBC, Liquibase, security, observability, and shared Kafka wiring shape every domain module in iom-master-data.",
+    "primary_for": [
+      "cross-cutting-runtime-rules"
+    ],
+    "mentions": [
+      "security",
+      "liquibase",
+      "observability",
+      "kafka",
+      "launchdarkly",
+      "webflux"
+    ],
+    "scenarios": [
+      "understand shared config",
+      "see security posture",
+      "trace liquibase strategy",
+      "see monitoring hooks",
+      "find feature flag wiring",
+      "find runtime rules",
+      "check runtime behavior"
+    ],
+    "capabilities": [
+      "cross-cutting-architecture"
+    ],
+    "domains": [
+      "platform"
+    ],
+    "entities": [
+      "SecurityConfig",
+      "ObservedAspectConfiguration",
+      "dbchangelogmaster.xml"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 39
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "architecture/modules.md",
+    "category": "architecture",
+    "title": "Gradle modules and package layout",
+    "summary": "iom-master-data is a root aggregator with controller/persistence submodules per master-data domain plus a service host module.",
+    "primary_for": [
+      "multi-module-package-tree"
+    ],
+    "mentions": [
+      "gradle",
+      "modules",
+      "packages",
+      "controller",
+      "persistence"
+    ],
+    "scenarios": [
+      "see module layout",
+      "map package tree",
+      "find submodule boundaries",
+      "understand gradle includes",
+      "see domain ownership"
+    ],
+    "capabilities": [
+      "module-mapping"
+    ],
+    "domains": [
+      "platform"
+    ],
+    "entities": [
+      "settings.gradle.kts",
+      "service",
+      "location",
+      "commodity",
+      "vendors"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 60
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "stack/stack.md",
+    "category": "stack",
+    "title": "Technology stack and commands",
+    "summary": "iom-master-data is a Kotlin 2.0 / Spring Boot 3.3 reactive Gradle monorepo with R2DBC Postgres, Liquibase, Kafka, Micrometer, and Kotest/JUnit validation.",
+    "primary_for": [
+      "service-stack-and-commands"
+    ],
+    "mentions": [
+      "kotlin",
+      "spring-boot",
+      "gradle",
+      "r2dbc",
+      "liquibase",
+      "kafka",
+      "kotest"
+    ],
+    "scenarios": [
+      "see tech stack",
+      "find build command",
+      "find test command",
+      "see framework versions",
+      "see runtime dependencies",
+      "understand the tech stack"
+    ],
+    "capabilities": [
+      "stack-summary"
+    ],
+    "domains": [
+      "platform"
+    ],
+    "entities": [
+      "build.gradle.kts",
+      "service/build.gradle.kts"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 48
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "runtime/charge-type-query-flow.md",
+    "category": "runtime",
+    "title": "Charge type enrichment flow",
+    "summary": "How charge-type requests layer repository filters, customer overrides, UOM enrichment, and VAT partner defaults.",
+    "primary_for": [
+      "charge-query-flow"
+    ],
+    "mentions": [
+      "charges",
+      "uom",
+      "vat",
+      "customer-mapping",
+      "feature-flags"
+    ],
+    "scenarios": [
+      "trace charge request",
+      "see uom enrichment",
+      "find vat default",
+      "inspect customer overrides",
+      "follow charge filters"
+    ],
+    "capabilities": [
+      "runtime-flow"
+    ],
+    "domains": [
+      "charges"
+    ],
+    "entities": [
+      "ChargesController",
+      "ChargeTypeServiceImpl",
+      "VatPartnerServiceImpl"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 35
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "runtime/commodity-restrictions-flow.md",
+    "category": "runtime",
+    "title": "Commodity restriction filtering flow",
+    "summary": "How POST /commodities intersects cached commodity data with a remote restriction response.",
+    "primary_for": [
+      "commodity-restriction-flow"
+    ],
+    "mentions": [
+      "commodity",
+      "hs-code",
+      "restriction",
+      "business-rules",
+      "startup-load"
+    ],
+    "scenarios": [
+      "trace restricted commodity",
+      "debug commodity post",
+      "inspect business rules call",
+      "find commodity filter",
+      "follow commodity cache"
+    ],
+    "capabilities": [
+      "runtime-flow"
+    ],
+    "domains": [
+      "commodity"
+    ],
+    "entities": [
+      "CommodityController",
+      "CommodityServiceImpl",
+      "CommodityLoadService",
+      "CommodityRestrictionClientImpl"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 36
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "runtime/container-cache-flow.md",
+    "category": "runtime",
+    "title": "Container startup cache flow",
+    "summary": "How container types are loaded into memory and served from the warm cache.",
+    "primary_for": [
+      "container-cache-flow"
+    ],
+    "mentions": [
+      "container",
+      "startup-load",
+      "iso-code",
+      "cache",
+      "read-only"
+    ],
+    "scenarios": [
+      "trace container cache",
+      "see startup load",
+      "inspect container fallback",
+      "find iso lookup",
+      "see read-only path"
+    ],
+    "capabilities": [
+      "runtime-flow"
+    ],
+    "domains": [
+      "container"
+    ],
+    "entities": [
+      "ContainerTypeController",
+      "ContainerTypeServiceImpl",
+      "ContainerLoadService"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 35
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "runtime/diesel-price-range-query-flow.md",
+    "category": "runtime",
+    "title": "Diesel price range query flow",
+    "summary": "How the diesel endpoint normalizes parameters and chooses either compatibility or paired-key lookup semantics.",
+    "primary_for": [
+      "diesel-query-flow"
+    ],
+    "mentions": [
+      "diesel",
+      "country-code",
+      "customer-code",
+      "read-only",
+      "compatibility"
+    ],
+    "scenarios": [
+      "trace diesel endpoint",
+      "inspect diesel validation",
+      "see country customer rule",
+      "find diesel query",
+      "follow slab lookup"
+    ],
+    "capabilities": [
+      "runtime-flow"
+    ],
+    "domains": [
+      "diesel-price-ranges"
+    ],
+    "entities": [
+      "DieselPriceRangesController",
+      "DieselPriceRangesServiceImpl"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 33
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "runtime/location-search-flow.md",
+    "category": "runtime",
+    "title": "Location search and enrichment flow",
+    "summary": "How location queries choose cache, upstream location lookup, and facility enrichment paths.",
+    "primary_for": [
+      "location-search-flow"
+    ],
+    "mentions": [
+      "locations",
+      "facility",
+      "cache",
+      "webclient",
+      "retry"
+    ],
+    "scenarios": [
+      "trace location request",
+      "debug facility enrichment",
+      "follow cache fallback",
+      "inspect location retries",
+      "see geo search flow"
+    ],
+    "capabilities": [
+      "runtime-flow"
+    ],
+    "domains": [
+      "location"
+    ],
+    "entities": [
+      "LocationController",
+      "LocationService",
+      "LocationClientImpl",
+      "FacilityClientImpl"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 38
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "runtime/sales-object-lookup-flow.md",
+    "category": "runtime",
+    "title": "Sales object lookup flow",
+    "summary": "How sales type search and sales object matching are served from reactive repositories and an in-memory cache.",
+    "primary_for": [
+      "sales-object-lookup-flow"
+    ],
+    "mentions": [
+      "sales",
+      "lookup",
+      "matching",
+      "cache",
+      "read-only"
+    ],
+    "scenarios": [
+      "trace sales object match",
+      "see sales type cache",
+      "inspect sales lookup",
+      "find sales service",
+      "follow sales request"
+    ],
+    "capabilities": [
+      "runtime-flow"
+    ],
+    "domains": [
+      "sales"
+    ],
+    "entities": [
+      "SalesTypesController",
+      "SalesTypesServiceImpl",
+      "SalesObjectRepository"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 33
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "runtime/vendor-ingest-flow.md",
+    "category": "runtime",
+    "title": "Vendor Kafka ingest flow",
+    "summary": "How V1 and V2 vendor consumers receive Kafka payloads, persist source payloads, and upsert normalized vendor rows.",
+    "primary_for": [
+      "vendor-kafka-ingest-flow"
+    ],
+    "mentions": [
+      "vendors",
+      "kafka",
+      "avro",
+      "source-table",
+      "upsert"
+    ],
+    "scenarios": [
+      "trace vendor kafka",
+      "debug vendor source write",
+      "follow vendor v2 batch",
+      "see vendor ack flow",
+      "inspect consumer concurrency"
+    ],
+    "capabilities": [
+      "runtime-flow"
+    ],
+    "domains": [
+      "vendors"
+    ],
+    "entities": [
+      "VendorDataConsumer",
+      "VendorServiceImpl",
+      "VendorV2DataConsumer",
+      "VendorV2ServiceImpl"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 38
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "runtime/vessel-management-flow.md",
+    "category": "runtime",
+    "title": "Vessel CRUD and soft-delete flow",
+    "summary": "How vessel search, upsert, and deactivation work against the reactive vessel repository.",
+    "primary_for": [
+      "vessel-crud-flow"
+    ],
+    "mentions": [
+      "vessels",
+      "search",
+      "upsert",
+      "soft-delete",
+      "active-status"
+    ],
+    "scenarios": [
+      "trace vessel api",
+      "inspect vessel upsert",
+      "see deactivation rule",
+      "find vessel search",
+      "follow active flag logic"
+    ],
+    "capabilities": [
+      "runtime-flow"
+    ],
+    "domains": [
+      "vessel"
+    ],
+    "entities": [
+      "VesselController",
+      "VesselServiceImpl",
+      "VesselRepository"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 33
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "contracts/api-contracts-1.md",
+    "category": "contracts",
+    "title": "API contracts — part 1",
+    "summary": "Documented HTTP routes for the service, charges, commodity, container, and location domains.",
+    "primary_for": [
+      "api-contract-index-core"
+    ],
+    "mentions": [
+      "http",
+      "routes",
+      "controllers",
+      "request-contracts"
+    ],
+    "scenarios": [
+      "list api endpoints",
+      "find core route",
+      "inspect location contract",
+      "inspect commodity contract",
+      "see deprecated aliases"
+    ],
+    "capabilities": [
+      "api-contracts"
+    ],
+    "domains": [
+      "service-misc",
+      "charges",
+      "commodity",
+      "container",
+      "location"
+    ],
+    "entities": [
+      "ReasonController",
+      "ChargesController",
+      "CommodityController",
+      "ContainerTypeController",
+      "LocationController"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 83
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "contracts/api-contracts-2.md",
+    "category": "contracts",
+    "title": "API contracts — part 2",
+    "summary": "Documented HTTP routes for sales, vendors, diesel price ranges, and vessel domains.",
+    "primary_for": [
+      "api-contract-index-extended"
+    ],
+    "mentions": [
+      "http",
+      "routes",
+      "vendors",
+      "vessel",
+      "sales"
+    ],
+    "scenarios": [
+      "list vendor routes",
+      "inspect vessel contract",
+      "see sales api",
+      "see diesel api",
+      "find batch lookup route",
+      "find the api contracts"
+    ],
+    "capabilities": [
+      "api-contracts"
+    ],
+    "domains": [
+      "sales",
+      "vendors",
+      "diesel-price-ranges",
+      "vessel"
+    ],
+    "entities": [
+      "SalesTypesController",
+      "VendorController",
+      "VendorV2Controller",
+      "DieselPriceRangesController",
+      "VesselController"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 51
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "contracts/db-schemas.md",
+    "category": "contracts",
+    "title": "Database schemas",
+    "summary": "Reactive table contracts inferred from repository entities across all domains using Postgres-backed R2DBC persistence.",
+    "primary_for": [
+      "postgres-table-map"
+    ],
+    "mentions": [
+      "postgres",
+      "r2dbc",
+      "tables",
+      "entities",
+      "liquibase"
+    ],
+    "scenarios": [
+      "see table schema",
+      "find entity columns",
+      "map database tables",
+      "inspect vendor tables",
+      "inspect location tables"
+    ],
+    "capabilities": [
+      "db-contracts"
+    ],
+    "domains": [
+      "platform",
+      "charges",
+      "commodity",
+      "container",
+      "location",
+      "sales",
+      "diesel-price-ranges",
+      "vendors",
+      "vessel",
+      "service-misc"
+    ],
+    "entities": [
+      "ChargeTypeEntity",
+      "CustomerToChargeTypeEntity",
+      "VatPartnerEntity",
+      "CountryToVatPartnerEntity",
+      "ChargeTypeDefaultVatPartnerEntity",
+      "CommodityByCodeEntity",
+      "HSCommodityByCodeEntity",
+      "ContainerTypeEntity"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 71
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "contracts/kafka-events.md",
+    "category": "contracts",
+    "title": "Kafka listeners and event contracts",
+    "summary": "Local Kafka contracts are concentrated in vendor ingestion, with versioned topics, consumer groups, Avro payloads, and schema-registry-backed deserialization.",
+    "primary_for": [
+      "kafka-event-contracts"
+    ],
+    "mentions": [
+      "kafka",
+      "vendor",
+      "avro",
+      "consumer-group",
+      "schema-registry"
+    ],
+    "scenarios": [
+      "find kafka topic",
+      "find consumer group",
+      "inspect avro consumer",
+      "see vendor event flow",
+      "check kafka retries"
+    ],
+    "capabilities": [
+      "event-contracts"
+    ],
+    "domains": [
+      "vendors",
+      "platform"
+    ],
+    "entities": [
+      "VendorDataConsumer",
+      "VendorV2DataConsumer",
+      "DedicatedKafkaConfig",
+      "VendorV2KafkaConfig"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 38
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "integrations/business-rules-service.md",
+    "category": "integrations",
+    "title": "Business Rules restricted commodity service",
+    "summary": "Commodity POST requests call an OAuth-protected Business Rules endpoint to fetch restricted commodity codes.",
+    "primary_for": [
+      "commodity-business-rules-integration"
+    ],
+    "mentions": [
+      "business-rules",
+      "restricted-commodity",
+      "oauth2",
+      "webclient",
+      "forgerock"
+    ],
+    "scenarios": [
+      "find restriction url",
+      "trace commodity oauth",
+      "inspect business rules client",
+      "debug restricted commodity call",
+      "see business rules headers"
+    ],
+    "capabilities": [
+      "integration-map"
+    ],
+    "domains": [
+      "commodity"
+    ],
+    "entities": [
+      "CommodityWebClientConfiguration",
+      "CommodityRestrictionClientImpl"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 33
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "integrations/oauth-and-feature-flags.md",
+    "category": "integrations",
+    "title": "OAuth providers and feature flags",
+    "summary": "Cross-cutting external dependencies include ForgeRock/Azure AD OAuth providers and LaunchDarkly for local feature-flag development.",
+    "primary_for": [
+      "oauth-and-flags-map"
+    ],
+    "mentions": [
+      "forgerock",
+      "azuread",
+      "launchdarkly",
+      "oauth2",
+      "feature-flags"
+    ],
+    "scenarios": [
+      "find oauth provider",
+      "inspect feature flags",
+      "see token endpoints",
+      "find local ld config",
+      "trace client credentials"
+    ],
+    "capabilities": [
+      "integration-map"
+    ],
+    "domains": [
+      "platform"
+    ],
+    "entities": [
+      "LaunchDarklyLocalConfig",
+      "CommodityWebClientConfiguration",
+      "WebClientConfiguration"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 34
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "integrations/upstream-location-and-facility.md",
+    "category": "integrations",
+    "title": "Upstream location and facility services",
+    "summary": "Location queries depend on two WebClient integrations: a Maersk geography location API and a facility search API secured with Azure AD client credentials.",
+    "primary_for": [
+      "location-upstream-integrations"
+    ],
+    "mentions": [
+      "locationClient",
+      "facilityClient",
+      "webclient",
+      "azuread",
+      "akamai"
+    ],
+    "scenarios": [
+      "find location base url",
+      "trace facility oauth",
+      "inspect external headers",
+      "see location integration",
+      "debug facility retry"
+    ],
+    "capabilities": [
+      "integration-map"
+    ],
+    "domains": [
+      "location"
+    ],
+    "entities": [
+      "WebClientConfiguration",
+      "LocationClientImpl",
+      "FacilityClientImpl"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 35
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "integrations/vendor-feeds.md",
+    "category": "integrations",
+    "title": "Vendor Kafka feeds and schema registry",
+    "summary": "Vendor ingestion depends on versioned Kafka clusters, SASL/TLS settings, and Confluent schema registry integration.",
+    "primary_for": [
+      "vendor-feed-integration-map"
+    ],
+    "mentions": [
+      "kafka",
+      "schema-registry",
+      "vendor-v1",
+      "vendor-v2",
+      "sasl"
+    ],
+    "scenarios": [
+      "find vendor topic config",
+      "inspect schema registry",
+      "see vendor kafka auth",
+      "debug vendor cluster settings",
+      "find v2 concurrency config"
+    ],
+    "capabilities": [
+      "integration-map"
+    ],
+    "domains": [
+      "vendors"
+    ],
+    "entities": [
+      "DedicatedKafkaConfig",
+      "VendorV2KafkaConfig"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 33
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "operations/failure-model.md",
+    "category": "operations",
+    "title": "Failure model and degradation behavior",
+    "summary": "The service mixes fail-fast not-found semantics with selective graceful degradation around facility enrichment and vendor batch ingest.",
+    "primary_for": [
+      "failure-model-guide"
+    ],
+    "mentions": [
+      "not-found",
+      "degradation",
+      "batch-errors",
+      "soft-delete",
+      "fallback"
+    ],
+    "scenarios": [
+      "see failure behavior",
+      "inspect graceful degradation",
+      "find batch error policy",
+      "see soft delete semantics",
+      "trace not-found responses",
+      "understand the failure model"
+    ],
+    "capabilities": [
+      "operations-guide"
+    ],
+    "domains": [
+      "platform",
+      "location",
+      "commodity",
+      "vendors",
+      "vessel",
+      "diesel-price-ranges"
+    ],
+    "entities": [
+      "LocationService",
+      "VendorV2DataConsumer",
+      "VesselServiceImpl",
+      "DieselPriceRangesController"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 38
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "operations/monitoring.md",
+    "category": "operations",
+    "title": "Monitoring and observability",
+    "summary": "Actuator, Micrometer, Zipkin tracing, observed AOP, and Kafka observation provide the main runtime telemetry surface.",
+    "primary_for": [
+      "monitoring-surface-map"
+    ],
+    "mentions": [
+      "actuator",
+      "prometheus",
+      "zipkin",
+      "observed",
+      "metrics"
+    ],
+    "scenarios": [
+      "find prometheus endpoint",
+      "inspect tracing",
+      "see observed aspect",
+      "find actuator exposure",
+      "see kafka observation",
+      "find monitoring setup",
+      "check monitoring config"
+    ],
+    "capabilities": [
+      "operations-guide"
+    ],
+    "domains": [
+      "platform",
+      "vendors"
+    ],
+    "entities": [
+      "ObservedAspectConfiguration",
+      "SecurityConfig",
+      "DedicatedKafkaConfig",
+      "VendorV2KafkaConfig"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 36
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "operations/retries.md",
+    "category": "operations",
+    "title": "Retry and backoff behavior",
+    "summary": "Retries are centralized around outbound WebClient calls and vendor Kafka listener error handlers.",
+    "primary_for": [
+      "retry-behavior-map"
+    ],
+    "mentions": [
+      "retry",
+      "backoff",
+      "webclient",
+      "kafka",
+      "ack"
+    ],
+    "scenarios": [
+      "see retry policy",
+      "debug backoff",
+      "inspect kafka error handler",
+      "find ack mode",
+      "see outbound retry count"
+    ],
+    "capabilities": [
+      "operations-guide"
+    ],
+    "domains": [
+      "platform",
+      "location",
+      "commodity",
+      "vendors"
+    ],
+    "entities": [
+      "ErrorHandler",
+      "CommodityRetryConfig",
+      "DedicatedKafkaConfig",
+      "VendorV2KafkaConfig"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 36
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "navigation/entry-points-1.md",
+    "category": "navigation",
+    "title": "REST entry points — part 1",
+    "summary": "Service, charges, commodity, container, and location entry points exposed by iom-master-data.",
+    "primary_for": [
+      "rest-entry-points-map"
+    ],
+    "mentions": [
+      "controllers",
+      "webflux",
+      "routes",
+      "service-misc",
+      "charges",
+      "commodity",
+      "container",
+      "location"
+    ],
+    "scenarios": [
+      "find api route",
+      "trace incoming request",
+      "map controller endpoints",
+      "locate rest handler",
+      "see deprecated aliases"
+    ],
+    "capabilities": [
+      "entry-point-mapping"
+    ],
+    "domains": [
+      "service-misc",
+      "charges",
+      "commodity",
+      "container",
+      "location"
+    ],
+    "entities": [
+      "ReasonController",
+      "ChargesController",
+      "CommodityController",
+      "ContainerTypeController",
+      "LocationController"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 83
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "navigation/entry-points-2.md",
+    "category": "navigation",
+    "title": "REST entry points — part 2",
+    "summary": "Sales, vendors, diesel price ranges, and vessel entry points exposed by iom-master-data.",
+    "primary_for": [
+      "rest-entry-points-extended"
+    ],
+    "mentions": [
+      "sales",
+      "vendors",
+      "diesel-price-ranges",
+      "vessel",
+      "controllers",
+      "routes"
+    ],
+    "scenarios": [
+      "find vendor endpoints",
+      "trace vessel api",
+      "see sales routes",
+      "inspect diesel endpoint",
+      "map batch lookups",
+      "list the entry points"
+    ],
+    "capabilities": [
+      "entry-point-mapping"
+    ],
+    "domains": [
+      "sales",
+      "vendors",
+      "diesel-price-ranges",
+      "vessel"
+    ],
+    "entities": [
+      "SalesTypesController",
+      "VendorController",
+      "VendorV2Controller",
+      "DieselPriceRangesController",
+      "VesselController"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 51
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "navigation/key-classes.md",
+    "category": "navigation",
+    "title": "Key classes by concern",
+    "summary": "High-signal classes for controllers, service logic, persistence, Kafka, and cross-cutting configuration.",
+    "primary_for": [
+      "key-class-index"
+    ],
+    "mentions": [
+      "controllers",
+      "services",
+      "repositories",
+      "webclient",
+      "kafka",
+      "config"
+    ],
+    "scenarios": [
+      "find important classes",
+      "see service owners",
+      "locate kafka code",
+      "locate configs",
+      "map persistence gateways",
+      "find a key class"
+    ],
+    "capabilities": [
+      "class-index"
+    ],
+    "domains": [
+      "service-misc",
+      "charges",
+      "commodity",
+      "container",
+      "location",
+      "sales",
+      "vendors",
+      "diesel-price-ranges",
+      "vessel"
+    ],
+    "entities": [
+      "SecurityConfig",
+      "LocationService",
+      "CommodityServiceImpl",
+      "VendorV2KafkaConfig"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 53
+  },
+  {
+    "repo": "iom-master-data",
+    "path": "navigation/scenarios.md",
+    "category": "navigation",
+    "title": "Task scenarios to start classes",
+    "summary": "Common operator and maintainer phrases mapped to the first class or method worth opening.",
+    "primary_for": [
+      "task-to-class-routing"
+    ],
+    "mentions": [
+      "start-here",
+      "scenarios",
+      "controllers",
+      "services",
+      "consumers"
+    ],
+    "scenarios": [
+      "where to change vendors",
+      "trace commodity restriction",
+      "debug location search",
+      "find vessel logic",
+      "start from charge lookup",
+      "find a key class",
+      "locate the right class"
+    ],
+    "capabilities": [
+      "task-routing"
+    ],
+    "domains": [
+      "service-misc",
+      "charges",
+      "commodity",
+      "container",
+      "location",
+      "sales",
+      "vendors",
+      "diesel-price-ranges",
+      "vessel"
+    ],
+    "entities": [
+      "LocationService.findLocationsBasedOnFilterCriteria",
+      "CommodityRestrictionClientImpl.getCommodityRestrictions",
+      "VendorV2DataConsumer.consumeVendorV2Data"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 53
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "domain/CalculateRatesRequest.md",
+    "category": "domain",
+    "title": "CalculateRatesRequest and RepriceRequest",
+    "summary": "DTOs for rate calculation and repricing flows",
+    "primary_for": [
+      "rates-request-dto-reference",
+      "reprice-request-dto-reference"
+    ],
+    "mentions": [
+      "RatesController",
+      "RatesService",
+      "RatesClient",
+      "OfferServiceDetailsController"
+    ],
+    "scenarios": [
+      "understand calculate rates request fields",
+      "add new field to reprice request",
+      "find transport route structure for rates",
+      "understand additional charges in reprice",
+      "trace rates request construction"
+    ],
+    "capabilities": [
+      "rate-calculation",
+      "reprice"
+    ],
+    "domains": [
+      "rates",
+      "offer-management"
+    ],
+    "entities": [
+      "CalculateRatesRequest",
+      "ContainerRateRequest",
+      "TransportRoute",
+      "TransportLeg",
+      "RepriceRequest",
+      "AdditionalChargeRequest"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 75
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "domain/OfferRequest.md",
+    "category": "domain",
+    "title": "OfferRequest",
+    "summary": "Internal aggregation of routing results and booking equipments passed to the offer API",
+    "primary_for": [
+      "offer-request-domain-model",
+      "routing-to-offer-handoff-contract"
+    ],
+    "mentions": [
+      "IOMRoutingAndOfferService",
+      "OfferService",
+      "OfferClientImpl",
+      "V3OfferRequestModel"
+    ],
+    "scenarios": [
+      "understand offer api input structure",
+      "trace routing output to offer input",
+      "find triangulation type usage",
+      "understand correlation id propagation",
+      "add new field to offer request"
+    ],
+    "capabilities": [
+      "offer-search",
+      "routing"
+    ],
+    "domains": [
+      "offer-management",
+      "routing"
+    ],
+    "entities": [
+      "OfferRequest",
+      "OfferResponse",
+      "V3RoutingModel",
+      "V3BookingEquipmentModel"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 54
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "domain/OfferedServicePlanDocument.md",
+    "category": "domain",
+    "title": "OfferedServicePlanDocument",
+    "summary": "MongoDB document storing a fully enriched offered inland service plan",
+    "primary_for": [
+      "offered-service-plan-mongodb-document",
+      "persistence-schema-reference"
+    ],
+    "mentions": [
+      "OfferedServicePlanPersistenceService",
+      "OfferedServicePlanDocumentRepository",
+      "OfferRecordCleanUpService",
+      "ServicePlanDomainEventConsumer"
+    ],
+    "scenarios": [
+      "understand mongodb document structure",
+      "find fields stored per offered plan",
+      "trace service plan number assignment",
+      "understand offered plan lifecycle",
+      "find rates stored on offered plan",
+      "find the persistence layer",
+      "check persistence schema"
+    ],
+    "capabilities": [
+      "offer-search",
+      "rate-calculation",
+      "persistence"
+    ],
+    "domains": [
+      "offer-management",
+      "rates"
+    ],
+    "entities": [
+      "OfferedServicePlanDocument",
+      "ProductOffer",
+      "ServicePlanRouting",
+      "CalculateRatesApiResponse"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 73
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "domain/SearchRequest.md",
+    "category": "domain",
+    "title": "SearchRequest",
+    "summary": "Internal domain object representing a validated, enriched inland offer search request",
+    "primary_for": [
+      "search-request-domain-model",
+      "offer-search-input-contract"
+    ],
+    "mentions": [
+      "IOMRoutingAndOfferService",
+      "SearchRequestService",
+      "V3SearchRequest",
+      "SearchRequestDocument",
+      "V3RequestMapper"
+    ],
+    "scenarios": [
+      "understand search request structure",
+      "add new field to search request",
+      "trace search input to service",
+      "find transport activity field meaning",
+      "understand booking equipment structure"
+    ],
+    "capabilities": [
+      "offer-search",
+      "request-enrichment"
+    ],
+    "domains": [
+      "offer-management",
+      "routing"
+    ],
+    "entities": [
+      "SearchRequest",
+      "ContainerRequest",
+      "ContainerDetail",
+      "TimeRangeRequest"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 68
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "architecture/cross-cutting.md",
+    "category": "architecture",
+    "title": "Cross-Cutting Concerns",
+    "summary": "Security, observability, error handling, retry, and feature flags",
+    "primary_for": [
+      "cross-cutting-concern-catalog",
+      "security-observability-reference"
+    ],
+    "mentions": [
+      "SecurityConfig",
+      "ObservationWebFilter",
+      "ObservationHandlerConfig",
+      "ObservedAspectConfiguration",
+      "WebClientConfiguration",
+      "ErrorHandler",
+      "ReferenceDataFetcher",
+      "FeatureConfigUtil",
+      "LaunchDarklyLocalConfig"
+    ],
+    "scenarios": [
+      "understand jwt token validation",
+      "trace request through observability stack",
+      "understand retry and circuit breaker config",
+      "find feature flag checks",
+      "understand error propagation model",
+      "find cross-cutting concerns",
+      "check security concerns"
+    ],
+    "capabilities": [
+      "jwt-auth",
+      "distributed-tracing",
+      "circuit-breaking",
+      "retry",
+      "feature-flags"
+    ],
+    "domains": [
+      "offer-management",
+      "security",
+      "observability"
+    ],
+    "entities": [],
+    "last_updated": "2026-06-30",
+    "lines": 85
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "architecture/modules.md",
+    "category": "architecture",
+    "title": "Module Structure",
+    "summary": "Package and module decomposition of iom-offer-service",
+    "primary_for": [
+      "module-decomposition-map",
+      "package-responsibility-guide"
+    ],
+    "mentions": [
+      "controller",
+      "service",
+      "webclient",
+      "document",
+      "domain",
+      "config",
+      "messaging",
+      "validator",
+      "mapper",
+      "repository"
+    ],
+    "scenarios": [
+      "understand package layout",
+      "find domain model classes",
+      "locate webclient implementations",
+      "add new external integration",
+      "understand validator chain",
+      "understand module layout",
+      "find the module structure",
+      "find a package"
+    ],
+    "capabilities": [
+      "offer-search",
+      "rate-calculation",
+      "routing",
+      "kafka-consumption",
+      "persistence"
+    ],
+    "domains": [
+      "offer-management",
+      "rates",
+      "routing"
+    ],
+    "entities": [
+      "OfferedServicePlanDocument",
+      "SearchRequestDocument",
+      "OfferRequest",
+      "SearchRequest"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 97
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "stack/stack.md",
+    "category": "stack",
+    "title": "Technology Stack",
+    "summary": "Full technology stack for iom-offer-service",
+    "primary_for": [
+      "stack-reference-card",
+      "build-tool-guide"
+    ],
+    "mentions": [
+      "Spring Boot",
+      "Kotlin",
+      "Java",
+      "Gradle",
+      "MongoDB",
+      "Kafka",
+      "Resilience4j",
+      "Micrometer",
+      "LaunchDarkly",
+      "Avro",
+      "OpenAPI"
+    ],
+    "scenarios": [
+      "understand the tech stack",
+      "find kotlin version used",
+      "check spring boot version",
+      "understand build tasks available",
+      "find gradle build commands",
+      "find build stack commands"
+    ],
+    "capabilities": [
+      "build",
+      "test",
+      "deploy",
+      "observe"
+    ],
+    "domains": [
+      "offer-management"
+    ],
+    "entities": [],
+    "last_updated": "2026-06-30",
+    "lines": 88
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "runtime/offer-cleanup-flow.md",
+    "category": "runtime",
+    "title": "Offer Cleanup Flow",
+    "summary": "Scheduled deletion of unmapped offered service plan documents",
+    "primary_for": [
+      "offer-cleanup-runtime-flow",
+      "stale-record-deletion-trace"
+    ],
+    "mentions": [
+      "OfferServiceCleanUpController",
+      "OfferRecordCleanUpService",
+      "ReactiveMongoTemplate"
+    ],
+    "scenarios": [
+      "understand how stale offers are deleted",
+      "find cleanup query logic",
+      "trace delete offered plan endpoint",
+      "understand what unmapped means",
+      "find how old records are identified"
+    ],
+    "capabilities": [
+      "offer-cleanup",
+      "persistence"
+    ],
+    "domains": [
+      "offer-management"
+    ],
+    "entities": [
+      "OfferedServicePlanDocument",
+      "OfferRecordsDeleteResponse"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 65
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "runtime/offer-search-flow.md",
+    "category": "runtime",
+    "title": "Offer Search Flow",
+    "summary": "Step-by-step reactive flow for the main inland service plan search",
+    "primary_for": [
+      "offer-search-runtime-flow",
+      "service-plan-search-trace-guide"
+    ],
+    "mentions": [
+      "IOMSearchQueryController",
+      "IOMRoutingAndOfferService",
+      "RoutingService",
+      "OfferService",
+      "CustomsService",
+      "OfferedServicePlanPersistenceService",
+      "SearchRequestService"
+    ],
+    "scenarios": [
+      "trace search request end to end",
+      "understand how routes are fetched",
+      "understand offer api invocation",
+      "find where customs enrichment happens",
+      "understand parallelism in search flow"
+    ],
+    "capabilities": [
+      "offer-search",
+      "routing",
+      "customs"
+    ],
+    "domains": [
+      "offer-management",
+      "routing",
+      "customs"
+    ],
+    "entities": [
+      "V3SearchRequest",
+      "OfferRequest",
+      "OfferedServicePlanDocument"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 75
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "runtime/rates-flow.md",
+    "category": "runtime",
+    "title": "Rates Flow",
+    "summary": "Rate calculation and repricing flows for an offered service plan",
+    "primary_for": [
+      "rates-calculation-runtime-flow",
+      "reprice-runtime-flow"
+    ],
+    "mentions": [
+      "RatesController",
+      "RatesService",
+      "RatesClientImpl",
+      "OfferedServicePlanPersistenceService",
+      "OfferServiceDetailsController"
+    ],
+    "scenarios": [
+      "calculate rates for offered plan",
+      "reprice offer with price date change",
+      "reprice with additional charges",
+      "understand mandatory charge validation",
+      "trace rates merge into service plan"
+    ],
+    "capabilities": [
+      "rate-calculation",
+      "reprice",
+      "persistence"
+    ],
+    "domains": [
+      "rates",
+      "offer-management"
+    ],
+    "entities": [
+      "CalculateRatesRequest",
+      "CalculateRatesApiResponse",
+      "RepriceRequest",
+      "OfferedServicePlanDocument"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 60
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "runtime/service-plan-event-processing-flow.md",
+    "category": "runtime",
+    "title": "Service Plan Event Processing Flow",
+    "summary": "Kafka consumer flow linking offered plan to booked service plan number",
+    "primary_for": [
+      "kafka-event-processing-flow",
+      "service-plan-number-update-trace"
+    ],
+    "mentions": [
+      "ServicePlanDomainEventConsumer",
+      "OfferedServicePlanPersistenceService",
+      "EventNotification",
+      "KafkaConfig"
+    ],
+    "scenarios": [
+      "trace kafka event to mongodb update",
+      "understand service plan number linking",
+      "find kafka consumer configuration",
+      "understand acknowledgement behaviour",
+      "find offset reset strategy"
+    ],
+    "capabilities": [
+      "kafka-consumption",
+      "persistence"
+    ],
+    "domains": [
+      "offer-management"
+    ],
+    "entities": [
+      "OfferedServicePlanDocument",
+      "EventNotification"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 66
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "contracts/api-contracts.md",
+    "category": "contracts",
+    "title": "API Contracts",
+    "summary": "All REST API endpoints exposed by iom-offer-service",
+    "primary_for": [
+      "rest-api-contract-reference",
+      "openapi-endpoint-catalog"
+    ],
+    "mentions": [
+      "IOMSearchQueryController",
+      "RatesController",
+      "OfferServiceDetailsController",
+      "OfferServiceCleanUpController",
+      "ErrorCodeController"
+    ],
+    "scenarios": [
+      "find all exposed api endpoints",
+      "check request and response types",
+      "understand auth requirements per endpoint",
+      "find reprice endpoint signature",
+      "check error response codes",
+      "find the api contracts",
+      "check contract definitions"
+    ],
+    "capabilities": [
+      "offer-search",
+      "rate-calculation",
+      "reprice",
+      "offer-cleanup",
+      "offer-details"
+    ],
+    "domains": [
+      "offer-management",
+      "rates"
+    ],
+    "entities": [
+      "V3SearchRequest",
+      "V3ServicePlanModel",
+      "CalculateRatesRequest",
+      "CalculateRatesApiResponse",
+      "RepriceRequest"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 103
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "contracts/db-schemas.md",
+    "category": "contracts",
+    "title": "Database Schemas",
+    "summary": "MongoDB collections and their document structure in iom-offer-service",
+    "primary_for": [
+      "mongodb-schema-reference",
+      "collection-index-guide"
+    ],
+    "mentions": [
+      "OfferedServicePlanDocument",
+      "SearchRequestDocument",
+      "OfferAudit",
+      "OfferedServicePlanPersistenceService",
+      "SearchRequestService"
+    ],
+    "scenarios": [
+      "understand mongodb collection structure",
+      "find indexes on offered service plans",
+      "understand audit collection schema",
+      "find how search request is stored",
+      "check document fields in mongodb"
+    ],
+    "capabilities": [
+      "persistence"
+    ],
+    "domains": [
+      "offer-management"
+    ],
+    "entities": [
+      "OfferedServicePlanDocument",
+      "SearchRequestDocument",
+      "OfferAudit"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 100
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "contracts/kafka-events.md",
+    "category": "contracts",
+    "title": "Kafka Events",
+    "summary": "Kafka topics consumed and their Avro message schema",
+    "primary_for": [
+      "kafka-event-contract-reference",
+      "avro-schema-guide"
+    ],
+    "mentions": [
+      "ServicePlanDomainEventConsumer",
+      "EventNotification",
+      "KafkaConfig"
+    ],
+    "scenarios": [
+      "understand kafka event schema",
+      "find topic and consumer group names",
+      "understand avro deserialization setup",
+      "trace message fields to mongo update",
+      "find kafka error handling config"
+    ],
+    "capabilities": [
+      "kafka-consumption"
+    ],
+    "domains": [
+      "offer-management"
+    ],
+    "entities": [
+      "EventNotification",
+      "OfferedServicePlanDocument"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 87
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "integrations/business-rules.md",
+    "category": "integrations",
+    "title": "Business Rules Integration",
+    "summary": "Integration with business rules API for commodity restrictions and cargo weight",
+    "primary_for": [
+      "business-rules-api-integration-guide",
+      "commodity-restriction-reference"
+    ],
+    "mentions": [
+      "BusinessRulesClientImpl",
+      "V3CommodityRestrictionValidator",
+      "CargoWeightClientImpl",
+      "CargoWeightValidationService"
+    ],
+    "scenarios": [
+      "validate commodity restrictions",
+      "understand business rules api usage",
+      "find business rules base url",
+      "trace commodity restriction check",
+      "find cargo weight rules endpoint"
+    ],
+    "capabilities": [
+      "offer-search",
+      "validation"
+    ],
+    "domains": [
+      "offer-management"
+    ],
+    "entities": [
+      "SearchRequest",
+      "ContainerRequest"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 50
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "integrations/cargo-weight.md",
+    "category": "integrations",
+    "title": "Cargo Weight Integration",
+    "summary": "Integration with cargo weight rules API for container weight validation",
+    "primary_for": [
+      "cargo-weight-api-integration-guide",
+      "weight-validation-reference"
+    ],
+    "mentions": [
+      "CargoWeightClientImpl",
+      "CargoWeightValidationService",
+      "IOMRoutingAndOfferService"
+    ],
+    "scenarios": [
+      "understand cargo weight validation",
+      "find cargo weight api base url",
+      "trace weight check in search flow",
+      "find cargo weight circuit breaker",
+      "understand weight restriction countries"
+    ],
+    "capabilities": [
+      "offer-search",
+      "validation"
+    ],
+    "domains": [
+      "offer-management"
+    ],
+    "entities": [
+      "SearchRequest",
+      "ContainerRequest"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 55
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "integrations/charge-types.md",
+    "category": "integrations",
+    "title": "Charge Types Integration",
+    "summary": "Integration with master data charge-types API and in-memory charge type cache",
+    "primary_for": [
+      "charge-types-integration-guide",
+      "charge-type-cache-reference"
+    ],
+    "mentions": [
+      "ReferenceDataFetcher",
+      "CustomsService",
+      "ChargeStandardizations"
+    ],
+    "scenarios": [
+      "understand charge type name resolution",
+      "find charge types api base url",
+      "trace charge type cache refresh",
+      "understand mandatory charge codes",
+      "find charge standardization logic"
+    ],
+    "capabilities": [
+      "offer-search",
+      "rate-calculation"
+    ],
+    "domains": [
+      "offer-management",
+      "rates"
+    ],
+    "entities": [
+      "V3ChargeModel",
+      "V3ChargeType"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 66
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "integrations/commodity.md",
+    "category": "integrations",
+    "title": "Commodity and Reefer Integration",
+    "summary": "Integration with master data commodity API and reefer templates API",
+    "primary_for": [
+      "commodity-api-integration-guide",
+      "reefer-client-reference"
+    ],
+    "mentions": [
+      "CommodityClient",
+      "ReeferTemperatureClient",
+      "V3CommodityCodeValidator",
+      "V3CommodityRestrictionValidator",
+      "ReferenceDataFetcher"
+    ],
+    "scenarios": [
+      "validate commodity code in search request",
+      "fetch reefer temperature requirements",
+      "understand commodity restriction validation",
+      "find commodity api base url",
+      "find reefer api base url"
+    ],
+    "capabilities": [
+      "offer-search",
+      "validation"
+    ],
+    "domains": [
+      "offer-management"
+    ],
+    "entities": [
+      "SearchRequest",
+      "ContainerRequest"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 69
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "integrations/container-type.md",
+    "category": "integrations",
+    "title": "Container Type Integration",
+    "summary": "Integration with master data container-types API for equipment validation",
+    "primary_for": [
+      "container-type-integration-guide",
+      "equipment-validation-reference"
+    ],
+    "mentions": [
+      "ContainerTypeClient",
+      "V3ContainerTypeValidator",
+      "ReferenceDataFetcher"
+    ],
+    "scenarios": [
+      "validate container type in search request",
+      "find container type api base url",
+      "understand equipment profile validation",
+      "find container type circuit breaker",
+      "understand iso size type validation"
+    ],
+    "capabilities": [
+      "offer-search",
+      "validation"
+    ],
+    "domains": [
+      "offer-management"
+    ],
+    "entities": [
+      "SearchRequest",
+      "ContainerRequest"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 51
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "integrations/customer.md",
+    "category": "integrations",
+    "title": "Customer Integration",
+    "summary": "Integration with customer identification API for party validation",
+    "primary_for": [
+      "customer-api-integration-guide",
+      "party-validation-reference"
+    ],
+    "mentions": [
+      "CustomerClient",
+      "V3PartyCodeValidator",
+      "V3PartyMasterRoleValidator",
+      "V3BookedByContactPartyValidator"
+    ],
+    "scenarios": [
+      "validate customer party code",
+      "find customer api base url",
+      "understand party validation chain",
+      "find customer circuit breaker",
+      "trace bookedby contact validation"
+    ],
+    "capabilities": [
+      "offer-search",
+      "validation"
+    ],
+    "domains": [
+      "offer-management"
+    ],
+    "entities": [
+      "SearchRequest",
+      "V3SearchRequest"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 55
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "integrations/customs.md",
+    "category": "integrations",
+    "title": "Customs Integration",
+    "summary": "Integration with customs services API for customs charge enrichment",
+    "primary_for": [
+      "customs-api-integration-guide",
+      "customs-charge-enrichment-reference"
+    ],
+    "mentions": [
+      "CustomsClientImpl",
+      "CustomsService",
+      "IOMRoutingAndOfferService",
+      "FeatureConfigUtil"
+    ],
+    "scenarios": [
+      "understand customs charge enrichment",
+      "find customs api base url",
+      "trace customs charge into service plan",
+      "understand customs feature flag",
+      "find customs export vs import logic"
+    ],
+    "capabilities": [
+      "offer-search",
+      "customs"
+    ],
+    "domains": [
+      "offer-management",
+      "customs"
+    ],
+    "entities": [
+      "V3SearchRequest",
+      "V3ServicePlanModel",
+      "V3ChargeModel"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 62
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "integrations/facility.md",
+    "category": "integrations",
+    "title": "Facility Integration",
+    "summary": "Integration with SMDS facilities service for facility data lookup",
+    "primary_for": [
+      "facility-api-integration-guide",
+      "facility-client-reference"
+    ],
+    "mentions": [
+      "FacilityClient",
+      "OfferLocationService"
+    ],
+    "scenarios": [
+      "understand facility data lookup",
+      "find facility api base url",
+      "trace facility enrichment in search",
+      "find facility circuit breaker",
+      "understand facility vs city location"
+    ],
+    "capabilities": [
+      "offer-search"
+    ],
+    "domains": [
+      "offer-management",
+      "routing"
+    ],
+    "entities": [
+      "SearchRequest",
+      "V3SearchRequest"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 49
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "integrations/location.md",
+    "category": "integrations",
+    "title": "Location Integration",
+    "summary": "Integration with master data location API to resolve geoId-based location details",
+    "primary_for": [
+      "location-api-integration-guide",
+      "location-client-reference"
+    ],
+    "mentions": [
+      "LocationClient",
+      "LocationService",
+      "OfferLocationService"
+    ],
+    "scenarios": [
+      "understand how location data is fetched",
+      "find location api base url",
+      "trace location enrichment in search flow",
+      "find location client circuit breaker",
+      "understand geo id based location lookup"
+    ],
+    "capabilities": [
+      "offer-search"
+    ],
+    "domains": [
+      "offer-management",
+      "routing"
+    ],
+    "entities": [
+      "SearchRequest",
+      "V3SearchRequest"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 52
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "integrations/offer-v3.md",
+    "category": "integrations",
+    "title": "OIPO Offer v3/v4 Integration",
+    "summary": "Integration with OIPO multicarrier offer API to retrieve inland transport offers",
+    "primary_for": [
+      "oipo-offer-integration-guide",
+      "offer-api-client-reference"
+    ],
+    "mentions": [
+      "OfferClientImpl",
+      "OfferClientWithMockFallback",
+      "OfferService",
+      "IOMRoutingAndOfferService",
+      "V3OfferRequestModel"
+    ],
+    "scenarios": [
+      "understand how offers are fetched",
+      "find offer api base url config",
+      "understand mock fallback on sit uat",
+      "trace offer client circuit breaker",
+      "add new field to offer request"
+    ],
+    "capabilities": [
+      "offer-search"
+    ],
+    "domains": [
+      "offer-management"
+    ],
+    "entities": [
+      "OfferRequest",
+      "V3OfferRequestModel",
+      "MultiCarrierOfferResponseV3"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 62
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "integrations/rates.md",
+    "category": "integrations",
+    "title": "Rates Integration",
+    "summary": "Integration with OIPO rates v8 API for inland rate calculation and repricing",
+    "primary_for": [
+      "rates-api-integration-guide",
+      "rates-client-reference"
+    ],
+    "mentions": [
+      "RatesClientImpl",
+      "RatesService",
+      "RatesController",
+      "OfferServiceDetailsController"
+    ],
+    "scenarios": [
+      "understand rates api integration",
+      "find rates base url config",
+      "trace rates api request construction",
+      "understand rates circuit breaker",
+      "find rates retry configuration"
+    ],
+    "capabilities": [
+      "rate-calculation",
+      "reprice"
+    ],
+    "domains": [
+      "rates"
+    ],
+    "entities": [
+      "CalculateRatesRequest",
+      "CalculateRatesResponse",
+      "CalculateRatesApiResponse"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 60
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "integrations/routing.md",
+    "category": "integrations",
+    "title": "Routing Integration",
+    "summary": "Integration with the delivery-network routing API for inland route discovery",
+    "primary_for": [
+      "routing-api-integration-guide",
+      "routing-client-reference"
+    ],
+    "mentions": [
+      "RoutingClientImpl",
+      "RoutingService",
+      "IOMRoutingAndOfferService",
+      "V3RoutingRequestModel"
+    ],
+    "scenarios": [
+      "understand how routes are fetched",
+      "find routing api base url",
+      "trace routing request construction",
+      "understand route filtering logic",
+      "find routing circuit breaker name"
+    ],
+    "capabilities": [
+      "offer-search",
+      "routing"
+    ],
+    "domains": [
+      "routing",
+      "offer-management"
+    ],
+    "entities": [
+      "OfferRequest",
+      "V3RoutingModel",
+      "V3RoutingRequestModel",
+      "V3RoutingResponseModel"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 68
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "integrations/sales-object.md",
+    "category": "integrations",
+    "title": "Sales Object Integration",
+    "summary": "Integration with master data sales-objects API for product and pricing context",
+    "primary_for": [
+      "sales-object-integration-guide",
+      "sales-object-client-reference"
+    ],
+    "mentions": [
+      "SalesObjectClient",
+      "IOMRoutingAndOfferService"
+    ],
+    "scenarios": [
+      "understand sales object lookup",
+      "find sales object api base url",
+      "trace sales object in search",
+      "find sales object circuit breaker",
+      "understand product pricing context"
+    ],
+    "capabilities": [
+      "offer-search"
+    ],
+    "domains": [
+      "offer-management"
+    ],
+    "entities": [
+      "SearchRequest",
+      "SalesObject"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 49
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "operations/failure-model.md",
+    "category": "operations",
+    "title": "Failure Model",
+    "summary": "How iom-offer-service handles failures from external systems and internal errors",
+    "primary_for": [
+      "failure-model-reference",
+      "error-handling-guide"
+    ],
+    "mentions": [
+      "ErrorHandler",
+      "ExtendedExternalApiException",
+      "CustomsService",
+      "OfferClientWithMockFallback",
+      "RatesService",
+      "OfferedServicePlanPersistenceService"
+    ],
+    "scenarios": [
+      "understand failure handling for external calls",
+      "find how customs errors are handled",
+      "understand kafka consumer error handling",
+      "find what errors cause 502 response",
+      "understand circuit breaker open state behaviour",
+      "understand the failure model"
+    ],
+    "capabilities": [
+      "offer-search",
+      "rate-calculation",
+      "kafka-consumption"
+    ],
+    "domains": [
+      "offer-management",
+      "rates"
+    ],
+    "entities": [],
+    "last_updated": "2026-06-30",
+    "lines": 59
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "operations/flags-and-lists.md",
+    "category": "operations",
+    "title": "Feature Flags and Static Lists",
+    "summary": "LaunchDarkly feature flags, static allow/deny lists, and static configuration",
+    "primary_for": [
+      "feature-flag-reference",
+      "static-list-configuration-guide"
+    ],
+    "mentions": [
+      "FeatureConfigUtil",
+      "LaunchDarklyLocalConfig",
+      "ReferenceDataFetcher",
+      "MandatoryChargesConfig",
+      "AdditionalChargeMaterialCodesProperties"
+    ],
+    "scenarios": [
+      "find all feature flags used",
+      "understand empty container allow list",
+      "find mandatory charge code configuration",
+      "understand launchdarkly flag usage",
+      "find transport mode allow list"
+    ],
+    "capabilities": [
+      "offer-search",
+      "rate-calculation"
+    ],
+    "domains": [
+      "offer-management",
+      "rates"
+    ],
+    "entities": [],
+    "last_updated": "2026-06-30",
+    "lines": 77
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "operations/monitoring.md",
+    "category": "operations",
+    "title": "Monitoring and Observability",
+    "summary": "Metrics, tracing, logging and health check configuration",
+    "primary_for": [
+      "monitoring-observability-reference",
+      "metrics-endpoint-guide"
+    ],
+    "mentions": [
+      "ObservationWebFilter",
+      "ObservationHandlerConfig",
+      "ObservedAspectConfiguration",
+      "SecurityConfig"
+    ],
+    "scenarios": [
+      "find prometheus metrics endpoint",
+      "understand distributed tracing setup",
+      "find health check endpoints",
+      "understand log level configuration",
+      "check zipkin tracing endpoint",
+      "find observability wiring",
+      "check observability setup"
+    ],
+    "capabilities": [
+      "observe"
+    ],
+    "domains": [
+      "offer-management"
+    ],
+    "entities": [],
+    "last_updated": "2026-06-30",
+    "lines": 83
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "operations/retries.md",
+    "category": "operations",
+    "title": "Retry and Circuit Breaker Configuration",
+    "summary": "Retry policies and Resilience4j circuit breaker configuration for all external calls",
+    "primary_for": [
+      "retry-circuit-breaker-config-reference",
+      "resilience-policy-guide"
+    ],
+    "mentions": [
+      "ErrorHandler",
+      "RetryConfiguration",
+      "WebClientConfiguration",
+      "RatesClientImpl",
+      "OfferClientImpl",
+      "RoutingClientImpl"
+    ],
+    "scenarios": [
+      "find retry count for external calls",
+      "understand circuit breaker thresholds",
+      "understand when retries are skipped",
+      "find circuit breaker instance names",
+      "understand fallback behaviour on open circuit",
+      "find resilience policies",
+      "check retry resilience"
+    ],
+    "capabilities": [
+      "offer-search",
+      "rate-calculation",
+      "routing"
+    ],
+    "domains": [
+      "offer-management",
+      "rates",
+      "routing"
+    ],
+    "entities": [],
+    "last_updated": "2026-06-30",
+    "lines": 73
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "navigation/entry-points.md",
+    "category": "navigation",
+    "title": "Entry Points",
+    "summary": "All HTTP and Kafka entry points for iom-offer-service",
+    "primary_for": [
+      "api-entry-point-inventory",
+      "controller-routing-map"
+    ],
+    "mentions": [
+      "IOMSearchQueryController",
+      "RatesController",
+      "OfferServiceCleanUpController",
+      "OfferServiceDetailsController",
+      "ErrorCodeController",
+      "ServicePlanDomainEventConsumer"
+    ],
+    "scenarios": [
+      "search for inland service plans",
+      "calculate rates for offer",
+      "get repriced offer response",
+      "delete stale offer records",
+      "consume service plan domain event",
+      "list the entry points",
+      "find an entry point",
+      "find request routing",
+      "trace task routing"
+    ],
+    "capabilities": [
+      "offer-search",
+      "rate-calculation",
+      "reprice",
+      "offer-cleanup",
+      "kafka-consumption"
+    ],
+    "domains": [
+      "offer-management",
+      "rates",
+      "routing"
+    ],
+    "entities": [
+      "V3SearchRequest",
+      "CalculateRatesRequest",
+      "RepriceRequest",
+      "OfferedServicePlanDocument"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 61
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "navigation/key-classes.md",
+    "category": "navigation",
+    "title": "Key Classes",
+    "summary": "Most important classes for understanding and modifying iom-offer-service",
+    "primary_for": [
+      "class-navigation-index",
+      "developer-orientation-guide"
+    ],
+    "mentions": [
+      "IOMRoutingAndOfferService",
+      "RatesService",
+      "OfferedServicePlanPersistenceService",
+      "RoutingService",
+      "OfferService",
+      "CustomsService",
+      "SearchRequestService",
+      "OfferRecordCleanUpService"
+    ],
+    "scenarios": [
+      "find where offer search logic lives",
+      "understand rates calculation flow",
+      "locate mongodb persistence layer",
+      "trace customs charge enrichment",
+      "find kafka consumer logic",
+      "find a key class",
+      "locate the right class",
+      "orient a new developer",
+      "find a developer starting point"
+    ],
+    "capabilities": [
+      "offer-search",
+      "rate-calculation",
+      "routing",
+      "customs",
+      "persistence"
+    ],
+    "domains": [
+      "offer-management",
+      "rates",
+      "routing",
+      "customs"
+    ],
+    "entities": [
+      "OfferedServicePlanDocument",
+      "SearchRequestDocument",
+      "OfferRequest",
+      "V3SearchRequest"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 86
+  },
+  {
+    "repo": "iom-offer-service",
+    "path": "navigation/scenarios.md",
+    "category": "navigation",
+    "title": "User Scenarios",
+    "summary": "End-to-end user scenarios supported by iom-offer-service",
+    "primary_for": [
+      "scenario-index",
+      "use-case-navigation-map"
+    ],
+    "mentions": [
+      "IOMSearchQueryController",
+      "RatesController",
+      "OfferServiceDetailsController",
+      "OfferServiceCleanUpController",
+      "ServicePlanDomainEventConsumer"
+    ],
+    "scenarios": [
+      "search service plans for booking",
+      "amend existing service plan search",
+      "calculate inland transport rates",
+      "reprice offer with new date",
+      "clean up unmapped offer records",
+      "get offered service plan details",
+      "reprice with additional charges",
+      "find the right scenario",
+      "match a user scenario",
+      "find the right use case",
+      "match a use case"
+    ],
+    "capabilities": [
+      "offer-search",
+      "rate-calculation",
+      "reprice",
+      "offer-cleanup",
+      "offer-details"
+    ],
+    "domains": [
+      "offer-management",
+      "rates",
+      "routing",
+      "customs"
+    ],
+    "entities": [
+      "V3SearchRequest",
+      "OfferedServicePlanDocument",
+      "CalculateRatesRequest",
+      "RepriceRequest"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 71
+  },
+  {
+    "repo": "iom-order-service",
+    "path": "domain/order-domain.md",
+    "category": "domain",
+    "title": "Order domain orchestration",
+    "summary": "OrderServiceImpl is the single mutation entry point for controller and consumer writes. It combines resolver enrichment, validation, persistence, incident/business-exception side effects, outbox dispatch, and selected external calls.",
+    "primary_for": [
+      "order-domain-orchestration"
+    ],
+    "mentions": [
+      "order-service",
+      "validators",
+      "resolvers",
+      "incidents",
+      "outbox"
+    ],
+    "scenarios": [
+      "inspect mutation pipeline",
+      "inspect amend rules",
+      "inspect incident side effects",
+      "inspect customer history writes",
+      "inspect outbox dispatch",
+      "understand the order domain",
+      "find order logic"
+    ],
+    "capabilities": [
+      "domain-orchestration"
+    ],
+    "domains": [
+      "order"
+    ],
+    "entities": [
+      "OrderServiceImpl",
+      "ServicePlan",
+      "IncidentEntity",
+      "OutboxMessage",
+      "AuditEntity"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 35
+  },
+  {
+    "repo": "iom-order-service",
+    "path": "domain/service-plan.md",
+    "category": "domain",
+    "title": "ServicePlan domain",
+    "summary": "`ServicePlan` is the central aggregate for booking, products, charges, legs, work-process state, and customer-history references. OrderServiceImpl enriches, validates, persists, and emits events around this aggregate.",
+    "primary_for": [
+      "service-plan-domain"
+    ],
+    "mentions": [
+      "service-plan",
+      "booking",
+      "charges",
+      "work-processes",
+      "domain-events"
+    ],
+    "scenarios": [
+      "inspect service plan rules",
+      "inspect status changes",
+      "inspect charge updates",
+      "inspect container updates",
+      "inspect repricing rules",
+      "understand the service plan"
+    ],
+    "capabilities": [
+      "domain-model"
+    ],
+    "domains": [
+      "order"
+    ],
+    "entities": [
+      "ServicePlan",
+      "Booking",
+      "Charge",
+      "Reference",
+      "WorkProcess"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 35
+  },
+  {
+    "repo": "iom-order-service",
+    "path": "architecture/cross-cutting.md",
+    "category": "architecture",
+    "title": "Cross-cutting concerns",
+    "summary": "Security, tracing, OpenAPI grouping, local LaunchDarkly wiring, and mapper defaults are centralized under `config/` and `filter/`. Domain and service layers raise validation and access exceptions instead of hiding failures inside controllers.",
+    "primary_for": [
+      "cross-cutting-behavior"
+    ],
+    "mentions": [
+      "security",
+      "tracing",
+      "swagger",
+      "launchdarkly",
+      "exceptions"
+    ],
+    "scenarios": [
+      "inspect jwt setup",
+      "inspect observability",
+      "inspect feature flags",
+      "inspect swagger groups",
+      "inspect error sources",
+      "understand cross-cutting behavior",
+      "check shared behavior"
+    ],
+    "capabilities": [
+      "architecture"
+    ],
+    "domains": [
+      "platform"
+    ],
+    "entities": [
+      "Jwt",
+      "Observation",
+      "LDReactorClient",
+      "ValidationException"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 48
+  },
+  {
+    "repo": "iom-order-service",
+    "path": "architecture/modules.md",
+    "category": "architecture",
+    "title": "Modules and package tree",
+    "summary": "The repository is a single Spring Boot WebFlux service organized by ingress, domain orchestration, queries, mapping, incident support, and cross-cutting config. Kotlin source under `com.maersk.iom` is compact and service-centric.",
+    "primary_for": [
+      "module-topology"
+    ],
+    "mentions": [
+      "package-tree",
+      "controllers",
+      "messaging",
+      "domain",
+      "services"
+    ],
+    "scenarios": [
+      "inspect package tree",
+      "find module boundaries",
+      "map source layout",
+      "locate domain packages",
+      "locate resource assets",
+      "understand module layout"
+    ],
+    "capabilities": [
+      "architecture"
+    ],
+    "domains": [
+      "order"
+    ],
+    "entities": [
+      "ServicePlan",
+      "Booking",
+      "Incident"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 64
+  },
+  {
+    "repo": "iom-order-service",
+    "path": "stack/stack.md",
+    "category": "stack",
+    "title": "Stack and build commands",
+    "summary": "iom-order-service is a Kotlin 1.9 / Java 17 Spring Boot 3.1.5 reactive service using WebFlux, Spring Security, R2DBC PostgreSQL, Kafka Avro, Liquibase, Micrometer, and LaunchDarkly. Gradle Kotlin DSL drives builds, tests, Avro generation, linting, and image packaging.",
+    "primary_for": [
+      "stack-detection"
+    ],
+    "mentions": [
+      "gradle",
+      "kotlin",
+      "spring-boot",
+      "webflux",
+      "kafka",
+      "r2dbc"
+    ],
+    "scenarios": [
+      "detect framework stack",
+      "find build command",
+      "find test command",
+      "find runtime libraries",
+      "find db tooling",
+      "understand the tech stack"
+    ],
+    "capabilities": [
+      "stack"
+    ],
+    "domains": [
+      "platform"
+    ],
+    "entities": [
+      "Gradle",
+      "SpringBoot",
+      "Kafka",
+      "PostgreSQL",
+      "Liquibase"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 49
+  },
+  {
+    "repo": "iom-order-service",
+    "path": "runtime/booking-event-processing-flow.md",
+    "category": "runtime",
+    "title": "Booking event processing flow",
+    "summary": "Booking Kafka ingress routes Avro `Booking` messages by `eventType`, then either updates ServicePlan booking/status state or merges pricing charges before reusing `OrderServiceImpl.save()`. The save path persists the aggregate and stages domain events in the outbox strategy.",
+    "primary_for": [
+      "booking-event-processing"
+    ],
+    "mentions": [
+      "booking-consumer",
+      "event-dispatcher",
+      "booking-updates",
+      "pricing-updates",
+      "outbox"
+    ],
+    "scenarios": [
+      "debug booking consumer",
+      "trace pricing update",
+      "trace booking status update",
+      "inspect ack behavior",
+      "inspect outbox write"
+    ],
+    "capabilities": [
+      "runtime-flow"
+    ],
+    "domains": [
+      "order"
+    ],
+    "entities": [
+      "Booking",
+      "ServicePlan",
+      "BookingStatusChanged",
+      "OutboxMessage"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 39
+  },
+  {
+    "repo": "iom-order-service",
+    "path": "runtime/dashboard-query-flow.md",
+    "category": "runtime",
+    "title": "Dashboard query flow",
+    "summary": "Dashboard requests map HTTP search DTOs into Criteria-backed domain search objects, then use SearchService and QueryService to read `service_plans` through R2DBC. Export paths layer Excel transformation and amendment-journey validation on top of the same query model.",
+    "primary_for": [
+      "dashboard-query"
+    ],
+    "mentions": [
+      "dashboard-controller",
+      "search-service",
+      "query-service",
+      "export",
+      "criteria"
+    ],
+    "scenarios": [
+      "trace dashboard search",
+      "trace multi search",
+      "trace dashboard export",
+      "trace container search",
+      "inspect query criteria"
+    ],
+    "capabilities": [
+      "runtime-flow"
+    ],
+    "domains": [
+      "query"
+    ],
+    "entities": [
+      "ServicePlanSearchRequest",
+      "ServicePlanMultiSearchRequest",
+      "Page",
+      "ServicePlanSummary"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 35
+  },
+  {
+    "repo": "iom-order-service",
+    "path": "runtime/order-creation-flow.md",
+    "category": "runtime",
+    "title": "Order creation flow",
+    "summary": "The primary write flow starts in `V3OrderController.update` and converges on `OrderServiceImpl.createOrUpdateOrder`, which resolves external data, validates, persists, and optionally auto-confirms. All write endpoints reuse the same save/event pipeline after shaping the aggregate.",
+    "primary_for": [
+      "order-creation"
+    ],
+    "mentions": [
+      "v3-order-controller",
+      "create-update",
+      "validators",
+      "save-pipeline",
+      "auto-confirm"
+    ],
+    "scenarios": [
+      "trace create order",
+      "trace patch order",
+      "trace amend order",
+      "trace charge update",
+      "trace container update"
+    ],
+    "capabilities": [
+      "runtime-flow"
+    ],
+    "domains": [
+      "order"
+    ],
+    "entities": [
+      "V3ServicePlanModel",
+      "ServicePlan",
+      "ResolvedData",
+      "FrnUpdateRequest"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 35
+  },
+  {
+    "repo": "iom-order-service",
+    "path": "runtime/service-plan-domain-event-flow.md",
+    "category": "runtime",
+    "title": "Service-plan domain-event flow",
+    "summary": "Service-plan domain-event Kafka ingress is audit-focused in this repository. The consumer persists `SERVICE_PLAN_CHANGED` snapshots and JSON diffs into the `audits` table and ignores other event types beyond returning the service-plan number.",
+    "primary_for": [
+      "service-plan-domain-events"
+    ],
+    "mentions": [
+      "domain-event-consumer",
+      "audit-service",
+      "audits-table",
+      "event-diff"
+    ],
+    "scenarios": [
+      "debug domain event audit",
+      "inspect service plan changed",
+      "inspect audit diff",
+      "inspect ack behavior",
+      "inspect event filter"
+    ],
+    "capabilities": [
+      "runtime-flow"
+    ],
+    "domains": [
+      "audit"
+    ],
+    "entities": [
+      "EventNotification",
+      "AuditEntity",
+      "ServicePlanChanged"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 32
+  },
+  {
+    "repo": "iom-order-service",
+    "path": "contracts/api-contracts.md",
+    "category": "contracts",
+    "title": "API contracts",
+    "summary": "The service exposes v2 dashboard/reference endpoints, a larger v3 order surface, incident creation, execution-charge writes, and file download/report endpoints. Controller methods are thin adapters over domain or service calls, with DTO mapping and role checks at the edge.",
+    "primary_for": [
+      "api-contracts"
+    ],
+    "mentions": [
+      "v2",
+      "v3",
+      "search",
+      "patch",
+      "amend",
+      "exports"
+    ],
+    "scenarios": [
+      "list rest endpoints",
+      "find write endpoint",
+      "find search endpoint",
+      "find export endpoint",
+      "find incident endpoint",
+      "find the api contracts",
+      "check contracts definitions"
+    ],
+    "capabilities": [
+      "contracts"
+    ],
+    "domains": [
+      "api"
+    ],
+    "entities": [
+      "V3ServicePlanModel",
+      "V3PatchRequestModel",
+      "V3ServicePlanStatusSearchQuery",
+      "IncidentModel"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 61
+  },
+  {
+    "repo": "iom-order-service",
+    "path": "contracts/db-schemas.md",
+    "category": "contracts",
+    "title": "Database schemas",
+    "summary": "PostgreSQL persistence centers on `service_plans`, `audits`, `outbox_messages`, `incidents`, and `customer_bookings_history`. Query paths use R2DBC against denormalized search columns and a JSONB-backed ServicePlan payload.",
+    "primary_for": [
+      "db-contracts"
+    ],
+    "mentions": [
+      "service_plans",
+      "audits",
+      "outbox_messages",
+      "incidents",
+      "customer_bookings_history"
+    ],
+    "scenarios": [
+      "list core tables",
+      "inspect search columns",
+      "inspect outbox schema",
+      "inspect audit schema",
+      "inspect customer history table",
+      "find the api contracts",
+      "check contracts definitions"
+    ],
+    "capabilities": [
+      "contracts"
+    ],
+    "domains": [
+      "persistence"
+    ],
+    "entities": [
+      "ServicePlanEntity",
+      "AuditEntity",
+      "OutboxMessage",
+      "IncidentEntity"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 41
+  },
+  {
+    "repo": "iom-order-service",
+    "path": "contracts/kafka-events.md",
+    "category": "contracts",
+    "title": "Kafka events",
+    "summary": "The repository consumes three Kafka streams and writes outbound domain events to an outbox table instead of directly producing Kafka records. Topic patterns, group IDs, concurrency, and ack toggles are all property-driven.",
+    "primary_for": [
+      "kafka-contracts"
+    ],
+    "mentions": [
+      "booking-topic",
+      "service-plan-domain-events",
+      "customer-history",
+      "outbox"
+    ],
+    "scenarios": [
+      "list kafka topics",
+      "find consumer group",
+      "inspect ack config",
+      "inspect outbound events",
+      "inspect avro inputs",
+      "find kafka topics"
+    ],
+    "capabilities": [
+      "contracts"
+    ],
+    "domains": [
+      "messaging"
+    ],
+    "entities": [
+      "Booking",
+      "EventNotification",
+      "ServicePlan",
+      "OutboxMessage"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 49
+  },
+  {
+    "repo": "iom-order-service",
+    "path": "integrations/identity-providers.md",
+    "category": "integrations",
+    "title": "Identity provider integrations",
+    "summary": "JWT validation integrates with ForgeRock and Azure issuer/JWK sets, while some outbound calls use customer-identity OAuth token endpoints. This repo contains the security wiring rather than business-specific identity logic.",
+    "primary_for": [
+      "identity-provider-integration"
+    ],
+    "mentions": [
+      "forgerock",
+      "azure",
+      "jwt",
+      "jwk",
+      "oauth2"
+    ],
+    "scenarios": [
+      "inspect jwt issuer",
+      "inspect jwk lookup",
+      "inspect oauth client",
+      "inspect role extraction",
+      "inspect auth bypass",
+      "find identity providers",
+      "check identity config"
+    ],
+    "capabilities": [
+      "integrations"
+    ],
+    "domains": [
+      "security"
+    ],
+    "entities": [
+      "ReactiveJwtDecoder",
+      "Jwt",
+      "NimbusReactiveJwtDecoder",
+      "WebClient"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 33
+  },
+  {
+    "repo": "iom-order-service",
+    "path": "integrations/master-data-and-rules.md",
+    "category": "integrations",
+    "title": "Master-data and rules integrations",
+    "summary": "Master data, planning-deadline, offers, amend/cancel reasons, and other reference calls are mostly hidden behind shared resolver/client libraries. The local code orchestrates them through `ResolverService`, `PlanningDeadlineClient`, `ReferenceDataFetcher`, and search/export helpers.",
+    "primary_for": [
+      "master-data-integration"
+    ],
+    "mentions": [
+      "resolver-service",
+      "planning-deadline",
+      "reference-data",
+      "offers",
+      "business-rules"
+    ],
+    "scenarios": [
+      "inspect master data call",
+      "inspect planning deadline",
+      "inspect amend reasons",
+      "inspect dashboard resolver",
+      "inspect external rule config",
+      "find master data calls"
+    ],
+    "capabilities": [
+      "integrations"
+    ],
+    "domains": [
+      "reference-data"
+    ],
+    "entities": [
+      "ResolvedData",
+      "Resolver",
+      "PlanningDeadlineResponse",
+      "ReferenceDataFetcher"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 34
+  },
+  {
+    "repo": "iom-order-service",
+    "path": "integrations/rolodex.md",
+    "category": "integrations",
+    "title": "Rolodex storage integration",
+    "summary": "Rolodex is the explicit external file/auth integration for report templates and downloads. The service first fetches a bearer token, then downloads template/content bytes over WebClient.",
+    "primary_for": [
+      "rolodex-integration"
+    ],
+    "mentions": [
+      "rolodex-auth",
+      "template-download",
+      "excel-template",
+      "webclient"
+    ],
+    "scenarios": [
+      "inspect rolodex auth",
+      "inspect template download",
+      "inspect external storage",
+      "inspect report template ids",
+      "inspect excel bytes path",
+      "find the rolodex call"
+    ],
+    "capabilities": [
+      "integrations"
+    ],
+    "domains": [
+      "reporting"
+    ],
+    "entities": [
+      "RolodexTokenResponse",
+      "WebClient",
+      "ByteArray"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 32
+  },
+  {
+    "repo": "iom-order-service",
+    "path": "integrations/telikos-booking.md",
+    "category": "integrations",
+    "title": "Telikos booking and TMS integration",
+    "summary": "The visible booking-side outbound integration is the Telikos client used for booking config lookup, TMS handoff, execution handoff, and booking confirmation. Kafka customer-history ingestion also defaults to a Telikos-branded service-plan topic in local config.",
+    "primary_for": [
+      "telikos-booking-integration"
+    ],
+    "mentions": [
+      "telikos",
+      "tms",
+      "send-to-execution",
+      "confirm-booking",
+      "config-lookup"
+    ],
+    "scenarios": [
+      "inspect telikos call",
+      "inspect send to tms",
+      "inspect send to execution",
+      "inspect booking confirm",
+      "inspect telikos topic"
+    ],
+    "capabilities": [
+      "integrations"
+    ],
+    "domains": [
+      "booking"
+    ],
+    "entities": [
+      "TelikosClient",
+      "SendToTmsRequest",
+      "SendToExecutionRequest",
+      "ConfirmBookingRequest"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 33
+  },
+  {
+    "repo": "iom-order-service",
+    "path": "operations/failure-model.md",
+    "category": "operations",
+    "title": "Failure model",
+    "summary": "Most failures come from validation, external dependencies, stale events, persistence conflicts, and acknowledgment timing in consumer flows. The service prefers propagating typed exceptions and logging side effects instead of swallowing domain failures, but some consumer paths intentionally acknowledge or coerce errors.",
+    "primary_for": [
+      "failure-model"
+    ],
+    "mentions": [
+      "validation",
+      "optimistic-lock",
+      "consumer-ack",
+      "external-failure",
+      "access-control"
+    ],
+    "scenarios": [
+      "inspect failure points",
+      "inspect stale event handling",
+      "inspect validation failure",
+      "inspect persistence conflict",
+      "inspect external dependency risk"
+    ],
+    "capabilities": [
+      "operations"
+    ],
+    "domains": [
+      "runtime"
+    ],
+    "entities": [
+      "ValidationException",
+      "NotFoundException",
+      "ForbiddenException",
+      "OptimisticLockException"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 37
+  },
+  {
+    "repo": "iom-order-service",
+    "path": "operations/flags-and-lists.md",
+    "category": "operations",
+    "title": "Flags and lists",
+    "summary": "Runtime behavior is shaped by YAML feature toggles, LaunchDarkly gates, scheduler lists, VAT country lists, and configured system-channel allow lists. Several flows also depend on embedded constant lists such as repricing windows and demo execution recipients.",
+    "primary_for": [
+      "flags-and-lists"
+    ],
+    "mentions": [
+      "launchdarkly",
+      "features",
+      "scheduler-lists",
+      "vat-countries",
+      "system-channels"
+    ],
+    "scenarios": [
+      "inspect feature flags",
+      "inspect scheduler lists",
+      "inspect vat list",
+      "inspect channel allowlist",
+      "inspect launchdarkly keys"
+    ],
+    "capabilities": [
+      "operations"
+    ],
+    "domains": [
+      "configuration"
+    ],
+    "entities": [
+      "FeatureFlag",
+      "LDReactorClient",
+      "CustomerDateDetails",
+      "CreatedBySystemChannelsProperties"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 37
+  },
+  {
+    "repo": "iom-order-service",
+    "path": "operations/monitoring.md",
+    "category": "operations",
+    "title": "Monitoring and observability",
+    "summary": "The service uses Micrometer observation, Prometheus metrics, tracing, MDC enrichment, access logs, and custom counters around booking and customer-history flows. Observability is configured in both code and application YAML.",
+    "primary_for": [
+      "monitoring-observability"
+    ],
+    "mentions": [
+      "micrometer",
+      "prometheus",
+      "tracing",
+      "mdc",
+      "custom-counters"
+    ],
+    "scenarios": [
+      "inspect tracing",
+      "inspect metrics",
+      "inspect prometheus",
+      "inspect access logs",
+      "inspect custom counters",
+      "find observability wiring",
+      "check observability setup"
+    ],
+    "capabilities": [
+      "operations"
+    ],
+    "domains": [
+      "observability"
+    ],
+    "entities": [
+      "ObservationRegistry",
+      "MeterRegistry",
+      "TraceIdProvider",
+      "MDC"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 39
+  },
+  {
+    "repo": "iom-order-service",
+    "path": "operations/retries.md",
+    "category": "operations",
+    "title": "Retry policies",
+    "summary": "Retry behavior is explicit for Kafka listener containers and declarative for outbound service calls. Consumers use fixed backoff with manual acknowledgment, while YAML carries external-service retry knobs for shared clients.",
+    "primary_for": [
+      "retry-policy"
+    ],
+    "mentions": [
+      "kafka-retries",
+      "backoff",
+      "external-retry",
+      "ack-mode",
+      "auto-commit"
+    ],
+    "scenarios": [
+      "inspect kafka retry",
+      "inspect external retry",
+      "inspect ack policy",
+      "inspect backoff values",
+      "inspect consumer failure handling"
+    ],
+    "capabilities": [
+      "operations"
+    ],
+    "domains": [
+      "runtime"
+    ],
+    "entities": [
+      "DefaultErrorHandler",
+      "FixedBackOff",
+      "Acknowledgment",
+      "ConsumerFactory"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 33
+  },
+  {
+    "repo": "iom-order-service",
+    "path": "navigation/entry-points.md",
+    "category": "navigation",
+    "title": "Entry points",
+    "summary": "iom-order-service starts at WebFlux REST controllers, three Kafka consumers, and a LaunchDarkly-triggered customer-history batch runner. Order mutations always delegate into OrderService/OrderServiceImpl from these ingress points.",
+    "primary_for": [
+      "entry-point-routing"
+    ],
+    "mentions": [
+      "v2-api",
+      "v3-api",
+      "kafka-consumers",
+      "scheduler",
+      "order-service"
+    ],
+    "scenarios": [
+      "find api entrypoint",
+      "trace kafka ingress",
+      "locate scheduler trigger",
+      "start from controller",
+      "find mutation owner",
+      "list the entry points"
+    ],
+    "capabilities": [
+      "navigation"
+    ],
+    "domains": [
+      "order"
+    ],
+    "entities": [
+      "ServicePlan",
+      "Booking",
+      "EventNotification",
+      "Incident"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 53
+  },
+  {
+    "repo": "iom-order-service",
+    "path": "navigation/key-classes.md",
+    "category": "navigation",
+    "title": "Key classes",
+    "summary": "The main classes split cleanly into ingress controllers/consumers, domain orchestration, query services, and event/outbox handlers. These classes are the shortest path to most behavior in the repository.",
+    "primary_for": [
+      "class-locator"
+    ],
+    "mentions": [
+      "controllers",
+      "consumers",
+      "domain",
+      "queries",
+      "outbox"
+    ],
+    "scenarios": [
+      "find order owner",
+      "find search owner",
+      "find kafka handler",
+      "find security config",
+      "find outbox logic",
+      "find a key class",
+      "locate the right class"
+    ],
+    "capabilities": [
+      "navigation"
+    ],
+    "domains": [
+      "order"
+    ],
+    "entities": [
+      "ServicePlan",
+      "Booking",
+      "AuditEntity",
+      "OutboxMessage"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 49
+  },
+  {
+    "repo": "iom-order-service",
+    "path": "navigation/scenarios.md",
+    "category": "navigation",
+    "title": "Scenario routing",
+    "summary": "The codebase clusters around order mutations, dashboard/search queries, Kafka event handling, and reporting/export utilities. Most tasks can start from one controller or consumer method and then follow service/domain delegation.",
+    "primary_for": [
+      "task-routing"
+    ],
+    "mentions": [
+      "where-to-start",
+      "controller-methods",
+      "service-methods",
+      "event-flows",
+      "exports"
+    ],
+    "scenarios": [
+      "update service plan",
+      "search dashboard results",
+      "debug booking event",
+      "export amendment file",
+      "check customer history",
+      "find request routing",
+      "trace task routing"
+    ],
+    "capabilities": [
+      "navigation"
+    ],
+    "domains": [
+      "order"
+    ],
+    "entities": [
+      "ServicePlan",
+      "Booking",
+      "CustomerHistory",
+      "Incident"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 48
+  },
+  {
+    "repo": "iom-order-service-scheduler",
+    "path": "architecture/cross-cutting.md",
+    "category": "architecture",
+    "title": "Cross-cutting concerns",
+    "summary": "Shared concerns span all schedulers and outbound clients: WebFlux security, feature gating, observability, Reactive/blocked execution, and configuration-first integration wiring.",
+    "primary_for": [
+      "cross-cutting-concerns"
+    ],
+    "mentions": [
+      "security-filtering",
+      "observability-wiring",
+      "feature-flag-gating"
+    ],
+    "scenarios": [
+      "auth setup",
+      "tracing setup",
+      "feature flag wiring",
+      "shared config",
+      "blocking in schedulers",
+      "find cross-cutting concerns",
+      "check security concerns"
+    ],
+    "capabilities": [
+      "architecture"
+    ],
+    "domains": [
+      "IOM"
+    ],
+    "entities": [
+      "LDReactorClient",
+      "SecurityWebFilterChain",
+      "WorkflowClient"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 40
+  },
+  {
+    "repo": "iom-order-service-scheduler",
+    "path": "architecture/modules.md",
+    "category": "architecture",
+    "title": "Modules",
+    "summary": "Package tree for the scheduler repo. The codebase is organized around schedulers, outbound integrations, and support configuration rather than inbound APIs.",
+    "primary_for": [
+      "package-structure-map"
+    ],
+    "mentions": [
+      "scheduler-entry-points",
+      "outbound-integration-layout",
+      "repricing-workflow-execution"
+    ],
+    "scenarios": [
+      "repo package tree",
+      "where code lives",
+      "module layout",
+      "package ownership",
+      "find scheduler package"
+    ],
+    "capabilities": [
+      "architecture"
+    ],
+    "domains": [
+      "IOM"
+    ],
+    "entities": [
+      "OutboxMessage",
+      "ServicePlan",
+      "AuditEntity"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 80
+  },
+  {
+    "repo": "iom-order-service-scheduler",
+    "path": "stack/stack.md",
+    "category": "stack",
+    "title": "Stack",
+    "summary": "Kotlin 17 Spring Boot WebFlux service that runs scheduled jobs, publishes Kafka Avro events, talks to Temporal, PostgreSQL/R2DBC, Azure Blob Storage, and OAuth-protected HTTP services.",
+    "primary_for": [
+      "repository-tech-stack"
+    ],
+    "mentions": [
+      "gradle-build-commands",
+      "temporal-spring-boot",
+      "kafka-avro-publishing"
+    ],
+    "scenarios": [
+      "tech stack",
+      "build commands",
+      "test commands",
+      "what frameworks used",
+      "how to compile",
+      "understand the tech stack"
+    ],
+    "capabilities": [
+      "stack"
+    ],
+    "domains": [
+      "IOM"
+    ],
+    "entities": [
+      "WorkflowClient",
+      "KafkaTemplate",
+      "BlobContainerClient"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 48
+  },
+  {
+    "repo": "iom-order-service-scheduler",
+    "path": "runtime/event-activity-matrix.md",
+    "category": "runtime",
+    "title": "Event activity matrix",
+    "summary": "Temporal is only used for repricing. An outbox repricing event becomes one workflow execution and one HTTP-backed activity call.",
+    "primary_for": [
+      "event-activity-matrix"
+    ],
+    "mentions": [
+      "repricing-workflow-execution",
+      "temporal-worker-registration",
+      "web-integrator-repricing"
+    ],
+    "scenarios": [
+      "repricing event flow",
+      "temporal activity sequence",
+      "workflow activity map",
+      "repricing path",
+      "event to workflow"
+    ],
+    "capabilities": [
+      "repricing"
+    ],
+    "domains": [
+      "IOM"
+    ],
+    "entities": [
+      "OutboxMessage",
+      "RepricingRequired",
+      "ServicePlan"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 40
+  },
+  {
+    "repo": "iom-order-service-scheduler",
+    "path": "runtime/repricing-flow.md",
+    "category": "runtime",
+    "title": "Repricing flow",
+    "summary": "Repricing starts from outbox polling, launches a Temporal workflow, then calls Web Integrator over HTTP from a Temporal activity. The workflow has one variant: optional `priceCalculationDate` propagation.",
+    "primary_for": [
+      "repricing-workflow-execution"
+    ],
+    "mentions": [
+      "event-activity-matrix",
+      "temporal-worker-registration",
+      "web-integrator-repricing"
+    ],
+    "scenarios": [
+      "repricing not working",
+      "why repricing failing",
+      "where repricing starts",
+      "trigger repricing workflow",
+      "repricing flow"
+    ],
+    "capabilities": [
+      "repricing"
+    ],
+    "domains": [
+      "IOM"
+    ],
+    "entities": [
+      "OutboxMessage",
+      "RepricingRequired",
+      "RepriceRequest",
+      "ServicePlan"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 56
+  },
+  {
+    "repo": "iom-order-service-scheduler",
+    "path": "contracts/kafka-events.md",
+    "category": "contracts",
+    "title": "Kafka events",
+    "summary": "This repo publishes three outbound Kafka event shapes and does not implement traced Kafka consumers. Topics, payload schemas, and producer routing are configuration-driven.",
+    "primary_for": [
+      "kafka-topic-contracts"
+    ],
+    "mentions": [
+      "outbox-message-routing",
+      "kafka-event-brokers",
+      "avro-schema-mapping"
+    ],
+    "scenarios": [
+      "kafka topic contract",
+      "which topics publish",
+      "booking event topic",
+      "service plan topic",
+      "domain event topic"
+    ],
+    "capabilities": [
+      "outbox-publishing"
+    ],
+    "domains": [
+      "IOM"
+    ],
+    "entities": [
+      "OutboxMessage",
+      "ServicePlan",
+      "EventNotification",
+      "BookingExternal"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 51
+  },
+  {
+    "repo": "iom-order-service-scheduler",
+    "path": "integrations/azure-blob-storage.md",
+    "category": "integrations",
+    "title": "Azure Blob Storage",
+    "summary": "Archival code writes gzip-compressed JSON blobs to Azure Blob Storage, then records blob metadata and deletes source rows. All blob access goes through `BlobUploader`.",
+    "primary_for": [
+      "azure-blob-archival"
+    ],
+    "mentions": [
+      "order-archival",
+      "audit-archival",
+      "gzip-blob-upload"
+    ],
+    "scenarios": [
+      "archive upload failing",
+      "blob path issue",
+      "azure blob archive",
+      "where blobs uploaded",
+      "gzip upload flow"
+    ],
+    "capabilities": [
+      "archival"
+    ],
+    "domains": [
+      "IOM"
+    ],
+    "entities": [
+      "ArchivalMetaEntity",
+      "ServicePlanEntity",
+      "AuditEntity"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 40
+  },
+  {
+    "repo": "iom-order-service-scheduler",
+    "path": "integrations/iom-offer-service.md",
+    "category": "integrations",
+    "title": "IOM Offer Service",
+    "summary": "Offer cleanup calls the IOM Offer Service over OAuth-protected WebClient and deletes old offered-service-plan records by age.",
+    "primary_for": [
+      "offer-cleanup-http"
+    ],
+    "mentions": [
+      "offered-service-plan-cleanup",
+      "oauth-webclient-wiring",
+      "external-http-timeouts"
+    ],
+    "scenarios": [
+      "offer cleanup failing",
+      "delete offered plans",
+      "offer service call",
+      "offered plan cleanup",
+      "where offer api lives"
+    ],
+    "capabilities": [
+      "offer-cleanup"
+    ],
+    "domains": [
+      "IOM"
+    ],
+    "entities": [
+      "OfferRecordsCleanUpResponse"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 39
+  },
+  {
+    "repo": "iom-order-service-scheduler",
+    "path": "integrations/iom-web-integrator.md",
+    "category": "integrations",
+    "title": "IOM Web Integrator",
+    "summary": "Repricing activities call the Web Integrator API through an OAuth-protected WebClient. The integration is PATCH-based and returns a `ServicePlan` body.",
+    "primary_for": [
+      "web-integrator-repricing"
+    ],
+    "mentions": [
+      "repricing-workflow-execution",
+      "azure-oauth-client",
+      "external-http-timeouts"
+    ],
+    "scenarios": [
+      "repricing api failing",
+      "web integrator patch",
+      "repricing http call",
+      "where repricing api lives",
+      "service plan reprice endpoint"
+    ],
+    "capabilities": [
+      "repricing"
+    ],
+    "domains": [
+      "IOM"
+    ],
+    "entities": [
+      "ServicePlan",
+      "RepriceRequest"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 40
+  },
+  {
+    "repo": "iom-order-service-scheduler",
+    "path": "integrations/kafka-event-brokers.md",
+    "category": "integrations",
+    "title": "Kafka event brokers",
+    "summary": "Outbox publishers send Avro records to Kafka using two bootstrap/server groups and schema-registry settings. Producer behavior is configured centrally in `KafkaProducerConfig`.",
+    "primary_for": [
+      "kafka-event-brokers"
+    ],
+    "mentions": [
+      "kafka-topic-contracts",
+      "avro-serialization",
+      "schema-registry-settings"
+    ],
+    "scenarios": [
+      "kafka broker config",
+      "schema registry issue",
+      "producer bootstrap servers",
+      "avro publish config",
+      "kafka ssl setup"
+    ],
+    "capabilities": [
+      "outbox-publishing"
+    ],
+    "domains": [
+      "IOM"
+    ],
+    "entities": [
+      "KafkaTemplate",
+      "ProducerRecord"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 37
+  },
+  {
+    "repo": "iom-order-service-scheduler",
+    "path": "integrations/temporal.md",
+    "category": "integrations",
+    "title": "Temporal",
+    "summary": "Temporal is used only for repricing. This service both connects to a Temporal server and hosts the worker for `REPRICING_TASK_QUEUE`.",
+    "primary_for": [
+      "temporal-workflow-execution"
+    ],
+    "mentions": [
+      "repricing-workflow-execution",
+      "temporal-tls-config",
+      "repricing-task-queue"
+    ],
+    "scenarios": [
+      "temporal connection issue",
+      "repricing worker issue",
+      "workflow client config",
+      "temporal tls problem",
+      "repricing task queue"
+    ],
+    "capabilities": [
+      "repricing"
+    ],
+    "domains": [
+      "IOM"
+    ],
+    "entities": [
+      "WorkflowServiceStubs",
+      "WorkflowClient",
+      "RepricingWorkflow"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 40
+  },
+  {
+    "repo": "iom-order-service-scheduler",
+    "path": "operations/failure-model.md",
+    "category": "operations",
+    "title": "Failure model",
+    "summary": "Most failures originate in outbound dependencies or DB polling. Schedulers either stop the tick, continue per-record, or mark outbox rows failed depending on the feature path.",
+    "primary_for": [
+      "failure-points"
+    ],
+    "mentions": [
+      "outbox-failures",
+      "temporal-failures",
+      "archival-failures"
+    ],
+    "scenarios": [
+      "where failures happen",
+      "why scheduler stuck",
+      "archive failure path",
+      "kafka publish failure",
+      "repricing failure model"
+    ],
+    "capabilities": [
+      "operations"
+    ],
+    "domains": [
+      "IOM"
+    ],
+    "entities": [
+      "OutboxMessage",
+      "ArchivalMetaEntity",
+      "RuntimeException"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 49
+  },
+  {
+    "repo": "iom-order-service-scheduler",
+    "path": "operations/monitoring.md",
+    "category": "operations",
+    "title": "Monitoring",
+    "summary": "Observability combines actuator endpoints, Micrometer observations/counters, Zipkin tracing, and JSON logs with trace/span IDs. Scheduler and HTTP timing are logged with elapsed-time helpers.",
+    "primary_for": [
+      "observability-wiring"
+    ],
+    "mentions": [
+      "actuator-endpoints",
+      "micrometer-observation",
+      "zipkin-tracing"
+    ],
+    "scenarios": [
+      "tracing setup",
+      "prometheus endpoint",
+      "scheduler metrics",
+      "log correlation",
+      "monitoring config",
+      "find observability wiring",
+      "check observability setup"
+    ],
+    "capabilities": [
+      "operations"
+    ],
+    "domains": [
+      "IOM"
+    ],
+    "entities": [
+      "ObservationRegistry",
+      "MeterRegistry",
+      "SecurityWebFilterChain"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 45
+  },
+  {
+    "repo": "iom-order-service-scheduler",
+    "path": "operations/retries.md",
+    "category": "operations",
+    "title": "Retries",
+    "summary": "Retry behavior is split across outbox status updates, Kafka producer settings, and Temporal activity retries. HTTP clients rely on timeout/error propagation rather than explicit retry operators in this repo.",
+    "primary_for": [
+      "retry-behavior"
+    ],
+    "mentions": [
+      "outbox-retry-ceiling",
+      "temporal-activity-retries",
+      "kafka-producer-retries"
+    ],
+    "scenarios": [
+      "retry behavior",
+      "why message failed",
+      "temporal retry count",
+      "kafka retry config",
+      "repricing retry path"
+    ],
+    "capabilities": [
+      "operations"
+    ],
+    "domains": [
+      "IOM"
+    ],
+    "entities": [
+      "OutboxMessage",
+      "RetryOptions",
+      "ProducerConfig"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 39
+  },
+  {
+    "repo": "iom-order-service-scheduler",
+    "path": "navigation/entry-points.md",
+    "category": "navigation",
+    "title": "Entry points",
+    "summary": "Scheduler-driven service with one Temporal worker registration and no traced REST or Kafka consumer entry points. Runtime starts from cron and fixed-delay jobs plus the REPRICING_TASK_QUEUE worker.",
+    "primary_for": [
+      "scheduler-entry-points"
+    ],
+    "mentions": [
+      "temporal-worker-registration",
+      "kafka-producer-publishing",
+      "archival-jobs"
+    ],
+    "scenarios": [
+      "scheduler not running",
+      "where jobs start",
+      "which class runs repricing",
+      "archive job flow",
+      "temporal worker entry"
+    ],
+    "capabilities": [
+      "outbox-publishing",
+      "repricing",
+      "archival",
+      "offer-cleanup",
+      "transform"
+    ],
+    "domains": [
+      "IOM"
+    ],
+    "entities": [
+      "OutboxMessage",
+      "ServicePlanEntity",
+      "AuditEntity"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 48
+  },
+  {
+    "repo": "iom-order-service-scheduler",
+    "path": "navigation/key-classes.md",
+    "category": "navigation",
+    "title": "Key classes",
+    "summary": "Concern-to-class map for the scheduler service. Use this to jump from a feature area to the owning class without loading whole packages.",
+    "primary_for": [
+      "concern-to-class-routing"
+    ],
+    "mentions": [
+      "scheduler-entry-points",
+      "repricing-web-integrator",
+      "kafka-event-brokers"
+    ],
+    "scenarios": [
+      "which class owns repricing",
+      "who uploads blobs",
+      "where kafka sends",
+      "where oauth clients live",
+      "which class archives orders"
+    ],
+    "capabilities": [
+      "navigation"
+    ],
+    "domains": [
+      "IOM"
+    ],
+    "entities": [
+      "OutboxMessage",
+      "ArchivalMetaEntity",
+      "ServicePlan"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 52
+  },
+  {
+    "repo": "iom-order-service-scheduler",
+    "path": "navigation/scenarios.md",
+    "category": "navigation",
+    "title": "Scenarios",
+    "summary": "Maps common operator and developer task phrases to the first class and method to inspect. Use this as the fast router before opening deeper runtime or integration files.",
+    "primary_for": [
+      "task-to-start-point-routing"
+    ],
+    "mentions": [
+      "scheduler-entry-points",
+      "repricing-workflow-execution",
+      "kafka-topic-publishing"
+    ],
+    "scenarios": [
+      "where does repricing start",
+      "archive job failing",
+      "offer cleanup failing",
+      "transform job stuck",
+      "which class sends kafka",
+      "route a task to code"
+    ],
+    "capabilities": [
+      "navigation"
+    ],
+    "domains": [
+      "IOM"
+    ],
+    "entities": [
+      "RepricingWorkflow",
+      "OutboxMessage",
+      "ServicePlanEntity"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 46
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "domain/booking-request.md",
+    "category": "domain",
+    "title": "BookingRequest bootstrap input",
+    "summary": "`BookingRequest` is the lightweight bootstrap payload used only by `/bookings` to decide whether to create, duplicate, or amend a booking.",
+    "primary_for": [
+      "booking-request-shape"
+    ],
+    "mentions": [
+      "bookingrequest",
+      "autobooking",
+      "duplicate",
+      "amendment"
+    ],
+    "scenarios": [
+      "booking request fields",
+      "ocean booking payload",
+      "duplicate booking payload",
+      "amend booking payload",
+      "booking bootstrap"
+    ],
+    "capabilities": [
+      "domain-model"
+    ],
+    "domains": [
+      "Booking"
+    ],
+    "entities": [
+      "BookingRequest",
+      "Address",
+      "BookingResponse"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 30
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "domain/business-rules.md",
+    "category": "domain",
+    "title": "Business rules response model",
+    "summary": "Business-rule evaluation combines mandatory parties, mandatory documents/references, optional lists, and Project44 onboarding state.",
+    "primary_for": [
+      "business-rules-model"
+    ],
+    "mentions": [
+      "businessrules",
+      "mandatory",
+      "optional",
+      "project44"
+    ],
+    "scenarios": [
+      "business rules payload",
+      "mandatory parties rules",
+      "optional documents list",
+      "project44 customer rules",
+      "rule evaluation model"
+    ],
+    "capabilities": [
+      "domain-model"
+    ],
+    "domains": [
+      "Compliance"
+    ],
+    "entities": [
+      "BusinessRuleResponse",
+      "MandatoryPartyRequest",
+      "MandatoryDocumentAndReferenceRequest"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 32
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "domain/ocean-booking.md",
+    "category": "domain",
+    "title": "Ocean booking enrichment model",
+    "summary": "Ocean booking enrichment builds an inland search request from a TP document by combining GCSS, terminal, location, party, country, commodity, and dangerous-goods data.",
+    "primary_for": [
+      "ocean-booking-model"
+    ],
+    "mentions": [
+      "ocean booking",
+      "tpdoc",
+      "bill of lading",
+      "dangerous goods"
+    ],
+    "scenarios": [
+      "ocean booking model",
+      "tpdoc enrichment",
+      "bill of lading details",
+      "dangerous goods mapping",
+      "ocean reference flow"
+    ],
+    "capabilities": [
+      "domain-model"
+    ],
+    "domains": [
+      "Ocean"
+    ],
+    "entities": [
+      "OceanBookingSearchResponse",
+      "BillOfLoadingSummaryResponse",
+      "DangerousDetailsResponse"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 30
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "domain/service-plan.md",
+    "category": "domain",
+    "title": "ServicePlan aggregate",
+    "summary": "`ServicePlan` is the central API aggregate; offer, order, billing, and repricing flows all transform or enrich this model.",
+    "primary_for": [
+      "service-plan-aggregate"
+    ],
+    "mentions": [
+      "serviceplan",
+      "charges",
+      "haulage",
+      "booking",
+      "repricing"
+    ],
+    "scenarios": [
+      "service plan model",
+      "service plan charges",
+      "service plan haulage",
+      "repricing service plan",
+      "booking aggregate"
+    ],
+    "capabilities": [
+      "domain-model"
+    ],
+    "domains": [
+      "Booking"
+    ],
+    "entities": [
+      "ServicePlan",
+      "Charge",
+      "BookingEquipment"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 32
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "domain/user-preferences.md",
+    "category": "domain",
+    "title": "User preference model",
+    "summary": "Preference APIs are keyed by the email extracted from the bearer token and grouped by product name such as `INLAND`, `INLAND_TASKS`, and `INLAND_AUTO_BOOKING`.",
+    "primary_for": [
+      "user-preference-model"
+    ],
+    "mentions": [
+      "preferences",
+      "user settings",
+      "filters",
+      "product"
+    ],
+    "scenarios": [
+      "user preferences model",
+      "preference product rules",
+      "preference email lookup",
+      "create preference payload",
+      "delete preference payload"
+    ],
+    "capabilities": [
+      "domain-model"
+    ],
+    "domains": [
+      "Preferences"
+    ],
+    "entities": [
+      "UserPreferencesResponse",
+      "PreferenceSchema",
+      "CreatePreferenceRequestSchema"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 30
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "architecture/cross-cutting.md",
+    "category": "architecture",
+    "title": "Cross-cutting concerns",
+    "summary": "Security, exception handling, retries, tracing, feature flags, and cache behavior are centralized in config, controller advice, and webclient utilities.",
+    "primary_for": [
+      "cross-cutting-map"
+    ],
+    "mentions": [
+      "security",
+      "errors",
+      "tracing",
+      "retries",
+      "cache"
+    ],
+    "scenarios": [
+      "cross cutting map",
+      "cross cutting security",
+      "cross cutting errors",
+      "tracing setup",
+      "retry behavior"
+    ],
+    "capabilities": [
+      "architecture"
+    ],
+    "domains": [
+      "Web Integrator"
+    ],
+    "entities": [
+      "SecurityConfig",
+      "WebIntegratorExceptionHandler",
+      "RetryConfiguration"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 36
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "architecture/modules.md",
+    "category": "architecture",
+    "title": "Modules and package layout",
+    "summary": "The source tree is a conventional layered WebFlux service with controllers, services, mappers, webclients, config, and DTO/model packages.",
+    "primary_for": [
+      "module-layout"
+    ],
+    "mentions": [
+      "packages",
+      "modules",
+      "tree"
+    ],
+    "scenarios": [
+      "package tree map",
+      "module layout",
+      "where packages live",
+      "understand source tree",
+      "browse repo modules"
+    ],
+    "capabilities": [
+      "architecture"
+    ],
+    "domains": [
+      "Web Integrator"
+    ],
+    "entities": [
+      "controller",
+      "service",
+      "mapper"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 38
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "stack/stack.md",
+    "category": "stack",
+    "title": "Stack and build commands",
+    "summary": "The service is Kotlin 1.9 on Java 17, Spring Boot 3.2 WebFlux, MapStruct, OpenAPI generation, Micrometer, Resilience4j, and optional Infinispan/LaunchDarkly integrations.",
+    "primary_for": [
+      "stack-overview"
+    ],
+    "mentions": [
+      "kotlin",
+      "spring",
+      "gradle",
+      "webflux",
+      "mapstruct"
+    ],
+    "scenarios": [
+      "stack overview",
+      "stack commands",
+      "build stack",
+      "test stack",
+      "framework overview"
+    ],
+    "capabilities": [
+      "stack"
+    ],
+    "domains": [
+      "Web Integrator"
+    ],
+    "entities": [
+      "Spring Boot",
+      "Gradle",
+      "MapStruct"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 43
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "runtime/booking-creation-flow.md",
+    "category": "runtime",
+    "title": "Booking creation flow",
+    "summary": "`/bookings` is a bootstrap endpoint that selects amendment, duplication, or ocean-reference creation before normalizing the service plan and posting it to order service.",
+    "primary_for": [
+      "booking-creation-flow"
+    ],
+    "mentions": [
+      "booking flow",
+      "autobooking",
+      "duplicate booking",
+      "amend booking"
+    ],
+    "scenarios": [
+      "booking create flow",
+      "duplicate booking flow",
+      "amend booking flow",
+      "ocean booking flow",
+      "create booking trace"
+    ],
+    "capabilities": [
+      "booking-create"
+    ],
+    "domains": [
+      "Booking"
+    ],
+    "entities": [
+      "BookingRequest",
+      "ServicePlan",
+      "BookingResponse"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 36
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "runtime/business-rules-flow.md",
+    "category": "runtime",
+    "title": "Business rules flow",
+    "summary": "Business-rule evaluation fans out to mandatory-party rules, mandatory document/reference rules, and SCM onboarding rules before building a consolidated response.",
+    "primary_for": [
+      "business-rules-flow"
+    ],
+    "mentions": [
+      "business rules",
+      "mandatory docs",
+      "mandatory parties",
+      "project44"
+    ],
+    "scenarios": [
+      "business rules flow",
+      "mandatory parties flow",
+      "mandatory docs flow",
+      "project44 flow",
+      "rules debug path"
+    ],
+    "capabilities": [
+      "business-rules"
+    ],
+    "domains": [
+      "Compliance"
+    ],
+    "entities": [
+      "BusinessRuleRequest",
+      "BusinessRuleResponse"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 35
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "runtime/notification-health-flow.md",
+    "category": "runtime",
+    "title": "Notification and health flow",
+    "summary": "The notification endpoint first checks downstream health across configured services and only returns the feature-banner JSON when every required dependency is up.",
+    "primary_for": [
+      "notification-health-flow"
+    ],
+    "mentions": [
+      "notification banner",
+      "health check",
+      "outage banner",
+      "service down"
+    ],
+    "scenarios": [
+      "notification flow",
+      "health banner flow",
+      "service outage banner",
+      "external health check",
+      "notification endpoint debug"
+    ],
+    "capabilities": [
+      "notification-health"
+    ],
+    "domains": [
+      "Operations"
+    ],
+    "entities": [
+      "ServiceHealthResponse",
+      "HealthStatus"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 33
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "runtime/ocean-booking-enrichment-flow.md",
+    "category": "runtime",
+    "title": "Ocean booking enrichment flow",
+    "summary": "Ocean-reference booking support pulls GCSS bill-of-lading data plus multiple reference-data lookups to synthesize inland search and booking payloads.",
+    "primary_for": [
+      "ocean-booking-flow"
+    ],
+    "mentions": [
+      "ocean reference",
+      "tpdoc lookup",
+      "bill of lading",
+      "dangerous goods"
+    ],
+    "scenarios": [
+      "ocean booking flow",
+      "tpdoc flow",
+      "bill of lading flow",
+      "dangerous goods flow",
+      "ocean reference debug"
+    ],
+    "capabilities": [
+      "ocean-booking"
+    ],
+    "domains": [
+      "Ocean"
+    ],
+    "entities": [
+      "OceanBookingSearchResponse",
+      "BillOfLadingPartyResponse",
+      "LocationAssociation"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 35
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "runtime/offer-search-flow.md",
+    "category": "runtime",
+    "title": "Offer search flow",
+    "summary": "Offer search checks pricing-country flags, maps the search request to downstream V3 models, and optionally merges ocean-booking metadata into the returned service plans.",
+    "primary_for": [
+      "offer-search-flow"
+    ],
+    "mentions": [
+      "offer search",
+      "route search",
+      "search service plans",
+      "amend search"
+    ],
+    "scenarios": [
+      "offer search flow",
+      "service plan search",
+      "amend offer flow",
+      "route quote trace",
+      "offer search debug"
+    ],
+    "capabilities": [
+      "offer-search"
+    ],
+    "domains": [
+      "Offers"
+    ],
+    "entities": [
+      "SearchRequest",
+      "ServicePlan"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 35
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "runtime/order-lifecycle-flow.md",
+    "category": "runtime",
+    "title": "Order lifecycle flow",
+    "summary": "Order lifecycle endpoints load, create, amend, update, and soft-close service plans while coordinating billing costs, vendor mapping, and haulage validation.",
+    "primary_for": [
+      "order-lifecycle-flow"
+    ],
+    "mentions": [
+      "order lifecycle",
+      "service plan update",
+      "soft close booking",
+      "finops update"
+    ],
+    "scenarios": [
+      "order lifecycle flow",
+      "service plan update flow",
+      "soft close flow",
+      "charges update flow",
+      "order status flow"
+    ],
+    "capabilities": [
+      "order-lifecycle"
+    ],
+    "domains": [
+      "Orders"
+    ],
+    "entities": [
+      "ServicePlan",
+      "ServicePlanResponse",
+      "FinancialJobLine"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 35
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "runtime/repricing-flow.md",
+    "category": "runtime",
+    "title": "Repricing flow",
+    "summary": "Manual and bulk repricing both compute a repriced offer, diff mandatory/base charges against the existing service plan, then persist updated charges through order service.",
+    "primary_for": [
+      "repricing-flow"
+    ],
+    "mentions": [
+      "repricing",
+      "price update",
+      "bulk reprice",
+      "manual reprice"
+    ],
+    "scenarios": [
+      "repricing flow",
+      "repricing debug",
+      "repricing charges",
+      "manual repricing",
+      "bulk repricing"
+    ],
+    "capabilities": [
+      "repricing"
+    ],
+    "domains": [
+      "Pricing"
+    ],
+    "entities": [
+      "RepriceRequest",
+      "RepricingSearchRequest",
+      "Charge"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 34
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "runtime/user-preferences-flow.md",
+    "category": "runtime",
+    "title": "User preferences flow",
+    "summary": "Preference CRUD extracts user identity from JWT, validates the allowed product set, and forwards requests to the internal agent-portal user-management API.",
+    "primary_for": [
+      "user-preferences-flow"
+    ],
+    "mentions": [
+      "user preferences",
+      "saved filters",
+      "preference crud",
+      "user settings"
+    ],
+    "scenarios": [
+      "user preferences flow",
+      "user preferences debug",
+      "user settings flow",
+      "create preferences",
+      "delete preferences"
+    ],
+    "capabilities": [
+      "user-preferences"
+    ],
+    "domains": [
+      "Preferences"
+    ],
+    "entities": [
+      "UserPreferencesResponse",
+      "PreferenceSchema"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 32
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "contracts/api-contracts-1.md",
+    "category": "contracts",
+    "title": "API contracts — booking, offers, and rules",
+    "summary": "Inbound HTTP contracts for booking creation, offer search, rules, notification, finance documents, invoicing, and CCD lookup.",
+    "primary_for": [
+      "api-contracts-booking"
+    ],
+    "mentions": [
+      "api",
+      "contracts",
+      "booking",
+      "offers",
+      "rules"
+    ],
+    "scenarios": [
+      "booking contracts",
+      "booking api contract",
+      "offer contracts",
+      "rules contracts",
+      "search contract list"
+    ],
+    "capabilities": [
+      "api-contracts"
+    ],
+    "domains": [
+      "Web Integrator"
+    ],
+    "entities": [
+      "BookingRequest",
+      "ServicePlan",
+      "BusinessRuleRequest"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 44
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "contracts/api-contracts-2.md",
+    "category": "contracts",
+    "title": "API contracts — orders and preferences",
+    "summary": "Inbound HTTP contracts for order lifecycle, exports, repricing application, customer behaviour, and preference CRUD.",
+    "primary_for": [
+      "api-contracts-orders"
+    ],
+    "mentions": [
+      "api",
+      "contracts",
+      "orders",
+      "preferences"
+    ],
+    "scenarios": [
+      "order contracts",
+      "orders api contract",
+      "preferences contracts",
+      "status contracts",
+      "download api contract"
+    ],
+    "capabilities": [
+      "api-contracts"
+    ],
+    "domains": [
+      "Web Integrator"
+    ],
+    "entities": [
+      "ServicePlanResponse",
+      "PreferenceSchema",
+      "Content"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 47
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "integrations/billing-service.md",
+    "category": "integrations",
+    "title": "Billing service integration",
+    "summary": "Billing-service supplies costs, invoice-trigger eligibility, invoice triggering, and soft-close/cost update side effects for bookings.",
+    "primary_for": [
+      "billing-service-integration"
+    ],
+    "mentions": [
+      "billing service",
+      "costs",
+      "invoice trigger",
+      "soft close"
+    ],
+    "scenarios": [
+      "billing service calls",
+      "invoice trigger backend",
+      "cost update backend",
+      "soft close backend",
+      "billing integration debug"
+    ],
+    "capabilities": [
+      "integration-billing-service"
+    ],
+    "domains": [
+      "Billing"
+    ],
+    "entities": [
+      "FinancialJobLine",
+      "InvoiceTriggerRequest",
+      "InvoiceTriggerResponse"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 34
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "integrations/ccd-search.md",
+    "category": "integrations",
+    "title": "CCD search integration",
+    "summary": "CCD contract lookups are delegated to a dedicated downstream service with its own OAuth2 client registration and extended external error mapping.",
+    "primary_for": [
+      "ccd-search-integration"
+    ],
+    "mentions": [
+      "ccd",
+      "contracts",
+      "agreement lookup",
+      "customer scope"
+    ],
+    "scenarios": [
+      "ccd search integration",
+      "ccd search backend",
+      "contract search backend",
+      "agreement integration",
+      "customer scope search"
+    ],
+    "capabilities": [
+      "integration-ccd-search"
+    ],
+    "domains": [
+      "Contracts"
+    ],
+    "entities": [
+      "CcdAgreementResponse",
+      "CcdSearchResponse"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 33
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "integrations/decisioning-rules.md",
+    "category": "integrations",
+    "title": "Decisioning and rules integrations",
+    "summary": "Business-rule evaluation depends on three business-rules endpoints: mandatory parties, mandatory documents/references, and SCM customer onboarding.",
+    "primary_for": [
+      "decisioning-rules-integration"
+    ],
+    "mentions": [
+      "decisioning",
+      "mandatory rules",
+      "scm onboarding",
+      "business rules"
+    ],
+    "scenarios": [
+      "decisioning integration",
+      "mandatory parties backend",
+      "mandatory documents backend",
+      "scm onboarding backend",
+      "business rules dependency"
+    ],
+    "capabilities": [
+      "integration-decisioning"
+    ],
+    "domains": [
+      "Compliance"
+    ],
+    "entities": [
+      "MandatoryPartyRequest",
+      "MandatoryDocumentAndReferenceRequest",
+      "CustomerScmResponse"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 36
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "integrations/gcss-and-reference-data.md",
+    "category": "integrations",
+    "title": "GCSS and reference-data integrations",
+    "summary": "Ocean booking flows fan out to GCSS plus facility, location, commodity, container-type, ocean-carrier, country, IMDG, customer, and vendor reference-data services.",
+    "primary_for": [
+      "gcss-reference-data-integration"
+    ],
+    "mentions": [
+      "gcss",
+      "reference data",
+      "facility",
+      "location",
+      "commodities"
+    ],
+    "scenarios": [
+      "gcss integration map",
+      "reference data calls",
+      "facility backend",
+      "location backend",
+      "dangerous goods backend"
+    ],
+    "capabilities": [
+      "integration-reference-data"
+    ],
+    "domains": [
+      "Ocean"
+    ],
+    "entities": [
+      "BillOfLoadingSummaryResponse",
+      "Facility",
+      "LocationClientResponse"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 36
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "integrations/launchdarkly.md",
+    "category": "integrations",
+    "title": "LaunchDarkly integration",
+    "summary": "LaunchDarkly controls config-rules responses, notification banners, and feature gates such as haulage validation or container soft deletion.",
+    "primary_for": [
+      "launchdarkly-integration"
+    ],
+    "mentions": [
+      "launchdarkly",
+      "feature flags",
+      "notification banner",
+      "config rules"
+    ],
+    "scenarios": [
+      "launchdarkly integration",
+      "launchdarkly flags",
+      "feature flag integration",
+      "notification flag source",
+      "config rules flag source"
+    ],
+    "capabilities": [
+      "integration-launchdarkly"
+    ],
+    "domains": [
+      "Operations"
+    ],
+    "entities": [
+      "FeatureFlagProvider",
+      "LaunchDarklyFeatureProvider"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 33
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "integrations/offer-service.md",
+    "category": "integrations",
+    "title": "Offer service integration",
+    "summary": "Offer-service provides new-booking search, amendment search, repriced offers, offered-service-plan retrieval, and equipment deletion.",
+    "primary_for": [
+      "offer-service-integration"
+    ],
+    "mentions": [
+      "offer service",
+      "repricing backend",
+      "offered plan",
+      "search quotes"
+    ],
+    "scenarios": [
+      "offer service calls",
+      "repricing backend",
+      "offer api integration",
+      "offered service plan api",
+      "quote search backend"
+    ],
+    "capabilities": [
+      "integration-offer-service"
+    ],
+    "domains": [
+      "Offers"
+    ],
+    "entities": [
+      "V3SearchRequest",
+      "V3ServicePlanModel"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 34
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "integrations/order-service.md",
+    "category": "integrations",
+    "title": "Order service integration",
+    "summary": "Order-service is the primary downstream system for service-plan CRUD, status, search, incidents, finops, container associations, and vessel-date updates.",
+    "primary_for": [
+      "order-service-integration"
+    ],
+    "mentions": [
+      "order service",
+      "service plans",
+      "status",
+      "containers"
+    ],
+    "scenarios": [
+      "order service calls",
+      "service plan downstream",
+      "order api integration",
+      "container associations backend",
+      "order search backend"
+    ],
+    "capabilities": [
+      "integration-order-service"
+    ],
+    "domains": [
+      "Orders"
+    ],
+    "entities": [
+      "V3ServicePlanModel",
+      "Content",
+      "ServicePlanStatusResponse"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 34
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "integrations/user-preferences.md",
+    "category": "integrations",
+    "title": "User preferences integration",
+    "summary": "Preferences are stored behind the internal agent portal user-management API and accessed through product-scoped user endpoints.",
+    "primary_for": [
+      "user-preferences-integration"
+    ],
+    "mentions": [
+      "preferences backend",
+      "agent portal",
+      "saved filters",
+      "user settings api"
+    ],
+    "scenarios": [
+      "preferences integration",
+      "agent portal backend",
+      "saved filters backend",
+      "user settings backend",
+      "preference api dependency"
+    ],
+    "capabilities": [
+      "integration-user-preferences"
+    ],
+    "domains": [
+      "Preferences"
+    ],
+    "entities": [
+      "UserPreferencesResponse",
+      "PreferenceSchema"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 33
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "operations/failure-model.md",
+    "category": "operations",
+    "title": "Failure model",
+    "summary": "The service distinguishes validation failures, forbidden access, partial content, partial updates, external dependency errors, and health-related service unavailability.",
+    "primary_for": [
+      "failure-model"
+    ],
+    "mentions": [
+      "errors",
+      "partial content",
+      "validation",
+      "external api"
+    ],
+    "scenarios": [
+      "failure model",
+      "error mapping",
+      "partial update behavior",
+      "validation error rules",
+      "dependency failure handling"
+    ],
+    "capabilities": [
+      "operations-failure-model"
+    ],
+    "domains": [
+      "Operations"
+    ],
+    "entities": [
+      "WebIntegratorExceptionHandler",
+      "PartialContentException",
+      "PartialUpdateException"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 34
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "operations/flags-and-lists.md",
+    "category": "operations",
+    "title": "Flags, lists, and static config",
+    "summary": "Runtime behavior is influenced by LaunchDarkly flags, Spring properties, timezone maps, mandatory charge IDs, and static JSON lookup lists.",
+    "primary_for": [
+      "flags-and-lists"
+    ],
+    "mentions": [
+      "feature flags",
+      "lists",
+      "timezones",
+      "mandatory charges",
+      "roles"
+    ],
+    "scenarios": [
+      "feature flags list",
+      "static lists map",
+      "timezone map",
+      "mandatory charges list",
+      "role property list"
+    ],
+    "capabilities": [
+      "operations-config-flags"
+    ],
+    "domains": [
+      "Operations"
+    ],
+    "entities": [
+      "FeatureFlagProvider",
+      "MandatoryChargesProperties",
+      "TimezoneProperties"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 34
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "operations/monitoring.md",
+    "category": "operations",
+    "title": "Monitoring and observability",
+    "summary": "Actuator, Prometheus, Micrometer tracing, outbound request observation, and the notification health aggregator define the service’s operational visibility.",
+    "primary_for": [
+      "monitoring-setup"
+    ],
+    "mentions": [
+      "monitoring",
+      "metrics",
+      "prometheus",
+      "tracing",
+      "health"
+    ],
+    "scenarios": [
+      "monitoring setup",
+      "prometheus endpoints",
+      "tracing config",
+      "health endpoint setup",
+      "observability debug"
+    ],
+    "capabilities": [
+      "operations-monitoring"
+    ],
+    "domains": [
+      "Operations"
+    ],
+    "entities": [
+      "ServiceHealthResponse",
+      "WebClientRequestObservation"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 33
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "operations/retries.md",
+    "category": "operations",
+    "title": "Retries and circuit breaking",
+    "summary": "All outbound retry behavior is centralized, and billing cost updates add a dedicated circuit breaker on top of the shared retry policy.",
+    "primary_for": [
+      "retry-behavior"
+    ],
+    "mentions": [
+      "retries",
+      "backoff",
+      "circuit breaker",
+      "transient errors"
+    ],
+    "scenarios": [
+      "retry policy",
+      "backoff settings",
+      "circuit breaker rules",
+      "transient error handling",
+      "retry debug"
+    ],
+    "capabilities": [
+      "operations-retries"
+    ],
+    "domains": [
+      "Operations"
+    ],
+    "entities": [
+      "RetryConfiguration",
+      "BillingClient"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 34
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "navigation/entry-points-1.md",
+    "category": "navigation",
+    "title": "Entry points — booking, offer, and search APIs",
+    "summary": "First half of the inbound REST surface, covering booking creation, offer search, business rules, notifications, invoicing, and CCD lookups.",
+    "primary_for": [
+      "entry-point-map"
+    ],
+    "mentions": [
+      "controllers",
+      "rest",
+      "booking",
+      "offers",
+      "search",
+      "notification"
+    ],
+    "scenarios": [
+      "booking endpoint map",
+      "offer endpoint map",
+      "search api map",
+      "find rest handler",
+      "where request enters"
+    ],
+    "capabilities": [
+      "http-entrypoints"
+    ],
+    "domains": [
+      "Web Integrator"
+    ],
+    "entities": [
+      "BookingRequest",
+      "ServicePlan",
+      "BusinessRuleRequest"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 49
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "navigation/entry-points-2.md",
+    "category": "navigation",
+    "title": "Entry points — order and preference APIs",
+    "summary": "Second half of the inbound REST surface, covering order lifecycle, repricing, exports, and user-preference CRUD.",
+    "primary_for": [
+      "entry-point-map"
+    ],
+    "mentions": [
+      "controllers",
+      "orders",
+      "preferences",
+      "reprice",
+      "status"
+    ],
+    "scenarios": [
+      "order endpoint map",
+      "preference endpoint map",
+      "status api map",
+      "where order updates land",
+      "find preference handler"
+    ],
+    "capabilities": [
+      "http-entrypoints"
+    ],
+    "domains": [
+      "Web Integrator"
+    ],
+    "entities": [
+      "ServicePlanResponse",
+      "PreferenceSchema",
+      "RepriceBookingsRequest"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 46
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "navigation/key-classes.md",
+    "category": "navigation",
+    "title": "Key classes by concern",
+    "summary": "Quick concern-to-class routing for the main controllers, services, mappers, config, and clients.",
+    "primary_for": [
+      "key-class-map"
+    ],
+    "mentions": [
+      "navigation",
+      "classes",
+      "concerns"
+    ],
+    "scenarios": [
+      "find key class",
+      "which class owns",
+      "where logic lives",
+      "map concern class",
+      "debug by concern"
+    ],
+    "capabilities": [
+      "navigation"
+    ],
+    "domains": [
+      "Web Integrator"
+    ],
+    "entities": [
+      "OrderService",
+      "OfferService",
+      "SecurityConfig"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 43
+  },
+  {
+    "repo": "iom-web-integrator",
+    "path": "navigation/scenarios.md",
+    "category": "navigation",
+    "title": "Scenarios to start-here map",
+    "summary": "Task phrases map directly to the controller or service entry point that is most useful for debugging or extending the capability.",
+    "primary_for": [
+      "start-here-scenarios"
+    ],
+    "mentions": [
+      "navigation",
+      "triage",
+      "debug",
+      "start-here"
+    ],
+    "scenarios": [
+      "where to start",
+      "find start class",
+      "debug booking flow",
+      "trace offer path",
+      "trace preference bug"
+    ],
+    "capabilities": [
+      "navigation"
+    ],
+    "domains": [
+      "Web Integrator"
+    ],
+    "entities": [
+      "Controller",
+      "Service"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 49
+  },
+  {
+    "repo": "smds-facilities-service",
+    "path": "domain/customer-access.md",
+    "category": "domain",
+    "title": "Customer access rules",
+    "summary": "Customer codes are both query inputs and authorization constraints, especially for CUST facilities and ForgeRock tokens.",
+    "primary_for": [
+      "smds-customer-access"
+    ],
+    "mentions": [
+      "customercode",
+      "jwtcustomercode",
+      "cust",
+      "forgerock",
+      "tokenScope"
+    ],
+    "scenarios": [
+      "inspect customer authorization",
+      "trace customer code rules",
+      "debug cust facility access",
+      "inspect jwt customer checks",
+      "inspect multi customer behavior"
+    ],
+    "capabilities": [
+      "authorization-modeling"
+    ],
+    "domains": [
+      "smds-facilities"
+    ],
+    "entities": [
+      "CustomerCode",
+      "JwtCustomerCode",
+      "FacilityInput",
+      "FacilitySearch"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 40
+  },
+  {
+    "repo": "smds-facilities-service",
+    "path": "domain/facility-category.md",
+    "category": "domain",
+    "title": "Facility category",
+    "summary": "Facility categories are modeled as code/name pairs and are searchable for OPS records in the repository layer.",
+    "primary_for": [
+      "smds-facility-category"
+    ],
+    "mentions": [
+      "facilitycategory",
+      "facilitycategories",
+      "code",
+      "name",
+      "ops"
+    ],
+    "scenarios": [
+      "inspect facility categories",
+      "trace category filter",
+      "find category code field",
+      "inspect ops category lookup",
+      "inspect category payload"
+    ],
+    "capabilities": [
+      "domain-modeling"
+    ],
+    "domains": [
+      "smds-facilities"
+    ],
+    "entities": [
+      "FacilityCategory",
+      "FacilitiesDomainResponse"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 42
+  },
+  {
+    "repo": "smds-facilities-service",
+    "path": "domain/facility.md",
+    "category": "domain",
+    "title": "Facility aggregate",
+    "summary": "`FacilityDomainModel` is the cross-layer carrier for facility lookups, while `FacilitiesDomainResponse` defines the business payload returned to clients.",
+    "primary_for": [
+      "smds-facility-entity"
+    ],
+    "mentions": [
+      "facilitydomainmodel",
+      "facilitiesdomainresponse",
+      "facilitytype",
+      "idtype",
+      "customercodes"
+    ],
+    "scenarios": [
+      "inspect facility entity",
+      "find response fields",
+      "trace domain carrier",
+      "inspect facility payload",
+      "inspect facility search model"
+    ],
+    "capabilities": [
+      "domain-modeling"
+    ],
+    "domains": [
+      "smds-facilities"
+    ],
+    "entities": [
+      "FacilityDomainModel",
+      "FacilitiesDomainResponse",
+      "FacilitiesResponse"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 44
+  },
+  {
+    "repo": "smds-facilities-service",
+    "path": "domain/geographic-details.md",
+    "category": "domain",
+    "title": "Geographic details",
+    "summary": "Geographic data is modeled as nested location, coordinate, and postal-address objects under each facility response.",
+    "primary_for": [
+      "smds-geographic-details"
+    ],
+    "mentions": [
+      "geographicdetails",
+      "locationdetails",
+      "postaladdress",
+      "geocoordinates",
+      "facilityname"
+    ],
+    "scenarios": [
+      "inspect address fields",
+      "inspect location fields",
+      "find facility name field",
+      "inspect city region country",
+      "inspect nested geography model",
+      "find geographic details",
+      "check geographic data"
+    ],
+    "capabilities": [
+      "domain-modeling"
+    ],
+    "domains": [
+      "smds-facilities"
+    ],
+    "entities": [
+      "GeographicDetails",
+      "LocationDetails",
+      "PostalAddress",
+      "GeoCoordinates"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 44
+  },
+  {
+    "repo": "smds-facilities-service",
+    "path": "architecture/cross-cutting.md",
+    "category": "architecture",
+    "title": "Cross-cutting concerns",
+    "summary": "Security, reactive execution, OpenAPI metadata, global exception shaping, and metrics/logging are the main cross-cutting mechanisms.",
+    "primary_for": [
+      "facilities-cross-cutting"
+    ],
+    "mentions": [
+      "oauth2",
+      "preauthorize",
+      "webflux",
+      "openapi",
+      "actuator",
+      "log4j2"
+    ],
+    "scenarios": [
+      "inspect auth model",
+      "inspect observability",
+      "inspect error handling",
+      "inspect reactive runtime",
+      "inspect api documentation",
+      "search the facilities",
+      "find facilities details"
+    ],
+    "capabilities": [
+      "cross-cutting-analysis"
+    ],
+    "domains": [
+      "smds-facilities"
+    ],
+    "entities": [
+      "SecurityUtils",
+      "GlobalExceptionHandler",
+      "SmdsFacilitiesApplication",
+      "management.endpoints"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 41
+  },
+  {
+    "repo": "smds-facilities-service",
+    "path": "architecture/modules.md",
+    "category": "architecture",
+    "title": "Module layout",
+    "summary": "The repo is split into a main `service/` Maven module, a separate `componenttest/` module, database scripts, and deployment assets.",
+    "primary_for": [
+      "facilities-module-layout"
+    ],
+    "mentions": [
+      "service",
+      "componenttest",
+      "postgresql_scripts",
+      "helm",
+      "infrastructure",
+      "spec"
+    ],
+    "scenarios": [
+      "inspect package tree",
+      "locate source module",
+      "find component tests",
+      "find database scripts",
+      "find deployment assets",
+      "understand module layout"
+    ],
+    "capabilities": [
+      "module-mapping"
+    ],
+    "domains": [
+      "smds-facilities"
+    ],
+    "entities": [
+      "service",
+      "componenttest",
+      "postgresql_scripts",
+      "helm",
+      "infrastructure",
+      "spec"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 71
+  },
+  {
+    "repo": "smds-facilities-service",
+    "path": "stack/stack.md",
+    "category": "stack",
+    "title": "Technology stack",
+    "summary": "The service is a Java 17 Maven build using Spring Boot WebFlux, Spring Security resource server, springdoc OpenAPI, and PostgreSQL via R2DBC.",
+    "primary_for": [
+      "facilities-reactive-stack"
+    ],
+    "mentions": [
+      "java17",
+      "maven",
+      "spring-boot",
+      "webflux",
+      "r2dbc",
+      "postgresql",
+      "springdoc",
+      "junit5",
+      "cucumber"
+    ],
+    "scenarios": [
+      "inspect tech stack",
+      "find build commands",
+      "find test commands",
+      "inspect reactive libraries",
+      "inspect data stack"
+    ],
+    "capabilities": [
+      "stack-discovery"
+    ],
+    "domains": [
+      "smds-facilities"
+    ],
+    "entities": [
+      "SpringBoot",
+      "WebFlux",
+      "R2dbcEntityTemplate",
+      "PostgreSQL",
+      "Maven"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 62
+  },
+  {
+    "repo": "smds-facilities-service",
+    "path": "runtime/facility-fuzzy-search-flow.md",
+    "category": "runtime",
+    "title": "Facility fuzzy search flow",
+    "summary": "`/facilities/fuzzy-search` is a narrower search path that requires a minimum facility-name string and delegates to a PostgreSQL fuzzy-match query.",
+    "primary_for": [
+      "facilities-fuzzy-search"
+    ],
+    "mentions": [
+      "/facilities/fuzzy-search",
+      "facilityname",
+      "similarity",
+      "trigram",
+      "fuzzy"
+    ],
+    "scenarios": [
+      "trace fuzzy search",
+      "inspect fuzzy validation",
+      "inspect name similarity query",
+      "debug fuzzy search results",
+      "follow fuzzy endpoint flow"
+    ],
+    "capabilities": [
+      "request-flow"
+    ],
+    "domains": [
+      "smds-facilities"
+    ],
+    "entities": [
+      "FacilitySearch",
+      "FacilitiesReactiveRepository",
+      "FacilitiesResponse"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 42
+  },
+  {
+    "repo": "smds-facilities-service",
+    "path": "runtime/facility-id-lookup-flow.md",
+    "category": "runtime",
+    "title": "Facility id lookup flow",
+    "summary": "`/facilities` resolves JWT claims, validates identifiers, routes by `idType`, enforces CUST rules, and maps active DB rows back to the API response.",
+    "primary_for": [
+      "facility-id-lookup"
+    ],
+    "mentions": [
+      "/facilities",
+      "idtype",
+      "customercode",
+      "sortparam",
+      "facilityintegrator"
+    ],
+    "scenarios": [
+      "trace id lookup flow",
+      "debug idtype routing",
+      "inspect customer code filtering",
+      "inspect response sorting",
+      "follow facility get path"
+    ],
+    "capabilities": [
+      "request-flow"
+    ],
+    "domains": [
+      "smds-facilities"
+    ],
+    "entities": [
+      "FacilityInput",
+      "FacilityDomainModel",
+      "FacilitiesResponse"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 43
+  },
+  {
+    "repo": "smds-facilities-service",
+    "path": "runtime/facility-search-flow.md",
+    "category": "runtime",
+    "title": "Facility search flow",
+    "summary": "`/facilities/search` validates facility type plus search filters, enforces customer-code rules, and either runs dynamic JSONB criteria or specialized repository queries.",
+    "primary_for": [
+      "facilities-parameter-search"
+    ],
+    "mentions": [
+      "/facilities/search",
+      "cityname",
+      "facilitycategory",
+      "customercode",
+      "dbconnector"
+    ],
+    "scenarios": [
+      "trace search flow",
+      "debug geography filters",
+      "inspect customer search rules",
+      "inspect category search",
+      "inspect dynamic criteria query"
+    ],
+    "capabilities": [
+      "request-flow"
+    ],
+    "domains": [
+      "smds-facilities"
+    ],
+    "entities": [
+      "FacilitySearch",
+      "FacilityDomainModel",
+      "DbConnector",
+      "FacilitiesReactiveRepository"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 43
+  },
+  {
+    "repo": "smds-facilities-service",
+    "path": "contracts/api-contracts.md",
+    "category": "contracts",
+    "title": "API contracts",
+    "summary": "The REST contract is generated from controller and OpenAPI annotations rather than a checked-in OpenAPI file.",
+    "primary_for": [
+      "facilities-api-contracts"
+    ],
+    "mentions": [
+      "openapi",
+      "authorization",
+      "idtype",
+      "facilitytype",
+      "facilitiesresponse"
+    ],
+    "scenarios": [
+      "inspect api contract",
+      "inspect endpoint parameters",
+      "inspect response codes",
+      "inspect auth requirement",
+      "inspect generated openapi",
+      "find the api contracts",
+      "check contracts definitions"
+    ],
+    "capabilities": [
+      "contract-analysis"
+    ],
+    "domains": [
+      "smds-facilities"
+    ],
+    "entities": [
+      "SmdsFacilitiesController",
+      "FacilitiesResponse",
+      "Error"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 42
+  },
+  {
+    "repo": "smds-facilities-service",
+    "path": "contracts/db-schemas.md",
+    "category": "contracts",
+    "title": "Database schemas",
+    "summary": "Runtime code is wired to `facility.facility_data_v3`, while checked-in Liquibase scripts create earlier `facility_data` and `facility_data_v2` generations.",
+    "primary_for": [
+      "facilities-db-schema"
+    ],
+    "mentions": [
+      "facility_data_v3",
+      "jsonb",
+      "liquibase",
+      "facility_source_data",
+      "status_code"
+    ],
+    "scenarios": [
+      "inspect db schema",
+      "inspect jsonb columns",
+      "inspect table version drift",
+      "inspect active status filter",
+      "inspect source data tables",
+      "find the db schema"
+    ],
+    "capabilities": [
+      "contract-analysis"
+    ],
+    "domains": [
+      "smds-facilities"
+    ],
+    "entities": [
+      "FacilityData",
+      "facility_data",
+      "facility_data_v2",
+      "facility_data_v3"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 43
+  },
+  {
+    "repo": "smds-facilities-service",
+    "path": "integrations/identity-providers.md",
+    "category": "integrations",
+    "title": "Identity providers",
+    "summary": "The service relies on external Azure AD and ForgeRock issuer/JWKS endpoints for JWT validation rather than custom outbound business REST calls.",
+    "primary_for": [
+      "facilities-jwt-providers"
+    ],
+    "mentions": [
+      "azure",
+      "forgerock",
+      "oauth2",
+      "issuer-uri",
+      "jwk-set-uri",
+      "authorization"
+    ],
+    "scenarios": [
+      "inspect jwt integration",
+      "inspect auth providers",
+      "inspect issuer endpoints",
+      "inspect jwks endpoints",
+      "inspect bearer auth config",
+      "find identity providers"
+    ],
+    "capabilities": [
+      "integration-analysis"
+    ],
+    "domains": [
+      "smds-facilities"
+    ],
+    "entities": [
+      "AzureAD",
+      "ForgeRock",
+      "Authorization"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 39
+  },
+  {
+    "repo": "smds-facilities-service",
+    "path": "integrations/postgresql.md",
+    "category": "integrations",
+    "title": "PostgreSQL storage",
+    "summary": "The main runtime dependency is PostgreSQL over R2DBC, with JSONB-heavy query patterns and separate component-test seeding.",
+    "primary_for": [
+      "facilities-postgresql-storage"
+    ],
+    "mentions": [
+      "postgresql",
+      "r2dbc",
+      "jsonb",
+      "facility_data_v3",
+      "testcontainers"
+    ],
+    "scenarios": [
+      "inspect postgres integration",
+      "inspect r2dbc setup",
+      "inspect jsonb queries",
+      "inspect local database setup",
+      "inspect component test database",
+      "find postgresql storage",
+      "check postgresql config"
+    ],
+    "capabilities": [
+      "integration-analysis"
+    ],
+    "domains": [
+      "smds-facilities"
+    ],
+    "entities": [
+      "FacilityData",
+      "R2dbcEntityTemplate",
+      "PostgreSQLContainer"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 42
+  },
+  {
+    "repo": "smds-facilities-service",
+    "path": "operations/failure-model.md",
+    "category": "operations",
+    "title": "Failure model",
+    "summary": "Most failures are deliberate validation or authorization outcomes, with 500 reserved for uncaught exceptions after the controller/service pipeline.",
+    "primary_for": [
+      "facilities-failure-model"
+    ],
+    "mentions": [
+      "badrequest",
+      "unauthorized",
+      "forbidden",
+      "notfound",
+      "facilityapierror"
+    ],
+    "scenarios": [
+      "inspect failure modes",
+      "inspect validation errors",
+      "inspect forbidden paths",
+      "inspect not found behavior",
+      "inspect error responses",
+      "understand the failure model"
+    ],
+    "capabilities": [
+      "operational-analysis"
+    ],
+    "domains": [
+      "smds-facilities"
+    ],
+    "entities": [
+      "BadRequestException",
+      "DataNotFoundException",
+      "ForbiddenException",
+      "FacilityApiError"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 41
+  },
+  {
+    "repo": "smds-facilities-service",
+    "path": "operations/monitoring.md",
+    "category": "operations",
+    "title": "Monitoring and diagnostics",
+    "summary": "Observability is built around Actuator health/prometheus endpoints, HTTP latency percentiles, and package-level logging.",
+    "primary_for": [
+      "facilities-monitoring"
+    ],
+    "mentions": [
+      "actuator",
+      "prometheus",
+      "health",
+      "metrics",
+      "logging"
+    ],
+    "scenarios": [
+      "inspect monitoring setup",
+      "inspect prometheus endpoint",
+      "inspect health probes",
+      "inspect request metrics",
+      "inspect log levels",
+      "find monitoring setup"
+    ],
+    "capabilities": [
+      "operational-analysis"
+    ],
+    "domains": [
+      "smds-facilities"
+    ],
+    "entities": [
+      "management.endpoints",
+      "prometheus",
+      "logging.level"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 38
+  },
+  {
+    "repo": "smds-facilities-service",
+    "path": "navigation/entry-points.md",
+    "category": "navigation",
+    "title": "REST entry points",
+    "summary": "SmdsFacilitiesController exposes three reactive GET endpoints for id lookup, multi-parameter search, and fuzzy name search.",
+    "primary_for": [
+      "facilities-rest-entrypoints"
+    ],
+    "mentions": [
+      "smdsfacilitiescontroller",
+      "/facilities",
+      "/facilities/search",
+      "/facilities/fuzzy-search",
+      "webflux"
+    ],
+    "scenarios": [
+      "find facility endpoint",
+      "inspect search routes",
+      "map rest handlers",
+      "check api paths",
+      "trace controller entrypoints"
+    ],
+    "capabilities": [
+      "route-discovery"
+    ],
+    "domains": [
+      "smds-facilities"
+    ],
+    "entities": [
+      "FacilityInput",
+      "FacilitySearch",
+      "FacilitiesResponse"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 45
+  },
+  {
+    "repo": "smds-facilities-service",
+    "path": "navigation/key-classes.md",
+    "category": "navigation",
+    "title": "Key classes",
+    "summary": "The service is centered on one controller, two application services, two domain services, and a single integrator/repository boundary.",
+    "primary_for": [
+      "facilities-class-map"
+    ],
+    "mentions": [
+      "application",
+      "domain",
+      "infrastructure",
+      "controller",
+      "repository",
+      "mapper"
+    ],
+    "scenarios": [
+      "find owner class",
+      "map service layers",
+      "inspect request validation",
+      "locate repository queries",
+      "understand response mapping",
+      "find a key class"
+    ],
+    "capabilities": [
+      "class-navigation"
+    ],
+    "domains": [
+      "smds-facilities"
+    ],
+    "entities": [
+      "SmdsFacilitiesController",
+      "RequestValidator",
+      "FacilitiesService",
+      "FacilitiesSearchService",
+      "FacilityIntegrator",
+      "FacilitiesReactiveRepository"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 51
+  },
+  {
+    "repo": "smds-facilities-service",
+    "path": "navigation/scenarios.md",
+    "category": "navigation",
+    "title": "Scenario routing",
+    "summary": "Use this map to jump from common task phrases to the class and method that owns the behavior.",
+    "primary_for": [
+      "facilities-task-routing"
+    ],
+    "mentions": [
+      "start-here",
+      "class.method",
+      "controller",
+      "service",
+      "integrator",
+      "validator"
+    ],
+    "scenarios": [
+      "trace id lookup",
+      "debug search filters",
+      "follow fuzzy search",
+      "inspect customer authorization",
+      "find database query owner",
+      "find request routing",
+      "trace task routing"
+    ],
+    "capabilities": [
+      "task-routing"
+    ],
+    "domains": [
+      "smds-facilities"
+    ],
+    "entities": [
+      "SmdsFacilitiesController",
+      "FacilitiesService",
+      "FacilitiesSearchService",
+      "FacilityIntegrator"
+    ],
+    "last_updated": "2026-06-30",
+    "lines": 47
+  }
+]

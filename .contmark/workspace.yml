@@ -1,0 +1,72 @@
+# <workspace-root>/.contmark/workspace.yml
+# Contmark context engine — workspace mode declaration for IOM-workspace.
+# Commit this file. Absent file = single-repo mode.
+
+workspace: iom-workspace
+version: 3
+mode: workspace
+tier: full
+
+# Each repo lives at <workspace-root>/<key>/ — no `path` field.
+repos:
+  - key: iom-web-integrator
+    tier: full
+    domains: [booking, ocean-booking, service-plan, user-preferences, business-rules]
+    depends_on: [iom-offer-service, iom-order-service]
+
+  - key: iom-offer-service
+    tier: full
+    domains: [offer-management, rates, routing, customs]
+    depends_on: [iom-master-data, smds-facilities-service]
+
+  - key: iom-order-service
+    tier: full
+    domains: [order, service-plan, booking, messaging]
+    depends_on: [iom-order-service-scheduler]
+
+  - key: iom-order-service-scheduler
+    tier: full
+    domains: [outbox-publishing, repricing, scheduling]
+    depends_on: [iom-offer-service, iom-web-integrator]
+
+  - key: iom-master-data
+    tier: full
+    domains: [location, commodity, container, charges, vessel, sales, vendors]
+    depends_on: []
+
+  - key: smds-facilities-service
+    tier: full
+    domains: [facility, customer-access, geographic-details]
+    depends_on: []
+
+  - key: iom-application
+    tier: full
+    domains: [booking, equipment, location, party, product-offer, service-plan]
+    depends_on: []
+
+# Case-insensitive substring match against the task input. Multiple matches union.
+routing_rules:
+  - match: ["facility", "facilities", "smds"]
+    repos: [smds-facilities-service]
+  - match: ["master data", "masterdata", "reference data", "charge type", "commodity"]
+    repos: [iom-master-data]
+  - match: ["offer search", "rates", "offered plan", "routing offer"]
+    repos: [iom-offer-service]
+  - match: ["order service", "service plan crud", "booking dashboard", "incident"]
+    repos: [iom-order-service]
+  - match: ["web integrator", "frontend api", "ocean booking"]
+    repos: [iom-web-integrator]
+  - match: ["outbox", "kafka publish", "domain event publish"]
+    repos: [iom-order-service-scheduler]
+  - match: ["temporal", "workflow"]
+    repos: [iom-order-service-scheduler]
+  - match: ["reprice", "repricing"]
+    repos: [iom-order-service-scheduler, iom-web-integrator]
+
+# When a file under any of these paths changes, the listed repos are added to
+# $impacted_repos automatically.
+cross_repo_contracts:
+  - path: iom-order-service-scheduler/src/main/resources/avro/**
+    impacts: [iom-offer-service, iom-order-service]
+  - path: iom-offer-service/src/main/resources/avro/**
+    impacts: [iom-order-service-scheduler]

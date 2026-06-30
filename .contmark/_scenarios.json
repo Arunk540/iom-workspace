@@ -1,0 +1,5934 @@
+{
+  "booking domain model": [
+    {
+      "repo": "iom-application",
+      "path": "domain/booking.md"
+    }
+  ],
+  "where booking lives": [
+    {
+      "repo": "iom-application",
+      "path": "domain/booking.md"
+    }
+  ],
+  "booking work process": [
+    {
+      "repo": "iom-application",
+      "path": "domain/booking.md"
+    }
+  ],
+  "booking charges logic": [
+    {
+      "repo": "iom-application",
+      "path": "domain/booking.md"
+    }
+  ],
+  "price owner lookup": [
+    {
+      "repo": "iom-application",
+      "path": "domain/booking.md"
+    }
+  ],
+  "equipment requirement model": [
+    {
+      "repo": "iom-application",
+      "path": "domain/equipment.md"
+    }
+  ],
+  "reefer cargo details": [
+    {
+      "repo": "iom-application",
+      "path": "domain/equipment.md"
+    }
+  ],
+  "dangerous goods shape": [
+    {
+      "repo": "iom-application",
+      "path": "domain/equipment.md"
+    }
+  ],
+  "container asset profile": [
+    {
+      "repo": "iom-application",
+      "path": "domain/equipment.md"
+    }
+  ],
+  "shipper owned container": [
+    {
+      "repo": "iom-application",
+      "path": "domain/equipment.md"
+    }
+  ],
+  "find equipment requirements": [
+    {
+      "repo": "iom-application",
+      "path": "domain/equipment.md"
+    }
+  ],
+  "location domain model": [
+    {
+      "repo": "iom-application",
+      "path": "domain/location.md"
+    }
+  ],
+  "facility and city types": [
+    {
+      "repo": "iom-application",
+      "path": "domain/location.md"
+    }
+  ],
+  "geo id lookup": [
+    {
+      "repo": "iom-application",
+      "path": "domain/location.md"
+    }
+  ],
+  "service plan leg locations": [
+    {
+      "repo": "iom-application",
+      "path": "domain/location.md"
+    }
+  ],
+  "postal address structure": [
+    {
+      "repo": "iom-application",
+      "path": "domain/location.md"
+    }
+  ],
+  "party domain model": [
+    {
+      "repo": "iom-application",
+      "path": "domain/party.md"
+    }
+  ],
+  "customer role structure": [
+    {
+      "repo": "iom-application",
+      "path": "domain/party.md"
+    }
+  ],
+  "where parties stored": [
+    {
+      "repo": "iom-application",
+      "path": "domain/party.md"
+    }
+  ],
+  "payment term model": [
+    {
+      "repo": "iom-application",
+      "path": "domain/party.md"
+    }
+  ],
+  "party relationship fields": [
+    {
+      "repo": "iom-application",
+      "path": "domain/party.md"
+    }
+  ],
+  "product offer model": [
+    {
+      "repo": "iom-application",
+      "path": "domain/product-offer.md"
+    }
+  ],
+  "merge charges logic": [
+    {
+      "repo": "iom-application",
+      "path": "domain/product-offer.md"
+    }
+  ],
+  "pricing structure": [
+    {
+      "repo": "iom-application",
+      "path": "domain/product-offer.md"
+    }
+  ],
+  "execution charges": [
+    {
+      "repo": "iom-application",
+      "path": "domain/product-offer.md"
+    }
+  ],
+  "all charges traversal": [
+    {
+      "repo": "iom-application",
+      "path": "domain/product-offer.md"
+    }
+  ],
+  "find the product offer": [
+    {
+      "repo": "iom-application",
+      "path": "domain/product-offer.md"
+    }
+  ],
+  "service plan aggregate": [
+    {
+      "repo": "iom-application",
+      "path": "domain/service-plan.md"
+    }
+  ],
+  "order root model": [
+    {
+      "repo": "iom-application",
+      "path": "domain/service-plan.md"
+    }
+  ],
+  "amend service plan": [
+    {
+      "repo": "iom-application",
+      "path": "domain/service-plan.md"
+    }
+  ],
+  "service plan fields": [
+    {
+      "repo": "iom-application",
+      "path": "domain/service-plan.md"
+    }
+  ],
+  "cancel logic": [
+    {
+      "repo": "iom-application",
+      "path": "domain/service-plan.md"
+    }
+  ],
+  "shared architecture patterns": [
+    {
+      "repo": "iom-application",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "cross cutting concerns": [
+    {
+      "repo": "iom-application",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "reactive design overview": [
+    {
+      "repo": "iom-application",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "where caching fits": [
+    {
+      "repo": "iom-application",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "how versions upgrade": [
+    {
+      "repo": "iom-application",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "list all modules": [
+    {
+      "repo": "iom-application",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "show package tree": [
+    {
+      "repo": "iom-application",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "understand gradle layout": [
+    {
+      "repo": "iom-application",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "map module ownership": [
+    {
+      "repo": "iom-application",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "trace package family": [
+    {
+      "repo": "iom-application",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "how to build": [
+    {
+      "repo": "iom-application",
+      "path": "stack/stack.md"
+    }
+  ],
+  "run gradle tests": [
+    {
+      "repo": "iom-application",
+      "path": "stack/stack.md"
+    }
+  ],
+  "stack summary": [
+    {
+      "repo": "iom-application",
+      "path": "stack/stack.md"
+    }
+  ],
+  "what frameworks used": [
+    {
+      "repo": "iom-application",
+      "path": "stack/stack.md"
+    },
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "stack/stack.md"
+    }
+  ],
+  "which java version": [
+    {
+      "repo": "iom-application",
+      "path": "stack/stack.md"
+    }
+  ],
+  "trace processing flow": [
+    {
+      "repo": "iom-application",
+      "path": "runtime/order-processing.md"
+    }
+  ],
+  "follow order path": [
+    {
+      "repo": "iom-application",
+      "path": "runtime/order-processing.md"
+    }
+  ],
+  "understand library runtime": [
+    {
+      "repo": "iom-application",
+      "path": "runtime/order-processing.md"
+    }
+  ],
+  "map validation pipeline": [
+    {
+      "repo": "iom-application",
+      "path": "runtime/order-processing.md"
+    }
+  ],
+  "find persistence sequence": [
+    {
+      "repo": "iom-application",
+      "path": "runtime/order-processing.md"
+    }
+  ],
+  "api dto versions": [
+    {
+      "repo": "iom-application",
+      "path": "contracts/api-contracts.md"
+    }
+  ],
+  "find request contract": [
+    {
+      "repo": "iom-application",
+      "path": "contracts/api-contracts.md"
+    }
+  ],
+  "which dto version": [
+    {
+      "repo": "iom-application",
+      "path": "contracts/api-contracts.md"
+    }
+  ],
+  "routing request model": [
+    {
+      "repo": "iom-application",
+      "path": "contracts/api-contracts.md"
+    }
+  ],
+  "postal address annotation": [
+    {
+      "repo": "iom-application",
+      "path": "contracts/api-contracts.md"
+    }
+  ],
+  "find the api contracts": [
+    {
+      "repo": "iom-application",
+      "path": "contracts/api-contracts.md"
+    },
+    {
+      "repo": "iom-application",
+      "path": "contracts/db-schemas.md"
+    },
+    {
+      "repo": "iom-master-data",
+      "path": "contracts/api-contracts-2.md"
+    },
+    {
+      "repo": "iom-offer-service",
+      "path": "contracts/api-contracts.md"
+    },
+    {
+      "repo": "iom-order-service",
+      "path": "contracts/api-contracts.md"
+    },
+    {
+      "repo": "iom-order-service",
+      "path": "contracts/db-schemas.md"
+    },
+    {
+      "repo": "smds-facilities-service",
+      "path": "contracts/api-contracts.md"
+    }
+  ],
+  "check contracts definitions": [
+    {
+      "repo": "iom-application",
+      "path": "contracts/api-contracts.md"
+    },
+    {
+      "repo": "iom-order-service",
+      "path": "contracts/api-contracts.md"
+    },
+    {
+      "repo": "iom-order-service",
+      "path": "contracts/db-schemas.md"
+    },
+    {
+      "repo": "smds-facilities-service",
+      "path": "contracts/api-contracts.md"
+    }
+  ],
+  "find db schema": [
+    {
+      "repo": "iom-application",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "which tables exist": [
+    {
+      "repo": "iom-application",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "service plan entity shape": [
+    {
+      "repo": "iom-application",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "outbox columns": [
+    {
+      "repo": "iom-application",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "customer history table": [
+    {
+      "repo": "iom-application",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "trace telikos flow": [
+    {
+      "repo": "iom-application",
+      "path": "integrations/business-rules-and-execution.md"
+    }
+  ],
+  "find business rules api": [
+    {
+      "repo": "iom-application",
+      "path": "integrations/business-rules-and-execution.md"
+    }
+  ],
+  "how notifications sent": [
+    {
+      "repo": "iom-application",
+      "path": "integrations/business-rules-and-execution.md"
+    }
+  ],
+  "where execution calls live": [
+    {
+      "repo": "iom-application",
+      "path": "integrations/business-rules-and-execution.md"
+    }
+  ],
+  "commodity restriction endpoint": [
+    {
+      "repo": "iom-application",
+      "path": "integrations/business-rules-and-execution.md"
+    }
+  ],
+  "trace rule execution": [
+    {
+      "repo": "iom-application",
+      "path": "integrations/business-rules-and-execution.md"
+    }
+  ],
+  "party enrichment flow": [
+    {
+      "repo": "iom-application",
+      "path": "integrations/customer-and-facility.md"
+    }
+  ],
+  "facility lookup path": [
+    {
+      "repo": "iom-application",
+      "path": "integrations/customer-and-facility.md"
+    }
+  ],
+  "customer service call": [
+    {
+      "repo": "iom-application",
+      "path": "integrations/customer-and-facility.md"
+    }
+  ],
+  "resolve facility geo ids": [
+    {
+      "repo": "iom-application",
+      "path": "integrations/customer-and-facility.md"
+    }
+  ],
+  "which client owns parties": [
+    {
+      "repo": "iom-application",
+      "path": "integrations/customer-and-facility.md"
+    }
+  ],
+  "find routing integration": [
+    {
+      "repo": "iom-application",
+      "path": "integrations/offer-and-routing.md"
+    }
+  ],
+  "trace offer lookup": [
+    {
+      "repo": "iom-application",
+      "path": "integrations/offer-and-routing.md"
+    }
+  ],
+  "which dto drives routing": [
+    {
+      "repo": "iom-application",
+      "path": "integrations/offer-and-routing.md"
+    }
+  ],
+  "how route api called": [
+    {
+      "repo": "iom-application",
+      "path": "integrations/offer-and-routing.md"
+    }
+  ],
+  "where offer maps to domain": [
+    {
+      "repo": "iom-application",
+      "path": "integrations/offer-and-routing.md"
+    }
+  ],
+  "how cache warms": [
+    {
+      "repo": "iom-application",
+      "path": "integrations/reference-cache-and-masters.md"
+    }
+  ],
+  "commodity cache lookup": [
+    {
+      "repo": "iom-application",
+      "path": "integrations/reference-cache-and-masters.md"
+    }
+  ],
+  "master data refresh": [
+    {
+      "repo": "iom-application",
+      "path": "integrations/reference-cache-and-masters.md"
+    }
+  ],
+  "reference cache owners": [
+    {
+      "repo": "iom-application",
+      "path": "integrations/reference-cache-and-masters.md"
+    }
+  ],
+  "startup cache logic": [
+    {
+      "repo": "iom-application",
+      "path": "integrations/reference-cache-and-masters.md"
+    }
+  ],
+  "how errors surface": [
+    {
+      "repo": "iom-application",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "why retry happens": [
+    {
+      "repo": "iom-application",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "resolver failure behavior": [
+    {
+      "repo": "iom-application",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "find lock version": [
+    {
+      "repo": "iom-application",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "where incidents stored": [
+    {
+      "repo": "iom-application",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "understand the failure model": [
+    {
+      "repo": "iom-application",
+      "path": "operations/failure-model.md"
+    },
+    {
+      "repo": "iom-master-data",
+      "path": "operations/failure-model.md"
+    },
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/failure-model.md"
+    },
+    {
+      "repo": "smds-facilities-service",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "find feature flags": [
+    {
+      "repo": "iom-application",
+      "path": "operations/flags-and-lists.md"
+    }
+  ],
+  "which enums exist": [
+    {
+      "repo": "iom-application",
+      "path": "operations/flags-and-lists.md"
+    }
+  ],
+  "controlled values list": [
+    {
+      "repo": "iom-application",
+      "path": "operations/flags-and-lists.md"
+    }
+  ],
+  "launchdarkly config": [
+    {
+      "repo": "iom-application",
+      "path": "operations/flags-and-lists.md"
+    }
+  ],
+  "country flag behavior": [
+    {
+      "repo": "iom-application",
+      "path": "operations/flags-and-lists.md"
+    }
+  ],
+  "find public api": [
+    {
+      "repo": "iom-application",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "where to start": [
+    {
+      "repo": "iom-application",
+      "path": "navigation/entry-points.md"
+    },
+    {
+      "repo": "iom-web-integrator",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "library surface map": [
+    {
+      "repo": "iom-application",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "module entry point": [
+    {
+      "repo": "iom-application",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "shared jar exports": [
+    {
+      "repo": "iom-application",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "which class owns": [
+    {
+      "repo": "iom-application",
+      "path": "navigation/key-classes.md"
+    },
+    {
+      "repo": "iom-web-integrator",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "find core model": [
+    {
+      "repo": "iom-application",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "find client class": [
+    {
+      "repo": "iom-application",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "find repository class": [
+    {
+      "repo": "iom-application",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "find validation class": [
+    {
+      "repo": "iom-application",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "trace amend flow": [
+    {
+      "repo": "iom-application",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "find db save": [
+    {
+      "repo": "iom-application",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "follow resolver call": [
+    {
+      "repo": "iom-application",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "debug date validation": [
+    {
+      "repo": "iom-application",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "locate external client": [
+    {
+      "repo": "iom-application",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "find the right scenario": [
+    {
+      "repo": "iom-application",
+      "path": "navigation/scenarios.md"
+    },
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "match a user scenario": [
+    {
+      "repo": "iom-application",
+      "path": "navigation/scenarios.md"
+    },
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "trace charge query": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/charges.md"
+    }
+  ],
+  "find vat partner logic": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/charges.md"
+    }
+  ],
+  "see charge tables": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/charges.md"
+    }
+  ],
+  "inspect uom enrichment": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/charges.md"
+    }
+  ],
+  "find default vat partner": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/charges.md"
+    }
+  ],
+  "find commodity route": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/commodity.md"
+    }
+  ],
+  "trace restriction flow": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/commodity.md"
+    }
+  ],
+  "see hs table": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/commodity.md"
+    }
+  ],
+  "inspect commodity cache": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/commodity.md"
+    }
+  ],
+  "find business rules client": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/commodity.md"
+    }
+  ],
+  "find container endpoint": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/container.md"
+    }
+  ],
+  "trace container cache": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/container.md"
+    },
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/container-cache-flow.md"
+    }
+  ],
+  "see container table": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/container.md"
+    }
+  ],
+  "inspect iso lookup": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/container.md"
+    }
+  ],
+  "find startup loader": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/container.md"
+    }
+  ],
+  "find diesel endpoint": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/diesel-price-ranges.md"
+    }
+  ],
+  "trace diesel query": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/diesel-price-ranges.md"
+    }
+  ],
+  "see diesel table": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/diesel-price-ranges.md"
+    }
+  ],
+  "inspect solar lookup": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/diesel-price-ranges.md"
+    }
+  ],
+  "find diesel service": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/diesel-price-ranges.md"
+    }
+  ],
+  "trace location search": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/location.md"
+    }
+  ],
+  "inspect location cache": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/location.md"
+    }
+  ],
+  "find facility enrichment": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/location.md"
+    }
+  ],
+  "see location tables": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/location.md"
+    }
+  ],
+  "find location client": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/location.md"
+    }
+  ],
+  "find sales endpoint": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/sales.md"
+    }
+  ],
+  "trace sales object lookup": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/sales.md"
+    }
+  ],
+  "see sales tables": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/sales.md"
+    }
+  ],
+  "inspect read-only flow": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/sales.md"
+    }
+  ],
+  "find sales service": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/sales.md"
+    },
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/sales-object-lookup-flow.md"
+    }
+  ],
+  "find service controller": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/service-reference-domains.md"
+    }
+  ],
+  "trace reasons data": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/service-reference-domains.md"
+    }
+  ],
+  "inspect vas source": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/service-reference-domains.md"
+    }
+  ],
+  "see thin controllers": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/service-reference-domains.md"
+    }
+  ],
+  "find host module domains": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/service-reference-domains.md"
+    }
+  ],
+  "find reference data": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/service-reference-domains.md"
+    }
+  ],
+  "look up reference domains": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/service-reference-domains.md"
+    }
+  ],
+  "trace vendor kafka": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/vendors.md"
+    },
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/vendor-ingest-flow.md"
+    }
+  ],
+  "find vendor v2 search": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/vendors.md"
+    }
+  ],
+  "see vendor tables": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/vendors.md"
+    }
+  ],
+  "inspect source tracking": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/vendors.md"
+    }
+  ],
+  "find consumer groups": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/vendors.md"
+    }
+  ],
+  "find vessel endpoint": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/vessel.md"
+    }
+  ],
+  "trace deactivate flow": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/vessel.md"
+    }
+  ],
+  "see vessel table": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/vessel.md"
+    }
+  ],
+  "inspect vessel search": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/vessel.md"
+    }
+  ],
+  "find vessel validation": [
+    {
+      "repo": "iom-master-data",
+      "path": "domain/vessel.md"
+    }
+  ],
+  "understand shared config": [
+    {
+      "repo": "iom-master-data",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "see security posture": [
+    {
+      "repo": "iom-master-data",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "trace liquibase strategy": [
+    {
+      "repo": "iom-master-data",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "see monitoring hooks": [
+    {
+      "repo": "iom-master-data",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "find feature flag wiring": [
+    {
+      "repo": "iom-master-data",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "find runtime rules": [
+    {
+      "repo": "iom-master-data",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "check runtime behavior": [
+    {
+      "repo": "iom-master-data",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "see module layout": [
+    {
+      "repo": "iom-master-data",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "map package tree": [
+    {
+      "repo": "iom-master-data",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "find submodule boundaries": [
+    {
+      "repo": "iom-master-data",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "understand gradle includes": [
+    {
+      "repo": "iom-master-data",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "see domain ownership": [
+    {
+      "repo": "iom-master-data",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "see tech stack": [
+    {
+      "repo": "iom-master-data",
+      "path": "stack/stack.md"
+    }
+  ],
+  "find build command": [
+    {
+      "repo": "iom-master-data",
+      "path": "stack/stack.md"
+    },
+    {
+      "repo": "iom-order-service",
+      "path": "stack/stack.md"
+    }
+  ],
+  "find test command": [
+    {
+      "repo": "iom-master-data",
+      "path": "stack/stack.md"
+    },
+    {
+      "repo": "iom-order-service",
+      "path": "stack/stack.md"
+    }
+  ],
+  "see framework versions": [
+    {
+      "repo": "iom-master-data",
+      "path": "stack/stack.md"
+    }
+  ],
+  "see runtime dependencies": [
+    {
+      "repo": "iom-master-data",
+      "path": "stack/stack.md"
+    }
+  ],
+  "understand the tech stack": [
+    {
+      "repo": "iom-master-data",
+      "path": "stack/stack.md"
+    },
+    {
+      "repo": "iom-offer-service",
+      "path": "stack/stack.md"
+    },
+    {
+      "repo": "iom-order-service",
+      "path": "stack/stack.md"
+    },
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "stack/stack.md"
+    }
+  ],
+  "trace charge request": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/charge-type-query-flow.md"
+    }
+  ],
+  "see uom enrichment": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/charge-type-query-flow.md"
+    }
+  ],
+  "find vat default": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/charge-type-query-flow.md"
+    }
+  ],
+  "inspect customer overrides": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/charge-type-query-flow.md"
+    }
+  ],
+  "follow charge filters": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/charge-type-query-flow.md"
+    }
+  ],
+  "trace restricted commodity": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/commodity-restrictions-flow.md"
+    }
+  ],
+  "debug commodity post": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/commodity-restrictions-flow.md"
+    }
+  ],
+  "inspect business rules call": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/commodity-restrictions-flow.md"
+    }
+  ],
+  "find commodity filter": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/commodity-restrictions-flow.md"
+    }
+  ],
+  "follow commodity cache": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/commodity-restrictions-flow.md"
+    }
+  ],
+  "see startup load": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/container-cache-flow.md"
+    }
+  ],
+  "inspect container fallback": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/container-cache-flow.md"
+    }
+  ],
+  "find iso lookup": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/container-cache-flow.md"
+    }
+  ],
+  "see read-only path": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/container-cache-flow.md"
+    }
+  ],
+  "trace diesel endpoint": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/diesel-price-range-query-flow.md"
+    }
+  ],
+  "inspect diesel validation": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/diesel-price-range-query-flow.md"
+    }
+  ],
+  "see country customer rule": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/diesel-price-range-query-flow.md"
+    }
+  ],
+  "find diesel query": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/diesel-price-range-query-flow.md"
+    }
+  ],
+  "follow slab lookup": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/diesel-price-range-query-flow.md"
+    }
+  ],
+  "trace location request": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/location-search-flow.md"
+    }
+  ],
+  "debug facility enrichment": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/location-search-flow.md"
+    }
+  ],
+  "follow cache fallback": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/location-search-flow.md"
+    }
+  ],
+  "inspect location retries": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/location-search-flow.md"
+    }
+  ],
+  "see geo search flow": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/location-search-flow.md"
+    }
+  ],
+  "trace sales object match": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/sales-object-lookup-flow.md"
+    }
+  ],
+  "see sales type cache": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/sales-object-lookup-flow.md"
+    }
+  ],
+  "inspect sales lookup": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/sales-object-lookup-flow.md"
+    }
+  ],
+  "follow sales request": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/sales-object-lookup-flow.md"
+    }
+  ],
+  "debug vendor source write": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/vendor-ingest-flow.md"
+    }
+  ],
+  "follow vendor v2 batch": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/vendor-ingest-flow.md"
+    }
+  ],
+  "see vendor ack flow": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/vendor-ingest-flow.md"
+    }
+  ],
+  "inspect consumer concurrency": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/vendor-ingest-flow.md"
+    }
+  ],
+  "trace vessel api": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/vessel-management-flow.md"
+    },
+    {
+      "repo": "iom-master-data",
+      "path": "navigation/entry-points-2.md"
+    }
+  ],
+  "inspect vessel upsert": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/vessel-management-flow.md"
+    }
+  ],
+  "see deactivation rule": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/vessel-management-flow.md"
+    }
+  ],
+  "find vessel search": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/vessel-management-flow.md"
+    }
+  ],
+  "follow active flag logic": [
+    {
+      "repo": "iom-master-data",
+      "path": "runtime/vessel-management-flow.md"
+    }
+  ],
+  "list api endpoints": [
+    {
+      "repo": "iom-master-data",
+      "path": "contracts/api-contracts-1.md"
+    }
+  ],
+  "find core route": [
+    {
+      "repo": "iom-master-data",
+      "path": "contracts/api-contracts-1.md"
+    }
+  ],
+  "inspect location contract": [
+    {
+      "repo": "iom-master-data",
+      "path": "contracts/api-contracts-1.md"
+    }
+  ],
+  "inspect commodity contract": [
+    {
+      "repo": "iom-master-data",
+      "path": "contracts/api-contracts-1.md"
+    }
+  ],
+  "see deprecated aliases": [
+    {
+      "repo": "iom-master-data",
+      "path": "contracts/api-contracts-1.md"
+    },
+    {
+      "repo": "iom-master-data",
+      "path": "navigation/entry-points-1.md"
+    }
+  ],
+  "list vendor routes": [
+    {
+      "repo": "iom-master-data",
+      "path": "contracts/api-contracts-2.md"
+    }
+  ],
+  "inspect vessel contract": [
+    {
+      "repo": "iom-master-data",
+      "path": "contracts/api-contracts-2.md"
+    }
+  ],
+  "see sales api": [
+    {
+      "repo": "iom-master-data",
+      "path": "contracts/api-contracts-2.md"
+    }
+  ],
+  "see diesel api": [
+    {
+      "repo": "iom-master-data",
+      "path": "contracts/api-contracts-2.md"
+    }
+  ],
+  "find batch lookup route": [
+    {
+      "repo": "iom-master-data",
+      "path": "contracts/api-contracts-2.md"
+    }
+  ],
+  "see table schema": [
+    {
+      "repo": "iom-master-data",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "find entity columns": [
+    {
+      "repo": "iom-master-data",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "map database tables": [
+    {
+      "repo": "iom-master-data",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "inspect vendor tables": [
+    {
+      "repo": "iom-master-data",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "inspect location tables": [
+    {
+      "repo": "iom-master-data",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "find kafka topic": [
+    {
+      "repo": "iom-master-data",
+      "path": "contracts/kafka-events.md"
+    }
+  ],
+  "find consumer group": [
+    {
+      "repo": "iom-master-data",
+      "path": "contracts/kafka-events.md"
+    },
+    {
+      "repo": "iom-order-service",
+      "path": "contracts/kafka-events.md"
+    }
+  ],
+  "inspect avro consumer": [
+    {
+      "repo": "iom-master-data",
+      "path": "contracts/kafka-events.md"
+    }
+  ],
+  "see vendor event flow": [
+    {
+      "repo": "iom-master-data",
+      "path": "contracts/kafka-events.md"
+    }
+  ],
+  "check kafka retries": [
+    {
+      "repo": "iom-master-data",
+      "path": "contracts/kafka-events.md"
+    }
+  ],
+  "find restriction url": [
+    {
+      "repo": "iom-master-data",
+      "path": "integrations/business-rules-service.md"
+    }
+  ],
+  "trace commodity oauth": [
+    {
+      "repo": "iom-master-data",
+      "path": "integrations/business-rules-service.md"
+    }
+  ],
+  "inspect business rules client": [
+    {
+      "repo": "iom-master-data",
+      "path": "integrations/business-rules-service.md"
+    }
+  ],
+  "debug restricted commodity call": [
+    {
+      "repo": "iom-master-data",
+      "path": "integrations/business-rules-service.md"
+    }
+  ],
+  "see business rules headers": [
+    {
+      "repo": "iom-master-data",
+      "path": "integrations/business-rules-service.md"
+    }
+  ],
+  "find oauth provider": [
+    {
+      "repo": "iom-master-data",
+      "path": "integrations/oauth-and-feature-flags.md"
+    }
+  ],
+  "inspect feature flags": [
+    {
+      "repo": "iom-master-data",
+      "path": "integrations/oauth-and-feature-flags.md"
+    },
+    {
+      "repo": "iom-order-service",
+      "path": "architecture/cross-cutting.md"
+    },
+    {
+      "repo": "iom-order-service",
+      "path": "operations/flags-and-lists.md"
+    }
+  ],
+  "see token endpoints": [
+    {
+      "repo": "iom-master-data",
+      "path": "integrations/oauth-and-feature-flags.md"
+    }
+  ],
+  "find local ld config": [
+    {
+      "repo": "iom-master-data",
+      "path": "integrations/oauth-and-feature-flags.md"
+    }
+  ],
+  "trace client credentials": [
+    {
+      "repo": "iom-master-data",
+      "path": "integrations/oauth-and-feature-flags.md"
+    }
+  ],
+  "find location base url": [
+    {
+      "repo": "iom-master-data",
+      "path": "integrations/upstream-location-and-facility.md"
+    }
+  ],
+  "trace facility oauth": [
+    {
+      "repo": "iom-master-data",
+      "path": "integrations/upstream-location-and-facility.md"
+    }
+  ],
+  "inspect external headers": [
+    {
+      "repo": "iom-master-data",
+      "path": "integrations/upstream-location-and-facility.md"
+    }
+  ],
+  "see location integration": [
+    {
+      "repo": "iom-master-data",
+      "path": "integrations/upstream-location-and-facility.md"
+    }
+  ],
+  "debug facility retry": [
+    {
+      "repo": "iom-master-data",
+      "path": "integrations/upstream-location-and-facility.md"
+    }
+  ],
+  "find vendor topic config": [
+    {
+      "repo": "iom-master-data",
+      "path": "integrations/vendor-feeds.md"
+    }
+  ],
+  "inspect schema registry": [
+    {
+      "repo": "iom-master-data",
+      "path": "integrations/vendor-feeds.md"
+    }
+  ],
+  "see vendor kafka auth": [
+    {
+      "repo": "iom-master-data",
+      "path": "integrations/vendor-feeds.md"
+    }
+  ],
+  "debug vendor cluster settings": [
+    {
+      "repo": "iom-master-data",
+      "path": "integrations/vendor-feeds.md"
+    }
+  ],
+  "find v2 concurrency config": [
+    {
+      "repo": "iom-master-data",
+      "path": "integrations/vendor-feeds.md"
+    }
+  ],
+  "see failure behavior": [
+    {
+      "repo": "iom-master-data",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "inspect graceful degradation": [
+    {
+      "repo": "iom-master-data",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "find batch error policy": [
+    {
+      "repo": "iom-master-data",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "see soft delete semantics": [
+    {
+      "repo": "iom-master-data",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "trace not-found responses": [
+    {
+      "repo": "iom-master-data",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "find prometheus endpoint": [
+    {
+      "repo": "iom-master-data",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "inspect tracing": [
+    {
+      "repo": "iom-master-data",
+      "path": "operations/monitoring.md"
+    },
+    {
+      "repo": "iom-order-service",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "see observed aspect": [
+    {
+      "repo": "iom-master-data",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "find actuator exposure": [
+    {
+      "repo": "iom-master-data",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "see kafka observation": [
+    {
+      "repo": "iom-master-data",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "find monitoring setup": [
+    {
+      "repo": "iom-master-data",
+      "path": "operations/monitoring.md"
+    },
+    {
+      "repo": "smds-facilities-service",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "check monitoring config": [
+    {
+      "repo": "iom-master-data",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "see retry policy": [
+    {
+      "repo": "iom-master-data",
+      "path": "operations/retries.md"
+    }
+  ],
+  "debug backoff": [
+    {
+      "repo": "iom-master-data",
+      "path": "operations/retries.md"
+    }
+  ],
+  "inspect kafka error handler": [
+    {
+      "repo": "iom-master-data",
+      "path": "operations/retries.md"
+    }
+  ],
+  "find ack mode": [
+    {
+      "repo": "iom-master-data",
+      "path": "operations/retries.md"
+    }
+  ],
+  "see outbound retry count": [
+    {
+      "repo": "iom-master-data",
+      "path": "operations/retries.md"
+    }
+  ],
+  "find api route": [
+    {
+      "repo": "iom-master-data",
+      "path": "navigation/entry-points-1.md"
+    }
+  ],
+  "trace incoming request": [
+    {
+      "repo": "iom-master-data",
+      "path": "navigation/entry-points-1.md"
+    }
+  ],
+  "map controller endpoints": [
+    {
+      "repo": "iom-master-data",
+      "path": "navigation/entry-points-1.md"
+    }
+  ],
+  "locate rest handler": [
+    {
+      "repo": "iom-master-data",
+      "path": "navigation/entry-points-1.md"
+    }
+  ],
+  "find vendor endpoints": [
+    {
+      "repo": "iom-master-data",
+      "path": "navigation/entry-points-2.md"
+    }
+  ],
+  "see sales routes": [
+    {
+      "repo": "iom-master-data",
+      "path": "navigation/entry-points-2.md"
+    }
+  ],
+  "inspect diesel endpoint": [
+    {
+      "repo": "iom-master-data",
+      "path": "navigation/entry-points-2.md"
+    }
+  ],
+  "map batch lookups": [
+    {
+      "repo": "iom-master-data",
+      "path": "navigation/entry-points-2.md"
+    }
+  ],
+  "list the entry points": [
+    {
+      "repo": "iom-master-data",
+      "path": "navigation/entry-points-2.md"
+    },
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/entry-points.md"
+    },
+    {
+      "repo": "iom-order-service",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "find important classes": [
+    {
+      "repo": "iom-master-data",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "see service owners": [
+    {
+      "repo": "iom-master-data",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "locate kafka code": [
+    {
+      "repo": "iom-master-data",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "locate configs": [
+    {
+      "repo": "iom-master-data",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "map persistence gateways": [
+    {
+      "repo": "iom-master-data",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "find a key class": [
+    {
+      "repo": "iom-master-data",
+      "path": "navigation/key-classes.md"
+    },
+    {
+      "repo": "iom-master-data",
+      "path": "navigation/scenarios.md"
+    },
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/key-classes.md"
+    },
+    {
+      "repo": "iom-order-service",
+      "path": "navigation/key-classes.md"
+    },
+    {
+      "repo": "smds-facilities-service",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "where to change vendors": [
+    {
+      "repo": "iom-master-data",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "trace commodity restriction": [
+    {
+      "repo": "iom-master-data",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "debug location search": [
+    {
+      "repo": "iom-master-data",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "find vessel logic": [
+    {
+      "repo": "iom-master-data",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "start from charge lookup": [
+    {
+      "repo": "iom-master-data",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "locate the right class": [
+    {
+      "repo": "iom-master-data",
+      "path": "navigation/scenarios.md"
+    },
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/key-classes.md"
+    },
+    {
+      "repo": "iom-order-service",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "understand calculate rates request fields": [
+    {
+      "repo": "iom-offer-service",
+      "path": "domain/CalculateRatesRequest.md"
+    }
+  ],
+  "add new field to reprice request": [
+    {
+      "repo": "iom-offer-service",
+      "path": "domain/CalculateRatesRequest.md"
+    }
+  ],
+  "find transport route structure for rates": [
+    {
+      "repo": "iom-offer-service",
+      "path": "domain/CalculateRatesRequest.md"
+    }
+  ],
+  "understand additional charges in reprice": [
+    {
+      "repo": "iom-offer-service",
+      "path": "domain/CalculateRatesRequest.md"
+    }
+  ],
+  "trace rates request construction": [
+    {
+      "repo": "iom-offer-service",
+      "path": "domain/CalculateRatesRequest.md"
+    }
+  ],
+  "understand offer api input structure": [
+    {
+      "repo": "iom-offer-service",
+      "path": "domain/OfferRequest.md"
+    }
+  ],
+  "trace routing output to offer input": [
+    {
+      "repo": "iom-offer-service",
+      "path": "domain/OfferRequest.md"
+    }
+  ],
+  "find triangulation type usage": [
+    {
+      "repo": "iom-offer-service",
+      "path": "domain/OfferRequest.md"
+    }
+  ],
+  "understand correlation id propagation": [
+    {
+      "repo": "iom-offer-service",
+      "path": "domain/OfferRequest.md"
+    }
+  ],
+  "add new field to offer request": [
+    {
+      "repo": "iom-offer-service",
+      "path": "domain/OfferRequest.md"
+    },
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/offer-v3.md"
+    }
+  ],
+  "understand mongodb document structure": [
+    {
+      "repo": "iom-offer-service",
+      "path": "domain/OfferedServicePlanDocument.md"
+    }
+  ],
+  "find fields stored per offered plan": [
+    {
+      "repo": "iom-offer-service",
+      "path": "domain/OfferedServicePlanDocument.md"
+    }
+  ],
+  "trace service plan number assignment": [
+    {
+      "repo": "iom-offer-service",
+      "path": "domain/OfferedServicePlanDocument.md"
+    }
+  ],
+  "understand offered plan lifecycle": [
+    {
+      "repo": "iom-offer-service",
+      "path": "domain/OfferedServicePlanDocument.md"
+    }
+  ],
+  "find rates stored on offered plan": [
+    {
+      "repo": "iom-offer-service",
+      "path": "domain/OfferedServicePlanDocument.md"
+    }
+  ],
+  "find the persistence layer": [
+    {
+      "repo": "iom-offer-service",
+      "path": "domain/OfferedServicePlanDocument.md"
+    }
+  ],
+  "check persistence schema": [
+    {
+      "repo": "iom-offer-service",
+      "path": "domain/OfferedServicePlanDocument.md"
+    }
+  ],
+  "understand search request structure": [
+    {
+      "repo": "iom-offer-service",
+      "path": "domain/SearchRequest.md"
+    }
+  ],
+  "add new field to search request": [
+    {
+      "repo": "iom-offer-service",
+      "path": "domain/SearchRequest.md"
+    }
+  ],
+  "trace search input to service": [
+    {
+      "repo": "iom-offer-service",
+      "path": "domain/SearchRequest.md"
+    }
+  ],
+  "find transport activity field meaning": [
+    {
+      "repo": "iom-offer-service",
+      "path": "domain/SearchRequest.md"
+    }
+  ],
+  "understand booking equipment structure": [
+    {
+      "repo": "iom-offer-service",
+      "path": "domain/SearchRequest.md"
+    }
+  ],
+  "understand jwt token validation": [
+    {
+      "repo": "iom-offer-service",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "trace request through observability stack": [
+    {
+      "repo": "iom-offer-service",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "understand retry and circuit breaker config": [
+    {
+      "repo": "iom-offer-service",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "find feature flag checks": [
+    {
+      "repo": "iom-offer-service",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "understand error propagation model": [
+    {
+      "repo": "iom-offer-service",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "find cross-cutting concerns": [
+    {
+      "repo": "iom-offer-service",
+      "path": "architecture/cross-cutting.md"
+    },
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "check security concerns": [
+    {
+      "repo": "iom-offer-service",
+      "path": "architecture/cross-cutting.md"
+    },
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "understand package layout": [
+    {
+      "repo": "iom-offer-service",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "find domain model classes": [
+    {
+      "repo": "iom-offer-service",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "locate webclient implementations": [
+    {
+      "repo": "iom-offer-service",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "add new external integration": [
+    {
+      "repo": "iom-offer-service",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "understand validator chain": [
+    {
+      "repo": "iom-offer-service",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "understand module layout": [
+    {
+      "repo": "iom-offer-service",
+      "path": "architecture/modules.md"
+    },
+    {
+      "repo": "iom-order-service",
+      "path": "architecture/modules.md"
+    },
+    {
+      "repo": "smds-facilities-service",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "find the module structure": [
+    {
+      "repo": "iom-offer-service",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "find a package": [
+    {
+      "repo": "iom-offer-service",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "find kotlin version used": [
+    {
+      "repo": "iom-offer-service",
+      "path": "stack/stack.md"
+    }
+  ],
+  "check spring boot version": [
+    {
+      "repo": "iom-offer-service",
+      "path": "stack/stack.md"
+    }
+  ],
+  "understand build tasks available": [
+    {
+      "repo": "iom-offer-service",
+      "path": "stack/stack.md"
+    }
+  ],
+  "find gradle build commands": [
+    {
+      "repo": "iom-offer-service",
+      "path": "stack/stack.md"
+    }
+  ],
+  "find build stack commands": [
+    {
+      "repo": "iom-offer-service",
+      "path": "stack/stack.md"
+    }
+  ],
+  "understand how stale offers are deleted": [
+    {
+      "repo": "iom-offer-service",
+      "path": "runtime/offer-cleanup-flow.md"
+    }
+  ],
+  "find cleanup query logic": [
+    {
+      "repo": "iom-offer-service",
+      "path": "runtime/offer-cleanup-flow.md"
+    }
+  ],
+  "trace delete offered plan endpoint": [
+    {
+      "repo": "iom-offer-service",
+      "path": "runtime/offer-cleanup-flow.md"
+    }
+  ],
+  "understand what unmapped means": [
+    {
+      "repo": "iom-offer-service",
+      "path": "runtime/offer-cleanup-flow.md"
+    }
+  ],
+  "find how old records are identified": [
+    {
+      "repo": "iom-offer-service",
+      "path": "runtime/offer-cleanup-flow.md"
+    }
+  ],
+  "trace search request end to end": [
+    {
+      "repo": "iom-offer-service",
+      "path": "runtime/offer-search-flow.md"
+    }
+  ],
+  "understand how routes are fetched": [
+    {
+      "repo": "iom-offer-service",
+      "path": "runtime/offer-search-flow.md"
+    },
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/routing.md"
+    }
+  ],
+  "understand offer api invocation": [
+    {
+      "repo": "iom-offer-service",
+      "path": "runtime/offer-search-flow.md"
+    }
+  ],
+  "find where customs enrichment happens": [
+    {
+      "repo": "iom-offer-service",
+      "path": "runtime/offer-search-flow.md"
+    }
+  ],
+  "understand parallelism in search flow": [
+    {
+      "repo": "iom-offer-service",
+      "path": "runtime/offer-search-flow.md"
+    }
+  ],
+  "calculate rates for offered plan": [
+    {
+      "repo": "iom-offer-service",
+      "path": "runtime/rates-flow.md"
+    }
+  ],
+  "reprice offer with price date change": [
+    {
+      "repo": "iom-offer-service",
+      "path": "runtime/rates-flow.md"
+    }
+  ],
+  "reprice with additional charges": [
+    {
+      "repo": "iom-offer-service",
+      "path": "runtime/rates-flow.md"
+    },
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "understand mandatory charge validation": [
+    {
+      "repo": "iom-offer-service",
+      "path": "runtime/rates-flow.md"
+    }
+  ],
+  "trace rates merge into service plan": [
+    {
+      "repo": "iom-offer-service",
+      "path": "runtime/rates-flow.md"
+    }
+  ],
+  "trace kafka event to mongodb update": [
+    {
+      "repo": "iom-offer-service",
+      "path": "runtime/service-plan-event-processing-flow.md"
+    }
+  ],
+  "understand service plan number linking": [
+    {
+      "repo": "iom-offer-service",
+      "path": "runtime/service-plan-event-processing-flow.md"
+    }
+  ],
+  "find kafka consumer configuration": [
+    {
+      "repo": "iom-offer-service",
+      "path": "runtime/service-plan-event-processing-flow.md"
+    }
+  ],
+  "understand acknowledgement behaviour": [
+    {
+      "repo": "iom-offer-service",
+      "path": "runtime/service-plan-event-processing-flow.md"
+    }
+  ],
+  "find offset reset strategy": [
+    {
+      "repo": "iom-offer-service",
+      "path": "runtime/service-plan-event-processing-flow.md"
+    }
+  ],
+  "find all exposed api endpoints": [
+    {
+      "repo": "iom-offer-service",
+      "path": "contracts/api-contracts.md"
+    }
+  ],
+  "check request and response types": [
+    {
+      "repo": "iom-offer-service",
+      "path": "contracts/api-contracts.md"
+    }
+  ],
+  "understand auth requirements per endpoint": [
+    {
+      "repo": "iom-offer-service",
+      "path": "contracts/api-contracts.md"
+    }
+  ],
+  "find reprice endpoint signature": [
+    {
+      "repo": "iom-offer-service",
+      "path": "contracts/api-contracts.md"
+    }
+  ],
+  "check error response codes": [
+    {
+      "repo": "iom-offer-service",
+      "path": "contracts/api-contracts.md"
+    }
+  ],
+  "check contract definitions": [
+    {
+      "repo": "iom-offer-service",
+      "path": "contracts/api-contracts.md"
+    }
+  ],
+  "understand mongodb collection structure": [
+    {
+      "repo": "iom-offer-service",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "find indexes on offered service plans": [
+    {
+      "repo": "iom-offer-service",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "understand audit collection schema": [
+    {
+      "repo": "iom-offer-service",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "find how search request is stored": [
+    {
+      "repo": "iom-offer-service",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "check document fields in mongodb": [
+    {
+      "repo": "iom-offer-service",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "understand kafka event schema": [
+    {
+      "repo": "iom-offer-service",
+      "path": "contracts/kafka-events.md"
+    }
+  ],
+  "find topic and consumer group names": [
+    {
+      "repo": "iom-offer-service",
+      "path": "contracts/kafka-events.md"
+    }
+  ],
+  "understand avro deserialization setup": [
+    {
+      "repo": "iom-offer-service",
+      "path": "contracts/kafka-events.md"
+    }
+  ],
+  "trace message fields to mongo update": [
+    {
+      "repo": "iom-offer-service",
+      "path": "contracts/kafka-events.md"
+    }
+  ],
+  "find kafka error handling config": [
+    {
+      "repo": "iom-offer-service",
+      "path": "contracts/kafka-events.md"
+    }
+  ],
+  "validate commodity restrictions": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/business-rules.md"
+    }
+  ],
+  "understand business rules api usage": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/business-rules.md"
+    }
+  ],
+  "find business rules base url": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/business-rules.md"
+    }
+  ],
+  "trace commodity restriction check": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/business-rules.md"
+    }
+  ],
+  "find cargo weight rules endpoint": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/business-rules.md"
+    }
+  ],
+  "understand cargo weight validation": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/cargo-weight.md"
+    }
+  ],
+  "find cargo weight api base url": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/cargo-weight.md"
+    }
+  ],
+  "trace weight check in search flow": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/cargo-weight.md"
+    }
+  ],
+  "find cargo weight circuit breaker": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/cargo-weight.md"
+    }
+  ],
+  "understand weight restriction countries": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/cargo-weight.md"
+    }
+  ],
+  "understand charge type name resolution": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/charge-types.md"
+    }
+  ],
+  "find charge types api base url": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/charge-types.md"
+    }
+  ],
+  "trace charge type cache refresh": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/charge-types.md"
+    }
+  ],
+  "understand mandatory charge codes": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/charge-types.md"
+    }
+  ],
+  "find charge standardization logic": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/charge-types.md"
+    }
+  ],
+  "validate commodity code in search request": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/commodity.md"
+    }
+  ],
+  "fetch reefer temperature requirements": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/commodity.md"
+    }
+  ],
+  "understand commodity restriction validation": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/commodity.md"
+    }
+  ],
+  "find commodity api base url": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/commodity.md"
+    }
+  ],
+  "find reefer api base url": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/commodity.md"
+    }
+  ],
+  "validate container type in search request": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/container-type.md"
+    }
+  ],
+  "find container type api base url": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/container-type.md"
+    }
+  ],
+  "understand equipment profile validation": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/container-type.md"
+    }
+  ],
+  "find container type circuit breaker": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/container-type.md"
+    }
+  ],
+  "understand iso size type validation": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/container-type.md"
+    }
+  ],
+  "validate customer party code": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/customer.md"
+    }
+  ],
+  "find customer api base url": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/customer.md"
+    }
+  ],
+  "understand party validation chain": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/customer.md"
+    }
+  ],
+  "find customer circuit breaker": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/customer.md"
+    }
+  ],
+  "trace bookedby contact validation": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/customer.md"
+    }
+  ],
+  "understand customs charge enrichment": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/customs.md"
+    }
+  ],
+  "find customs api base url": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/customs.md"
+    }
+  ],
+  "trace customs charge into service plan": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/customs.md"
+    }
+  ],
+  "understand customs feature flag": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/customs.md"
+    }
+  ],
+  "find customs export vs import logic": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/customs.md"
+    }
+  ],
+  "understand facility data lookup": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/facility.md"
+    }
+  ],
+  "find facility api base url": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/facility.md"
+    }
+  ],
+  "trace facility enrichment in search": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/facility.md"
+    }
+  ],
+  "find facility circuit breaker": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/facility.md"
+    }
+  ],
+  "understand facility vs city location": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/facility.md"
+    }
+  ],
+  "understand how location data is fetched": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/location.md"
+    }
+  ],
+  "find location api base url": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/location.md"
+    }
+  ],
+  "trace location enrichment in search flow": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/location.md"
+    }
+  ],
+  "find location client circuit breaker": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/location.md"
+    }
+  ],
+  "understand geo id based location lookup": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/location.md"
+    }
+  ],
+  "understand how offers are fetched": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/offer-v3.md"
+    }
+  ],
+  "find offer api base url config": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/offer-v3.md"
+    }
+  ],
+  "understand mock fallback on sit uat": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/offer-v3.md"
+    }
+  ],
+  "trace offer client circuit breaker": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/offer-v3.md"
+    }
+  ],
+  "understand rates api integration": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/rates.md"
+    }
+  ],
+  "find rates base url config": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/rates.md"
+    }
+  ],
+  "trace rates api request construction": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/rates.md"
+    }
+  ],
+  "understand rates circuit breaker": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/rates.md"
+    }
+  ],
+  "find rates retry configuration": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/rates.md"
+    }
+  ],
+  "find routing api base url": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/routing.md"
+    }
+  ],
+  "trace routing request construction": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/routing.md"
+    }
+  ],
+  "understand route filtering logic": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/routing.md"
+    }
+  ],
+  "find routing circuit breaker name": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/routing.md"
+    }
+  ],
+  "understand sales object lookup": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/sales-object.md"
+    }
+  ],
+  "find sales object api base url": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/sales-object.md"
+    }
+  ],
+  "trace sales object in search": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/sales-object.md"
+    }
+  ],
+  "find sales object circuit breaker": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/sales-object.md"
+    }
+  ],
+  "understand product pricing context": [
+    {
+      "repo": "iom-offer-service",
+      "path": "integrations/sales-object.md"
+    }
+  ],
+  "understand failure handling for external calls": [
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "find how customs errors are handled": [
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "understand kafka consumer error handling": [
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "find what errors cause 502 response": [
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "understand circuit breaker open state behaviour": [
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "find all feature flags used": [
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/flags-and-lists.md"
+    }
+  ],
+  "understand empty container allow list": [
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/flags-and-lists.md"
+    }
+  ],
+  "find mandatory charge code configuration": [
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/flags-and-lists.md"
+    }
+  ],
+  "understand launchdarkly flag usage": [
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/flags-and-lists.md"
+    }
+  ],
+  "find transport mode allow list": [
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/flags-and-lists.md"
+    }
+  ],
+  "find prometheus metrics endpoint": [
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "understand distributed tracing setup": [
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "find health check endpoints": [
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "understand log level configuration": [
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "check zipkin tracing endpoint": [
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "find observability wiring": [
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/monitoring.md"
+    },
+    {
+      "repo": "iom-order-service",
+      "path": "operations/monitoring.md"
+    },
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "check observability setup": [
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/monitoring.md"
+    },
+    {
+      "repo": "iom-order-service",
+      "path": "operations/monitoring.md"
+    },
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "find retry count for external calls": [
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/retries.md"
+    }
+  ],
+  "understand circuit breaker thresholds": [
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/retries.md"
+    }
+  ],
+  "understand when retries are skipped": [
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/retries.md"
+    }
+  ],
+  "find circuit breaker instance names": [
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/retries.md"
+    }
+  ],
+  "understand fallback behaviour on open circuit": [
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/retries.md"
+    }
+  ],
+  "find resilience policies": [
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/retries.md"
+    }
+  ],
+  "check retry resilience": [
+    {
+      "repo": "iom-offer-service",
+      "path": "operations/retries.md"
+    }
+  ],
+  "search for inland service plans": [
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "calculate rates for offer": [
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "get repriced offer response": [
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "delete stale offer records": [
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "consume service plan domain event": [
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "find an entry point": [
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "find request routing": [
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/entry-points.md"
+    },
+    {
+      "repo": "iom-order-service",
+      "path": "navigation/scenarios.md"
+    },
+    {
+      "repo": "smds-facilities-service",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "trace task routing": [
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/entry-points.md"
+    },
+    {
+      "repo": "iom-order-service",
+      "path": "navigation/scenarios.md"
+    },
+    {
+      "repo": "smds-facilities-service",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "find where offer search logic lives": [
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "understand rates calculation flow": [
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "locate mongodb persistence layer": [
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "trace customs charge enrichment": [
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "find kafka consumer logic": [
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "orient a new developer": [
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "find a developer starting point": [
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "search service plans for booking": [
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "amend existing service plan search": [
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "calculate inland transport rates": [
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "reprice offer with new date": [
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "clean up unmapped offer records": [
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "get offered service plan details": [
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "find the right use case": [
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "match a use case": [
+    {
+      "repo": "iom-offer-service",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "inspect mutation pipeline": [
+    {
+      "repo": "iom-order-service",
+      "path": "domain/order-domain.md"
+    }
+  ],
+  "inspect amend rules": [
+    {
+      "repo": "iom-order-service",
+      "path": "domain/order-domain.md"
+    }
+  ],
+  "inspect incident side effects": [
+    {
+      "repo": "iom-order-service",
+      "path": "domain/order-domain.md"
+    }
+  ],
+  "inspect customer history writes": [
+    {
+      "repo": "iom-order-service",
+      "path": "domain/order-domain.md"
+    }
+  ],
+  "inspect outbox dispatch": [
+    {
+      "repo": "iom-order-service",
+      "path": "domain/order-domain.md"
+    }
+  ],
+  "understand the order domain": [
+    {
+      "repo": "iom-order-service",
+      "path": "domain/order-domain.md"
+    }
+  ],
+  "find order logic": [
+    {
+      "repo": "iom-order-service",
+      "path": "domain/order-domain.md"
+    }
+  ],
+  "inspect service plan rules": [
+    {
+      "repo": "iom-order-service",
+      "path": "domain/service-plan.md"
+    }
+  ],
+  "inspect status changes": [
+    {
+      "repo": "iom-order-service",
+      "path": "domain/service-plan.md"
+    }
+  ],
+  "inspect charge updates": [
+    {
+      "repo": "iom-order-service",
+      "path": "domain/service-plan.md"
+    }
+  ],
+  "inspect container updates": [
+    {
+      "repo": "iom-order-service",
+      "path": "domain/service-plan.md"
+    }
+  ],
+  "inspect repricing rules": [
+    {
+      "repo": "iom-order-service",
+      "path": "domain/service-plan.md"
+    }
+  ],
+  "understand the service plan": [
+    {
+      "repo": "iom-order-service",
+      "path": "domain/service-plan.md"
+    }
+  ],
+  "inspect jwt setup": [
+    {
+      "repo": "iom-order-service",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "inspect observability": [
+    {
+      "repo": "iom-order-service",
+      "path": "architecture/cross-cutting.md"
+    },
+    {
+      "repo": "smds-facilities-service",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "inspect swagger groups": [
+    {
+      "repo": "iom-order-service",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "inspect error sources": [
+    {
+      "repo": "iom-order-service",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "understand cross-cutting behavior": [
+    {
+      "repo": "iom-order-service",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "check shared behavior": [
+    {
+      "repo": "iom-order-service",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "inspect package tree": [
+    {
+      "repo": "iom-order-service",
+      "path": "architecture/modules.md"
+    },
+    {
+      "repo": "smds-facilities-service",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "find module boundaries": [
+    {
+      "repo": "iom-order-service",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "map source layout": [
+    {
+      "repo": "iom-order-service",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "locate domain packages": [
+    {
+      "repo": "iom-order-service",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "locate resource assets": [
+    {
+      "repo": "iom-order-service",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "detect framework stack": [
+    {
+      "repo": "iom-order-service",
+      "path": "stack/stack.md"
+    }
+  ],
+  "find runtime libraries": [
+    {
+      "repo": "iom-order-service",
+      "path": "stack/stack.md"
+    }
+  ],
+  "find db tooling": [
+    {
+      "repo": "iom-order-service",
+      "path": "stack/stack.md"
+    }
+  ],
+  "debug booking consumer": [
+    {
+      "repo": "iom-order-service",
+      "path": "runtime/booking-event-processing-flow.md"
+    }
+  ],
+  "trace pricing update": [
+    {
+      "repo": "iom-order-service",
+      "path": "runtime/booking-event-processing-flow.md"
+    }
+  ],
+  "trace booking status update": [
+    {
+      "repo": "iom-order-service",
+      "path": "runtime/booking-event-processing-flow.md"
+    }
+  ],
+  "inspect ack behavior": [
+    {
+      "repo": "iom-order-service",
+      "path": "runtime/booking-event-processing-flow.md"
+    },
+    {
+      "repo": "iom-order-service",
+      "path": "runtime/service-plan-domain-event-flow.md"
+    }
+  ],
+  "inspect outbox write": [
+    {
+      "repo": "iom-order-service",
+      "path": "runtime/booking-event-processing-flow.md"
+    }
+  ],
+  "trace dashboard search": [
+    {
+      "repo": "iom-order-service",
+      "path": "runtime/dashboard-query-flow.md"
+    }
+  ],
+  "trace multi search": [
+    {
+      "repo": "iom-order-service",
+      "path": "runtime/dashboard-query-flow.md"
+    }
+  ],
+  "trace dashboard export": [
+    {
+      "repo": "iom-order-service",
+      "path": "runtime/dashboard-query-flow.md"
+    }
+  ],
+  "trace container search": [
+    {
+      "repo": "iom-order-service",
+      "path": "runtime/dashboard-query-flow.md"
+    }
+  ],
+  "inspect query criteria": [
+    {
+      "repo": "iom-order-service",
+      "path": "runtime/dashboard-query-flow.md"
+    }
+  ],
+  "trace create order": [
+    {
+      "repo": "iom-order-service",
+      "path": "runtime/order-creation-flow.md"
+    }
+  ],
+  "trace patch order": [
+    {
+      "repo": "iom-order-service",
+      "path": "runtime/order-creation-flow.md"
+    }
+  ],
+  "trace amend order": [
+    {
+      "repo": "iom-order-service",
+      "path": "runtime/order-creation-flow.md"
+    }
+  ],
+  "trace charge update": [
+    {
+      "repo": "iom-order-service",
+      "path": "runtime/order-creation-flow.md"
+    }
+  ],
+  "trace container update": [
+    {
+      "repo": "iom-order-service",
+      "path": "runtime/order-creation-flow.md"
+    }
+  ],
+  "debug domain event audit": [
+    {
+      "repo": "iom-order-service",
+      "path": "runtime/service-plan-domain-event-flow.md"
+    }
+  ],
+  "inspect service plan changed": [
+    {
+      "repo": "iom-order-service",
+      "path": "runtime/service-plan-domain-event-flow.md"
+    }
+  ],
+  "inspect audit diff": [
+    {
+      "repo": "iom-order-service",
+      "path": "runtime/service-plan-domain-event-flow.md"
+    }
+  ],
+  "inspect event filter": [
+    {
+      "repo": "iom-order-service",
+      "path": "runtime/service-plan-domain-event-flow.md"
+    }
+  ],
+  "list rest endpoints": [
+    {
+      "repo": "iom-order-service",
+      "path": "contracts/api-contracts.md"
+    }
+  ],
+  "find write endpoint": [
+    {
+      "repo": "iom-order-service",
+      "path": "contracts/api-contracts.md"
+    }
+  ],
+  "find search endpoint": [
+    {
+      "repo": "iom-order-service",
+      "path": "contracts/api-contracts.md"
+    }
+  ],
+  "find export endpoint": [
+    {
+      "repo": "iom-order-service",
+      "path": "contracts/api-contracts.md"
+    }
+  ],
+  "find incident endpoint": [
+    {
+      "repo": "iom-order-service",
+      "path": "contracts/api-contracts.md"
+    }
+  ],
+  "list core tables": [
+    {
+      "repo": "iom-order-service",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "inspect search columns": [
+    {
+      "repo": "iom-order-service",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "inspect outbox schema": [
+    {
+      "repo": "iom-order-service",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "inspect audit schema": [
+    {
+      "repo": "iom-order-service",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "inspect customer history table": [
+    {
+      "repo": "iom-order-service",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "list kafka topics": [
+    {
+      "repo": "iom-order-service",
+      "path": "contracts/kafka-events.md"
+    }
+  ],
+  "inspect ack config": [
+    {
+      "repo": "iom-order-service",
+      "path": "contracts/kafka-events.md"
+    }
+  ],
+  "inspect outbound events": [
+    {
+      "repo": "iom-order-service",
+      "path": "contracts/kafka-events.md"
+    }
+  ],
+  "inspect avro inputs": [
+    {
+      "repo": "iom-order-service",
+      "path": "contracts/kafka-events.md"
+    }
+  ],
+  "find kafka topics": [
+    {
+      "repo": "iom-order-service",
+      "path": "contracts/kafka-events.md"
+    }
+  ],
+  "inspect jwt issuer": [
+    {
+      "repo": "iom-order-service",
+      "path": "integrations/identity-providers.md"
+    }
+  ],
+  "inspect jwk lookup": [
+    {
+      "repo": "iom-order-service",
+      "path": "integrations/identity-providers.md"
+    }
+  ],
+  "inspect oauth client": [
+    {
+      "repo": "iom-order-service",
+      "path": "integrations/identity-providers.md"
+    }
+  ],
+  "inspect role extraction": [
+    {
+      "repo": "iom-order-service",
+      "path": "integrations/identity-providers.md"
+    }
+  ],
+  "inspect auth bypass": [
+    {
+      "repo": "iom-order-service",
+      "path": "integrations/identity-providers.md"
+    }
+  ],
+  "find identity providers": [
+    {
+      "repo": "iom-order-service",
+      "path": "integrations/identity-providers.md"
+    },
+    {
+      "repo": "smds-facilities-service",
+      "path": "integrations/identity-providers.md"
+    }
+  ],
+  "check identity config": [
+    {
+      "repo": "iom-order-service",
+      "path": "integrations/identity-providers.md"
+    }
+  ],
+  "inspect master data call": [
+    {
+      "repo": "iom-order-service",
+      "path": "integrations/master-data-and-rules.md"
+    }
+  ],
+  "inspect planning deadline": [
+    {
+      "repo": "iom-order-service",
+      "path": "integrations/master-data-and-rules.md"
+    }
+  ],
+  "inspect amend reasons": [
+    {
+      "repo": "iom-order-service",
+      "path": "integrations/master-data-and-rules.md"
+    }
+  ],
+  "inspect dashboard resolver": [
+    {
+      "repo": "iom-order-service",
+      "path": "integrations/master-data-and-rules.md"
+    }
+  ],
+  "inspect external rule config": [
+    {
+      "repo": "iom-order-service",
+      "path": "integrations/master-data-and-rules.md"
+    }
+  ],
+  "find master data calls": [
+    {
+      "repo": "iom-order-service",
+      "path": "integrations/master-data-and-rules.md"
+    }
+  ],
+  "inspect rolodex auth": [
+    {
+      "repo": "iom-order-service",
+      "path": "integrations/rolodex.md"
+    }
+  ],
+  "inspect template download": [
+    {
+      "repo": "iom-order-service",
+      "path": "integrations/rolodex.md"
+    }
+  ],
+  "inspect external storage": [
+    {
+      "repo": "iom-order-service",
+      "path": "integrations/rolodex.md"
+    }
+  ],
+  "inspect report template ids": [
+    {
+      "repo": "iom-order-service",
+      "path": "integrations/rolodex.md"
+    }
+  ],
+  "inspect excel bytes path": [
+    {
+      "repo": "iom-order-service",
+      "path": "integrations/rolodex.md"
+    }
+  ],
+  "find the rolodex call": [
+    {
+      "repo": "iom-order-service",
+      "path": "integrations/rolodex.md"
+    }
+  ],
+  "inspect telikos call": [
+    {
+      "repo": "iom-order-service",
+      "path": "integrations/telikos-booking.md"
+    }
+  ],
+  "inspect send to tms": [
+    {
+      "repo": "iom-order-service",
+      "path": "integrations/telikos-booking.md"
+    }
+  ],
+  "inspect send to execution": [
+    {
+      "repo": "iom-order-service",
+      "path": "integrations/telikos-booking.md"
+    }
+  ],
+  "inspect booking confirm": [
+    {
+      "repo": "iom-order-service",
+      "path": "integrations/telikos-booking.md"
+    }
+  ],
+  "inspect telikos topic": [
+    {
+      "repo": "iom-order-service",
+      "path": "integrations/telikos-booking.md"
+    }
+  ],
+  "inspect failure points": [
+    {
+      "repo": "iom-order-service",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "inspect stale event handling": [
+    {
+      "repo": "iom-order-service",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "inspect validation failure": [
+    {
+      "repo": "iom-order-service",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "inspect persistence conflict": [
+    {
+      "repo": "iom-order-service",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "inspect external dependency risk": [
+    {
+      "repo": "iom-order-service",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "inspect scheduler lists": [
+    {
+      "repo": "iom-order-service",
+      "path": "operations/flags-and-lists.md"
+    }
+  ],
+  "inspect vat list": [
+    {
+      "repo": "iom-order-service",
+      "path": "operations/flags-and-lists.md"
+    }
+  ],
+  "inspect channel allowlist": [
+    {
+      "repo": "iom-order-service",
+      "path": "operations/flags-and-lists.md"
+    }
+  ],
+  "inspect launchdarkly keys": [
+    {
+      "repo": "iom-order-service",
+      "path": "operations/flags-and-lists.md"
+    }
+  ],
+  "inspect metrics": [
+    {
+      "repo": "iom-order-service",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "inspect prometheus": [
+    {
+      "repo": "iom-order-service",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "inspect access logs": [
+    {
+      "repo": "iom-order-service",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "inspect custom counters": [
+    {
+      "repo": "iom-order-service",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "inspect kafka retry": [
+    {
+      "repo": "iom-order-service",
+      "path": "operations/retries.md"
+    }
+  ],
+  "inspect external retry": [
+    {
+      "repo": "iom-order-service",
+      "path": "operations/retries.md"
+    }
+  ],
+  "inspect ack policy": [
+    {
+      "repo": "iom-order-service",
+      "path": "operations/retries.md"
+    }
+  ],
+  "inspect backoff values": [
+    {
+      "repo": "iom-order-service",
+      "path": "operations/retries.md"
+    }
+  ],
+  "inspect consumer failure handling": [
+    {
+      "repo": "iom-order-service",
+      "path": "operations/retries.md"
+    }
+  ],
+  "find api entrypoint": [
+    {
+      "repo": "iom-order-service",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "trace kafka ingress": [
+    {
+      "repo": "iom-order-service",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "locate scheduler trigger": [
+    {
+      "repo": "iom-order-service",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "start from controller": [
+    {
+      "repo": "iom-order-service",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "find mutation owner": [
+    {
+      "repo": "iom-order-service",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "find order owner": [
+    {
+      "repo": "iom-order-service",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "find search owner": [
+    {
+      "repo": "iom-order-service",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "find kafka handler": [
+    {
+      "repo": "iom-order-service",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "find security config": [
+    {
+      "repo": "iom-order-service",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "find outbox logic": [
+    {
+      "repo": "iom-order-service",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "update service plan": [
+    {
+      "repo": "iom-order-service",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "search dashboard results": [
+    {
+      "repo": "iom-order-service",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "debug booking event": [
+    {
+      "repo": "iom-order-service",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "export amendment file": [
+    {
+      "repo": "iom-order-service",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "check customer history": [
+    {
+      "repo": "iom-order-service",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "auth setup": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "tracing setup": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "architecture/cross-cutting.md"
+    },
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "operations/monitoring.md"
+    },
+    {
+      "repo": "iom-web-integrator",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "feature flag wiring": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "shared config": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "blocking in schedulers": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "repo package tree": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "where code lives": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "module layout": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "architecture/modules.md"
+    },
+    {
+      "repo": "iom-web-integrator",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "package ownership": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "find scheduler package": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "tech stack": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "stack/stack.md"
+    }
+  ],
+  "build commands": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "stack/stack.md"
+    }
+  ],
+  "test commands": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "stack/stack.md"
+    }
+  ],
+  "how to compile": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "stack/stack.md"
+    }
+  ],
+  "repricing event flow": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "runtime/event-activity-matrix.md"
+    }
+  ],
+  "temporal activity sequence": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "runtime/event-activity-matrix.md"
+    }
+  ],
+  "workflow activity map": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "runtime/event-activity-matrix.md"
+    }
+  ],
+  "repricing path": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "runtime/event-activity-matrix.md"
+    }
+  ],
+  "event to workflow": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "runtime/event-activity-matrix.md"
+    }
+  ],
+  "repricing not working": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "runtime/repricing-flow.md"
+    }
+  ],
+  "why repricing failing": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "runtime/repricing-flow.md"
+    }
+  ],
+  "where repricing starts": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "runtime/repricing-flow.md"
+    }
+  ],
+  "trigger repricing workflow": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "runtime/repricing-flow.md"
+    }
+  ],
+  "repricing flow": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "runtime/repricing-flow.md"
+    },
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/repricing-flow.md"
+    }
+  ],
+  "kafka topic contract": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "contracts/kafka-events.md"
+    }
+  ],
+  "which topics publish": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "contracts/kafka-events.md"
+    }
+  ],
+  "booking event topic": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "contracts/kafka-events.md"
+    }
+  ],
+  "service plan topic": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "contracts/kafka-events.md"
+    }
+  ],
+  "domain event topic": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "contracts/kafka-events.md"
+    }
+  ],
+  "archive upload failing": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/azure-blob-storage.md"
+    }
+  ],
+  "blob path issue": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/azure-blob-storage.md"
+    }
+  ],
+  "azure blob archive": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/azure-blob-storage.md"
+    }
+  ],
+  "where blobs uploaded": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/azure-blob-storage.md"
+    }
+  ],
+  "gzip upload flow": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/azure-blob-storage.md"
+    }
+  ],
+  "offer cleanup failing": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/iom-offer-service.md"
+    },
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "delete offered plans": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/iom-offer-service.md"
+    }
+  ],
+  "offer service call": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/iom-offer-service.md"
+    }
+  ],
+  "offered plan cleanup": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/iom-offer-service.md"
+    }
+  ],
+  "where offer api lives": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/iom-offer-service.md"
+    }
+  ],
+  "repricing api failing": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/iom-web-integrator.md"
+    }
+  ],
+  "web integrator patch": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/iom-web-integrator.md"
+    }
+  ],
+  "repricing http call": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/iom-web-integrator.md"
+    }
+  ],
+  "where repricing api lives": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/iom-web-integrator.md"
+    }
+  ],
+  "service plan reprice endpoint": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/iom-web-integrator.md"
+    }
+  ],
+  "kafka broker config": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/kafka-event-brokers.md"
+    }
+  ],
+  "schema registry issue": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/kafka-event-brokers.md"
+    }
+  ],
+  "producer bootstrap servers": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/kafka-event-brokers.md"
+    }
+  ],
+  "avro publish config": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/kafka-event-brokers.md"
+    }
+  ],
+  "kafka ssl setup": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/kafka-event-brokers.md"
+    }
+  ],
+  "temporal connection issue": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/temporal.md"
+    }
+  ],
+  "repricing worker issue": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/temporal.md"
+    }
+  ],
+  "workflow client config": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/temporal.md"
+    }
+  ],
+  "temporal tls problem": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/temporal.md"
+    }
+  ],
+  "repricing task queue": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "integrations/temporal.md"
+    }
+  ],
+  "where failures happen": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "why scheduler stuck": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "archive failure path": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "kafka publish failure": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "repricing failure model": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "prometheus endpoint": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "scheduler metrics": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "log correlation": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "monitoring config": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "retry behavior": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "operations/retries.md"
+    },
+    {
+      "repo": "iom-web-integrator",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "why message failed": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "operations/retries.md"
+    }
+  ],
+  "temporal retry count": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "operations/retries.md"
+    }
+  ],
+  "kafka retry config": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "operations/retries.md"
+    }
+  ],
+  "repricing retry path": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "operations/retries.md"
+    }
+  ],
+  "scheduler not running": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "where jobs start": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "which class runs repricing": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "archive job flow": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "temporal worker entry": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "which class owns repricing": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "who uploads blobs": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "where kafka sends": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "where oauth clients live": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "which class archives orders": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "where does repricing start": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "archive job failing": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "transform job stuck": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "which class sends kafka": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "route a task to code": [
+    {
+      "repo": "iom-order-service-scheduler",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "booking request fields": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/booking-request.md"
+    }
+  ],
+  "ocean booking payload": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/booking-request.md"
+    }
+  ],
+  "duplicate booking payload": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/booking-request.md"
+    }
+  ],
+  "amend booking payload": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/booking-request.md"
+    }
+  ],
+  "booking bootstrap": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/booking-request.md"
+    }
+  ],
+  "business rules payload": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/business-rules.md"
+    }
+  ],
+  "mandatory parties rules": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/business-rules.md"
+    }
+  ],
+  "optional documents list": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/business-rules.md"
+    }
+  ],
+  "project44 customer rules": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/business-rules.md"
+    }
+  ],
+  "rule evaluation model": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/business-rules.md"
+    }
+  ],
+  "ocean booking model": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/ocean-booking.md"
+    }
+  ],
+  "tpdoc enrichment": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/ocean-booking.md"
+    }
+  ],
+  "bill of lading details": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/ocean-booking.md"
+    }
+  ],
+  "dangerous goods mapping": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/ocean-booking.md"
+    }
+  ],
+  "ocean reference flow": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/ocean-booking.md"
+    }
+  ],
+  "service plan model": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/service-plan.md"
+    }
+  ],
+  "service plan charges": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/service-plan.md"
+    }
+  ],
+  "service plan haulage": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/service-plan.md"
+    }
+  ],
+  "repricing service plan": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/service-plan.md"
+    }
+  ],
+  "booking aggregate": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/service-plan.md"
+    }
+  ],
+  "user preferences model": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/user-preferences.md"
+    }
+  ],
+  "preference product rules": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/user-preferences.md"
+    }
+  ],
+  "preference email lookup": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/user-preferences.md"
+    }
+  ],
+  "create preference payload": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/user-preferences.md"
+    }
+  ],
+  "delete preference payload": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "domain/user-preferences.md"
+    }
+  ],
+  "cross cutting map": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "cross cutting security": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "cross cutting errors": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "package tree map": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "where packages live": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "understand source tree": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "browse repo modules": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "stack overview": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "stack/stack.md"
+    }
+  ],
+  "stack commands": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "stack/stack.md"
+    }
+  ],
+  "build stack": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "stack/stack.md"
+    }
+  ],
+  "test stack": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "stack/stack.md"
+    }
+  ],
+  "framework overview": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "stack/stack.md"
+    }
+  ],
+  "booking create flow": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/booking-creation-flow.md"
+    }
+  ],
+  "duplicate booking flow": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/booking-creation-flow.md"
+    }
+  ],
+  "amend booking flow": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/booking-creation-flow.md"
+    }
+  ],
+  "ocean booking flow": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/booking-creation-flow.md"
+    },
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/ocean-booking-enrichment-flow.md"
+    }
+  ],
+  "create booking trace": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/booking-creation-flow.md"
+    }
+  ],
+  "business rules flow": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/business-rules-flow.md"
+    }
+  ],
+  "mandatory parties flow": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/business-rules-flow.md"
+    }
+  ],
+  "mandatory docs flow": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/business-rules-flow.md"
+    }
+  ],
+  "project44 flow": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/business-rules-flow.md"
+    }
+  ],
+  "rules debug path": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/business-rules-flow.md"
+    }
+  ],
+  "notification flow": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/notification-health-flow.md"
+    }
+  ],
+  "health banner flow": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/notification-health-flow.md"
+    }
+  ],
+  "service outage banner": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/notification-health-flow.md"
+    }
+  ],
+  "external health check": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/notification-health-flow.md"
+    }
+  ],
+  "notification endpoint debug": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/notification-health-flow.md"
+    }
+  ],
+  "tpdoc flow": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/ocean-booking-enrichment-flow.md"
+    }
+  ],
+  "bill of lading flow": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/ocean-booking-enrichment-flow.md"
+    }
+  ],
+  "dangerous goods flow": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/ocean-booking-enrichment-flow.md"
+    }
+  ],
+  "ocean reference debug": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/ocean-booking-enrichment-flow.md"
+    }
+  ],
+  "offer search flow": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/offer-search-flow.md"
+    }
+  ],
+  "service plan search": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/offer-search-flow.md"
+    }
+  ],
+  "amend offer flow": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/offer-search-flow.md"
+    }
+  ],
+  "route quote trace": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/offer-search-flow.md"
+    }
+  ],
+  "offer search debug": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/offer-search-flow.md"
+    }
+  ],
+  "order lifecycle flow": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/order-lifecycle-flow.md"
+    }
+  ],
+  "service plan update flow": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/order-lifecycle-flow.md"
+    }
+  ],
+  "soft close flow": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/order-lifecycle-flow.md"
+    }
+  ],
+  "charges update flow": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/order-lifecycle-flow.md"
+    }
+  ],
+  "order status flow": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/order-lifecycle-flow.md"
+    }
+  ],
+  "repricing debug": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/repricing-flow.md"
+    }
+  ],
+  "repricing charges": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/repricing-flow.md"
+    }
+  ],
+  "manual repricing": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/repricing-flow.md"
+    }
+  ],
+  "bulk repricing": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/repricing-flow.md"
+    }
+  ],
+  "user preferences flow": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/user-preferences-flow.md"
+    }
+  ],
+  "user preferences debug": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/user-preferences-flow.md"
+    }
+  ],
+  "user settings flow": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/user-preferences-flow.md"
+    }
+  ],
+  "create preferences": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/user-preferences-flow.md"
+    }
+  ],
+  "delete preferences": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "runtime/user-preferences-flow.md"
+    }
+  ],
+  "booking contracts": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "contracts/api-contracts-1.md"
+    }
+  ],
+  "booking api contract": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "contracts/api-contracts-1.md"
+    }
+  ],
+  "offer contracts": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "contracts/api-contracts-1.md"
+    }
+  ],
+  "rules contracts": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "contracts/api-contracts-1.md"
+    }
+  ],
+  "search contract list": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "contracts/api-contracts-1.md"
+    }
+  ],
+  "order contracts": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "contracts/api-contracts-2.md"
+    }
+  ],
+  "orders api contract": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "contracts/api-contracts-2.md"
+    }
+  ],
+  "preferences contracts": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "contracts/api-contracts-2.md"
+    }
+  ],
+  "status contracts": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "contracts/api-contracts-2.md"
+    }
+  ],
+  "download api contract": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "contracts/api-contracts-2.md"
+    }
+  ],
+  "billing service calls": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/billing-service.md"
+    }
+  ],
+  "invoice trigger backend": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/billing-service.md"
+    }
+  ],
+  "cost update backend": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/billing-service.md"
+    }
+  ],
+  "soft close backend": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/billing-service.md"
+    }
+  ],
+  "billing integration debug": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/billing-service.md"
+    }
+  ],
+  "ccd search integration": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/ccd-search.md"
+    }
+  ],
+  "ccd search backend": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/ccd-search.md"
+    }
+  ],
+  "contract search backend": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/ccd-search.md"
+    }
+  ],
+  "agreement integration": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/ccd-search.md"
+    }
+  ],
+  "customer scope search": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/ccd-search.md"
+    }
+  ],
+  "decisioning integration": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/decisioning-rules.md"
+    }
+  ],
+  "mandatory parties backend": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/decisioning-rules.md"
+    }
+  ],
+  "mandatory documents backend": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/decisioning-rules.md"
+    }
+  ],
+  "scm onboarding backend": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/decisioning-rules.md"
+    }
+  ],
+  "business rules dependency": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/decisioning-rules.md"
+    }
+  ],
+  "gcss integration map": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/gcss-and-reference-data.md"
+    }
+  ],
+  "reference data calls": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/gcss-and-reference-data.md"
+    }
+  ],
+  "facility backend": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/gcss-and-reference-data.md"
+    }
+  ],
+  "location backend": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/gcss-and-reference-data.md"
+    }
+  ],
+  "dangerous goods backend": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/gcss-and-reference-data.md"
+    }
+  ],
+  "launchdarkly integration": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/launchdarkly.md"
+    }
+  ],
+  "launchdarkly flags": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/launchdarkly.md"
+    }
+  ],
+  "feature flag integration": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/launchdarkly.md"
+    }
+  ],
+  "notification flag source": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/launchdarkly.md"
+    }
+  ],
+  "config rules flag source": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/launchdarkly.md"
+    }
+  ],
+  "offer service calls": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/offer-service.md"
+    }
+  ],
+  "repricing backend": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/offer-service.md"
+    }
+  ],
+  "offer api integration": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/offer-service.md"
+    }
+  ],
+  "offered service plan api": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/offer-service.md"
+    }
+  ],
+  "quote search backend": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/offer-service.md"
+    }
+  ],
+  "order service calls": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/order-service.md"
+    }
+  ],
+  "service plan downstream": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/order-service.md"
+    }
+  ],
+  "order api integration": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/order-service.md"
+    }
+  ],
+  "container associations backend": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/order-service.md"
+    }
+  ],
+  "order search backend": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/order-service.md"
+    }
+  ],
+  "preferences integration": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/user-preferences.md"
+    }
+  ],
+  "agent portal backend": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/user-preferences.md"
+    }
+  ],
+  "saved filters backend": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/user-preferences.md"
+    }
+  ],
+  "user settings backend": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/user-preferences.md"
+    }
+  ],
+  "preference api dependency": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "integrations/user-preferences.md"
+    }
+  ],
+  "failure model": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "error mapping": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "partial update behavior": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "validation error rules": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "dependency failure handling": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "feature flags list": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "operations/flags-and-lists.md"
+    }
+  ],
+  "static lists map": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "operations/flags-and-lists.md"
+    }
+  ],
+  "timezone map": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "operations/flags-and-lists.md"
+    }
+  ],
+  "mandatory charges list": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "operations/flags-and-lists.md"
+    }
+  ],
+  "role property list": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "operations/flags-and-lists.md"
+    }
+  ],
+  "monitoring setup": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "prometheus endpoints": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "tracing config": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "health endpoint setup": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "observability debug": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "retry policy": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "operations/retries.md"
+    }
+  ],
+  "backoff settings": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "operations/retries.md"
+    }
+  ],
+  "circuit breaker rules": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "operations/retries.md"
+    }
+  ],
+  "transient error handling": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "operations/retries.md"
+    }
+  ],
+  "retry debug": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "operations/retries.md"
+    }
+  ],
+  "booking endpoint map": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "navigation/entry-points-1.md"
+    }
+  ],
+  "offer endpoint map": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "navigation/entry-points-1.md"
+    }
+  ],
+  "search api map": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "navigation/entry-points-1.md"
+    }
+  ],
+  "find rest handler": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "navigation/entry-points-1.md"
+    }
+  ],
+  "where request enters": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "navigation/entry-points-1.md"
+    }
+  ],
+  "order endpoint map": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "navigation/entry-points-2.md"
+    }
+  ],
+  "preference endpoint map": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "navigation/entry-points-2.md"
+    }
+  ],
+  "status api map": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "navigation/entry-points-2.md"
+    }
+  ],
+  "where order updates land": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "navigation/entry-points-2.md"
+    }
+  ],
+  "find preference handler": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "navigation/entry-points-2.md"
+    }
+  ],
+  "find key class": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "where logic lives": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "map concern class": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "debug by concern": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "find start class": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "debug booking flow": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "trace offer path": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "trace preference bug": [
+    {
+      "repo": "iom-web-integrator",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "inspect customer authorization": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "domain/customer-access.md"
+    },
+    {
+      "repo": "smds-facilities-service",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "trace customer code rules": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "domain/customer-access.md"
+    }
+  ],
+  "debug cust facility access": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "domain/customer-access.md"
+    }
+  ],
+  "inspect jwt customer checks": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "domain/customer-access.md"
+    }
+  ],
+  "inspect multi customer behavior": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "domain/customer-access.md"
+    }
+  ],
+  "inspect facility categories": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "domain/facility-category.md"
+    }
+  ],
+  "trace category filter": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "domain/facility-category.md"
+    }
+  ],
+  "find category code field": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "domain/facility-category.md"
+    }
+  ],
+  "inspect ops category lookup": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "domain/facility-category.md"
+    }
+  ],
+  "inspect category payload": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "domain/facility-category.md"
+    }
+  ],
+  "inspect facility entity": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "domain/facility.md"
+    }
+  ],
+  "find response fields": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "domain/facility.md"
+    }
+  ],
+  "trace domain carrier": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "domain/facility.md"
+    }
+  ],
+  "inspect facility payload": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "domain/facility.md"
+    }
+  ],
+  "inspect facility search model": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "domain/facility.md"
+    }
+  ],
+  "inspect address fields": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "domain/geographic-details.md"
+    }
+  ],
+  "inspect location fields": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "domain/geographic-details.md"
+    }
+  ],
+  "find facility name field": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "domain/geographic-details.md"
+    }
+  ],
+  "inspect city region country": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "domain/geographic-details.md"
+    }
+  ],
+  "inspect nested geography model": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "domain/geographic-details.md"
+    }
+  ],
+  "find geographic details": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "domain/geographic-details.md"
+    }
+  ],
+  "check geographic data": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "domain/geographic-details.md"
+    }
+  ],
+  "inspect auth model": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "inspect error handling": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "inspect reactive runtime": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "inspect api documentation": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "search the facilities": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "find facilities details": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "architecture/cross-cutting.md"
+    }
+  ],
+  "locate source module": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "find component tests": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "find database scripts": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "find deployment assets": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "architecture/modules.md"
+    }
+  ],
+  "inspect tech stack": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "stack/stack.md"
+    }
+  ],
+  "find build commands": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "stack/stack.md"
+    }
+  ],
+  "find test commands": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "stack/stack.md"
+    }
+  ],
+  "inspect reactive libraries": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "stack/stack.md"
+    }
+  ],
+  "inspect data stack": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "stack/stack.md"
+    }
+  ],
+  "trace fuzzy search": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "runtime/facility-fuzzy-search-flow.md"
+    }
+  ],
+  "inspect fuzzy validation": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "runtime/facility-fuzzy-search-flow.md"
+    }
+  ],
+  "inspect name similarity query": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "runtime/facility-fuzzy-search-flow.md"
+    }
+  ],
+  "debug fuzzy search results": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "runtime/facility-fuzzy-search-flow.md"
+    }
+  ],
+  "follow fuzzy endpoint flow": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "runtime/facility-fuzzy-search-flow.md"
+    }
+  ],
+  "trace id lookup flow": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "runtime/facility-id-lookup-flow.md"
+    }
+  ],
+  "debug idtype routing": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "runtime/facility-id-lookup-flow.md"
+    }
+  ],
+  "inspect customer code filtering": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "runtime/facility-id-lookup-flow.md"
+    }
+  ],
+  "inspect response sorting": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "runtime/facility-id-lookup-flow.md"
+    }
+  ],
+  "follow facility get path": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "runtime/facility-id-lookup-flow.md"
+    }
+  ],
+  "trace search flow": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "runtime/facility-search-flow.md"
+    }
+  ],
+  "debug geography filters": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "runtime/facility-search-flow.md"
+    }
+  ],
+  "inspect customer search rules": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "runtime/facility-search-flow.md"
+    }
+  ],
+  "inspect category search": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "runtime/facility-search-flow.md"
+    }
+  ],
+  "inspect dynamic criteria query": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "runtime/facility-search-flow.md"
+    }
+  ],
+  "inspect api contract": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "contracts/api-contracts.md"
+    }
+  ],
+  "inspect endpoint parameters": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "contracts/api-contracts.md"
+    }
+  ],
+  "inspect response codes": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "contracts/api-contracts.md"
+    }
+  ],
+  "inspect auth requirement": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "contracts/api-contracts.md"
+    }
+  ],
+  "inspect generated openapi": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "contracts/api-contracts.md"
+    }
+  ],
+  "inspect db schema": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "inspect jsonb columns": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "inspect table version drift": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "inspect active status filter": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "inspect source data tables": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "find the db schema": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "contracts/db-schemas.md"
+    }
+  ],
+  "inspect jwt integration": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "integrations/identity-providers.md"
+    }
+  ],
+  "inspect auth providers": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "integrations/identity-providers.md"
+    }
+  ],
+  "inspect issuer endpoints": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "integrations/identity-providers.md"
+    }
+  ],
+  "inspect jwks endpoints": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "integrations/identity-providers.md"
+    }
+  ],
+  "inspect bearer auth config": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "integrations/identity-providers.md"
+    }
+  ],
+  "inspect postgres integration": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "integrations/postgresql.md"
+    }
+  ],
+  "inspect r2dbc setup": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "integrations/postgresql.md"
+    }
+  ],
+  "inspect jsonb queries": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "integrations/postgresql.md"
+    }
+  ],
+  "inspect local database setup": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "integrations/postgresql.md"
+    }
+  ],
+  "inspect component test database": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "integrations/postgresql.md"
+    }
+  ],
+  "find postgresql storage": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "integrations/postgresql.md"
+    }
+  ],
+  "check postgresql config": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "integrations/postgresql.md"
+    }
+  ],
+  "inspect failure modes": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "inspect validation errors": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "inspect forbidden paths": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "inspect not found behavior": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "inspect error responses": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "operations/failure-model.md"
+    }
+  ],
+  "inspect monitoring setup": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "inspect prometheus endpoint": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "inspect health probes": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "inspect request metrics": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "inspect log levels": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "operations/monitoring.md"
+    }
+  ],
+  "find facility endpoint": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "inspect search routes": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "map rest handlers": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "check api paths": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "trace controller entrypoints": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "navigation/entry-points.md"
+    }
+  ],
+  "find owner class": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "map service layers": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "inspect request validation": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "locate repository queries": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "understand response mapping": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "navigation/key-classes.md"
+    }
+  ],
+  "trace id lookup": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "debug search filters": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "follow fuzzy search": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "navigation/scenarios.md"
+    }
+  ],
+  "find database query owner": [
+    {
+      "repo": "smds-facilities-service",
+      "path": "navigation/scenarios.md"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+# Exclude the three service modules
+iom-master-data
+iom-offer-service
+iom-order-service
+iom-order-service-scheduler
+iom-web-integrator
+smds-facilities-service
+iom-application
+# macOS
+.DS_Store
+
+# IntelliJ IDEA - exclude workspace/project files but keep run configs if needed
+.idea
+npmcache
+

@@ -1,0 +1,1604 @@
+{
+  "generated_at": "2026-06-30T12:04:05.761Z",
+  "workspace": "iom-workspace",
+  "schema_version": 2,
+  "request_buckets": {
+    "api contract index core": [
+      "iom-master-data"
+    ],
+    "api contract index core in master-data": [
+      "iom-master-data"
+    ],
+    "api contract index extended": [
+      "iom-master-data"
+    ],
+    "api contract index extended in master-data": [
+      "iom-master-data"
+    ],
+    "api contracts": [
+      "iom-order-service"
+    ],
+    "api contracts booking": [
+      "iom-web-integrator"
+    ],
+    "api contracts booking in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "api contracts in order-service": [
+      "iom-order-service"
+    ],
+    "api contracts orders": [
+      "iom-web-integrator"
+    ],
+    "api contracts orders in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "api entry point inventory": [
+      "iom-offer-service"
+    ],
+    "api entry point inventory in offer-service": [
+      "iom-offer-service"
+    ],
+    "avro schema guide": [
+      "iom-offer-service"
+    ],
+    "avro schema guide in offer-service": [
+      "iom-offer-service"
+    ],
+    "azure blob archival": [
+      "iom-order-service-scheduler"
+    ],
+    "azure blob archival in order-service-scheduler": [
+      "iom-order-service-scheduler"
+    ],
+    "billing service integration": [
+      "iom-web-integrator"
+    ],
+    "billing service integration in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "booking creation flow": [
+      "iom-web-integrator"
+    ],
+    "booking creation flow in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "booking event processing": [
+      "iom-order-service"
+    ],
+    "booking event processing in order-service": [
+      "iom-order-service"
+    ],
+    "booking request shape": [
+      "iom-web-integrator"
+    ],
+    "booking request shape in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "booking subtree model": [
+      "iom-application"
+    ],
+    "booking subtree model in application": [
+      "iom-application"
+    ],
+    "build tool guide": [
+      "iom-offer-service"
+    ],
+    "build tool guide in offer-service": [
+      "iom-offer-service"
+    ],
+    "business rules api integration guide": [
+      "iom-offer-service"
+    ],
+    "business rules api integration guide in offer-service": [
+      "iom-offer-service"
+    ],
+    "business rules flow": [
+      "iom-web-integrator"
+    ],
+    "business rules flow in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "business rules model": [
+      "iom-web-integrator"
+    ],
+    "business rules model in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "cargo weight api integration guide": [
+      "iom-offer-service"
+    ],
+    "cargo weight api integration guide in offer-service": [
+      "iom-offer-service"
+    ],
+    "ccd search integration": [
+      "iom-web-integrator"
+    ],
+    "ccd search integration in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "charge query flow": [
+      "iom-master-data"
+    ],
+    "charge query flow in master-data": [
+      "iom-master-data"
+    ],
+    "charge type cache reference": [
+      "iom-offer-service"
+    ],
+    "charge type cache reference in offer-service": [
+      "iom-offer-service"
+    ],
+    "charge types integration guide": [
+      "iom-offer-service"
+    ],
+    "charge types integration guide in offer-service": [
+      "iom-offer-service"
+    ],
+    "charge types management": [
+      "iom-master-data"
+    ],
+    "charge types management in master-data": [
+      "iom-master-data"
+    ],
+    "class locator": [
+      "iom-order-service"
+    ],
+    "class locator in order-service": [
+      "iom-order-service"
+    ],
+    "class navigation index": [
+      "iom-offer-service"
+    ],
+    "class navigation index in offer-service": [
+      "iom-offer-service"
+    ],
+    "collection index guide": [
+      "iom-offer-service"
+    ],
+    "collection index guide in offer-service": [
+      "iom-offer-service"
+    ],
+    "commodity api integration guide": [
+      "iom-offer-service"
+    ],
+    "commodity api integration guide in offer-service": [
+      "iom-offer-service"
+    ],
+    "commodity business rules integration": [
+      "iom-master-data"
+    ],
+    "commodity business rules integration in master-data": [
+      "iom-master-data"
+    ],
+    "commodity data api": [
+      "iom-master-data"
+    ],
+    "commodity data api in master-data": [
+      "iom-master-data"
+    ],
+    "commodity restriction flow": [
+      "iom-master-data"
+    ],
+    "commodity restriction flow in master-data": [
+      "iom-master-data"
+    ],
+    "commodity restriction reference": [
+      "iom-offer-service"
+    ],
+    "commodity restriction reference in offer-service": [
+      "iom-offer-service"
+    ],
+    "concern to class routing": [
+      "iom-order-service-scheduler"
+    ],
+    "concern to class routing in order-service-scheduler": [
+      "iom-order-service-scheduler"
+    ],
+    "container cache flow": [
+      "iom-master-data"
+    ],
+    "container cache flow in master-data": [
+      "iom-master-data"
+    ],
+    "container type integration guide": [
+      "iom-offer-service"
+    ],
+    "container type integration guide in offer-service": [
+      "iom-offer-service"
+    ],
+    "container type reference": [
+      "iom-master-data"
+    ],
+    "container type reference in master-data": [
+      "iom-master-data"
+    ],
+    "controller routing map": [
+      "iom-offer-service"
+    ],
+    "controller routing map in offer-service": [
+      "iom-offer-service"
+    ],
+    "create booking through web integrator": [
+      "iom-order-service",
+      "iom-order-service-scheduler",
+      "iom-web-integrator"
+    ],
+    "cross cutting architecture": [
+      "iom-application"
+    ],
+    "cross cutting architecture in application": [
+      "iom-application"
+    ],
+    "cross cutting behavior": [
+      "iom-order-service"
+    ],
+    "cross cutting behavior in order-service": [
+      "iom-order-service"
+    ],
+    "cross cutting concern catalog": [
+      "iom-offer-service"
+    ],
+    "cross cutting concern catalog in offer-service": [
+      "iom-offer-service"
+    ],
+    "cross cutting concerns": [
+      "iom-order-service-scheduler"
+    ],
+    "cross cutting concerns in order-service-scheduler": [
+      "iom-order-service-scheduler"
+    ],
+    "cross cutting map": [
+      "iom-web-integrator"
+    ],
+    "cross cutting map in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "cross cutting runtime rules": [
+      "iom-master-data"
+    ],
+    "cross cutting runtime rules in master-data": [
+      "iom-master-data"
+    ],
+    "customer api integration guide": [
+      "iom-offer-service"
+    ],
+    "customer api integration guide in offer-service": [
+      "iom-offer-service"
+    ],
+    "customer facility integration": [
+      "iom-application"
+    ],
+    "customer facility integration in application": [
+      "iom-application"
+    ],
+    "customs api integration guide": [
+      "iom-offer-service"
+    ],
+    "customs api integration guide in offer-service": [
+      "iom-offer-service"
+    ],
+    "customs charge enrichment reference": [
+      "iom-offer-service"
+    ],
+    "customs charge enrichment reference in offer-service": [
+      "iom-offer-service"
+    ],
+    "dashboard query": [
+      "iom-order-service"
+    ],
+    "dashboard query in order-service": [
+      "iom-order-service"
+    ],
+    "db contracts": [
+      "iom-order-service"
+    ],
+    "db contracts in order-service": [
+      "iom-order-service"
+    ],
+    "decisioning rules integration": [
+      "iom-web-integrator"
+    ],
+    "decisioning rules integration in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "developer orientation guide": [
+      "iom-offer-service"
+    ],
+    "developer orientation guide in offer-service": [
+      "iom-offer-service"
+    ],
+    "diesel price range reference": [
+      "iom-master-data"
+    ],
+    "diesel price range reference in master-data": [
+      "iom-master-data"
+    ],
+    "diesel query flow": [
+      "iom-master-data"
+    ],
+    "diesel query flow in master-data": [
+      "iom-master-data"
+    ],
+    "domain event not received by offer": [
+      "iom-offer-service",
+      "iom-order-service",
+      "iom-order-service-scheduler"
+    ],
+    "entry point map": [
+      "iom-web-integrator"
+    ],
+    "entry point map in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "entry point routing": [
+      "iom-order-service"
+    ],
+    "entry point routing in order-service": [
+      "iom-order-service"
+    ],
+    "equipment requirement model": [
+      "iom-application"
+    ],
+    "equipment requirement model in application": [
+      "iom-application"
+    ],
+    "equipment validation reference": [
+      "iom-offer-service"
+    ],
+    "equipment validation reference in offer-service": [
+      "iom-offer-service"
+    ],
+    "error handling guide": [
+      "iom-offer-service"
+    ],
+    "error handling guide in offer-service": [
+      "iom-offer-service"
+    ],
+    "event activity matrix": [
+      "iom-order-service-scheduler"
+    ],
+    "event activity matrix in order-service-scheduler": [
+      "iom-order-service-scheduler"
+    ],
+    "execution integration map": [
+      "iom-application"
+    ],
+    "execution integration map in application": [
+      "iom-application"
+    ],
+    "facilities api contracts": [
+      "smds-facilities-service"
+    ],
+    "facilities api contracts in facilities-service": [
+      "smds-facilities-service"
+    ],
+    "facilities class map": [
+      "smds-facilities-service"
+    ],
+    "facilities class map in facilities-service": [
+      "smds-facilities-service"
+    ],
+    "facilities cross cutting": [
+      "smds-facilities-service"
+    ],
+    "facilities cross cutting in facilities-service": [
+      "smds-facilities-service"
+    ],
+    "facilities db schema": [
+      "smds-facilities-service"
+    ],
+    "facilities db schema in facilities-service": [
+      "smds-facilities-service"
+    ],
+    "facilities failure model": [
+      "smds-facilities-service"
+    ],
+    "facilities failure model in facilities-service": [
+      "smds-facilities-service"
+    ],
+    "facilities fuzzy search": [
+      "smds-facilities-service"
+    ],
+    "facilities fuzzy search in facilities-service": [
+      "smds-facilities-service"
+    ],
+    "facilities jwt providers": [
+      "smds-facilities-service"
+    ],
+    "facilities jwt providers in facilities-service": [
+      "smds-facilities-service"
+    ],
+    "facilities module layout": [
+      "smds-facilities-service"
+    ],
+    "facilities module layout in facilities-service": [
+      "smds-facilities-service"
+    ],
+    "facilities monitoring": [
+      "smds-facilities-service"
+    ],
+    "facilities monitoring in facilities-service": [
+      "smds-facilities-service"
+    ],
+    "facilities parameter search": [
+      "smds-facilities-service"
+    ],
+    "facilities parameter search in facilities-service": [
+      "smds-facilities-service"
+    ],
+    "facilities postgresql storage": [
+      "smds-facilities-service"
+    ],
+    "facilities postgresql storage in facilities-service": [
+      "smds-facilities-service"
+    ],
+    "facilities reactive stack": [
+      "smds-facilities-service"
+    ],
+    "facilities reactive stack in facilities-service": [
+      "smds-facilities-service"
+    ],
+    "facilities rest entrypoints": [
+      "smds-facilities-service"
+    ],
+    "facilities rest entrypoints in facilities-service": [
+      "smds-facilities-service"
+    ],
+    "facilities task routing": [
+      "smds-facilities-service"
+    ],
+    "facilities task routing in facilities-service": [
+      "smds-facilities-service"
+    ],
+    "facility api integration guide": [
+      "iom-offer-service"
+    ],
+    "facility api integration guide in offer-service": [
+      "iom-offer-service"
+    ],
+    "facility client reference": [
+      "iom-offer-service"
+    ],
+    "facility client reference in offer-service": [
+      "iom-offer-service"
+    ],
+    "facility id lookup": [
+      "smds-facilities-service"
+    ],
+    "facility id lookup in facilities-service": [
+      "smds-facilities-service"
+    ],
+    "facility lookup in offer search": [
+      "iom-offer-service",
+      "iom-web-integrator",
+      "smds-facilities-service"
+    ],
+    "failure model": [
+      "iom-order-service",
+      "iom-web-integrator"
+    ],
+    "failure model guide": [
+      "iom-master-data"
+    ],
+    "failure model guide in master-data": [
+      "iom-master-data"
+    ],
+    "failure model in order-service": [
+      "iom-order-service"
+    ],
+    "failure model in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "failure model reference": [
+      "iom-offer-service"
+    ],
+    "failure model reference in offer-service": [
+      "iom-offer-service"
+    ],
+    "failure points": [
+      "iom-order-service-scheduler"
+    ],
+    "failure points in order-service-scheduler": [
+      "iom-order-service-scheduler"
+    ],
+    "feature flag reference": [
+      "iom-offer-service"
+    ],
+    "feature flag reference in offer-service": [
+      "iom-offer-service"
+    ],
+    "flags and controlled lists": [
+      "iom-application"
+    ],
+    "flags and controlled lists in application": [
+      "iom-application"
+    ],
+    "flags and lists": [
+      "iom-order-service",
+      "iom-web-integrator"
+    ],
+    "flags and lists in order-service": [
+      "iom-order-service"
+    ],
+    "flags and lists in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "gcss reference data integration": [
+      "iom-web-integrator"
+    ],
+    "gcss reference data integration in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "gradle stack profile": [
+      "iom-application"
+    ],
+    "gradle stack profile in application": [
+      "iom-application"
+    ],
+    "identity provider integration": [
+      "iom-order-service"
+    ],
+    "identity provider integration in order-service": [
+      "iom-order-service"
+    ],
+    "kafka contracts": [
+      "iom-order-service"
+    ],
+    "kafka contracts in order-service": [
+      "iom-order-service"
+    ],
+    "kafka event brokers": [
+      "iom-order-service-scheduler"
+    ],
+    "kafka event brokers in order-service-scheduler": [
+      "iom-order-service-scheduler"
+    ],
+    "kafka event contract reference": [
+      "iom-offer-service"
+    ],
+    "kafka event contract reference in offer-service": [
+      "iom-offer-service"
+    ],
+    "kafka event contracts": [
+      "iom-master-data"
+    ],
+    "kafka event contracts in master-data": [
+      "iom-master-data"
+    ],
+    "kafka event processing flow": [
+      "iom-offer-service"
+    ],
+    "kafka event processing flow in offer-service": [
+      "iom-offer-service"
+    ],
+    "kafka topic contracts": [
+      "iom-order-service-scheduler"
+    ],
+    "kafka topic contracts in order-service-scheduler": [
+      "iom-order-service-scheduler"
+    ],
+    "key class index": [
+      "iom-master-data"
+    ],
+    "key class index in master-data": [
+      "iom-master-data"
+    ],
+    "key class map": [
+      "iom-application",
+      "iom-web-integrator"
+    ],
+    "key class map in application": [
+      "iom-application"
+    ],
+    "key class map in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "launchdarkly integration": [
+      "iom-web-integrator"
+    ],
+    "launchdarkly integration in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "library entry points": [
+      "iom-application"
+    ],
+    "library entry points in application": [
+      "iom-application"
+    ],
+    "library failure model": [
+      "iom-application"
+    ],
+    "library failure model in application": [
+      "iom-application"
+    ],
+    "location api integration guide": [
+      "iom-offer-service"
+    ],
+    "location api integration guide in offer-service": [
+      "iom-offer-service"
+    ],
+    "location client reference": [
+      "iom-offer-service"
+    ],
+    "location client reference in offer-service": [
+      "iom-offer-service"
+    ],
+    "location domain model": [
+      "iom-application"
+    ],
+    "location domain model in application": [
+      "iom-application"
+    ],
+    "location reference data": [
+      "iom-master-data"
+    ],
+    "location reference data in master-data": [
+      "iom-master-data"
+    ],
+    "location search flow": [
+      "iom-master-data"
+    ],
+    "location search flow in master-data": [
+      "iom-master-data"
+    ],
+    "location upstream integrations": [
+      "iom-master-data"
+    ],
+    "location upstream integrations in master-data": [
+      "iom-master-data"
+    ],
+    "master data integration": [
+      "iom-order-service"
+    ],
+    "master data integration in order-service": [
+      "iom-order-service"
+    ],
+    "metrics endpoint guide": [
+      "iom-offer-service"
+    ],
+    "metrics endpoint guide in offer-service": [
+      "iom-offer-service"
+    ],
+    "module decomposition map": [
+      "iom-offer-service"
+    ],
+    "module decomposition map in offer-service": [
+      "iom-offer-service"
+    ],
+    "module layout": [
+      "iom-web-integrator"
+    ],
+    "module layout in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "module topology": [
+      "iom-order-service"
+    ],
+    "module topology in order-service": [
+      "iom-order-service"
+    ],
+    "mongodb schema reference": [
+      "iom-offer-service"
+    ],
+    "mongodb schema reference in offer-service": [
+      "iom-offer-service"
+    ],
+    "monitoring observability": [
+      "iom-order-service"
+    ],
+    "monitoring observability in order-service": [
+      "iom-order-service"
+    ],
+    "monitoring observability reference": [
+      "iom-offer-service"
+    ],
+    "monitoring observability reference in offer-service": [
+      "iom-offer-service"
+    ],
+    "monitoring setup": [
+      "iom-web-integrator"
+    ],
+    "monitoring setup in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "monitoring surface map": [
+      "iom-master-data"
+    ],
+    "monitoring surface map in master-data": [
+      "iom-master-data"
+    ],
+    "multi module package tree": [
+      "iom-application",
+      "iom-master-data"
+    ],
+    "multi module package tree in application": [
+      "iom-application"
+    ],
+    "multi module package tree in master-data": [
+      "iom-master-data"
+    ],
+    "notification health flow": [
+      "iom-web-integrator"
+    ],
+    "notification health flow in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "oauth and flags map": [
+      "iom-master-data"
+    ],
+    "oauth and flags map in master-data": [
+      "iom-master-data"
+    ],
+    "observability wiring": [
+      "iom-order-service-scheduler"
+    ],
+    "observability wiring in order-service-scheduler": [
+      "iom-order-service-scheduler"
+    ],
+    "ocean booking flow": [
+      "iom-web-integrator"
+    ],
+    "ocean booking flow in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "ocean booking model": [
+      "iom-web-integrator"
+    ],
+    "ocean booking model in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "offer api client reference": [
+      "iom-offer-service"
+    ],
+    "offer api client reference in offer-service": [
+      "iom-offer-service"
+    ],
+    "offer cleanup end to end": [
+      "iom-offer-service",
+      "iom-order-service-scheduler"
+    ],
+    "offer cleanup http": [
+      "iom-order-service-scheduler"
+    ],
+    "offer cleanup http in order-service-scheduler": [
+      "iom-order-service-scheduler"
+    ],
+    "offer cleanup runtime flow": [
+      "iom-offer-service"
+    ],
+    "offer cleanup runtime flow in offer-service": [
+      "iom-offer-service"
+    ],
+    "offer request domain model": [
+      "iom-offer-service"
+    ],
+    "offer request domain model in offer-service": [
+      "iom-offer-service"
+    ],
+    "offer routing integration": [
+      "iom-application"
+    ],
+    "offer routing integration in application": [
+      "iom-application"
+    ],
+    "offer search enrichment": [
+      "iom-master-data",
+      "iom-offer-service",
+      "iom-web-integrator"
+    ],
+    "offer search flow": [
+      "iom-web-integrator"
+    ],
+    "offer search flow in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "offer search input contract": [
+      "iom-offer-service"
+    ],
+    "offer search input contract in offer-service": [
+      "iom-offer-service"
+    ],
+    "offer search runtime flow": [
+      "iom-offer-service"
+    ],
+    "offer search runtime flow in offer-service": [
+      "iom-offer-service"
+    ],
+    "offer service integration": [
+      "iom-web-integrator"
+    ],
+    "offer service integration in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "offered service plan mongodb document": [
+      "iom-offer-service"
+    ],
+    "offered service plan mongodb document in offer-service": [
+      "iom-offer-service"
+    ],
+    "oipo offer integration guide": [
+      "iom-offer-service"
+    ],
+    "oipo offer integration guide in offer-service": [
+      "iom-offer-service"
+    ],
+    "openapi endpoint catalog": [
+      "iom-offer-service"
+    ],
+    "openapi endpoint catalog in offer-service": [
+      "iom-offer-service"
+    ],
+    "order creation": [
+      "iom-order-service"
+    ],
+    "order creation in order-service": [
+      "iom-order-service"
+    ],
+    "order domain orchestration": [
+      "iom-order-service"
+    ],
+    "order domain orchestration in order-service": [
+      "iom-order-service"
+    ],
+    "order lifecycle flow": [
+      "iom-web-integrator"
+    ],
+    "order lifecycle flow in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "order processing flow": [
+      "iom-application"
+    ],
+    "order processing flow in application": [
+      "iom-application"
+    ],
+    "order service integration": [
+      "iom-web-integrator"
+    ],
+    "order service integration in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "package responsibility guide": [
+      "iom-offer-service"
+    ],
+    "package responsibility guide in offer-service": [
+      "iom-offer-service"
+    ],
+    "package structure map": [
+      "iom-order-service-scheduler"
+    ],
+    "package structure map in order-service-scheduler": [
+      "iom-order-service-scheduler"
+    ],
+    "party domain model": [
+      "iom-application"
+    ],
+    "party domain model in application": [
+      "iom-application"
+    ],
+    "party validation reference": [
+      "iom-offer-service"
+    ],
+    "party validation reference in offer-service": [
+      "iom-offer-service"
+    ],
+    "persistence schema reference": [
+      "iom-offer-service"
+    ],
+    "persistence schema reference in offer-service": [
+      "iom-offer-service"
+    ],
+    "postgres table map": [
+      "iom-master-data"
+    ],
+    "postgres table map in master-data": [
+      "iom-master-data"
+    ],
+    "product offer model": [
+      "iom-application"
+    ],
+    "product offer model in application": [
+      "iom-application"
+    ],
+    "rates api integration guide": [
+      "iom-offer-service"
+    ],
+    "rates api integration guide in offer-service": [
+      "iom-offer-service"
+    ],
+    "rates calculation runtime flow": [
+      "iom-offer-service"
+    ],
+    "rates calculation runtime flow in offer-service": [
+      "iom-offer-service"
+    ],
+    "rates client reference": [
+      "iom-offer-service"
+    ],
+    "rates client reference in offer-service": [
+      "iom-offer-service"
+    ],
+    "rates request dto reference": [
+      "iom-offer-service"
+    ],
+    "rates request dto reference in offer-service": [
+      "iom-offer-service"
+    ],
+    "reefer client reference": [
+      "iom-offer-service"
+    ],
+    "reefer client reference in offer-service": [
+      "iom-offer-service"
+    ],
+    "reference master cache": [
+      "iom-application"
+    ],
+    "reference master cache in application": [
+      "iom-application"
+    ],
+    "repository tech stack": [
+      "iom-order-service-scheduler"
+    ],
+    "repository tech stack in order-service-scheduler": [
+      "iom-order-service-scheduler"
+    ],
+    "reprice request dto reference": [
+      "iom-offer-service"
+    ],
+    "reprice request dto reference in offer-service": [
+      "iom-offer-service"
+    ],
+    "reprice runtime flow": [
+      "iom-offer-service"
+    ],
+    "reprice runtime flow in offer-service": [
+      "iom-offer-service"
+    ],
+    "reprice service plan end to end": [
+      "iom-order-service",
+      "iom-order-service-scheduler",
+      "iom-web-integrator"
+    ],
+    "repricing flow": [
+      "iom-web-integrator"
+    ],
+    "repricing flow in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "repricing workflow execution": [
+      "iom-order-service-scheduler"
+    ],
+    "repricing workflow execution in order-service-scheduler": [
+      "iom-order-service-scheduler"
+    ],
+    "resilience policy guide": [
+      "iom-offer-service"
+    ],
+    "resilience policy guide in offer-service": [
+      "iom-offer-service"
+    ],
+    "rest api contract reference": [
+      "iom-offer-service"
+    ],
+    "rest api contract reference in offer-service": [
+      "iom-offer-service"
+    ],
+    "rest entry points extended": [
+      "iom-master-data"
+    ],
+    "rest entry points extended in master-data": [
+      "iom-master-data"
+    ],
+    "rest entry points map": [
+      "iom-master-data"
+    ],
+    "rest entry points map in master-data": [
+      "iom-master-data"
+    ],
+    "retry behavior": [
+      "iom-order-service-scheduler",
+      "iom-web-integrator"
+    ],
+    "retry behavior in order-service-scheduler": [
+      "iom-order-service-scheduler"
+    ],
+    "retry behavior in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "retry behavior map": [
+      "iom-master-data"
+    ],
+    "retry behavior map in master-data": [
+      "iom-master-data"
+    ],
+    "retry circuit breaker config reference": [
+      "iom-offer-service"
+    ],
+    "retry circuit breaker config reference in offer-service": [
+      "iom-offer-service"
+    ],
+    "retry policy": [
+      "iom-order-service"
+    ],
+    "retry policy in order-service": [
+      "iom-order-service"
+    ],
+    "rolodex integration": [
+      "iom-order-service"
+    ],
+    "rolodex integration in order-service": [
+      "iom-order-service"
+    ],
+    "routing api integration guide": [
+      "iom-offer-service"
+    ],
+    "routing api integration guide in offer-service": [
+      "iom-offer-service"
+    ],
+    "routing client reference": [
+      "iom-offer-service"
+    ],
+    "routing client reference in offer-service": [
+      "iom-offer-service"
+    ],
+    "routing to offer handoff contract": [
+      "iom-offer-service"
+    ],
+    "routing to offer handoff contract in offer-service": [
+      "iom-offer-service"
+    ],
+    "sales object client reference": [
+      "iom-offer-service"
+    ],
+    "sales object client reference in offer-service": [
+      "iom-offer-service"
+    ],
+    "sales object integration guide": [
+      "iom-offer-service"
+    ],
+    "sales object integration guide in offer-service": [
+      "iom-offer-service"
+    ],
+    "sales object lookup flow": [
+      "iom-master-data"
+    ],
+    "sales object lookup flow in master-data": [
+      "iom-master-data"
+    ],
+    "sales type reference": [
+      "iom-master-data"
+    ],
+    "sales type reference in master-data": [
+      "iom-master-data"
+    ],
+    "scenario index": [
+      "iom-offer-service"
+    ],
+    "scenario index in offer-service": [
+      "iom-offer-service"
+    ],
+    "scheduler entry points": [
+      "iom-order-service-scheduler"
+    ],
+    "scheduler entry points in order-service-scheduler": [
+      "iom-order-service-scheduler"
+    ],
+    "search request domain model": [
+      "iom-offer-service"
+    ],
+    "search request domain model in offer-service": [
+      "iom-offer-service"
+    ],
+    "security observability reference": [
+      "iom-offer-service"
+    ],
+    "security observability reference in offer-service": [
+      "iom-offer-service"
+    ],
+    "service hosted reference data": [
+      "iom-master-data"
+    ],
+    "service hosted reference data in master-data": [
+      "iom-master-data"
+    ],
+    "service plan aggregate": [
+      "iom-application",
+      "iom-web-integrator"
+    ],
+    "service plan aggregate in application": [
+      "iom-application"
+    ],
+    "service plan aggregate in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "service plan domain": [
+      "iom-order-service"
+    ],
+    "service plan domain events": [
+      "iom-order-service"
+    ],
+    "service plan domain events in order-service": [
+      "iom-order-service"
+    ],
+    "service plan domain in order-service": [
+      "iom-order-service"
+    ],
+    "service plan number update trace": [
+      "iom-offer-service"
+    ],
+    "service plan number update trace in offer-service": [
+      "iom-offer-service"
+    ],
+    "service plan saved to published": [
+      "iom-offer-service",
+      "iom-order-service",
+      "iom-order-service-scheduler"
+    ],
+    "service plan search trace guide": [
+      "iom-offer-service"
+    ],
+    "service plan search trace guide in offer-service": [
+      "iom-offer-service"
+    ],
+    "service stack and commands": [
+      "iom-master-data"
+    ],
+    "service stack and commands in master-data": [
+      "iom-master-data"
+    ],
+    "smds customer access": [
+      "smds-facilities-service"
+    ],
+    "smds customer access in facilities-service": [
+      "smds-facilities-service"
+    ],
+    "smds facility category": [
+      "smds-facilities-service"
+    ],
+    "smds facility category in facilities-service": [
+      "smds-facilities-service"
+    ],
+    "smds facility entity": [
+      "smds-facilities-service"
+    ],
+    "smds facility entity in facilities-service": [
+      "smds-facilities-service"
+    ],
+    "smds geographic details": [
+      "smds-facilities-service"
+    ],
+    "smds geographic details in facilities-service": [
+      "smds-facilities-service"
+    ],
+    "stack detection": [
+      "iom-order-service"
+    ],
+    "stack detection in order-service": [
+      "iom-order-service"
+    ],
+    "stack overview": [
+      "iom-web-integrator"
+    ],
+    "stack overview in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "stack reference card": [
+      "iom-offer-service"
+    ],
+    "stack reference card in offer-service": [
+      "iom-offer-service"
+    ],
+    "stale record deletion trace": [
+      "iom-offer-service"
+    ],
+    "stale record deletion trace in offer-service": [
+      "iom-offer-service"
+    ],
+    "start here scenarios": [
+      "iom-web-integrator"
+    ],
+    "start here scenarios in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "static list configuration guide": [
+      "iom-offer-service"
+    ],
+    "static list configuration guide in offer-service": [
+      "iom-offer-service"
+    ],
+    "storage schema contracts": [
+      "iom-application"
+    ],
+    "storage schema contracts in application": [
+      "iom-application"
+    ],
+    "task routing": [
+      "iom-order-service"
+    ],
+    "task routing in order-service": [
+      "iom-order-service"
+    ],
+    "task scenario routing": [
+      "iom-application"
+    ],
+    "task scenario routing in application": [
+      "iom-application"
+    ],
+    "task to class routing": [
+      "iom-master-data"
+    ],
+    "task to class routing in master-data": [
+      "iom-master-data"
+    ],
+    "task to start point routing": [
+      "iom-order-service-scheduler"
+    ],
+    "task to start point routing in order-service-scheduler": [
+      "iom-order-service-scheduler"
+    ],
+    "telikos booking integration": [
+      "iom-order-service"
+    ],
+    "telikos booking integration in order-service": [
+      "iom-order-service"
+    ],
+    "temporal workflow execution": [
+      "iom-order-service-scheduler"
+    ],
+    "temporal workflow execution in order-service-scheduler": [
+      "iom-order-service-scheduler"
+    ],
+    "use case navigation map": [
+      "iom-offer-service"
+    ],
+    "use case navigation map in offer-service": [
+      "iom-offer-service"
+    ],
+    "user preference model": [
+      "iom-web-integrator"
+    ],
+    "user preference model in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "user preferences flow": [
+      "iom-web-integrator"
+    ],
+    "user preferences flow in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "user preferences integration": [
+      "iom-web-integrator"
+    ],
+    "user preferences integration in web-integrator": [
+      "iom-web-integrator"
+    ],
+    "vendor feed integration map": [
+      "iom-master-data"
+    ],
+    "vendor feed integration map in master-data": [
+      "iom-master-data"
+    ],
+    "vendor kafka ingest flow": [
+      "iom-master-data"
+    ],
+    "vendor kafka ingest flow in master-data": [
+      "iom-master-data"
+    ],
+    "vendor master data": [
+      "iom-master-data"
+    ],
+    "vendor master data in master-data": [
+      "iom-master-data"
+    ],
+    "versioned api contracts": [
+      "iom-application"
+    ],
+    "versioned api contracts in application": [
+      "iom-application"
+    ],
+    "vessel crud flow": [
+      "iom-master-data"
+    ],
+    "vessel crud flow in master-data": [
+      "iom-master-data"
+    ],
+    "vessel reference api": [
+      "iom-master-data"
+    ],
+    "vessel reference api in master-data": [
+      "iom-master-data"
+    ],
+    "web integrator repricing": [
+      "iom-order-service-scheduler"
+    ],
+    "web integrator repricing in order-service-scheduler": [
+      "iom-order-service-scheduler"
+    ],
+    "weight validation reference": [
+      "iom-offer-service"
+    ],
+    "weight validation reference in offer-service": [
+      "iom-offer-service"
+    ]
+  },
+  "flows": [
+    {
+      "name": "offer-search-master-data",
+      "description": "Web-integrator runs an offer search via offer-service, which enriches results from master data.",
+      "triggers": [
+        "offer search enrichment",
+        "search service plans",
+        "offer master data lookup",
+        "charge type resolution offer",
+        "commodity validation offer",
+        "location enrichment search"
+      ],
+      "repo_chain": [
+        "iom-web-integrator",
+        "iom-offer-service",
+        "iom-master-data"
+      ],
+      "topics": [
+        {
+          "topic": "services.offer.base-url",
+          "protocol": "rest",
+          "from": "iom-web-integrator",
+          "to": "iom-offer-service",
+          "schema_path": "repos/iom-offer-service/contracts/api-contracts.md"
+        },
+        {
+          "topic": "maersk.masterdata-base-url",
+          "protocol": "rest",
+          "from": "iom-offer-service",
+          "to": "iom-master-data",
+          "schema_path": "repos/iom-master-data/contracts/api-contracts-1.md"
+        }
+      ],
+      "entry_files": {
+        "iom-web-integrator": "runtime/offer-search-flow.md",
+        "iom-offer-service": "runtime/offer-search-flow.md",
+        "iom-master-data": "runtime/charge-type-query-flow.md"
+      }
+    },
+    {
+      "name": "offer-search-facility",
+      "description": "Web-integrator offer search calls offer-service, which looks up facility data from SMDS facilities.",
+      "triggers": [
+        "facility lookup in search",
+        "offer facility enrichment",
+        "facility data for offer",
+        "smds facility search",
+        "facility vs city location",
+        "inland facility resolution"
+      ],
+      "repo_chain": [
+        "iom-web-integrator",
+        "iom-offer-service",
+        "smds-facilities-service"
+      ],
+      "topics": [
+        {
+          "topic": "services.offer.base-url",
+          "protocol": "rest",
+          "from": "iom-web-integrator",
+          "to": "iom-offer-service",
+          "schema_path": "repos/iom-offer-service/contracts/api-contracts.md"
+        },
+        {
+          "topic": "smds facilities lookup",
+          "protocol": "rest",
+          "from": "iom-offer-service",
+          "to": "smds-facilities-service",
+          "schema_path": "repos/smds-facilities-service/contracts/api-contracts.md"
+        }
+      ],
+      "entry_files": {
+        "iom-web-integrator": "runtime/offer-search-flow.md",
+        "iom-offer-service": "runtime/offer-search-flow.md",
+        "smds-facilities-service": "runtime/facility-search-flow.md"
+      }
+    },
+    {
+      "name": "service-plan-save-to-publish",
+      "description": "Order-service stages a service-plan domain event to the outbox; the scheduler publishes it to Kafka, where offer-service consumes it.",
+      "triggers": [
+        "service plan saved event",
+        "outbox to kafka publish",
+        "domain event publishing",
+        "offered plan number update",
+        "service plan number linking",
+        "outbox message processing"
+      ],
+      "repo_chain": [
+        "iom-order-service",
+        "iom-order-service-scheduler",
+        "iom-offer-service"
+      ],
+      "topics": [
+        {
+          "topic": "outbox_messages",
+          "protocol": "outbox-db",
+          "from": "iom-order-service",
+          "to": "iom-order-service-scheduler",
+          "schema_path": "repos/iom-order-service/contracts/kafka-events.md"
+        },
+        {
+          "topic": "iom-serviceplan-domain-event-topic.local.v1",
+          "protocol": "kafka",
+          "from": "iom-order-service-scheduler",
+          "to": "iom-offer-service",
+          "schema_path": "repos/iom-order-service-scheduler/contracts/kafka-events.md"
+        }
+      ],
+      "entry_files": {
+        "iom-order-service": "runtime/service-plan-domain-event-flow.md",
+        "iom-order-service-scheduler": "runtime/event-activity-matrix.md",
+        "iom-offer-service": "runtime/service-plan-event-processing-flow.md"
+      }
+    },
+    {
+      "name": "repricing-scheduler-to-order",
+      "description": "The scheduler runs a Temporal repricing workflow that PATCH-calls web-integrator, which updates the service plan on order-service.",
+      "triggers": [
+        "repricing workflow execution",
+        "reprice service plan",
+        "temporal repricing flow",
+        "vessel eta repricing",
+        "container count repricing",
+        "reprice patch call"
+      ],
+      "repo_chain": [
+        "iom-order-service-scheduler",
+        "iom-web-integrator",
+        "iom-order-service"
+      ],
+      "topics": [
+        {
+          "topic": "PATCH /service-plans/{servicePlanNumber}/reprice",
+          "protocol": "rest",
+          "from": "iom-order-service-scheduler",
+          "to": "iom-web-integrator",
+          "schema_path": "repos/iom-web-integrator/contracts/api-contracts-1.md"
+        },
+        {
+          "topic": "services.order.base-url",
+          "protocol": "rest",
+          "from": "iom-web-integrator",
+          "to": "iom-order-service",
+          "schema_path": "repos/iom-order-service/contracts/api-contracts.md"
+        }
+      ],
+      "entry_files": {
+        "iom-order-service-scheduler": "runtime/repricing-flow.md",
+        "iom-web-integrator": "runtime/repricing-flow.md",
+        "iom-order-service": "runtime/order-creation-flow.md"
+      }
+    },
+    {
+      "name": "offer-cleanup-scheduler",
+      "description": "The scheduler periodically calls offer-service to delete stale offered-service-plan records, which themselves were enriched from master data.",
+      "triggers": [
+        "offer cleanup flow",
+        "delete offered plans",
+        "stale offer cleanup",
+        "scheduled offer deletion",
+        "offered plan cleanup job",
+        "old offer record removal"
+      ],
+      "repo_chain": [
+        "iom-order-service-scheduler",
+        "iom-offer-service",
+        "iom-master-data"
+      ],
+      "topics": [
+        {
+          "topic": "DELETE offered-service-plans?numberOfDays=",
+          "protocol": "rest",
+          "from": "iom-order-service-scheduler",
+          "to": "iom-offer-service",
+          "schema_path": "repos/iom-offer-service/contracts/api-contracts.md"
+        },
+        {
+          "topic": "maersk.masterdata-base-url",
+          "protocol": "rest",
+          "from": "iom-offer-service",
+          "to": "iom-master-data",
+          "schema_path": "repos/iom-master-data/contracts/api-contracts-1.md"
+        }
+      ],
+      "entry_files": {
+        "iom-order-service-scheduler": "runtime/repricing-flow.md",
+        "iom-offer-service": "runtime/offer-cleanup-flow.md",
+        "iom-master-data": "runtime/location-search-flow.md"
+      }
+    },
+    {
+      "name": "booking-web-integrator-to-scheduler",
+      "description": "A booking created via web-integrator persists a service plan in order-service, which stages outbound events for the scheduler.",
+      "triggers": [
+        "create booking order",
+        "service plan crud",
+        "order status update",
+        "booking to outbox",
+        "order save flow",
+        "service plan persistence"
+      ],
+      "repo_chain": [
+        "iom-web-integrator",
+        "iom-order-service",
+        "iom-order-service-scheduler"
+      ],
+      "topics": [
+        {
+          "topic": "services.order.base-url",
+          "protocol": "rest",
+          "from": "iom-web-integrator",
+          "to": "iom-order-service",
+          "schema_path": "repos/iom-order-service/contracts/api-contracts.md"
+        },
+        {
+          "topic": "outbox_messages",
+          "protocol": "outbox-db",
+          "from": "iom-order-service",
+          "to": "iom-order-service-scheduler",
+          "schema_path": "repos/iom-order-service/contracts/kafka-events.md"
+        }
+      ],
+      "entry_files": {
+        "iom-web-integrator": "runtime/booking-creation-flow.md",
+        "iom-order-service": "runtime/order-creation-flow.md",
+        "iom-order-service-scheduler": "runtime/event-activity-matrix.md"
+      }
+    }
+  ],
+  "per_repo_summary": {
+    "iom-web-integrator": "Frontend-facing integration layer (BFF). Owns ocean-booking creation, booking-request shaping, user-preferences, decisioning/business-rules, and orchestration of offer-search and order/service-plan calls. Calls offer-service and order-service; does NOT own offer computation or service-plan persistence.",
+    "iom-offer-service": "Owns inland offer search, rate calculation, repricing response, and offered-service-plan persistence (MongoDB). Calls OIPO offer/rates/routing externally and master-data + SMDS facilities for enrichment; consumes the service-plan domain-event topic to link offered plans to booked service-plan numbers. Does NOT own service-plan CRUD.",
+    "iom-order-service": "Owns service-plan / order CRUD, status, dashboard search, incidents, finops, and Kafka consumption of booking + service-plan-domain + customer-history events. Stages outbound domain events into the outbox table; does NOT publish Kafka directly (the scheduler does).",
+    "iom-order-service-scheduler": "The outbox publisher and scheduled-job host for the order side. Reads outbox_messages and publishes service-plan / domain-event / booking Kafka topics, runs offer cleanup (DELETE to offer-service), and runs Temporal repricing workflows that PATCH web-integrator. Owns no REST query API of its own.",
+    "iom-master-data": "IOM Master Data Service. Owns reference domains: locations, commodities, container types, charge types, vessels, sales objects, vendors, diesel price ranges. Read by offer-service for enrichment. A multi-module Gradle project split by domain.",
+    "smds-facilities-service": "SMDS facilities service. Owns facility data, facility categories, customer-access, and geographic details, with fuzzy + id-based facility search. Read by offer-service during offer-search location enrichment.",
+    "iom-application": "Shared multi-module Gradle library (NOT a deployable service) holding the cross-cutting IOM domain model: booking, equipment, location, party, product-offer, service-plan. No REST controllers at root level; consumed as a dependency."
+  },
+  "disambiguation_rules": [
+    {
+      "token": "reprice",
+      "default_repo": "iom-order-service-scheduler",
+      "rule": "Repricing is INITIATED by the scheduler (RepricingScheduler + Temporal RepricingWorkflow). The scheduler-side work (workflow execution, scheduling, task queue) lives in iom-order-service-scheduler. The repricing HTTP endpoint that actually recomputes and persists the service plan (PATCH /service-plans/{n}/reprice) lives in iom-web-integrator.",
+      "scheduler_marker_phrases": [
+        "repricing workflow",
+        "repricing task queue",
+        "temporal repricing",
+        "reprice scheduler"
+      ],
+      "web_integrator_marker_phrases": [
+        "reprice endpoint",
+        "reprice patch",
+        "service plan reprice api"
+      ],
+      "repos": [
+        "iom-order-service-scheduler",
+        "iom-web-integrator"
+      ]
+    },
+    {
+      "token": "repricing",
+      "default_repo": "iom-order-service-scheduler",
+      "rule": "Same split as \"reprice\": scheduling/workflow in iom-order-service-scheduler; the repricing REST handler in iom-web-integrator.",
+      "scheduler_marker_phrases": [
+        "repricing workflow",
+        "repricing task queue",
+        "temporal repricing"
+      ],
+      "web_integrator_marker_phrases": [
+        "repricing endpoint",
+        "repricing api"
+      ],
+      "repos": [
+        "iom-order-service-scheduler",
+        "iom-web-integrator"
+      ]
+    }
+  ]
+}

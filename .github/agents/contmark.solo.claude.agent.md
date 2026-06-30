@@ -44,6 +44,7 @@ user-invocable: true
 6. Read `$workspace_context_dir/todos.md`; absent → seed:
 ```
 ## Pipeline
+- [ ] Stage 0.5: Discovery
 - [ ] Stage 1: Plan
 - [ ] Stage 2: Implement
 - [ ] Stage 3: Review
@@ -55,12 +56,27 @@ First `- [ ]` = resume point. `[x]` each gate.
 
 ## Stage 0 — Classify (no tool calls)
 Derive `$mode` and `$plan_file`:
+- Question about existing state, no change requested ("is X implemented/done/already there?", "do we have", "does the code", "where is X") → `$mode = inquiry` · no `$plan_file` (read-only; answered at Stage 0.5, never planned/implemented).
 - Jira key/URL → `$mode = jira` · `$plan_file = $workspace_context_dir/{JIRA-KEY}-plan.md`
 - GitHub issue URL → `$mode = github` · `$plan_file = .contmark/gh-{issue-number}-plan.md`
 - `UT-only`/`CT-only` → `$mode = test` · `$plan_file = $workspace_context_dir/{slug}-plan.md`
 - Else → `$mode = feature` · `$plan_file = $workspace_context_dir/{slug}-plan.md`
 
 Slug: first 3 meaningful words, lowercase, hyphened (e.g., `add-kafka-consumer`).
+
+## Stage 0.5 — Discovery gate (ALL modes; before Stage 1)
+Verify the FLOW, not filenames. Never plan/build what runs.
+1. Decompose the request into required steps `$req[]` (entry → logic → persist/emit → contract), one per observable behaviour.
+2. Read `$matches`/`$entry_files` from Boot 0 at `source:line` (`runtime/*-flow.md` map whole flows); `$matches` empty or LEGACY → ONE grep on key nouns. Open real code, not the index.
+3. Mark each `$req` `covered | missing` with `file:line` proof — covered only if the code performs the step, not on a name match.
+
+`$coverage`: all covered → present · some → partial · none → absent. `$evidence[] = req → file:line | MISSING`.
+- `$mode = inquiry` → answer + STOP. Report per-step `$coverage` + `$evidence`. Never plan, implement, or seed `todos.md`.
+- `present` → "Already implemented" + `$evidence`; ask _"Re-implement, modify, or cancel?"_ **STOP.**
+- `partial` → set `$existing_coverage = {covered evidence, missing[]}`; Stage 1 plans ONLY `missing[]`, extending covered code.
+- `absent` → Stage 1 plans the full flow.
+
+Mark `[x] Stage 0.5`.
 
 ## Skills — on-demand (skip if `$skills.*` set)
 | When | Read |
@@ -85,7 +101,7 @@ Slug: first 3 meaningful words, lowercase, hyphened (e.g., `add-kafka-consumer`)
 ## Stage 1 — Plan (human gate)
 1. `$stack`/`$modules`/`$features` from project.yml; profile absent → detect now (Boot 2), load domain skills via `$features.*`.
 2. `$mode = jira` → `getJiraIssue({key})` for ACs + `getJiraIssueRemoteIssueLinks` for Confluence.
-3. **No-prejudge.** Unknown = question. Ask all unknowns as one numbered list; wait. New unknowns → ask again. Answer reveals generic project rule → append `incidents.log`: `domain | <rule> | <evidence>`.
+3. **No-prejudge.** Unknown = question. Ask all unknowns as one numbered list; wait. New unknowns → ask again. Answer reveals generic project rule → append `incidents.log`: `domain | <rule> | <evidence>`. **Already-implemented:** honour Stage 0.5 `$existing_coverage` — plan ONLY `missing[]`, extending covered code; covered steps go under §Already Implemented (`file:line`), never the task list.
 4. Write `$plan_file` per `contmark-plan-templates`: §Stack · §CT_MODULE · §ACs · §Implementation Tasks · §Unit Test Matrix · §CT Scenarios (omit if `$modules.componentTest = none`; note `⚠️ CT skipped`). Scenario filter: _"proves concrete observable outcome?"_ — yes write · no drop. UT = business + explicit error paths · CT = one end-to-end per user journey.
 5. Present plan. _"Feedback, or type **PLAN APPROVED** to proceed."_ **STOP.** On `PLAN APPROVED`: seed `todos.md` with `- [ ]` per task under `### Implement` · `### Unit Test` · `### Component Test`. Mark `[x] Stage 1`. Profile absent → also write `.contmark/project.yml.draft`. Any other reply → apply feedback, rewrite, re-present.
 

@@ -105,6 +105,7 @@ Returns ~350 tokens: `{ route, repo_order, matches:[{repo,path,source?,line?}], 
 
 ```
 ## Pipeline
+- [ ] Stage 0.5: Discovery
 - [ ] Stage 1: Plan
 - [ ] Stage 2: Implement
 - [ ] Stage 3: Review
@@ -119,6 +120,7 @@ First `- [ ]` = resume point. Mark `[x]` at each gate.
 
 Derive `$mode` and `$plan_file` from raw input:
 
+- Question about existing state, no change requested ("is X implemented/done/already there?", "do we have", "does the code", "where is X") → `$mode = inquiry` · no `$plan_file` (read-only; answered at Stage 0.5, never planned/implemented).
 - Jira key / URL → `$mode = jira` · `$plan_file = $workspace_context_dir/{JIRA-KEY}-plan.md`
 - GitHub issue URL → `$mode = github` · `$plan_file = $workspace_context_dir/gh-{issue-number}-plan.md`
 - `UT-only` / `CT-only` → `$mode = test` · `$plan_file = $workspace_context_dir/{slug}-plan.md`
@@ -126,9 +128,26 @@ Derive `$mode` and `$plan_file` from raw input:
 
 Slug: first 3 meaningful words of input, lowercase, hyphened (e.g., `add-kafka-consumer`).
 
+## Stage 0.5 — Discovery gate (ALL modes; before Stage 1)
+
+Verify the FLOW, not filenames. Never plan or build what already runs.
+
+1. Decompose the request into required steps `$req[]` — one per observable behaviour (entry → logic → persist/emit → contract).
+2. Read `$matches`/`$entry_files` from Boot 0 at `source:line` (`runtime/*-flow.md` map whole flows); `$matches` empty or LEGACY → ONE `grep_search` on key nouns. Open the real code, not the index.
+3. Mark each `$req` `covered | missing` with `file:line` proof. Covered only if the code performs the step — a name match is not coverage.
+
+`$coverage`: all covered → present · some → partial · none → absent. `$evidence[] = req → file:line | MISSING`.
+
+- `$mode = inquiry` → answer + STOP. Report per-step `$coverage` + `$evidence`. Never plan, implement, or seed `todos.md`.
+- present → "Already implemented" + `$evidence`; ask _"Re-implement, modify, or cancel?"_ STOP.
+- partial → `$existing_coverage = {covered evidence, missing[]}`; Stage 1 plans ONLY `missing[]`, extending the covered code.
+- absent → Stage 1 plans the full flow.
+
+Mark `[x] Stage 0.5`.
+
 ## Stage 1 — Plan
 
-`run_subagent(contmark.plan, {workspace_context_dir: $workspace_context_dir, repo_context_dir: $repo_context_dir, mode, input, stack, modules, features, lessons: read($repo_context_dir/lessons.md), plan_file: $plan_file, previous_repos: $previous_repos (workspace mode only — empty list on first iteration), cross_repo_contracts: $cross_repo_contracts (workspace mode only), workspace_lessons: $workspace_lessons (workspace mode only)})`
+`run_subagent(contmark.plan, {workspace_context_dir: $workspace_context_dir, repo_context_dir: $repo_context_dir, mode, input, stack, modules, features, lessons: read($repo_context_dir/lessons.md), plan_file: $plan_file, existing_coverage: $existing_coverage (Stage 0.5; partial only — covered steps + missing[], plan missing only), previous_repos: $previous_repos (workspace mode only — empty list on first iteration), cross_repo_contracts: $cross_repo_contracts (workspace mode only), workspace_lessons: $workspace_lessons (workspace mode only)})`
 
 Present plan to user. _"Feedback, or **PLAN APPROVED** to proceed."_ **STOP.**
 
@@ -213,6 +232,7 @@ Read `.github/skills/contmark-pr-delivery-and-triage/SKILL.md`. Execute its prot
 
 ## Rules
 
+- Stage 0.5 runs before Stage 1, always — `inquiry` and `present` STOP; only `partial`/`absent` reach the Planner. Never plan/build what exists
 - Never write production code, tests, or feature files — edit tools for skill/agent patches only (Stage 5)
 - Review never skipped in `$mode = feature` · no `git push --force` · no `--no-verify`
 - CT: skip automatically on `CT_MODULE: absent`; mark `[x] Stage 4b` as skipped

@@ -1,0 +1,1348 @@
+{
+  "repo_key": "iom-offer-service",
+  "generated_at": "2026-06-30T10:13:00Z",
+  "verified_against": "7e42b470a171e83034f5b87317665f282611a72d",
+  "files": [
+    {
+      "path": "domain/CalculateRatesRequest.md",
+      "category": "domain",
+      "title": "CalculateRatesRequest and RepriceRequest",
+      "summary": "DTOs for rate calculation and repricing flows",
+      "primary_for": [
+        "rates-request-dto-reference",
+        "reprice-request-dto-reference"
+      ],
+      "mentions": [
+        "RatesController",
+        "RatesService",
+        "RatesClient",
+        "OfferServiceDetailsController"
+      ],
+      "scenarios": [
+        "understand calculate rates request fields",
+        "add new field to reprice request",
+        "find transport route structure for rates",
+        "understand additional charges in reprice",
+        "trace rates request construction"
+      ],
+      "capabilities": [
+        "rate-calculation",
+        "reprice"
+      ],
+      "domains": [
+        "rates",
+        "offer-management"
+      ],
+      "entities": [
+        "CalculateRatesRequest",
+        "ContainerRateRequest",
+        "TransportRoute",
+        "TransportLeg",
+        "RepriceRequest",
+        "AdditionalChargeRequest"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 75
+    },
+    {
+      "path": "domain/OfferRequest.md",
+      "category": "domain",
+      "title": "OfferRequest",
+      "summary": "Internal aggregation of routing results and booking equipments passed to the offer API",
+      "primary_for": [
+        "offer-request-domain-model",
+        "routing-to-offer-handoff-contract"
+      ],
+      "mentions": [
+        "IOMRoutingAndOfferService",
+        "OfferService",
+        "OfferClientImpl",
+        "V3OfferRequestModel"
+      ],
+      "scenarios": [
+        "understand offer api input structure",
+        "trace routing output to offer input",
+        "find triangulation type usage",
+        "understand correlation id propagation",
+        "add new field to offer request"
+      ],
+      "capabilities": [
+        "offer-search",
+        "routing"
+      ],
+      "domains": [
+        "offer-management",
+        "routing"
+      ],
+      "entities": [
+        "OfferRequest",
+        "OfferResponse",
+        "V3RoutingModel",
+        "V3BookingEquipmentModel"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 54
+    },
+    {
+      "path": "domain/OfferedServicePlanDocument.md",
+      "category": "domain",
+      "title": "OfferedServicePlanDocument",
+      "summary": "MongoDB document storing a fully enriched offered inland service plan",
+      "primary_for": [
+        "offered-service-plan-mongodb-document",
+        "persistence-schema-reference"
+      ],
+      "mentions": [
+        "OfferedServicePlanPersistenceService",
+        "OfferedServicePlanDocumentRepository",
+        "OfferRecordCleanUpService",
+        "ServicePlanDomainEventConsumer"
+      ],
+      "scenarios": [
+        "understand mongodb document structure",
+        "find fields stored per offered plan",
+        "trace service plan number assignment",
+        "understand offered plan lifecycle",
+        "find rates stored on offered plan",
+        "find the persistence layer",
+        "check persistence schema"
+      ],
+      "capabilities": [
+        "offer-search",
+        "rate-calculation",
+        "persistence"
+      ],
+      "domains": [
+        "offer-management",
+        "rates"
+      ],
+      "entities": [
+        "OfferedServicePlanDocument",
+        "ProductOffer",
+        "ServicePlanRouting",
+        "CalculateRatesApiResponse"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 73
+    },
+    {
+      "path": "domain/SearchRequest.md",
+      "category": "domain",
+      "title": "SearchRequest",
+      "summary": "Internal domain object representing a validated, enriched inland offer search request",
+      "primary_for": [
+        "search-request-domain-model",
+        "offer-search-input-contract"
+      ],
+      "mentions": [
+        "IOMRoutingAndOfferService",
+        "SearchRequestService",
+        "V3SearchRequest",
+        "SearchRequestDocument",
+        "V3RequestMapper"
+      ],
+      "scenarios": [
+        "understand search request structure",
+        "add new field to search request",
+        "trace search input to service",
+        "find transport activity field meaning",
+        "understand booking equipment structure"
+      ],
+      "capabilities": [
+        "offer-search",
+        "request-enrichment"
+      ],
+      "domains": [
+        "offer-management",
+        "routing"
+      ],
+      "entities": [
+        "SearchRequest",
+        "ContainerRequest",
+        "ContainerDetail",
+        "TimeRangeRequest"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 68
+    },
+    {
+      "path": "architecture/cross-cutting.md",
+      "category": "architecture",
+      "title": "Cross-Cutting Concerns",
+      "summary": "Security, observability, error handling, retry, and feature flags",
+      "primary_for": [
+        "cross-cutting-concern-catalog",
+        "security-observability-reference"
+      ],
+      "mentions": [
+        "SecurityConfig",
+        "ObservationWebFilter",
+        "ObservationHandlerConfig",
+        "ObservedAspectConfiguration",
+        "WebClientConfiguration",
+        "ErrorHandler",
+        "ReferenceDataFetcher",
+        "FeatureConfigUtil",
+        "LaunchDarklyLocalConfig"
+      ],
+      "scenarios": [
+        "understand jwt token validation",
+        "trace request through observability stack",
+        "understand retry and circuit breaker config",
+        "find feature flag checks",
+        "understand error propagation model",
+        "find cross-cutting concerns",
+        "check security concerns"
+      ],
+      "capabilities": [
+        "jwt-auth",
+        "distributed-tracing",
+        "circuit-breaking",
+        "retry",
+        "feature-flags"
+      ],
+      "domains": [
+        "offer-management",
+        "security",
+        "observability"
+      ],
+      "entities": [],
+      "last_updated": "2026-06-30",
+      "lines": 85
+    },
+    {
+      "path": "architecture/modules.md",
+      "category": "architecture",
+      "title": "Module Structure",
+      "summary": "Package and module decomposition of iom-offer-service",
+      "primary_for": [
+        "module-decomposition-map",
+        "package-responsibility-guide"
+      ],
+      "mentions": [
+        "controller",
+        "service",
+        "webclient",
+        "document",
+        "domain",
+        "config",
+        "messaging",
+        "validator",
+        "mapper",
+        "repository"
+      ],
+      "scenarios": [
+        "understand package layout",
+        "find domain model classes",
+        "locate webclient implementations",
+        "add new external integration",
+        "understand validator chain",
+        "understand module layout",
+        "find the module structure",
+        "find a package"
+      ],
+      "capabilities": [
+        "offer-search",
+        "rate-calculation",
+        "routing",
+        "kafka-consumption",
+        "persistence"
+      ],
+      "domains": [
+        "offer-management",
+        "rates",
+        "routing"
+      ],
+      "entities": [
+        "OfferedServicePlanDocument",
+        "SearchRequestDocument",
+        "OfferRequest",
+        "SearchRequest"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 97
+    },
+    {
+      "path": "stack/stack.md",
+      "category": "stack",
+      "title": "Technology Stack",
+      "summary": "Full technology stack for iom-offer-service",
+      "primary_for": [
+        "stack-reference-card",
+        "build-tool-guide"
+      ],
+      "mentions": [
+        "Spring Boot",
+        "Kotlin",
+        "Java",
+        "Gradle",
+        "MongoDB",
+        "Kafka",
+        "Resilience4j",
+        "Micrometer",
+        "LaunchDarkly",
+        "Avro",
+        "OpenAPI"
+      ],
+      "scenarios": [
+        "understand the tech stack",
+        "find kotlin version used",
+        "check spring boot version",
+        "understand build tasks available",
+        "find gradle build commands",
+        "find build stack commands"
+      ],
+      "capabilities": [
+        "build",
+        "test",
+        "deploy",
+        "observe"
+      ],
+      "domains": [
+        "offer-management"
+      ],
+      "entities": [],
+      "last_updated": "2026-06-30",
+      "lines": 88
+    },
+    {
+      "path": "runtime/offer-cleanup-flow.md",
+      "category": "runtime",
+      "title": "Offer Cleanup Flow",
+      "summary": "Scheduled deletion of unmapped offered service plan documents",
+      "primary_for": [
+        "offer-cleanup-runtime-flow",
+        "stale-record-deletion-trace"
+      ],
+      "mentions": [
+        "OfferServiceCleanUpController",
+        "OfferRecordCleanUpService",
+        "ReactiveMongoTemplate"
+      ],
+      "scenarios": [
+        "understand how stale offers are deleted",
+        "find cleanup query logic",
+        "trace delete offered plan endpoint",
+        "understand what unmapped means",
+        "find how old records are identified"
+      ],
+      "capabilities": [
+        "offer-cleanup",
+        "persistence"
+      ],
+      "domains": [
+        "offer-management"
+      ],
+      "entities": [
+        "OfferedServicePlanDocument",
+        "OfferRecordsDeleteResponse"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 65
+    },
+    {
+      "path": "runtime/offer-search-flow.md",
+      "category": "runtime",
+      "title": "Offer Search Flow",
+      "summary": "Step-by-step reactive flow for the main inland service plan search",
+      "primary_for": [
+        "offer-search-runtime-flow",
+        "service-plan-search-trace-guide"
+      ],
+      "mentions": [
+        "IOMSearchQueryController",
+        "IOMRoutingAndOfferService",
+        "RoutingService",
+        "OfferService",
+        "CustomsService",
+        "OfferedServicePlanPersistenceService",
+        "SearchRequestService"
+      ],
+      "scenarios": [
+        "trace search request end to end",
+        "understand how routes are fetched",
+        "understand offer api invocation",
+        "find where customs enrichment happens",
+        "understand parallelism in search flow"
+      ],
+      "capabilities": [
+        "offer-search",
+        "routing",
+        "customs"
+      ],
+      "domains": [
+        "offer-management",
+        "routing",
+        "customs"
+      ],
+      "entities": [
+        "V3SearchRequest",
+        "OfferRequest",
+        "OfferedServicePlanDocument"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 75
+    },
+    {
+      "path": "runtime/rates-flow.md",
+      "category": "runtime",
+      "title": "Rates Flow",
+      "summary": "Rate calculation and repricing flows for an offered service plan",
+      "primary_for": [
+        "rates-calculation-runtime-flow",
+        "reprice-runtime-flow"
+      ],
+      "mentions": [
+        "RatesController",
+        "RatesService",
+        "RatesClientImpl",
+        "OfferedServicePlanPersistenceService",
+        "OfferServiceDetailsController"
+      ],
+      "scenarios": [
+        "calculate rates for offered plan",
+        "reprice offer with price date change",
+        "reprice with additional charges",
+        "understand mandatory charge validation",
+        "trace rates merge into service plan"
+      ],
+      "capabilities": [
+        "rate-calculation",
+        "reprice",
+        "persistence"
+      ],
+      "domains": [
+        "rates",
+        "offer-management"
+      ],
+      "entities": [
+        "CalculateRatesRequest",
+        "CalculateRatesApiResponse",
+        "RepriceRequest",
+        "OfferedServicePlanDocument"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 60
+    },
+    {
+      "path": "runtime/service-plan-event-processing-flow.md",
+      "category": "runtime",
+      "title": "Service Plan Event Processing Flow",
+      "summary": "Kafka consumer flow linking offered plan to booked service plan number",
+      "primary_for": [
+        "kafka-event-processing-flow",
+        "service-plan-number-update-trace"
+      ],
+      "mentions": [
+        "ServicePlanDomainEventConsumer",
+        "OfferedServicePlanPersistenceService",
+        "EventNotification",
+        "KafkaConfig"
+      ],
+      "scenarios": [
+        "trace kafka event to mongodb update",
+        "understand service plan number linking",
+        "find kafka consumer configuration",
+        "understand acknowledgement behaviour",
+        "find offset reset strategy"
+      ],
+      "capabilities": [
+        "kafka-consumption",
+        "persistence"
+      ],
+      "domains": [
+        "offer-management"
+      ],
+      "entities": [
+        "OfferedServicePlanDocument",
+        "EventNotification"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 66
+    },
+    {
+      "path": "contracts/api-contracts.md",
+      "category": "contracts",
+      "title": "API Contracts",
+      "summary": "All REST API endpoints exposed by iom-offer-service",
+      "primary_for": [
+        "rest-api-contract-reference",
+        "openapi-endpoint-catalog"
+      ],
+      "mentions": [
+        "IOMSearchQueryController",
+        "RatesController",
+        "OfferServiceDetailsController",
+        "OfferServiceCleanUpController",
+        "ErrorCodeController"
+      ],
+      "scenarios": [
+        "find all exposed api endpoints",
+        "check request and response types",
+        "understand auth requirements per endpoint",
+        "find reprice endpoint signature",
+        "check error response codes",
+        "find the api contracts",
+        "check contract definitions"
+      ],
+      "capabilities": [
+        "offer-search",
+        "rate-calculation",
+        "reprice",
+        "offer-cleanup",
+        "offer-details"
+      ],
+      "domains": [
+        "offer-management",
+        "rates"
+      ],
+      "entities": [
+        "V3SearchRequest",
+        "V3ServicePlanModel",
+        "CalculateRatesRequest",
+        "CalculateRatesApiResponse",
+        "RepriceRequest"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 103
+    },
+    {
+      "path": "contracts/db-schemas.md",
+      "category": "contracts",
+      "title": "Database Schemas",
+      "summary": "MongoDB collections and their document structure in iom-offer-service",
+      "primary_for": [
+        "mongodb-schema-reference",
+        "collection-index-guide"
+      ],
+      "mentions": [
+        "OfferedServicePlanDocument",
+        "SearchRequestDocument",
+        "OfferAudit",
+        "OfferedServicePlanPersistenceService",
+        "SearchRequestService"
+      ],
+      "scenarios": [
+        "understand mongodb collection structure",
+        "find indexes on offered service plans",
+        "understand audit collection schema",
+        "find how search request is stored",
+        "check document fields in mongodb"
+      ],
+      "capabilities": [
+        "persistence"
+      ],
+      "domains": [
+        "offer-management"
+      ],
+      "entities": [
+        "OfferedServicePlanDocument",
+        "SearchRequestDocument",
+        "OfferAudit"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 100
+    },
+    {
+      "path": "contracts/kafka-events.md",
+      "category": "contracts",
+      "title": "Kafka Events",
+      "summary": "Kafka topics consumed and their Avro message schema",
+      "primary_for": [
+        "kafka-event-contract-reference",
+        "avro-schema-guide"
+      ],
+      "mentions": [
+        "ServicePlanDomainEventConsumer",
+        "EventNotification",
+        "KafkaConfig"
+      ],
+      "scenarios": [
+        "understand kafka event schema",
+        "find topic and consumer group names",
+        "understand avro deserialization setup",
+        "trace message fields to mongo update",
+        "find kafka error handling config"
+      ],
+      "capabilities": [
+        "kafka-consumption"
+      ],
+      "domains": [
+        "offer-management"
+      ],
+      "entities": [
+        "EventNotification",
+        "OfferedServicePlanDocument"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 87
+    },
+    {
+      "path": "integrations/business-rules.md",
+      "category": "integrations",
+      "title": "Business Rules Integration",
+      "summary": "Integration with business rules API for commodity restrictions and cargo weight",
+      "primary_for": [
+        "business-rules-api-integration-guide",
+        "commodity-restriction-reference"
+      ],
+      "mentions": [
+        "BusinessRulesClientImpl",
+        "V3CommodityRestrictionValidator",
+        "CargoWeightClientImpl",
+        "CargoWeightValidationService"
+      ],
+      "scenarios": [
+        "validate commodity restrictions",
+        "understand business rules api usage",
+        "find business rules base url",
+        "trace commodity restriction check",
+        "find cargo weight rules endpoint"
+      ],
+      "capabilities": [
+        "offer-search",
+        "validation"
+      ],
+      "domains": [
+        "offer-management"
+      ],
+      "entities": [
+        "SearchRequest",
+        "ContainerRequest"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 50
+    },
+    {
+      "path": "integrations/cargo-weight.md",
+      "category": "integrations",
+      "title": "Cargo Weight Integration",
+      "summary": "Integration with cargo weight rules API for container weight validation",
+      "primary_for": [
+        "cargo-weight-api-integration-guide",
+        "weight-validation-reference"
+      ],
+      "mentions": [
+        "CargoWeightClientImpl",
+        "CargoWeightValidationService",
+        "IOMRoutingAndOfferService"
+      ],
+      "scenarios": [
+        "understand cargo weight validation",
+        "find cargo weight api base url",
+        "trace weight check in search flow",
+        "find cargo weight circuit breaker",
+        "understand weight restriction countries"
+      ],
+      "capabilities": [
+        "offer-search",
+        "validation"
+      ],
+      "domains": [
+        "offer-management"
+      ],
+      "entities": [
+        "SearchRequest",
+        "ContainerRequest"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 55
+    },
+    {
+      "path": "integrations/charge-types.md",
+      "category": "integrations",
+      "title": "Charge Types Integration",
+      "summary": "Integration with master data charge-types API and in-memory charge type cache",
+      "primary_for": [
+        "charge-types-integration-guide",
+        "charge-type-cache-reference"
+      ],
+      "mentions": [
+        "ReferenceDataFetcher",
+        "CustomsService",
+        "ChargeStandardizations"
+      ],
+      "scenarios": [
+        "understand charge type name resolution",
+        "find charge types api base url",
+        "trace charge type cache refresh",
+        "understand mandatory charge codes",
+        "find charge standardization logic"
+      ],
+      "capabilities": [
+        "offer-search",
+        "rate-calculation"
+      ],
+      "domains": [
+        "offer-management",
+        "rates"
+      ],
+      "entities": [
+        "V3ChargeModel",
+        "V3ChargeType"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 66
+    },
+    {
+      "path": "integrations/commodity.md",
+      "category": "integrations",
+      "title": "Commodity and Reefer Integration",
+      "summary": "Integration with master data commodity API and reefer templates API",
+      "primary_for": [
+        "commodity-api-integration-guide",
+        "reefer-client-reference"
+      ],
+      "mentions": [
+        "CommodityClient",
+        "ReeferTemperatureClient",
+        "V3CommodityCodeValidator",
+        "V3CommodityRestrictionValidator",
+        "ReferenceDataFetcher"
+      ],
+      "scenarios": [
+        "validate commodity code in search request",
+        "fetch reefer temperature requirements",
+        "understand commodity restriction validation",
+        "find commodity api base url",
+        "find reefer api base url"
+      ],
+      "capabilities": [
+        "offer-search",
+        "validation"
+      ],
+      "domains": [
+        "offer-management"
+      ],
+      "entities": [
+        "SearchRequest",
+        "ContainerRequest"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 69
+    },
+    {
+      "path": "integrations/container-type.md",
+      "category": "integrations",
+      "title": "Container Type Integration",
+      "summary": "Integration with master data container-types API for equipment validation",
+      "primary_for": [
+        "container-type-integration-guide",
+        "equipment-validation-reference"
+      ],
+      "mentions": [
+        "ContainerTypeClient",
+        "V3ContainerTypeValidator",
+        "ReferenceDataFetcher"
+      ],
+      "scenarios": [
+        "validate container type in search request",
+        "find container type api base url",
+        "understand equipment profile validation",
+        "find container type circuit breaker",
+        "understand iso size type validation"
+      ],
+      "capabilities": [
+        "offer-search",
+        "validation"
+      ],
+      "domains": [
+        "offer-management"
+      ],
+      "entities": [
+        "SearchRequest",
+        "ContainerRequest"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 51
+    },
+    {
+      "path": "integrations/customer.md",
+      "category": "integrations",
+      "title": "Customer Integration",
+      "summary": "Integration with customer identification API for party validation",
+      "primary_for": [
+        "customer-api-integration-guide",
+        "party-validation-reference"
+      ],
+      "mentions": [
+        "CustomerClient",
+        "V3PartyCodeValidator",
+        "V3PartyMasterRoleValidator",
+        "V3BookedByContactPartyValidator"
+      ],
+      "scenarios": [
+        "validate customer party code",
+        "find customer api base url",
+        "understand party validation chain",
+        "find customer circuit breaker",
+        "trace bookedby contact validation"
+      ],
+      "capabilities": [
+        "offer-search",
+        "validation"
+      ],
+      "domains": [
+        "offer-management"
+      ],
+      "entities": [
+        "SearchRequest",
+        "V3SearchRequest"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 55
+    },
+    {
+      "path": "integrations/customs.md",
+      "category": "integrations",
+      "title": "Customs Integration",
+      "summary": "Integration with customs services API for customs charge enrichment",
+      "primary_for": [
+        "customs-api-integration-guide",
+        "customs-charge-enrichment-reference"
+      ],
+      "mentions": [
+        "CustomsClientImpl",
+        "CustomsService",
+        "IOMRoutingAndOfferService",
+        "FeatureConfigUtil"
+      ],
+      "scenarios": [
+        "understand customs charge enrichment",
+        "find customs api base url",
+        "trace customs charge into service plan",
+        "understand customs feature flag",
+        "find customs export vs import logic"
+      ],
+      "capabilities": [
+        "offer-search",
+        "customs"
+      ],
+      "domains": [
+        "offer-management",
+        "customs"
+      ],
+      "entities": [
+        "V3SearchRequest",
+        "V3ServicePlanModel",
+        "V3ChargeModel"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 62
+    },
+    {
+      "path": "integrations/facility.md",
+      "category": "integrations",
+      "title": "Facility Integration",
+      "summary": "Integration with SMDS facilities service for facility data lookup",
+      "primary_for": [
+        "facility-api-integration-guide",
+        "facility-client-reference"
+      ],
+      "mentions": [
+        "FacilityClient",
+        "OfferLocationService"
+      ],
+      "scenarios": [
+        "understand facility data lookup",
+        "find facility api base url",
+        "trace facility enrichment in search",
+        "find facility circuit breaker",
+        "understand facility vs city location"
+      ],
+      "capabilities": [
+        "offer-search"
+      ],
+      "domains": [
+        "offer-management",
+        "routing"
+      ],
+      "entities": [
+        "SearchRequest",
+        "V3SearchRequest"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 49
+    },
+    {
+      "path": "integrations/location.md",
+      "category": "integrations",
+      "title": "Location Integration",
+      "summary": "Integration with master data location API to resolve geoId-based location details",
+      "primary_for": [
+        "location-api-integration-guide",
+        "location-client-reference"
+      ],
+      "mentions": [
+        "LocationClient",
+        "LocationService",
+        "OfferLocationService"
+      ],
+      "scenarios": [
+        "understand how location data is fetched",
+        "find location api base url",
+        "trace location enrichment in search flow",
+        "find location client circuit breaker",
+        "understand geo id based location lookup"
+      ],
+      "capabilities": [
+        "offer-search"
+      ],
+      "domains": [
+        "offer-management",
+        "routing"
+      ],
+      "entities": [
+        "SearchRequest",
+        "V3SearchRequest"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 52
+    },
+    {
+      "path": "integrations/offer-v3.md",
+      "category": "integrations",
+      "title": "OIPO Offer v3/v4 Integration",
+      "summary": "Integration with OIPO multicarrier offer API to retrieve inland transport offers",
+      "primary_for": [
+        "oipo-offer-integration-guide",
+        "offer-api-client-reference"
+      ],
+      "mentions": [
+        "OfferClientImpl",
+        "OfferClientWithMockFallback",
+        "OfferService",
+        "IOMRoutingAndOfferService",
+        "V3OfferRequestModel"
+      ],
+      "scenarios": [
+        "understand how offers are fetched",
+        "find offer api base url config",
+        "understand mock fallback on sit uat",
+        "trace offer client circuit breaker",
+        "add new field to offer request"
+      ],
+      "capabilities": [
+        "offer-search"
+      ],
+      "domains": [
+        "offer-management"
+      ],
+      "entities": [
+        "OfferRequest",
+        "V3OfferRequestModel",
+        "MultiCarrierOfferResponseV3"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 62
+    },
+    {
+      "path": "integrations/rates.md",
+      "category": "integrations",
+      "title": "Rates Integration",
+      "summary": "Integration with OIPO rates v8 API for inland rate calculation and repricing",
+      "primary_for": [
+        "rates-api-integration-guide",
+        "rates-client-reference"
+      ],
+      "mentions": [
+        "RatesClientImpl",
+        "RatesService",
+        "RatesController",
+        "OfferServiceDetailsController"
+      ],
+      "scenarios": [
+        "understand rates api integration",
+        "find rates base url config",
+        "trace rates api request construction",
+        "understand rates circuit breaker",
+        "find rates retry configuration"
+      ],
+      "capabilities": [
+        "rate-calculation",
+        "reprice"
+      ],
+      "domains": [
+        "rates"
+      ],
+      "entities": [
+        "CalculateRatesRequest",
+        "CalculateRatesResponse",
+        "CalculateRatesApiResponse"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 60
+    },
+    {
+      "path": "integrations/routing.md",
+      "category": "integrations",
+      "title": "Routing Integration",
+      "summary": "Integration with the delivery-network routing API for inland route discovery",
+      "primary_for": [
+        "routing-api-integration-guide",
+        "routing-client-reference"
+      ],
+      "mentions": [
+        "RoutingClientImpl",
+        "RoutingService",
+        "IOMRoutingAndOfferService",
+        "V3RoutingRequestModel"
+      ],
+      "scenarios": [
+        "understand how routes are fetched",
+        "find routing api base url",
+        "trace routing request construction",
+        "understand route filtering logic",
+        "find routing circuit breaker name"
+      ],
+      "capabilities": [
+        "offer-search",
+        "routing"
+      ],
+      "domains": [
+        "routing",
+        "offer-management"
+      ],
+      "entities": [
+        "OfferRequest",
+        "V3RoutingModel",
+        "V3RoutingRequestModel",
+        "V3RoutingResponseModel"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 68
+    },
+    {
+      "path": "integrations/sales-object.md",
+      "category": "integrations",
+      "title": "Sales Object Integration",
+      "summary": "Integration with master data sales-objects API for product and pricing context",
+      "primary_for": [
+        "sales-object-integration-guide",
+        "sales-object-client-reference"
+      ],
+      "mentions": [
+        "SalesObjectClient",
+        "IOMRoutingAndOfferService"
+      ],
+      "scenarios": [
+        "understand sales object lookup",
+        "find sales object api base url",
+        "trace sales object in search",
+        "find sales object circuit breaker",
+        "understand product pricing context"
+      ],
+      "capabilities": [
+        "offer-search"
+      ],
+      "domains": [
+        "offer-management"
+      ],
+      "entities": [
+        "SearchRequest",
+        "SalesObject"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 49
+    },
+    {
+      "path": "operations/failure-model.md",
+      "category": "operations",
+      "title": "Failure Model",
+      "summary": "How iom-offer-service handles failures from external systems and internal errors",
+      "primary_for": [
+        "failure-model-reference",
+        "error-handling-guide"
+      ],
+      "mentions": [
+        "ErrorHandler",
+        "ExtendedExternalApiException",
+        "CustomsService",
+        "OfferClientWithMockFallback",
+        "RatesService",
+        "OfferedServicePlanPersistenceService"
+      ],
+      "scenarios": [
+        "understand failure handling for external calls",
+        "find how customs errors are handled",
+        "understand kafka consumer error handling",
+        "find what errors cause 502 response",
+        "understand circuit breaker open state behaviour",
+        "understand the failure model"
+      ],
+      "capabilities": [
+        "offer-search",
+        "rate-calculation",
+        "kafka-consumption"
+      ],
+      "domains": [
+        "offer-management",
+        "rates"
+      ],
+      "entities": [],
+      "last_updated": "2026-06-30",
+      "lines": 59
+    },
+    {
+      "path": "operations/flags-and-lists.md",
+      "category": "operations",
+      "title": "Feature Flags and Static Lists",
+      "summary": "LaunchDarkly feature flags, static allow/deny lists, and static configuration",
+      "primary_for": [
+        "feature-flag-reference",
+        "static-list-configuration-guide"
+      ],
+      "mentions": [
+        "FeatureConfigUtil",
+        "LaunchDarklyLocalConfig",
+        "ReferenceDataFetcher",
+        "MandatoryChargesConfig",
+        "AdditionalChargeMaterialCodesProperties"
+      ],
+      "scenarios": [
+        "find all feature flags used",
+        "understand empty container allow list",
+        "find mandatory charge code configuration",
+        "understand launchdarkly flag usage",
+        "find transport mode allow list"
+      ],
+      "capabilities": [
+        "offer-search",
+        "rate-calculation"
+      ],
+      "domains": [
+        "offer-management",
+        "rates"
+      ],
+      "entities": [],
+      "last_updated": "2026-06-30",
+      "lines": 77
+    },
+    {
+      "path": "operations/monitoring.md",
+      "category": "operations",
+      "title": "Monitoring and Observability",
+      "summary": "Metrics, tracing, logging and health check configuration",
+      "primary_for": [
+        "monitoring-observability-reference",
+        "metrics-endpoint-guide"
+      ],
+      "mentions": [
+        "ObservationWebFilter",
+        "ObservationHandlerConfig",
+        "ObservedAspectConfiguration",
+        "SecurityConfig"
+      ],
+      "scenarios": [
+        "find prometheus metrics endpoint",
+        "understand distributed tracing setup",
+        "find health check endpoints",
+        "understand log level configuration",
+        "check zipkin tracing endpoint",
+        "find observability wiring",
+        "check observability setup"
+      ],
+      "capabilities": [
+        "observe"
+      ],
+      "domains": [
+        "offer-management"
+      ],
+      "entities": [],
+      "last_updated": "2026-06-30",
+      "lines": 83
+    },
+    {
+      "path": "operations/retries.md",
+      "category": "operations",
+      "title": "Retry and Circuit Breaker Configuration",
+      "summary": "Retry policies and Resilience4j circuit breaker configuration for all external calls",
+      "primary_for": [
+        "retry-circuit-breaker-config-reference",
+        "resilience-policy-guide"
+      ],
+      "mentions": [
+        "ErrorHandler",
+        "RetryConfiguration",
+        "WebClientConfiguration",
+        "RatesClientImpl",
+        "OfferClientImpl",
+        "RoutingClientImpl"
+      ],
+      "scenarios": [
+        "find retry count for external calls",
+        "understand circuit breaker thresholds",
+        "understand when retries are skipped",
+        "find circuit breaker instance names",
+        "understand fallback behaviour on open circuit",
+        "find resilience policies",
+        "check retry resilience"
+      ],
+      "capabilities": [
+        "offer-search",
+        "rate-calculation",
+        "routing"
+      ],
+      "domains": [
+        "offer-management",
+        "rates",
+        "routing"
+      ],
+      "entities": [],
+      "last_updated": "2026-06-30",
+      "lines": 73
+    },
+    {
+      "path": "navigation/entry-points.md",
+      "category": "navigation",
+      "title": "Entry Points",
+      "summary": "All HTTP and Kafka entry points for iom-offer-service",
+      "primary_for": [
+        "api-entry-point-inventory",
+        "controller-routing-map"
+      ],
+      "mentions": [
+        "IOMSearchQueryController",
+        "RatesController",
+        "OfferServiceCleanUpController",
+        "OfferServiceDetailsController",
+        "ErrorCodeController",
+        "ServicePlanDomainEventConsumer"
+      ],
+      "scenarios": [
+        "search for inland service plans",
+        "calculate rates for offer",
+        "get repriced offer response",
+        "delete stale offer records",
+        "consume service plan domain event",
+        "list the entry points",
+        "find an entry point",
+        "find request routing",
+        "trace task routing"
+      ],
+      "capabilities": [
+        "offer-search",
+        "rate-calculation",
+        "reprice",
+        "offer-cleanup",
+        "kafka-consumption"
+      ],
+      "domains": [
+        "offer-management",
+        "rates",
+        "routing"
+      ],
+      "entities": [
+        "V3SearchRequest",
+        "CalculateRatesRequest",
+        "RepriceRequest",
+        "OfferedServicePlanDocument"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 61
+    },
+    {
+      "path": "navigation/key-classes.md",
+      "category": "navigation",
+      "title": "Key Classes",
+      "summary": "Most important classes for understanding and modifying iom-offer-service",
+      "primary_for": [
+        "class-navigation-index",
+        "developer-orientation-guide"
+      ],
+      "mentions": [
+        "IOMRoutingAndOfferService",
+        "RatesService",
+        "OfferedServicePlanPersistenceService",
+        "RoutingService",
+        "OfferService",
+        "CustomsService",
+        "SearchRequestService",
+        "OfferRecordCleanUpService"
+      ],
+      "scenarios": [
+        "find where offer search logic lives",
+        "understand rates calculation flow",
+        "locate mongodb persistence layer",
+        "trace customs charge enrichment",
+        "find kafka consumer logic",
+        "find a key class",
+        "locate the right class",
+        "orient a new developer",
+        "find a developer starting point"
+      ],
+      "capabilities": [
+        "offer-search",
+        "rate-calculation",
+        "routing",
+        "customs",
+        "persistence"
+      ],
+      "domains": [
+        "offer-management",
+        "rates",
+        "routing",
+        "customs"
+      ],
+      "entities": [
+        "OfferedServicePlanDocument",
+        "SearchRequestDocument",
+        "OfferRequest",
+        "V3SearchRequest"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 86
+    },
+    {
+      "path": "navigation/scenarios.md",
+      "category": "navigation",
+      "title": "User Scenarios",
+      "summary": "End-to-end user scenarios supported by iom-offer-service",
+      "primary_for": [
+        "scenario-index",
+        "use-case-navigation-map"
+      ],
+      "mentions": [
+        "IOMSearchQueryController",
+        "RatesController",
+        "OfferServiceDetailsController",
+        "OfferServiceCleanUpController",
+        "ServicePlanDomainEventConsumer"
+      ],
+      "scenarios": [
+        "search service plans for booking",
+        "amend existing service plan search",
+        "calculate inland transport rates",
+        "reprice offer with new date",
+        "clean up unmapped offer records",
+        "get offered service plan details",
+        "reprice with additional charges",
+        "find the right scenario",
+        "match a user scenario",
+        "find the right use case",
+        "match a use case"
+      ],
+      "capabilities": [
+        "offer-search",
+        "rate-calculation",
+        "reprice",
+        "offer-cleanup",
+        "offer-details"
+      ],
+      "domains": [
+        "offer-management",
+        "rates",
+        "routing",
+        "customs"
+      ],
+      "entities": [
+        "V3SearchRequest",
+        "OfferedServicePlanDocument",
+        "CalculateRatesRequest",
+        "RepriceRequest"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 71
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+# <workspace>/.contmark/repos/smds-facilities-service/_pins.yml
+# Per-repo profile read by agents at Boot 0 (workspace mode). Hand-edit.
+# stack / modules / commands / features are grounded in stack/stack.md (verified against source).
+# contmark_skills are best-effort defaults — review against your installed contmark skill set.
+
+stack:
+  build: maven
+  language: java
+  framework: webflux
+  notes: "Java 17, Maven (telikos-parent), Spring Boot WebFlux; R2DBC PostgreSQL, Cucumber+Serenity CT"
+
+modules:
+  service: service
+  test: service/src/test/java
+  componentTest: componenttest
+
+# Exact runnable commands from stack/stack.md. Agents run these VERBATIM. `none` = not applicable.
+commands:
+  build:          "cd service && mvn clean package"
+  unit_test:      "cd service && mvn test"
+  component_test: "cd componenttest && mvn test"
+  lint:           "cd service && mvn checkstyle:check"
+  verify:         "cd service && mvn clean install"
+
+features:
+  kafka: false
+  temporal: false
+  database: postgres
+  avro: false
+
+contmark_skills:
+  always:  [project-context, execution-core]
+  stack:   [spring-java-conventions]
+  build:   [maven-build-profiles]
+  domain:  []
+  test:    [unit-testing-java, component-testing-cucumber]
+  review:  [code-review-checklist]
+  pr:      [pr-delivery-and-triage]

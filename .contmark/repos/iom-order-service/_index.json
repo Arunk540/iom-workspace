@@ -1,0 +1,880 @@
+{
+  "repo_key": "iom-order-service",
+  "generated_at": "2026-06-30T10:13:00Z",
+  "verified_against": "77238b3248beddfc1396ff2839a940f29e281719",
+  "files": [
+    {
+      "path": "domain/order-domain.md",
+      "category": "domain",
+      "title": "Order domain orchestration",
+      "summary": "OrderServiceImpl is the single mutation entry point for controller and consumer writes. It combines resolver enrichment, validation, persistence, incident/business-exception side effects, outbox dispatch, and selected external calls.",
+      "primary_for": [
+        "order-domain-orchestration"
+      ],
+      "mentions": [
+        "order-service",
+        "validators",
+        "resolvers",
+        "incidents",
+        "outbox"
+      ],
+      "scenarios": [
+        "inspect mutation pipeline",
+        "inspect amend rules",
+        "inspect incident side effects",
+        "inspect customer history writes",
+        "inspect outbox dispatch",
+        "understand the order domain",
+        "find order logic"
+      ],
+      "capabilities": [
+        "domain-orchestration"
+      ],
+      "domains": [
+        "order"
+      ],
+      "entities": [
+        "OrderServiceImpl",
+        "ServicePlan",
+        "IncidentEntity",
+        "OutboxMessage",
+        "AuditEntity"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 35
+    },
+    {
+      "path": "domain/service-plan.md",
+      "category": "domain",
+      "title": "ServicePlan domain",
+      "summary": "`ServicePlan` is the central aggregate for booking, products, charges, legs, work-process state, and customer-history references. OrderServiceImpl enriches, validates, persists, and emits events around this aggregate.",
+      "primary_for": [
+        "service-plan-domain"
+      ],
+      "mentions": [
+        "service-plan",
+        "booking",
+        "charges",
+        "work-processes",
+        "domain-events"
+      ],
+      "scenarios": [
+        "inspect service plan rules",
+        "inspect status changes",
+        "inspect charge updates",
+        "inspect container updates",
+        "inspect repricing rules",
+        "understand the service plan"
+      ],
+      "capabilities": [
+        "domain-model"
+      ],
+      "domains": [
+        "order"
+      ],
+      "entities": [
+        "ServicePlan",
+        "Booking",
+        "Charge",
+        "Reference",
+        "WorkProcess"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 35
+    },
+    {
+      "path": "architecture/cross-cutting.md",
+      "category": "architecture",
+      "title": "Cross-cutting concerns",
+      "summary": "Security, tracing, OpenAPI grouping, local LaunchDarkly wiring, and mapper defaults are centralized under `config/` and `filter/`. Domain and service layers raise validation and access exceptions instead of hiding failures inside controllers.",
+      "primary_for": [
+        "cross-cutting-behavior"
+      ],
+      "mentions": [
+        "security",
+        "tracing",
+        "swagger",
+        "launchdarkly",
+        "exceptions"
+      ],
+      "scenarios": [
+        "inspect jwt setup",
+        "inspect observability",
+        "inspect feature flags",
+        "inspect swagger groups",
+        "inspect error sources",
+        "understand cross-cutting behavior",
+        "check shared behavior"
+      ],
+      "capabilities": [
+        "architecture"
+      ],
+      "domains": [
+        "platform"
+      ],
+      "entities": [
+        "Jwt",
+        "Observation",
+        "LDReactorClient",
+        "ValidationException"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 48
+    },
+    {
+      "path": "architecture/modules.md",
+      "category": "architecture",
+      "title": "Modules and package tree",
+      "summary": "The repository is a single Spring Boot WebFlux service organized by ingress, domain orchestration, queries, mapping, incident support, and cross-cutting config. Kotlin source under `com.maersk.iom` is compact and service-centric.",
+      "primary_for": [
+        "module-topology"
+      ],
+      "mentions": [
+        "package-tree",
+        "controllers",
+        "messaging",
+        "domain",
+        "services"
+      ],
+      "scenarios": [
+        "inspect package tree",
+        "find module boundaries",
+        "map source layout",
+        "locate domain packages",
+        "locate resource assets",
+        "understand module layout"
+      ],
+      "capabilities": [
+        "architecture"
+      ],
+      "domains": [
+        "order"
+      ],
+      "entities": [
+        "ServicePlan",
+        "Booking",
+        "Incident"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 64
+    },
+    {
+      "path": "stack/stack.md",
+      "category": "stack",
+      "title": "Stack and build commands",
+      "summary": "iom-order-service is a Kotlin 1.9 / Java 17 Spring Boot 3.1.5 reactive service using WebFlux, Spring Security, R2DBC PostgreSQL, Kafka Avro, Liquibase, Micrometer, and LaunchDarkly. Gradle Kotlin DSL drives builds, tests, Avro generation, linting, and image packaging.",
+      "primary_for": [
+        "stack-detection"
+      ],
+      "mentions": [
+        "gradle",
+        "kotlin",
+        "spring-boot",
+        "webflux",
+        "kafka",
+        "r2dbc"
+      ],
+      "scenarios": [
+        "detect framework stack",
+        "find build command",
+        "find test command",
+        "find runtime libraries",
+        "find db tooling",
+        "understand the tech stack"
+      ],
+      "capabilities": [
+        "stack"
+      ],
+      "domains": [
+        "platform"
+      ],
+      "entities": [
+        "Gradle",
+        "SpringBoot",
+        "Kafka",
+        "PostgreSQL",
+        "Liquibase"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 49
+    },
+    {
+      "path": "runtime/booking-event-processing-flow.md",
+      "category": "runtime",
+      "title": "Booking event processing flow",
+      "summary": "Booking Kafka ingress routes Avro `Booking` messages by `eventType`, then either updates ServicePlan booking/status state or merges pricing charges before reusing `OrderServiceImpl.save()`. The save path persists the aggregate and stages domain events in the outbox strategy.",
+      "primary_for": [
+        "booking-event-processing"
+      ],
+      "mentions": [
+        "booking-consumer",
+        "event-dispatcher",
+        "booking-updates",
+        "pricing-updates",
+        "outbox"
+      ],
+      "scenarios": [
+        "debug booking consumer",
+        "trace pricing update",
+        "trace booking status update",
+        "inspect ack behavior",
+        "inspect outbox write"
+      ],
+      "capabilities": [
+        "runtime-flow"
+      ],
+      "domains": [
+        "order"
+      ],
+      "entities": [
+        "Booking",
+        "ServicePlan",
+        "BookingStatusChanged",
+        "OutboxMessage"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 39
+    },
+    {
+      "path": "runtime/dashboard-query-flow.md",
+      "category": "runtime",
+      "title": "Dashboard query flow",
+      "summary": "Dashboard requests map HTTP search DTOs into Criteria-backed domain search objects, then use SearchService and QueryService to read `service_plans` through R2DBC. Export paths layer Excel transformation and amendment-journey validation on top of the same query model.",
+      "primary_for": [
+        "dashboard-query"
+      ],
+      "mentions": [
+        "dashboard-controller",
+        "search-service",
+        "query-service",
+        "export",
+        "criteria"
+      ],
+      "scenarios": [
+        "trace dashboard search",
+        "trace multi search",
+        "trace dashboard export",
+        "trace container search",
+        "inspect query criteria"
+      ],
+      "capabilities": [
+        "runtime-flow"
+      ],
+      "domains": [
+        "query"
+      ],
+      "entities": [
+        "ServicePlanSearchRequest",
+        "ServicePlanMultiSearchRequest",
+        "Page",
+        "ServicePlanSummary"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 35
+    },
+    {
+      "path": "runtime/order-creation-flow.md",
+      "category": "runtime",
+      "title": "Order creation flow",
+      "summary": "The primary write flow starts in `V3OrderController.update` and converges on `OrderServiceImpl.createOrUpdateOrder`, which resolves external data, validates, persists, and optionally auto-confirms. All write endpoints reuse the same save/event pipeline after shaping the aggregate.",
+      "primary_for": [
+        "order-creation"
+      ],
+      "mentions": [
+        "v3-order-controller",
+        "create-update",
+        "validators",
+        "save-pipeline",
+        "auto-confirm"
+      ],
+      "scenarios": [
+        "trace create order",
+        "trace patch order",
+        "trace amend order",
+        "trace charge update",
+        "trace container update"
+      ],
+      "capabilities": [
+        "runtime-flow"
+      ],
+      "domains": [
+        "order"
+      ],
+      "entities": [
+        "V3ServicePlanModel",
+        "ServicePlan",
+        "ResolvedData",
+        "FrnUpdateRequest"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 35
+    },
+    {
+      "path": "runtime/service-plan-domain-event-flow.md",
+      "category": "runtime",
+      "title": "Service-plan domain-event flow",
+      "summary": "Service-plan domain-event Kafka ingress is audit-focused in this repository. The consumer persists `SERVICE_PLAN_CHANGED` snapshots and JSON diffs into the `audits` table and ignores other event types beyond returning the service-plan number.",
+      "primary_for": [
+        "service-plan-domain-events"
+      ],
+      "mentions": [
+        "domain-event-consumer",
+        "audit-service",
+        "audits-table",
+        "event-diff"
+      ],
+      "scenarios": [
+        "debug domain event audit",
+        "inspect service plan changed",
+        "inspect audit diff",
+        "inspect ack behavior",
+        "inspect event filter"
+      ],
+      "capabilities": [
+        "runtime-flow"
+      ],
+      "domains": [
+        "audit"
+      ],
+      "entities": [
+        "EventNotification",
+        "AuditEntity",
+        "ServicePlanChanged"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 32
+    },
+    {
+      "path": "contracts/api-contracts.md",
+      "category": "contracts",
+      "title": "API contracts",
+      "summary": "The service exposes v2 dashboard/reference endpoints, a larger v3 order surface, incident creation, execution-charge writes, and file download/report endpoints. Controller methods are thin adapters over domain or service calls, with DTO mapping and role checks at the edge.",
+      "primary_for": [
+        "api-contracts"
+      ],
+      "mentions": [
+        "v2",
+        "v3",
+        "search",
+        "patch",
+        "amend",
+        "exports"
+      ],
+      "scenarios": [
+        "list rest endpoints",
+        "find write endpoint",
+        "find search endpoint",
+        "find export endpoint",
+        "find incident endpoint",
+        "find the api contracts",
+        "check contracts definitions"
+      ],
+      "capabilities": [
+        "contracts"
+      ],
+      "domains": [
+        "api"
+      ],
+      "entities": [
+        "V3ServicePlanModel",
+        "V3PatchRequestModel",
+        "V3ServicePlanStatusSearchQuery",
+        "IncidentModel"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 61
+    },
+    {
+      "path": "contracts/db-schemas.md",
+      "category": "contracts",
+      "title": "Database schemas",
+      "summary": "PostgreSQL persistence centers on `service_plans`, `audits`, `outbox_messages`, `incidents`, and `customer_bookings_history`. Query paths use R2DBC against denormalized search columns and a JSONB-backed ServicePlan payload.",
+      "primary_for": [
+        "db-contracts"
+      ],
+      "mentions": [
+        "service_plans",
+        "audits",
+        "outbox_messages",
+        "incidents",
+        "customer_bookings_history"
+      ],
+      "scenarios": [
+        "list core tables",
+        "inspect search columns",
+        "inspect outbox schema",
+        "inspect audit schema",
+        "inspect customer history table",
+        "find the api contracts",
+        "check contracts definitions"
+      ],
+      "capabilities": [
+        "contracts"
+      ],
+      "domains": [
+        "persistence"
+      ],
+      "entities": [
+        "ServicePlanEntity",
+        "AuditEntity",
+        "OutboxMessage",
+        "IncidentEntity"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 41
+    },
+    {
+      "path": "contracts/kafka-events.md",
+      "category": "contracts",
+      "title": "Kafka events",
+      "summary": "The repository consumes three Kafka streams and writes outbound domain events to an outbox table instead of directly producing Kafka records. Topic patterns, group IDs, concurrency, and ack toggles are all property-driven.",
+      "primary_for": [
+        "kafka-contracts"
+      ],
+      "mentions": [
+        "booking-topic",
+        "service-plan-domain-events",
+        "customer-history",
+        "outbox"
+      ],
+      "scenarios": [
+        "list kafka topics",
+        "find consumer group",
+        "inspect ack config",
+        "inspect outbound events",
+        "inspect avro inputs",
+        "find kafka topics"
+      ],
+      "capabilities": [
+        "contracts"
+      ],
+      "domains": [
+        "messaging"
+      ],
+      "entities": [
+        "Booking",
+        "EventNotification",
+        "ServicePlan",
+        "OutboxMessage"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 49
+    },
+    {
+      "path": "integrations/identity-providers.md",
+      "category": "integrations",
+      "title": "Identity provider integrations",
+      "summary": "JWT validation integrates with ForgeRock and Azure issuer/JWK sets, while some outbound calls use customer-identity OAuth token endpoints. This repo contains the security wiring rather than business-specific identity logic.",
+      "primary_for": [
+        "identity-provider-integration"
+      ],
+      "mentions": [
+        "forgerock",
+        "azure",
+        "jwt",
+        "jwk",
+        "oauth2"
+      ],
+      "scenarios": [
+        "inspect jwt issuer",
+        "inspect jwk lookup",
+        "inspect oauth client",
+        "inspect role extraction",
+        "inspect auth bypass",
+        "find identity providers",
+        "check identity config"
+      ],
+      "capabilities": [
+        "integrations"
+      ],
+      "domains": [
+        "security"
+      ],
+      "entities": [
+        "ReactiveJwtDecoder",
+        "Jwt",
+        "NimbusReactiveJwtDecoder",
+        "WebClient"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 33
+    },
+    {
+      "path": "integrations/master-data-and-rules.md",
+      "category": "integrations",
+      "title": "Master-data and rules integrations",
+      "summary": "Master data, planning-deadline, offers, amend/cancel reasons, and other reference calls are mostly hidden behind shared resolver/client libraries. The local code orchestrates them through `ResolverService`, `PlanningDeadlineClient`, `ReferenceDataFetcher`, and search/export helpers.",
+      "primary_for": [
+        "master-data-integration"
+      ],
+      "mentions": [
+        "resolver-service",
+        "planning-deadline",
+        "reference-data",
+        "offers",
+        "business-rules"
+      ],
+      "scenarios": [
+        "inspect master data call",
+        "inspect planning deadline",
+        "inspect amend reasons",
+        "inspect dashboard resolver",
+        "inspect external rule config",
+        "find master data calls"
+      ],
+      "capabilities": [
+        "integrations"
+      ],
+      "domains": [
+        "reference-data"
+      ],
+      "entities": [
+        "ResolvedData",
+        "Resolver",
+        "PlanningDeadlineResponse",
+        "ReferenceDataFetcher"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 34
+    },
+    {
+      "path": "integrations/rolodex.md",
+      "category": "integrations",
+      "title": "Rolodex storage integration",
+      "summary": "Rolodex is the explicit external file/auth integration for report templates and downloads. The service first fetches a bearer token, then downloads template/content bytes over WebClient.",
+      "primary_for": [
+        "rolodex-integration"
+      ],
+      "mentions": [
+        "rolodex-auth",
+        "template-download",
+        "excel-template",
+        "webclient"
+      ],
+      "scenarios": [
+        "inspect rolodex auth",
+        "inspect template download",
+        "inspect external storage",
+        "inspect report template ids",
+        "inspect excel bytes path",
+        "find the rolodex call"
+      ],
+      "capabilities": [
+        "integrations"
+      ],
+      "domains": [
+        "reporting"
+      ],
+      "entities": [
+        "RolodexTokenResponse",
+        "WebClient",
+        "ByteArray"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 32
+    },
+    {
+      "path": "integrations/telikos-booking.md",
+      "category": "integrations",
+      "title": "Telikos booking and TMS integration",
+      "summary": "The visible booking-side outbound integration is the Telikos client used for booking config lookup, TMS handoff, execution handoff, and booking confirmation. Kafka customer-history ingestion also defaults to a Telikos-branded service-plan topic in local config.",
+      "primary_for": [
+        "telikos-booking-integration"
+      ],
+      "mentions": [
+        "telikos",
+        "tms",
+        "send-to-execution",
+        "confirm-booking",
+        "config-lookup"
+      ],
+      "scenarios": [
+        "inspect telikos call",
+        "inspect send to tms",
+        "inspect send to execution",
+        "inspect booking confirm",
+        "inspect telikos topic"
+      ],
+      "capabilities": [
+        "integrations"
+      ],
+      "domains": [
+        "booking"
+      ],
+      "entities": [
+        "TelikosClient",
+        "SendToTmsRequest",
+        "SendToExecutionRequest",
+        "ConfirmBookingRequest"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 33
+    },
+    {
+      "path": "operations/failure-model.md",
+      "category": "operations",
+      "title": "Failure model",
+      "summary": "Most failures come from validation, external dependencies, stale events, persistence conflicts, and acknowledgment timing in consumer flows. The service prefers propagating typed exceptions and logging side effects instead of swallowing domain failures, but some consumer paths intentionally acknowledge or coerce errors.",
+      "primary_for": [
+        "failure-model"
+      ],
+      "mentions": [
+        "validation",
+        "optimistic-lock",
+        "consumer-ack",
+        "external-failure",
+        "access-control"
+      ],
+      "scenarios": [
+        "inspect failure points",
+        "inspect stale event handling",
+        "inspect validation failure",
+        "inspect persistence conflict",
+        "inspect external dependency risk"
+      ],
+      "capabilities": [
+        "operations"
+      ],
+      "domains": [
+        "runtime"
+      ],
+      "entities": [
+        "ValidationException",
+        "NotFoundException",
+        "ForbiddenException",
+        "OptimisticLockException"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 37
+    },
+    {
+      "path": "operations/flags-and-lists.md",
+      "category": "operations",
+      "title": "Flags and lists",
+      "summary": "Runtime behavior is shaped by YAML feature toggles, LaunchDarkly gates, scheduler lists, VAT country lists, and configured system-channel allow lists. Several flows also depend on embedded constant lists such as repricing windows and demo execution recipients.",
+      "primary_for": [
+        "flags-and-lists"
+      ],
+      "mentions": [
+        "launchdarkly",
+        "features",
+        "scheduler-lists",
+        "vat-countries",
+        "system-channels"
+      ],
+      "scenarios": [
+        "inspect feature flags",
+        "inspect scheduler lists",
+        "inspect vat list",
+        "inspect channel allowlist",
+        "inspect launchdarkly keys"
+      ],
+      "capabilities": [
+        "operations"
+      ],
+      "domains": [
+        "configuration"
+      ],
+      "entities": [
+        "FeatureFlag",
+        "LDReactorClient",
+        "CustomerDateDetails",
+        "CreatedBySystemChannelsProperties"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 37
+    },
+    {
+      "path": "operations/monitoring.md",
+      "category": "operations",
+      "title": "Monitoring and observability",
+      "summary": "The service uses Micrometer observation, Prometheus metrics, tracing, MDC enrichment, access logs, and custom counters around booking and customer-history flows. Observability is configured in both code and application YAML.",
+      "primary_for": [
+        "monitoring-observability"
+      ],
+      "mentions": [
+        "micrometer",
+        "prometheus",
+        "tracing",
+        "mdc",
+        "custom-counters"
+      ],
+      "scenarios": [
+        "inspect tracing",
+        "inspect metrics",
+        "inspect prometheus",
+        "inspect access logs",
+        "inspect custom counters",
+        "find observability wiring",
+        "check observability setup"
+      ],
+      "capabilities": [
+        "operations"
+      ],
+      "domains": [
+        "observability"
+      ],
+      "entities": [
+        "ObservationRegistry",
+        "MeterRegistry",
+        "TraceIdProvider",
+        "MDC"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 39
+    },
+    {
+      "path": "operations/retries.md",
+      "category": "operations",
+      "title": "Retry policies",
+      "summary": "Retry behavior is explicit for Kafka listener containers and declarative for outbound service calls. Consumers use fixed backoff with manual acknowledgment, while YAML carries external-service retry knobs for shared clients.",
+      "primary_for": [
+        "retry-policy"
+      ],
+      "mentions": [
+        "kafka-retries",
+        "backoff",
+        "external-retry",
+        "ack-mode",
+        "auto-commit"
+      ],
+      "scenarios": [
+        "inspect kafka retry",
+        "inspect external retry",
+        "inspect ack policy",
+        "inspect backoff values",
+        "inspect consumer failure handling"
+      ],
+      "capabilities": [
+        "operations"
+      ],
+      "domains": [
+        "runtime"
+      ],
+      "entities": [
+        "DefaultErrorHandler",
+        "FixedBackOff",
+        "Acknowledgment",
+        "ConsumerFactory"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 33
+    },
+    {
+      "path": "navigation/entry-points.md",
+      "category": "navigation",
+      "title": "Entry points",
+      "summary": "iom-order-service starts at WebFlux REST controllers, three Kafka consumers, and a LaunchDarkly-triggered customer-history batch runner. Order mutations always delegate into OrderService/OrderServiceImpl from these ingress points.",
+      "primary_for": [
+        "entry-point-routing"
+      ],
+      "mentions": [
+        "v2-api",
+        "v3-api",
+        "kafka-consumers",
+        "scheduler",
+        "order-service"
+      ],
+      "scenarios": [
+        "find api entrypoint",
+        "trace kafka ingress",
+        "locate scheduler trigger",
+        "start from controller",
+        "find mutation owner",
+        "list the entry points"
+      ],
+      "capabilities": [
+        "navigation"
+      ],
+      "domains": [
+        "order"
+      ],
+      "entities": [
+        "ServicePlan",
+        "Booking",
+        "EventNotification",
+        "Incident"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 53
+    },
+    {
+      "path": "navigation/key-classes.md",
+      "category": "navigation",
+      "title": "Key classes",
+      "summary": "The main classes split cleanly into ingress controllers/consumers, domain orchestration, query services, and event/outbox handlers. These classes are the shortest path to most behavior in the repository.",
+      "primary_for": [
+        "class-locator"
+      ],
+      "mentions": [
+        "controllers",
+        "consumers",
+        "domain",
+        "queries",
+        "outbox"
+      ],
+      "scenarios": [
+        "find order owner",
+        "find search owner",
+        "find kafka handler",
+        "find security config",
+        "find outbox logic",
+        "find a key class",
+        "locate the right class"
+      ],
+      "capabilities": [
+        "navigation"
+      ],
+      "domains": [
+        "order"
+      ],
+      "entities": [
+        "ServicePlan",
+        "Booking",
+        "AuditEntity",
+        "OutboxMessage"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 49
+    },
+    {
+      "path": "navigation/scenarios.md",
+      "category": "navigation",
+      "title": "Scenario routing",
+      "summary": "The codebase clusters around order mutations, dashboard/search queries, Kafka event handling, and reporting/export utilities. Most tasks can start from one controller or consumer method and then follow service/domain delegation.",
+      "primary_for": [
+        "task-routing"
+      ],
+      "mentions": [
+        "where-to-start",
+        "controller-methods",
+        "service-methods",
+        "event-flows",
+        "exports"
+      ],
+      "scenarios": [
+        "update service plan",
+        "search dashboard results",
+        "debug booking event",
+        "export amendment file",
+        "check customer history",
+        "find request routing",
+        "trace task routing"
+      ],
+      "capabilities": [
+        "navigation"
+      ],
+      "domains": [
+        "order"
+      ],
+      "entities": [
+        "ServicePlan",
+        "Booking",
+        "CustomerHistory",
+        "Incident"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 48
+    }
+  ]
+}

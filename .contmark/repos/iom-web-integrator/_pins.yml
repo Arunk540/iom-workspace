@@ -1,0 +1,38 @@
+# <workspace>/.contmark/repos/iom-web-integrator/_pins.yml
+# Per-repo profile read by agents at Boot 0 (workspace mode). Hand-edit.
+# stack / modules / commands / features are grounded in stack/stack.md (verified against source).
+# contmark_skills are best-effort defaults — review against your installed contmark skill set.
+
+stack:
+  build: gradle
+  language: kotlin
+  framework: webflux
+  notes: "Spring Boot 3.2.5, Kotlin 1.9.23, JVM 17; reactive BFF, OpenAPI-generated clients"
+
+modules:
+  service: .
+  test: src/test/kotlin
+  componentTest: none
+
+# Exact runnable commands from stack/stack.md. Agents run these VERBATIM. `none` = not applicable.
+commands:
+  build:          "./gradlew build"
+  unit_test:      "./gradlew test"
+  component_test: "none"
+  lint:           "./gradlew ktlintCheck"
+  verify:         "./gradlew build"
+
+features:
+  kafka: false
+  temporal: false
+  database: none
+  avro: false
+
+contmark_skills:
+  always:  [project-context, execution-core]
+  stack:   [spring-kotlin-conventions, kotlin-reactive-patterns]
+  build:   [gradle-build-profiles]
+  domain:  []
+  test:    [frontend-unit-testing]
+  review:  [code-review-checklist]
+  pr:      [pr-delivery-and-triage]

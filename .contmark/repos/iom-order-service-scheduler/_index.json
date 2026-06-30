@@ -1,0 +1,593 @@
+{
+  "repo_key": "iom-order-service-scheduler",
+  "generated_at": "2026-06-30T10:13:00Z",
+  "verified_against": "80df265cec4c4868b08e3ca78fb9657d5925cada",
+  "files": [
+    {
+      "path": "architecture/cross-cutting.md",
+      "category": "architecture",
+      "title": "Cross-cutting concerns",
+      "summary": "Shared concerns span all schedulers and outbound clients: WebFlux security, feature gating, observability, Reactive/blocked execution, and configuration-first integration wiring.",
+      "primary_for": [
+        "cross-cutting-concerns"
+      ],
+      "mentions": [
+        "security-filtering",
+        "observability-wiring",
+        "feature-flag-gating"
+      ],
+      "scenarios": [
+        "auth setup",
+        "tracing setup",
+        "feature flag wiring",
+        "shared config",
+        "blocking in schedulers",
+        "find cross-cutting concerns",
+        "check security concerns"
+      ],
+      "capabilities": [
+        "architecture"
+      ],
+      "domains": [
+        "IOM"
+      ],
+      "entities": [
+        "LDReactorClient",
+        "SecurityWebFilterChain",
+        "WorkflowClient"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 40
+    },
+    {
+      "path": "architecture/modules.md",
+      "category": "architecture",
+      "title": "Modules",
+      "summary": "Package tree for the scheduler repo. The codebase is organized around schedulers, outbound integrations, and support configuration rather than inbound APIs.",
+      "primary_for": [
+        "package-structure-map"
+      ],
+      "mentions": [
+        "scheduler-entry-points",
+        "outbound-integration-layout",
+        "repricing-workflow-execution"
+      ],
+      "scenarios": [
+        "repo package tree",
+        "where code lives",
+        "module layout",
+        "package ownership",
+        "find scheduler package"
+      ],
+      "capabilities": [
+        "architecture"
+      ],
+      "domains": [
+        "IOM"
+      ],
+      "entities": [
+        "OutboxMessage",
+        "ServicePlan",
+        "AuditEntity"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 80
+    },
+    {
+      "path": "stack/stack.md",
+      "category": "stack",
+      "title": "Stack",
+      "summary": "Kotlin 17 Spring Boot WebFlux service that runs scheduled jobs, publishes Kafka Avro events, talks to Temporal, PostgreSQL/R2DBC, Azure Blob Storage, and OAuth-protected HTTP services.",
+      "primary_for": [
+        "repository-tech-stack"
+      ],
+      "mentions": [
+        "gradle-build-commands",
+        "temporal-spring-boot",
+        "kafka-avro-publishing"
+      ],
+      "scenarios": [
+        "tech stack",
+        "build commands",
+        "test commands",
+        "what frameworks used",
+        "how to compile",
+        "understand the tech stack"
+      ],
+      "capabilities": [
+        "stack"
+      ],
+      "domains": [
+        "IOM"
+      ],
+      "entities": [
+        "WorkflowClient",
+        "KafkaTemplate",
+        "BlobContainerClient"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 48
+    },
+    {
+      "path": "runtime/event-activity-matrix.md",
+      "category": "runtime",
+      "title": "Event activity matrix",
+      "summary": "Temporal is only used for repricing. An outbox repricing event becomes one workflow execution and one HTTP-backed activity call.",
+      "primary_for": [
+        "event-activity-matrix"
+      ],
+      "mentions": [
+        "repricing-workflow-execution",
+        "temporal-worker-registration",
+        "web-integrator-repricing"
+      ],
+      "scenarios": [
+        "repricing event flow",
+        "temporal activity sequence",
+        "workflow activity map",
+        "repricing path",
+        "event to workflow"
+      ],
+      "capabilities": [
+        "repricing"
+      ],
+      "domains": [
+        "IOM"
+      ],
+      "entities": [
+        "OutboxMessage",
+        "RepricingRequired",
+        "ServicePlan"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 40
+    },
+    {
+      "path": "runtime/repricing-flow.md",
+      "category": "runtime",
+      "title": "Repricing flow",
+      "summary": "Repricing starts from outbox polling, launches a Temporal workflow, then calls Web Integrator over HTTP from a Temporal activity. The workflow has one variant: optional `priceCalculationDate` propagation.",
+      "primary_for": [
+        "repricing-workflow-execution"
+      ],
+      "mentions": [
+        "event-activity-matrix",
+        "temporal-worker-registration",
+        "web-integrator-repricing"
+      ],
+      "scenarios": [
+        "repricing not working",
+        "why repricing failing",
+        "where repricing starts",
+        "trigger repricing workflow",
+        "repricing flow"
+      ],
+      "capabilities": [
+        "repricing"
+      ],
+      "domains": [
+        "IOM"
+      ],
+      "entities": [
+        "OutboxMessage",
+        "RepricingRequired",
+        "RepriceRequest",
+        "ServicePlan"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 56
+    },
+    {
+      "path": "contracts/kafka-events.md",
+      "category": "contracts",
+      "title": "Kafka events",
+      "summary": "This repo publishes three outbound Kafka event shapes and does not implement traced Kafka consumers. Topics, payload schemas, and producer routing are configuration-driven.",
+      "primary_for": [
+        "kafka-topic-contracts"
+      ],
+      "mentions": [
+        "outbox-message-routing",
+        "kafka-event-brokers",
+        "avro-schema-mapping"
+      ],
+      "scenarios": [
+        "kafka topic contract",
+        "which topics publish",
+        "booking event topic",
+        "service plan topic",
+        "domain event topic"
+      ],
+      "capabilities": [
+        "outbox-publishing"
+      ],
+      "domains": [
+        "IOM"
+      ],
+      "entities": [
+        "OutboxMessage",
+        "ServicePlan",
+        "EventNotification",
+        "BookingExternal"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 51
+    },
+    {
+      "path": "integrations/azure-blob-storage.md",
+      "category": "integrations",
+      "title": "Azure Blob Storage",
+      "summary": "Archival code writes gzip-compressed JSON blobs to Azure Blob Storage, then records blob metadata and deletes source rows. All blob access goes through `BlobUploader`.",
+      "primary_for": [
+        "azure-blob-archival"
+      ],
+      "mentions": [
+        "order-archival",
+        "audit-archival",
+        "gzip-blob-upload"
+      ],
+      "scenarios": [
+        "archive upload failing",
+        "blob path issue",
+        "azure blob archive",
+        "where blobs uploaded",
+        "gzip upload flow"
+      ],
+      "capabilities": [
+        "archival"
+      ],
+      "domains": [
+        "IOM"
+      ],
+      "entities": [
+        "ArchivalMetaEntity",
+        "ServicePlanEntity",
+        "AuditEntity"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 40
+    },
+    {
+      "path": "integrations/iom-offer-service.md",
+      "category": "integrations",
+      "title": "IOM Offer Service",
+      "summary": "Offer cleanup calls the IOM Offer Service over OAuth-protected WebClient and deletes old offered-service-plan records by age.",
+      "primary_for": [
+        "offer-cleanup-http"
+      ],
+      "mentions": [
+        "offered-service-plan-cleanup",
+        "oauth-webclient-wiring",
+        "external-http-timeouts"
+      ],
+      "scenarios": [
+        "offer cleanup failing",
+        "delete offered plans",
+        "offer service call",
+        "offered plan cleanup",
+        "where offer api lives"
+      ],
+      "capabilities": [
+        "offer-cleanup"
+      ],
+      "domains": [
+        "IOM"
+      ],
+      "entities": [
+        "OfferRecordsCleanUpResponse"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 39
+    },
+    {
+      "path": "integrations/iom-web-integrator.md",
+      "category": "integrations",
+      "title": "IOM Web Integrator",
+      "summary": "Repricing activities call the Web Integrator API through an OAuth-protected WebClient. The integration is PATCH-based and returns a `ServicePlan` body.",
+      "primary_for": [
+        "web-integrator-repricing"
+      ],
+      "mentions": [
+        "repricing-workflow-execution",
+        "azure-oauth-client",
+        "external-http-timeouts"
+      ],
+      "scenarios": [
+        "repricing api failing",
+        "web integrator patch",
+        "repricing http call",
+        "where repricing api lives",
+        "service plan reprice endpoint"
+      ],
+      "capabilities": [
+        "repricing"
+      ],
+      "domains": [
+        "IOM"
+      ],
+      "entities": [
+        "ServicePlan",
+        "RepriceRequest"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 40
+    },
+    {
+      "path": "integrations/kafka-event-brokers.md",
+      "category": "integrations",
+      "title": "Kafka event brokers",
+      "summary": "Outbox publishers send Avro records to Kafka using two bootstrap/server groups and schema-registry settings. Producer behavior is configured centrally in `KafkaProducerConfig`.",
+      "primary_for": [
+        "kafka-event-brokers"
+      ],
+      "mentions": [
+        "kafka-topic-contracts",
+        "avro-serialization",
+        "schema-registry-settings"
+      ],
+      "scenarios": [
+        "kafka broker config",
+        "schema registry issue",
+        "producer bootstrap servers",
+        "avro publish config",
+        "kafka ssl setup"
+      ],
+      "capabilities": [
+        "outbox-publishing"
+      ],
+      "domains": [
+        "IOM"
+      ],
+      "entities": [
+        "KafkaTemplate",
+        "ProducerRecord"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 37
+    },
+    {
+      "path": "integrations/temporal.md",
+      "category": "integrations",
+      "title": "Temporal",
+      "summary": "Temporal is used only for repricing. This service both connects to a Temporal server and hosts the worker for `REPRICING_TASK_QUEUE`.",
+      "primary_for": [
+        "temporal-workflow-execution"
+      ],
+      "mentions": [
+        "repricing-workflow-execution",
+        "temporal-tls-config",
+        "repricing-task-queue"
+      ],
+      "scenarios": [
+        "temporal connection issue",
+        "repricing worker issue",
+        "workflow client config",
+        "temporal tls problem",
+        "repricing task queue"
+      ],
+      "capabilities": [
+        "repricing"
+      ],
+      "domains": [
+        "IOM"
+      ],
+      "entities": [
+        "WorkflowServiceStubs",
+        "WorkflowClient",
+        "RepricingWorkflow"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 40
+    },
+    {
+      "path": "operations/failure-model.md",
+      "category": "operations",
+      "title": "Failure model",
+      "summary": "Most failures originate in outbound dependencies or DB polling. Schedulers either stop the tick, continue per-record, or mark outbox rows failed depending on the feature path.",
+      "primary_for": [
+        "failure-points"
+      ],
+      "mentions": [
+        "outbox-failures",
+        "temporal-failures",
+        "archival-failures"
+      ],
+      "scenarios": [
+        "where failures happen",
+        "why scheduler stuck",
+        "archive failure path",
+        "kafka publish failure",
+        "repricing failure model"
+      ],
+      "capabilities": [
+        "operations"
+      ],
+      "domains": [
+        "IOM"
+      ],
+      "entities": [
+        "OutboxMessage",
+        "ArchivalMetaEntity",
+        "RuntimeException"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 49
+    },
+    {
+      "path": "operations/monitoring.md",
+      "category": "operations",
+      "title": "Monitoring",
+      "summary": "Observability combines actuator endpoints, Micrometer observations/counters, Zipkin tracing, and JSON logs with trace/span IDs. Scheduler and HTTP timing are logged with elapsed-time helpers.",
+      "primary_for": [
+        "observability-wiring"
+      ],
+      "mentions": [
+        "actuator-endpoints",
+        "micrometer-observation",
+        "zipkin-tracing"
+      ],
+      "scenarios": [
+        "tracing setup",
+        "prometheus endpoint",
+        "scheduler metrics",
+        "log correlation",
+        "monitoring config",
+        "find observability wiring",
+        "check observability setup"
+      ],
+      "capabilities": [
+        "operations"
+      ],
+      "domains": [
+        "IOM"
+      ],
+      "entities": [
+        "ObservationRegistry",
+        "MeterRegistry",
+        "SecurityWebFilterChain"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 45
+    },
+    {
+      "path": "operations/retries.md",
+      "category": "operations",
+      "title": "Retries",
+      "summary": "Retry behavior is split across outbox status updates, Kafka producer settings, and Temporal activity retries. HTTP clients rely on timeout/error propagation rather than explicit retry operators in this repo.",
+      "primary_for": [
+        "retry-behavior"
+      ],
+      "mentions": [
+        "outbox-retry-ceiling",
+        "temporal-activity-retries",
+        "kafka-producer-retries"
+      ],
+      "scenarios": [
+        "retry behavior",
+        "why message failed",
+        "temporal retry count",
+        "kafka retry config",
+        "repricing retry path"
+      ],
+      "capabilities": [
+        "operations"
+      ],
+      "domains": [
+        "IOM"
+      ],
+      "entities": [
+        "OutboxMessage",
+        "RetryOptions",
+        "ProducerConfig"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 39
+    },
+    {
+      "path": "navigation/entry-points.md",
+      "category": "navigation",
+      "title": "Entry points",
+      "summary": "Scheduler-driven service with one Temporal worker registration and no traced REST or Kafka consumer entry points. Runtime starts from cron and fixed-delay jobs plus the REPRICING_TASK_QUEUE worker.",
+      "primary_for": [
+        "scheduler-entry-points"
+      ],
+      "mentions": [
+        "temporal-worker-registration",
+        "kafka-producer-publishing",
+        "archival-jobs"
+      ],
+      "scenarios": [
+        "scheduler not running",
+        "where jobs start",
+        "which class runs repricing",
+        "archive job flow",
+        "temporal worker entry"
+      ],
+      "capabilities": [
+        "outbox-publishing",
+        "repricing",
+        "archival",
+        "offer-cleanup",
+        "transform"
+      ],
+      "domains": [
+        "IOM"
+      ],
+      "entities": [
+        "OutboxMessage",
+        "ServicePlanEntity",
+        "AuditEntity"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 48
+    },
+    {
+      "path": "navigation/key-classes.md",
+      "category": "navigation",
+      "title": "Key classes",
+      "summary": "Concern-to-class map for the scheduler service. Use this to jump from a feature area to the owning class without loading whole packages.",
+      "primary_for": [
+        "concern-to-class-routing"
+      ],
+      "mentions": [
+        "scheduler-entry-points",
+        "repricing-web-integrator",
+        "kafka-event-brokers"
+      ],
+      "scenarios": [
+        "which class owns repricing",
+        "who uploads blobs",
+        "where kafka sends",
+        "where oauth clients live",
+        "which class archives orders"
+      ],
+      "capabilities": [
+        "navigation"
+      ],
+      "domains": [
+        "IOM"
+      ],
+      "entities": [
+        "OutboxMessage",
+        "ArchivalMetaEntity",
+        "ServicePlan"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 52
+    },
+    {
+      "path": "navigation/scenarios.md",
+      "category": "navigation",
+      "title": "Scenarios",
+      "summary": "Maps common operator and developer task phrases to the first class and method to inspect. Use this as the fast router before opening deeper runtime or integration files.",
+      "primary_for": [
+        "task-to-start-point-routing"
+      ],
+      "mentions": [
+        "scheduler-entry-points",
+        "repricing-workflow-execution",
+        "kafka-topic-publishing"
+      ],
+      "scenarios": [
+        "where does repricing start",
+        "archive job failing",
+        "offer cleanup failing",
+        "transform job stuck",
+        "which class sends kafka",
+        "route a task to code"
+      ],
+      "capabilities": [
+        "navigation"
+      ],
+      "domains": [
+        "IOM"
+      ],
+      "entities": [
+        "RepricingWorkflow",
+        "OutboxMessage",
+        "ServicePlanEntity"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 46
+    }
+  ]
+}

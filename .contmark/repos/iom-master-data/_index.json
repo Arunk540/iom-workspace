@@ -1,0 +1,1356 @@
+{
+  "repo_key": "iom-master-data",
+  "generated_at": "2026-06-30T10:13:00Z",
+  "verified_against": "31e9ef5232464b4ada31300fa65bca7b209345c9",
+  "files": [
+    {
+      "path": "domain/charges.md",
+      "category": "domain",
+      "title": "Charge types and VAT partners",
+      "summary": "Charges serves charge type reference data with customer/UOM/VAT enrichment and separate VAT partner query APIs.",
+      "primary_for": [
+        "charge-types-management"
+      ],
+      "mentions": [
+        "charge-types",
+        "vat-partners",
+        "uom",
+        "customer-mapping"
+      ],
+      "scenarios": [
+        "trace charge query",
+        "find vat partner logic",
+        "see charge tables",
+        "inspect uom enrichment",
+        "find default vat partner"
+      ],
+      "capabilities": [
+        "domain-summary"
+      ],
+      "domains": [
+        "charges"
+      ],
+      "entities": [
+        "ChargesController",
+        "ChargeTypeServiceImpl",
+        "VatPartnerController",
+        "VatPartnerServiceImpl"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 42
+    },
+    {
+      "path": "domain/commodity.md",
+      "category": "domain",
+      "title": "Commodity and HS reference data",
+      "summary": "Commodity serves commodity and HS code queries, and can filter commodity sets through the Business Rules restriction service.",
+      "primary_for": [
+        "commodity-data-api"
+      ],
+      "mentions": [
+        "commodities",
+        "hs-codes",
+        "restrictions",
+        "startup-cache"
+      ],
+      "scenarios": [
+        "find commodity route",
+        "trace restriction flow",
+        "see hs table",
+        "inspect commodity cache",
+        "find business rules client"
+      ],
+      "capabilities": [
+        "domain-summary"
+      ],
+      "domains": [
+        "commodity"
+      ],
+      "entities": [
+        "CommodityController",
+        "CommodityServiceImpl",
+        "CommodityByCodeEntity",
+        "HSCommodityByCodeEntity"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 46
+    },
+    {
+      "path": "domain/container.md",
+      "category": "domain",
+      "title": "Container type reference data",
+      "summary": "Container provides read-only container type lookups backed by startup-loaded data from the persistence layer.",
+      "primary_for": [
+        "container-type-reference"
+      ],
+      "mentions": [
+        "container-types",
+        "startup-load",
+        "iso-code",
+        "flags"
+      ],
+      "scenarios": [
+        "find container endpoint",
+        "trace container cache",
+        "see container table",
+        "inspect iso lookup",
+        "find startup loader"
+      ],
+      "capabilities": [
+        "domain-summary"
+      ],
+      "domains": [
+        "container"
+      ],
+      "entities": [
+        "ContainerTypeController",
+        "ContainerLoadService",
+        "ContainerTypeEntity"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 41
+    },
+    {
+      "path": "domain/diesel-price-ranges.md",
+      "category": "domain",
+      "title": "Diesel price range bands",
+      "summary": "Diesel price ranges exposes a single read API for country/customer-specific slab records used by downstream integrations.",
+      "primary_for": [
+        "diesel-price-range-reference"
+      ],
+      "mentions": [
+        "diesel-price-ranges",
+        "country-code",
+        "customer-code",
+        "slabs"
+      ],
+      "scenarios": [
+        "find diesel endpoint",
+        "trace diesel query",
+        "see diesel table",
+        "inspect solar lookup",
+        "find diesel service"
+      ],
+      "capabilities": [
+        "domain-summary"
+      ],
+      "domains": [
+        "diesel-price-ranges"
+      ],
+      "entities": [
+        "DieselPriceRangesController",
+        "DieselPriceRangesServiceImpl",
+        "DieselPriceRangesEntity"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 32
+    },
+    {
+      "path": "domain/location.md",
+      "category": "domain",
+      "title": "Location reference data",
+      "summary": "Location owns location and facility reference lookup, combining cached persistence with live upstream location and facility enrichment.",
+      "primary_for": [
+        "location-reference-data"
+      ],
+      "mentions": [
+        "locations",
+        "facility",
+        "cache",
+        "webclient",
+        "geoId"
+      ],
+      "scenarios": [
+        "trace location search",
+        "inspect location cache",
+        "find facility enrichment",
+        "see location tables",
+        "find location client"
+      ],
+      "capabilities": [
+        "domain-summary"
+      ],
+      "domains": [
+        "location"
+      ],
+      "entities": [
+        "LocationController",
+        "LocationService",
+        "LocationEntity",
+        "LocationCacheEntity"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 48
+    },
+    {
+      "path": "domain/sales.md",
+      "category": "domain",
+      "title": "Sales reference data",
+      "summary": "Sales exposes read-oriented APIs for sales type search and sales object matching against persisted lookup tables.",
+      "primary_for": [
+        "sales-type-reference"
+      ],
+      "mentions": [
+        "sales-types",
+        "sales-objects",
+        "read-only",
+        "matching"
+      ],
+      "scenarios": [
+        "find sales endpoint",
+        "trace sales object lookup",
+        "see sales tables",
+        "inspect read-only flow",
+        "find sales service"
+      ],
+      "capabilities": [
+        "domain-summary"
+      ],
+      "domains": [
+        "sales"
+      ],
+      "entities": [
+        "SalesTypesController",
+        "SalesTypesServiceImpl",
+        "SalesTypeEntity",
+        "SalesObjectEntity"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 34
+    },
+    {
+      "path": "domain/service-reference-domains.md",
+      "category": "domain",
+      "title": "Service-hosted reference domains",
+      "summary": "The service module still hosts smaller reference-data domains such as country, currency, reasons, VAS, layout types, carriers, customs, and IMO classifications.",
+      "primary_for": [
+        "service-hosted-reference-data"
+      ],
+      "mentions": [
+        "service",
+        "country",
+        "currency",
+        "reasons",
+        "vas",
+        "layout-types"
+      ],
+      "scenarios": [
+        "find service controller",
+        "trace reasons data",
+        "inspect vas source",
+        "see thin controllers",
+        "find host module domains",
+        "find reference data",
+        "look up reference domains"
+      ],
+      "capabilities": [
+        "domain-summary"
+      ],
+      "domains": [
+        "service-misc"
+      ],
+      "entities": [
+        "CountryController",
+        "ReasonController",
+        "VasController",
+        "VasEntity"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 36
+    },
+    {
+      "path": "domain/vendors.md",
+      "category": "domain",
+      "title": "Vendor master data",
+      "summary": "Vendors runs parallel V1 and V2 vendor read APIs plus Kafka-driven ingestion pipelines that persist both source payloads and normalized rows.",
+      "primary_for": [
+        "vendor-master-data"
+      ],
+      "mentions": [
+        "vendors",
+        "kafka",
+        "v1",
+        "v2",
+        "avro"
+      ],
+      "scenarios": [
+        "trace vendor kafka",
+        "find vendor v2 search",
+        "see vendor tables",
+        "inspect source tracking",
+        "find consumer groups"
+      ],
+      "capabilities": [
+        "domain-summary"
+      ],
+      "domains": [
+        "vendors"
+      ],
+      "entities": [
+        "VendorController",
+        "VendorV2Controller",
+        "VendorDataConsumer",
+        "VendorV2DataConsumer"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 42
+    },
+    {
+      "path": "domain/vessel.md",
+      "category": "domain",
+      "title": "Vessel reference data",
+      "summary": "Vessel owns searchable vessel master data plus create/update and soft-delete operations over a single reactive table.",
+      "primary_for": [
+        "vessel-reference-api"
+      ],
+      "mentions": [
+        "vessels",
+        "soft-delete",
+        "validation",
+        "active-status"
+      ],
+      "scenarios": [
+        "find vessel endpoint",
+        "trace deactivate flow",
+        "see vessel table",
+        "inspect vessel search",
+        "find vessel validation"
+      ],
+      "capabilities": [
+        "domain-summary"
+      ],
+      "domains": [
+        "vessel"
+      ],
+      "entities": [
+        "VesselController",
+        "VesselServiceImpl",
+        "VesselEntity"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 33
+    },
+    {
+      "path": "architecture/cross-cutting.md",
+      "category": "architecture",
+      "title": "Cross-cutting runtime architecture",
+      "summary": "Spring WebFlux, R2DBC, Liquibase, security, observability, and shared Kafka wiring shape every domain module in iom-master-data.",
+      "primary_for": [
+        "cross-cutting-runtime-rules"
+      ],
+      "mentions": [
+        "security",
+        "liquibase",
+        "observability",
+        "kafka",
+        "launchdarkly",
+        "webflux"
+      ],
+      "scenarios": [
+        "understand shared config",
+        "see security posture",
+        "trace liquibase strategy",
+        "see monitoring hooks",
+        "find feature flag wiring",
+        "find runtime rules",
+        "check runtime behavior"
+      ],
+      "capabilities": [
+        "cross-cutting-architecture"
+      ],
+      "domains": [
+        "platform"
+      ],
+      "entities": [
+        "SecurityConfig",
+        "ObservedAspectConfiguration",
+        "dbchangelogmaster.xml"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 39
+    },
+    {
+      "path": "architecture/modules.md",
+      "category": "architecture",
+      "title": "Gradle modules and package layout",
+      "summary": "iom-master-data is a root aggregator with controller/persistence submodules per master-data domain plus a service host module.",
+      "primary_for": [
+        "multi-module-package-tree"
+      ],
+      "mentions": [
+        "gradle",
+        "modules",
+        "packages",
+        "controller",
+        "persistence"
+      ],
+      "scenarios": [
+        "see module layout",
+        "map package tree",
+        "find submodule boundaries",
+        "understand gradle includes",
+        "see domain ownership"
+      ],
+      "capabilities": [
+        "module-mapping"
+      ],
+      "domains": [
+        "platform"
+      ],
+      "entities": [
+        "settings.gradle.kts",
+        "service",
+        "location",
+        "commodity",
+        "vendors"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 60
+    },
+    {
+      "path": "stack/stack.md",
+      "category": "stack",
+      "title": "Technology stack and commands",
+      "summary": "iom-master-data is a Kotlin 2.0 / Spring Boot 3.3 reactive Gradle monorepo with R2DBC Postgres, Liquibase, Kafka, Micrometer, and Kotest/JUnit validation.",
+      "primary_for": [
+        "service-stack-and-commands"
+      ],
+      "mentions": [
+        "kotlin",
+        "spring-boot",
+        "gradle",
+        "r2dbc",
+        "liquibase",
+        "kafka",
+        "kotest"
+      ],
+      "scenarios": [
+        "see tech stack",
+        "find build command",
+        "find test command",
+        "see framework versions",
+        "see runtime dependencies",
+        "understand the tech stack"
+      ],
+      "capabilities": [
+        "stack-summary"
+      ],
+      "domains": [
+        "platform"
+      ],
+      "entities": [
+        "build.gradle.kts",
+        "service/build.gradle.kts"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 48
+    },
+    {
+      "path": "runtime/charge-type-query-flow.md",
+      "category": "runtime",
+      "title": "Charge type enrichment flow",
+      "summary": "How charge-type requests layer repository filters, customer overrides, UOM enrichment, and VAT partner defaults.",
+      "primary_for": [
+        "charge-query-flow"
+      ],
+      "mentions": [
+        "charges",
+        "uom",
+        "vat",
+        "customer-mapping",
+        "feature-flags"
+      ],
+      "scenarios": [
+        "trace charge request",
+        "see uom enrichment",
+        "find vat default",
+        "inspect customer overrides",
+        "follow charge filters"
+      ],
+      "capabilities": [
+        "runtime-flow"
+      ],
+      "domains": [
+        "charges"
+      ],
+      "entities": [
+        "ChargesController",
+        "ChargeTypeServiceImpl",
+        "VatPartnerServiceImpl"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 35
+    },
+    {
+      "path": "runtime/commodity-restrictions-flow.md",
+      "category": "runtime",
+      "title": "Commodity restriction filtering flow",
+      "summary": "How POST /commodities intersects cached commodity data with a remote restriction response.",
+      "primary_for": [
+        "commodity-restriction-flow"
+      ],
+      "mentions": [
+        "commodity",
+        "hs-code",
+        "restriction",
+        "business-rules",
+        "startup-load"
+      ],
+      "scenarios": [
+        "trace restricted commodity",
+        "debug commodity post",
+        "inspect business rules call",
+        "find commodity filter",
+        "follow commodity cache"
+      ],
+      "capabilities": [
+        "runtime-flow"
+      ],
+      "domains": [
+        "commodity"
+      ],
+      "entities": [
+        "CommodityController",
+        "CommodityServiceImpl",
+        "CommodityLoadService",
+        "CommodityRestrictionClientImpl"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 36
+    },
+    {
+      "path": "runtime/container-cache-flow.md",
+      "category": "runtime",
+      "title": "Container startup cache flow",
+      "summary": "How container types are loaded into memory and served from the warm cache.",
+      "primary_for": [
+        "container-cache-flow"
+      ],
+      "mentions": [
+        "container",
+        "startup-load",
+        "iso-code",
+        "cache",
+        "read-only"
+      ],
+      "scenarios": [
+        "trace container cache",
+        "see startup load",
+        "inspect container fallback",
+        "find iso lookup",
+        "see read-only path"
+      ],
+      "capabilities": [
+        "runtime-flow"
+      ],
+      "domains": [
+        "container"
+      ],
+      "entities": [
+        "ContainerTypeController",
+        "ContainerTypeServiceImpl",
+        "ContainerLoadService"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 35
+    },
+    {
+      "path": "runtime/diesel-price-range-query-flow.md",
+      "category": "runtime",
+      "title": "Diesel price range query flow",
+      "summary": "How the diesel endpoint normalizes parameters and chooses either compatibility or paired-key lookup semantics.",
+      "primary_for": [
+        "diesel-query-flow"
+      ],
+      "mentions": [
+        "diesel",
+        "country-code",
+        "customer-code",
+        "read-only",
+        "compatibility"
+      ],
+      "scenarios": [
+        "trace diesel endpoint",
+        "inspect diesel validation",
+        "see country customer rule",
+        "find diesel query",
+        "follow slab lookup"
+      ],
+      "capabilities": [
+        "runtime-flow"
+      ],
+      "domains": [
+        "diesel-price-ranges"
+      ],
+      "entities": [
+        "DieselPriceRangesController",
+        "DieselPriceRangesServiceImpl"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 33
+    },
+    {
+      "path": "runtime/location-search-flow.md",
+      "category": "runtime",
+      "title": "Location search and enrichment flow",
+      "summary": "How location queries choose cache, upstream location lookup, and facility enrichment paths.",
+      "primary_for": [
+        "location-search-flow"
+      ],
+      "mentions": [
+        "locations",
+        "facility",
+        "cache",
+        "webclient",
+        "retry"
+      ],
+      "scenarios": [
+        "trace location request",
+        "debug facility enrichment",
+        "follow cache fallback",
+        "inspect location retries",
+        "see geo search flow"
+      ],
+      "capabilities": [
+        "runtime-flow"
+      ],
+      "domains": [
+        "location"
+      ],
+      "entities": [
+        "LocationController",
+        "LocationService",
+        "LocationClientImpl",
+        "FacilityClientImpl"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 38
+    },
+    {
+      "path": "runtime/sales-object-lookup-flow.md",
+      "category": "runtime",
+      "title": "Sales object lookup flow",
+      "summary": "How sales type search and sales object matching are served from reactive repositories and an in-memory cache.",
+      "primary_for": [
+        "sales-object-lookup-flow"
+      ],
+      "mentions": [
+        "sales",
+        "lookup",
+        "matching",
+        "cache",
+        "read-only"
+      ],
+      "scenarios": [
+        "trace sales object match",
+        "see sales type cache",
+        "inspect sales lookup",
+        "find sales service",
+        "follow sales request"
+      ],
+      "capabilities": [
+        "runtime-flow"
+      ],
+      "domains": [
+        "sales"
+      ],
+      "entities": [
+        "SalesTypesController",
+        "SalesTypesServiceImpl",
+        "SalesObjectRepository"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 33
+    },
+    {
+      "path": "runtime/vendor-ingest-flow.md",
+      "category": "runtime",
+      "title": "Vendor Kafka ingest flow",
+      "summary": "How V1 and V2 vendor consumers receive Kafka payloads, persist source payloads, and upsert normalized vendor rows.",
+      "primary_for": [
+        "vendor-kafka-ingest-flow"
+      ],
+      "mentions": [
+        "vendors",
+        "kafka",
+        "avro",
+        "source-table",
+        "upsert"
+      ],
+      "scenarios": [
+        "trace vendor kafka",
+        "debug vendor source write",
+        "follow vendor v2 batch",
+        "see vendor ack flow",
+        "inspect consumer concurrency"
+      ],
+      "capabilities": [
+        "runtime-flow"
+      ],
+      "domains": [
+        "vendors"
+      ],
+      "entities": [
+        "VendorDataConsumer",
+        "VendorServiceImpl",
+        "VendorV2DataConsumer",
+        "VendorV2ServiceImpl"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 38
+    },
+    {
+      "path": "runtime/vessel-management-flow.md",
+      "category": "runtime",
+      "title": "Vessel CRUD and soft-delete flow",
+      "summary": "How vessel search, upsert, and deactivation work against the reactive vessel repository.",
+      "primary_for": [
+        "vessel-crud-flow"
+      ],
+      "mentions": [
+        "vessels",
+        "search",
+        "upsert",
+        "soft-delete",
+        "active-status"
+      ],
+      "scenarios": [
+        "trace vessel api",
+        "inspect vessel upsert",
+        "see deactivation rule",
+        "find vessel search",
+        "follow active flag logic"
+      ],
+      "capabilities": [
+        "runtime-flow"
+      ],
+      "domains": [
+        "vessel"
+      ],
+      "entities": [
+        "VesselController",
+        "VesselServiceImpl",
+        "VesselRepository"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 33
+    },
+    {
+      "path": "contracts/api-contracts-1.md",
+      "category": "contracts",
+      "title": "API contracts — part 1",
+      "summary": "Documented HTTP routes for the service, charges, commodity, container, and location domains.",
+      "primary_for": [
+        "api-contract-index-core"
+      ],
+      "mentions": [
+        "http",
+        "routes",
+        "controllers",
+        "request-contracts"
+      ],
+      "scenarios": [
+        "list api endpoints",
+        "find core route",
+        "inspect location contract",
+        "inspect commodity contract",
+        "see deprecated aliases"
+      ],
+      "capabilities": [
+        "api-contracts"
+      ],
+      "domains": [
+        "service-misc",
+        "charges",
+        "commodity",
+        "container",
+        "location"
+      ],
+      "entities": [
+        "ReasonController",
+        "ChargesController",
+        "CommodityController",
+        "ContainerTypeController",
+        "LocationController"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 83
+    },
+    {
+      "path": "contracts/api-contracts-2.md",
+      "category": "contracts",
+      "title": "API contracts — part 2",
+      "summary": "Documented HTTP routes for sales, vendors, diesel price ranges, and vessel domains.",
+      "primary_for": [
+        "api-contract-index-extended"
+      ],
+      "mentions": [
+        "http",
+        "routes",
+        "vendors",
+        "vessel",
+        "sales"
+      ],
+      "scenarios": [
+        "list vendor routes",
+        "inspect vessel contract",
+        "see sales api",
+        "see diesel api",
+        "find batch lookup route",
+        "find the api contracts"
+      ],
+      "capabilities": [
+        "api-contracts"
+      ],
+      "domains": [
+        "sales",
+        "vendors",
+        "diesel-price-ranges",
+        "vessel"
+      ],
+      "entities": [
+        "SalesTypesController",
+        "VendorController",
+        "VendorV2Controller",
+        "DieselPriceRangesController",
+        "VesselController"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 51
+    },
+    {
+      "path": "contracts/db-schemas.md",
+      "category": "contracts",
+      "title": "Database schemas",
+      "summary": "Reactive table contracts inferred from repository entities across all domains using Postgres-backed R2DBC persistence.",
+      "primary_for": [
+        "postgres-table-map"
+      ],
+      "mentions": [
+        "postgres",
+        "r2dbc",
+        "tables",
+        "entities",
+        "liquibase"
+      ],
+      "scenarios": [
+        "see table schema",
+        "find entity columns",
+        "map database tables",
+        "inspect vendor tables",
+        "inspect location tables"
+      ],
+      "capabilities": [
+        "db-contracts"
+      ],
+      "domains": [
+        "platform",
+        "charges",
+        "commodity",
+        "container",
+        "location",
+        "sales",
+        "diesel-price-ranges",
+        "vendors",
+        "vessel",
+        "service-misc"
+      ],
+      "entities": [
+        "ChargeTypeEntity",
+        "CustomerToChargeTypeEntity",
+        "VatPartnerEntity",
+        "CountryToVatPartnerEntity",
+        "ChargeTypeDefaultVatPartnerEntity",
+        "CommodityByCodeEntity",
+        "HSCommodityByCodeEntity",
+        "ContainerTypeEntity"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 71
+    },
+    {
+      "path": "contracts/kafka-events.md",
+      "category": "contracts",
+      "title": "Kafka listeners and event contracts",
+      "summary": "Local Kafka contracts are concentrated in vendor ingestion, with versioned topics, consumer groups, Avro payloads, and schema-registry-backed deserialization.",
+      "primary_for": [
+        "kafka-event-contracts"
+      ],
+      "mentions": [
+        "kafka",
+        "vendor",
+        "avro",
+        "consumer-group",
+        "schema-registry"
+      ],
+      "scenarios": [
+        "find kafka topic",
+        "find consumer group",
+        "inspect avro consumer",
+        "see vendor event flow",
+        "check kafka retries"
+      ],
+      "capabilities": [
+        "event-contracts"
+      ],
+      "domains": [
+        "vendors",
+        "platform"
+      ],
+      "entities": [
+        "VendorDataConsumer",
+        "VendorV2DataConsumer",
+        "DedicatedKafkaConfig",
+        "VendorV2KafkaConfig"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 38
+    },
+    {
+      "path": "integrations/business-rules-service.md",
+      "category": "integrations",
+      "title": "Business Rules restricted commodity service",
+      "summary": "Commodity POST requests call an OAuth-protected Business Rules endpoint to fetch restricted commodity codes.",
+      "primary_for": [
+        "commodity-business-rules-integration"
+      ],
+      "mentions": [
+        "business-rules",
+        "restricted-commodity",
+        "oauth2",
+        "webclient",
+        "forgerock"
+      ],
+      "scenarios": [
+        "find restriction url",
+        "trace commodity oauth",
+        "inspect business rules client",
+        "debug restricted commodity call",
+        "see business rules headers"
+      ],
+      "capabilities": [
+        "integration-map"
+      ],
+      "domains": [
+        "commodity"
+      ],
+      "entities": [
+        "CommodityWebClientConfiguration",
+        "CommodityRestrictionClientImpl"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 33
+    },
+    {
+      "path": "integrations/oauth-and-feature-flags.md",
+      "category": "integrations",
+      "title": "OAuth providers and feature flags",
+      "summary": "Cross-cutting external dependencies include ForgeRock/Azure AD OAuth providers and LaunchDarkly for local feature-flag development.",
+      "primary_for": [
+        "oauth-and-flags-map"
+      ],
+      "mentions": [
+        "forgerock",
+        "azuread",
+        "launchdarkly",
+        "oauth2",
+        "feature-flags"
+      ],
+      "scenarios": [
+        "find oauth provider",
+        "inspect feature flags",
+        "see token endpoints",
+        "find local ld config",
+        "trace client credentials"
+      ],
+      "capabilities": [
+        "integration-map"
+      ],
+      "domains": [
+        "platform"
+      ],
+      "entities": [
+        "LaunchDarklyLocalConfig",
+        "CommodityWebClientConfiguration",
+        "WebClientConfiguration"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 34
+    },
+    {
+      "path": "integrations/upstream-location-and-facility.md",
+      "category": "integrations",
+      "title": "Upstream location and facility services",
+      "summary": "Location queries depend on two WebClient integrations: a Maersk geography location API and a facility search API secured with Azure AD client credentials.",
+      "primary_for": [
+        "location-upstream-integrations"
+      ],
+      "mentions": [
+        "locationClient",
+        "facilityClient",
+        "webclient",
+        "azuread",
+        "akamai"
+      ],
+      "scenarios": [
+        "find location base url",
+        "trace facility oauth",
+        "inspect external headers",
+        "see location integration",
+        "debug facility retry"
+      ],
+      "capabilities": [
+        "integration-map"
+      ],
+      "domains": [
+        "location"
+      ],
+      "entities": [
+        "WebClientConfiguration",
+        "LocationClientImpl",
+        "FacilityClientImpl"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 35
+    },
+    {
+      "path": "integrations/vendor-feeds.md",
+      "category": "integrations",
+      "title": "Vendor Kafka feeds and schema registry",
+      "summary": "Vendor ingestion depends on versioned Kafka clusters, SASL/TLS settings, and Confluent schema registry integration.",
+      "primary_for": [
+        "vendor-feed-integration-map"
+      ],
+      "mentions": [
+        "kafka",
+        "schema-registry",
+        "vendor-v1",
+        "vendor-v2",
+        "sasl"
+      ],
+      "scenarios": [
+        "find vendor topic config",
+        "inspect schema registry",
+        "see vendor kafka auth",
+        "debug vendor cluster settings",
+        "find v2 concurrency config"
+      ],
+      "capabilities": [
+        "integration-map"
+      ],
+      "domains": [
+        "vendors"
+      ],
+      "entities": [
+        "DedicatedKafkaConfig",
+        "VendorV2KafkaConfig"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 33
+    },
+    {
+      "path": "operations/failure-model.md",
+      "category": "operations",
+      "title": "Failure model and degradation behavior",
+      "summary": "The service mixes fail-fast not-found semantics with selective graceful degradation around facility enrichment and vendor batch ingest.",
+      "primary_for": [
+        "failure-model-guide"
+      ],
+      "mentions": [
+        "not-found",
+        "degradation",
+        "batch-errors",
+        "soft-delete",
+        "fallback"
+      ],
+      "scenarios": [
+        "see failure behavior",
+        "inspect graceful degradation",
+        "find batch error policy",
+        "see soft delete semantics",
+        "trace not-found responses",
+        "understand the failure model"
+      ],
+      "capabilities": [
+        "operations-guide"
+      ],
+      "domains": [
+        "platform",
+        "location",
+        "commodity",
+        "vendors",
+        "vessel",
+        "diesel-price-ranges"
+      ],
+      "entities": [
+        "LocationService",
+        "VendorV2DataConsumer",
+        "VesselServiceImpl",
+        "DieselPriceRangesController"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 38
+    },
+    {
+      "path": "operations/monitoring.md",
+      "category": "operations",
+      "title": "Monitoring and observability",
+      "summary": "Actuator, Micrometer, Zipkin tracing, observed AOP, and Kafka observation provide the main runtime telemetry surface.",
+      "primary_for": [
+        "monitoring-surface-map"
+      ],
+      "mentions": [
+        "actuator",
+        "prometheus",
+        "zipkin",
+        "observed",
+        "metrics"
+      ],
+      "scenarios": [
+        "find prometheus endpoint",
+        "inspect tracing",
+        "see observed aspect",
+        "find actuator exposure",
+        "see kafka observation",
+        "find monitoring setup",
+        "check monitoring config"
+      ],
+      "capabilities": [
+        "operations-guide"
+      ],
+      "domains": [
+        "platform",
+        "vendors"
+      ],
+      "entities": [
+        "ObservedAspectConfiguration",
+        "SecurityConfig",
+        "DedicatedKafkaConfig",
+        "VendorV2KafkaConfig"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 36
+    },
+    {
+      "path": "operations/retries.md",
+      "category": "operations",
+      "title": "Retry and backoff behavior",
+      "summary": "Retries are centralized around outbound WebClient calls and vendor Kafka listener error handlers.",
+      "primary_for": [
+        "retry-behavior-map"
+      ],
+      "mentions": [
+        "retry",
+        "backoff",
+        "webclient",
+        "kafka",
+        "ack"
+      ],
+      "scenarios": [
+        "see retry policy",
+        "debug backoff",
+        "inspect kafka error handler",
+        "find ack mode",
+        "see outbound retry count"
+      ],
+      "capabilities": [
+        "operations-guide"
+      ],
+      "domains": [
+        "platform",
+        "location",
+        "commodity",
+        "vendors"
+      ],
+      "entities": [
+        "ErrorHandler",
+        "CommodityRetryConfig",
+        "DedicatedKafkaConfig",
+        "VendorV2KafkaConfig"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 36
+    },
+    {
+      "path": "navigation/entry-points-1.md",
+      "category": "navigation",
+      "title": "REST entry points — part 1",
+      "summary": "Service, charges, commodity, container, and location entry points exposed by iom-master-data.",
+      "primary_for": [
+        "rest-entry-points-map"
+      ],
+      "mentions": [
+        "controllers",
+        "webflux",
+        "routes",
+        "service-misc",
+        "charges",
+        "commodity",
+        "container",
+        "location"
+      ],
+      "scenarios": [
+        "find api route",
+        "trace incoming request",
+        "map controller endpoints",
+        "locate rest handler",
+        "see deprecated aliases"
+      ],
+      "capabilities": [
+        "entry-point-mapping"
+      ],
+      "domains": [
+        "service-misc",
+        "charges",
+        "commodity",
+        "container",
+        "location"
+      ],
+      "entities": [
+        "ReasonController",
+        "ChargesController",
+        "CommodityController",
+        "ContainerTypeController",
+        "LocationController"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 83
+    },
+    {
+      "path": "navigation/entry-points-2.md",
+      "category": "navigation",
+      "title": "REST entry points — part 2",
+      "summary": "Sales, vendors, diesel price ranges, and vessel entry points exposed by iom-master-data.",
+      "primary_for": [
+        "rest-entry-points-extended"
+      ],
+      "mentions": [
+        "sales",
+        "vendors",
+        "diesel-price-ranges",
+        "vessel",
+        "controllers",
+        "routes"
+      ],
+      "scenarios": [
+        "find vendor endpoints",
+        "trace vessel api",
+        "see sales routes",
+        "inspect diesel endpoint",
+        "map batch lookups",
+        "list the entry points"
+      ],
+      "capabilities": [
+        "entry-point-mapping"
+      ],
+      "domains": [
+        "sales",
+        "vendors",
+        "diesel-price-ranges",
+        "vessel"
+      ],
+      "entities": [
+        "SalesTypesController",
+        "VendorController",
+        "VendorV2Controller",
+        "DieselPriceRangesController",
+        "VesselController"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 51
+    },
+    {
+      "path": "navigation/key-classes.md",
+      "category": "navigation",
+      "title": "Key classes by concern",
+      "summary": "High-signal classes for controllers, service logic, persistence, Kafka, and cross-cutting configuration.",
+      "primary_for": [
+        "key-class-index"
+      ],
+      "mentions": [
+        "controllers",
+        "services",
+        "repositories",
+        "webclient",
+        "kafka",
+        "config"
+      ],
+      "scenarios": [
+        "find important classes",
+        "see service owners",
+        "locate kafka code",
+        "locate configs",
+        "map persistence gateways",
+        "find a key class"
+      ],
+      "capabilities": [
+        "class-index"
+      ],
+      "domains": [
+        "service-misc",
+        "charges",
+        "commodity",
+        "container",
+        "location",
+        "sales",
+        "vendors",
+        "diesel-price-ranges",
+        "vessel"
+      ],
+      "entities": [
+        "SecurityConfig",
+        "LocationService",
+        "CommodityServiceImpl",
+        "VendorV2KafkaConfig"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 53
+    },
+    {
+      "path": "navigation/scenarios.md",
+      "category": "navigation",
+      "title": "Task scenarios to start classes",
+      "summary": "Common operator and maintainer phrases mapped to the first class or method worth opening.",
+      "primary_for": [
+        "task-to-class-routing"
+      ],
+      "mentions": [
+        "start-here",
+        "scenarios",
+        "controllers",
+        "services",
+        "consumers"
+      ],
+      "scenarios": [
+        "where to change vendors",
+        "trace commodity restriction",
+        "debug location search",
+        "find vessel logic",
+        "start from charge lookup",
+        "find a key class",
+        "locate the right class"
+      ],
+      "capabilities": [
+        "task-routing"
+      ],
+      "domains": [
+        "service-misc",
+        "charges",
+        "commodity",
+        "container",
+        "location",
+        "sales",
+        "vendors",
+        "diesel-price-ranges",
+        "vessel"
+      ],
+      "entities": [
+        "LocationService.findLocationsBasedOnFilterCriteria",
+        "CommodityRestrictionClientImpl.getCommodityRestrictions",
+        "VendorV2DataConsumer.consumeVendorV2Data"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 53
+    }
+  ]
+}

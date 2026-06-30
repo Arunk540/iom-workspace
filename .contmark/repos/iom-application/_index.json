@@ -1,0 +1,760 @@
+{
+  "repo_key": "iom-application",
+  "generated_at": "2026-06-30T10:18:52Z",
+  "verified_against": "7a0a2b25221d850945899c2497f890b88f6143df",
+  "files": [
+    {
+      "path": "domain/booking.md",
+      "category": "domain",
+      "title": "Booking subtree",
+      "summary": "Captures the customer-facing booking state nested inside ServicePlan, including parties, equipment, references, work processes, and charges.",
+      "primary_for": [
+        "booking-subtree-model"
+      ],
+      "mentions": [
+        "booking model",
+        "work processes",
+        "booking charges",
+        "party roles"
+      ],
+      "scenarios": [
+        "booking domain model",
+        "where booking lives",
+        "booking work process",
+        "booking charges logic",
+        "price owner lookup"
+      ],
+      "capabilities": [
+        "booking-modeling"
+      ],
+      "domains": [
+        "order-management"
+      ],
+      "entities": [
+        "Booking",
+        "BookingEquipment",
+        "WorkProcess"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 49
+    },
+    {
+      "path": "domain/equipment.md",
+      "category": "domain",
+      "title": "Equipment and cargo requirements",
+      "summary": "Models the physical transport asset requirements for each container or vehicle, including reefer, dangerous-goods, and ownership details.",
+      "primary_for": [
+        "equipment-requirement-model"
+      ],
+      "mentions": [
+        "equipment profile",
+        "transport asset",
+        "reefer",
+        "dangerous goods"
+      ],
+      "scenarios": [
+        "equipment requirement model",
+        "reefer cargo details",
+        "dangerous goods shape",
+        "container asset profile",
+        "shipper owned container",
+        "find equipment requirements"
+      ],
+      "capabilities": [
+        "equipment-modeling"
+      ],
+      "domains": [
+        "order-management"
+      ],
+      "entities": [
+        "TransportAssetRequirement",
+        "EquipmentProfile",
+        "DangerousGoods"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 38
+    },
+    {
+      "path": "domain/location.md",
+      "category": "domain",
+      "title": "Location and leg endpoints",
+      "summary": "Owns facilities, cities, postal addresses, alternative codes, and the location-association wrapper used across routing and service-plan legs.",
+      "primary_for": [
+        "location-domain-model"
+      ],
+      "mentions": [
+        "facility model",
+        "city model",
+        "postal address",
+        "geo id"
+      ],
+      "scenarios": [
+        "location domain model",
+        "facility and city types",
+        "geo id lookup",
+        "service plan leg locations",
+        "postal address structure"
+      ],
+      "capabilities": [
+        "location-modeling"
+      ],
+      "domains": [
+        "order-management"
+      ],
+      "entities": [
+        "LocationAssociation",
+        "Facility",
+        "City"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 37
+    },
+    {
+      "path": "domain/party.md",
+      "category": "domain",
+      "title": "Party model",
+      "summary": "Defines the reusable party, role-relationship, and payment structures that travel through bookings, charges, and resolver output.",
+      "primary_for": [
+        "party-domain-model"
+      ],
+      "mentions": [
+        "party association",
+        "customer party",
+        "booked by",
+        "price owner"
+      ],
+      "scenarios": [
+        "party domain model",
+        "customer role structure",
+        "where parties stored",
+        "payment term model",
+        "party relationship fields"
+      ],
+      "capabilities": [
+        "party-modeling"
+      ],
+      "domains": [
+        "order-management"
+      ],
+      "entities": [
+        "PartyAssociation",
+        "Party",
+        "PaymentCondition"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 37
+    },
+    {
+      "path": "domain/product-offer.md",
+      "category": "domain",
+      "title": "Product offer and charges",
+      "summary": "Represents the priced product tree selected for a service plan, including products, service-plan legs, equipment, and manual/automatic charges.",
+      "primary_for": [
+        "product-offer-model"
+      ],
+      "mentions": [
+        "priced products",
+        "charges",
+        "product legs",
+        "execution charges"
+      ],
+      "scenarios": [
+        "product offer model",
+        "merge charges logic",
+        "pricing structure",
+        "execution charges",
+        "all charges traversal",
+        "find the product offer"
+      ],
+      "capabilities": [
+        "pricing-modeling"
+      ],
+      "domains": [
+        "order-management"
+      ],
+      "entities": [
+        "ProductOffer",
+        "Product",
+        "Charge"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 37
+    },
+    {
+      "path": "domain/service-plan.md",
+      "category": "domain",
+      "title": "ServicePlan aggregate",
+      "summary": "The root order aggregate links booking, product offer, routing, stage, customs, finance, and event-facing metadata.",
+      "primary_for": [
+        "service-plan-aggregate"
+      ],
+      "mentions": [
+        "order aggregate",
+        "service plan status",
+        "routing",
+        "finops",
+        "customs"
+      ],
+      "scenarios": [
+        "service plan aggregate",
+        "order root model",
+        "amend service plan",
+        "service plan fields",
+        "cancel logic"
+      ],
+      "capabilities": [
+        "domain-modeling"
+      ],
+      "domains": [
+        "order-management"
+      ],
+      "entities": [
+        "ServicePlan",
+        "ServicePlanLeg",
+        "ServicePlanStatus"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 48
+    },
+    {
+      "path": "architecture/cross-cutting.md",
+      "category": "architecture",
+      "title": "Cross-cutting architecture",
+      "summary": "Highlights the shared patterns that span modules: reactive APIs, versioned contracts, dual persistence, caching, and feature gating.",
+      "primary_for": [
+        "cross-cutting-architecture"
+      ],
+      "mentions": [
+        "reactive stack",
+        "versioned contracts",
+        "dual persistence",
+        "feature flags",
+        "caching"
+      ],
+      "scenarios": [
+        "shared architecture patterns",
+        "cross cutting concerns",
+        "reactive design overview",
+        "where caching fits",
+        "how versions upgrade"
+      ],
+      "capabilities": [
+        "architecture-overview"
+      ],
+      "domains": [
+        "iom-application"
+      ],
+      "entities": [
+        "ServicePlan",
+        "ServicePlanEntity",
+        "ReferenceDataFetcher"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 43
+    },
+    {
+      "path": "architecture/modules.md",
+      "category": "architecture",
+      "title": "Modules and package tree",
+      "summary": "Summarizes the multi-module Gradle structure, published artifacts, and the main package families owned by each module.",
+      "primary_for": [
+        "multi-module-package-tree"
+      ],
+      "mentions": [
+        "gradle modules",
+        "package tree",
+        "module structure",
+        "artifact map"
+      ],
+      "scenarios": [
+        "list all modules",
+        "show package tree",
+        "understand gradle layout",
+        "map module ownership",
+        "trace package family"
+      ],
+      "capabilities": [
+        "module-topology"
+      ],
+      "domains": [
+        "iom-application"
+      ],
+      "entities": [
+        "application-model",
+        "iom-order-domain",
+        "iom-persistence"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 140
+    },
+    {
+      "path": "stack/stack.md",
+      "category": "stack",
+      "title": "Stack and build commands",
+      "summary": "Captures the framework stack, library packaging choices, and the smallest useful Gradle commands for this multi-module repo.",
+      "primary_for": [
+        "gradle-stack-profile"
+      ],
+      "mentions": [
+        "spring webflux",
+        "kotlin stack",
+        "gradle commands",
+        "library build"
+      ],
+      "scenarios": [
+        "how to build",
+        "run gradle tests",
+        "stack summary",
+        "what frameworks used",
+        "which java version"
+      ],
+      "capabilities": [
+        "stack-summary"
+      ],
+      "domains": [
+        "iom-application"
+      ],
+      "entities": [
+        "Gradle",
+        "Spring Boot",
+        "WebFlux",
+        "R2DBC"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 70
+    },
+    {
+      "path": "runtime/order-processing.md",
+      "category": "runtime",
+      "title": "Order processing flow",
+      "summary": "Explains the library-level execution path from inbound service-plan DTOs through enrichment, validation, persistence, and event creation.",
+      "primary_for": [
+        "order-processing-flow"
+      ],
+      "mentions": [
+        "runtime flow",
+        "processing path",
+        "enrichment validation persistence"
+      ],
+      "scenarios": [
+        "trace processing flow",
+        "follow order path",
+        "understand library runtime",
+        "map validation pipeline",
+        "find persistence sequence"
+      ],
+      "capabilities": [
+        "runtime-tracing"
+      ],
+      "domains": [
+        "order-management"
+      ],
+      "entities": [
+        "OrderService",
+        "Resolver",
+        "ServiceDatesValidator",
+        "OrderRepositoryImpl"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 40
+    },
+    {
+      "path": "contracts/api-contracts.md",
+      "category": "contracts",
+      "title": "API contracts",
+      "summary": "Describes the versioned DTO surfaces and custom validation annotations that this library publishes for consumers.",
+      "primary_for": [
+        "versioned-api-contracts"
+      ],
+      "mentions": [
+        "dto contracts",
+        "v1",
+        "v2",
+        "v3",
+        "validation annotation"
+      ],
+      "scenarios": [
+        "api dto versions",
+        "find request contract",
+        "which dto version",
+        "routing request model",
+        "postal address annotation",
+        "find the api contracts",
+        "check contracts definitions"
+      ],
+      "capabilities": [
+        "contract-mapping"
+      ],
+      "domains": [
+        "api-contracts"
+      ],
+      "entities": [
+        "V1ServicePlanModel",
+        "V2RoutingRequestModel",
+        "V3ServicePlanModel"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 43
+    },
+    {
+      "path": "contracts/db-schemas.md",
+      "category": "contracts",
+      "title": "Database and document schemas",
+      "summary": "Summarizes the storage contracts implemented in iom-persistence across PostgreSQL tables and the Mongo order document.",
+      "primary_for": [
+        "storage-schema-contracts"
+      ],
+      "mentions": [
+        "service_plans table",
+        "outbox schema",
+        "audit table",
+        "mongo document"
+      ],
+      "scenarios": [
+        "find db schema",
+        "which tables exist",
+        "service plan entity shape",
+        "outbox columns",
+        "customer history table",
+        "find the api contracts"
+      ],
+      "capabilities": [
+        "schema-documentation"
+      ],
+      "domains": [
+        "persistence"
+      ],
+      "entities": [
+        "ServicePlanEntity",
+        "OutboxMessage",
+        "AuditEntity",
+        "IncidentEntity"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 47
+    },
+    {
+      "path": "integrations/business-rules-and-execution.md",
+      "category": "integrations",
+      "title": "Business rules, Telikos, and notifications",
+      "summary": "Captures the outbound integrations used for appointment-day and commodity-restriction rules, Telikos execution flows, and notification delivery.",
+      "primary_for": [
+        "execution-integration-map"
+      ],
+      "mentions": [
+        "business rules client",
+        "telikos",
+        "notification webhook",
+        "appointment days"
+      ],
+      "scenarios": [
+        "trace telikos flow",
+        "find business rules api",
+        "how notifications sent",
+        "where execution calls live",
+        "commodity restriction endpoint",
+        "trace rule execution"
+      ],
+      "capabilities": [
+        "integration-mapping"
+      ],
+      "domains": [
+        "reference-data"
+      ],
+      "entities": [
+        "BusinessRulesClient",
+        "TelikosClient",
+        "NotificationClient"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 42
+    },
+    {
+      "path": "integrations/customer-and-facility.md",
+      "category": "integrations",
+      "title": "Customer and facility services",
+      "summary": "Covers the customer-party and facility-lookup integrations used to enrich booking parties and location metadata.",
+      "primary_for": [
+        "customer-facility-integration"
+      ],
+      "mentions": [
+        "customer client",
+        "facility client",
+        "party resolver",
+        "geo id lookup"
+      ],
+      "scenarios": [
+        "party enrichment flow",
+        "facility lookup path",
+        "customer service call",
+        "resolve facility geo ids",
+        "which client owns parties"
+      ],
+      "capabilities": [
+        "integration-mapping"
+      ],
+      "domains": [
+        "reference-data"
+      ],
+      "entities": [
+        "CustomerClient",
+        "CustomerFacilityClient",
+        "FacilityResolver"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 40
+    },
+    {
+      "path": "integrations/offer-and-routing.md",
+      "category": "integrations",
+      "title": "Offer and routing services",
+      "summary": "Explains how the library requests offered service plans and routing options from external systems using local DTO contracts.",
+      "primary_for": [
+        "offer-routing-integration"
+      ],
+      "mentions": [
+        "offered service plan",
+        "routing client",
+        "route lookup",
+        "offer client"
+      ],
+      "scenarios": [
+        "find routing integration",
+        "trace offer lookup",
+        "which dto drives routing",
+        "how route api called",
+        "where offer maps to domain"
+      ],
+      "capabilities": [
+        "integration-mapping"
+      ],
+      "domains": [
+        "reference-data"
+      ],
+      "entities": [
+        "OfferedServicePlanClientV3",
+        "RoutingClient",
+        "V2RoutingRequestModel"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 38
+    },
+    {
+      "path": "integrations/reference-cache-and-masters.md",
+      "category": "integrations",
+      "title": "Reference cache and mastered lookups",
+      "summary": "Documents the cached reference-data paths for containers, commodities, charges, VAT partners, reasons, VAS, and ocean carriers.",
+      "primary_for": [
+        "reference-master-cache"
+      ],
+      "mentions": [
+        "reference cache",
+        "commodity master",
+        "container master",
+        "charge master"
+      ],
+      "scenarios": [
+        "how cache warms",
+        "commodity cache lookup",
+        "master data refresh",
+        "reference cache owners",
+        "startup cache logic"
+      ],
+      "capabilities": [
+        "integration-mapping"
+      ],
+      "domains": [
+        "reference-data"
+      ],
+      "entities": [
+        "ReferenceDataFetcher",
+        "CommodityResolver",
+        "CommodityClient"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 39
+    },
+    {
+      "path": "operations/failure-model.md",
+      "category": "operations",
+      "title": "Failure model",
+      "summary": "Explains how iom-application surfaces validation, integration, resolver, and persistence failures without hiding them.",
+      "primary_for": [
+        "library-failure-model"
+      ],
+      "mentions": [
+        "validation failure",
+        "retry policy",
+        "resolver failure",
+        "optimistic lock"
+      ],
+      "scenarios": [
+        "how errors surface",
+        "why retry happens",
+        "resolver failure behavior",
+        "find lock version",
+        "where incidents stored",
+        "understand the failure model"
+      ],
+      "capabilities": [
+        "failure-analysis"
+      ],
+      "domains": [
+        "operations"
+      ],
+      "entities": [
+        "ValidationException",
+        "ErrorHandler",
+        "OutboxMessage",
+        "IncidentEntity"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 40
+    },
+    {
+      "path": "operations/flags-and-lists.md",
+      "category": "operations",
+      "title": "Flags and controlled lists",
+      "summary": "Summarizes the feature-flag surface and the major controlled enumerations that shape validation and runtime decisions.",
+      "primary_for": [
+        "flags-and-controlled-lists"
+      ],
+      "mentions": [
+        "launchdarkly",
+        "feature catalog",
+        "enums",
+        "controlled vocabulary"
+      ],
+      "scenarios": [
+        "find feature flags",
+        "which enums exist",
+        "controlled values list",
+        "launchdarkly config",
+        "country flag behavior"
+      ],
+      "capabilities": [
+        "flag-analysis"
+      ],
+      "domains": [
+        "operations"
+      ],
+      "entities": [
+        "FeatureCatalog",
+        "LaunchDarklyFeatureProvider",
+        "LocationFunctionEnum"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 39
+    },
+    {
+      "path": "navigation/entry-points.md",
+      "category": "navigation",
+      "title": "Library entry points",
+      "summary": "Maps the public APIs exposed by each Gradle module so agents can start from the right interface instead of drilling into implementation code.",
+      "primary_for": [
+        "library-entry-points"
+      ],
+      "mentions": [
+        "orderservice",
+        "orderrepository",
+        "resolver",
+        "webclient",
+        "validator"
+      ],
+      "scenarios": [
+        "find public api",
+        "where to start",
+        "library surface map",
+        "module entry point",
+        "shared jar exports"
+      ],
+      "capabilities": [
+        "entry-point-routing"
+      ],
+      "domains": [
+        "iom-application"
+      ],
+      "entities": [
+        "OrderService",
+        "OrderRepository",
+        "Resolver",
+        "FeatureProvider"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 54
+    },
+    {
+      "path": "navigation/key-classes.md",
+      "category": "navigation",
+      "title": "Key classes by concern",
+      "summary": "Groups the most important classes by responsibility so agents can jump directly to the relevant module.",
+      "primary_for": [
+        "key-class-map"
+      ],
+      "mentions": [
+        "concern map",
+        "core classes",
+        "important files",
+        "module owners"
+      ],
+      "scenarios": [
+        "which class owns",
+        "find core model",
+        "find client class",
+        "find repository class",
+        "find validation class"
+      ],
+      "capabilities": [
+        "concern-mapping"
+      ],
+      "domains": [
+        "iom-application"
+      ],
+      "entities": [
+        "ServicePlan",
+        "ReferenceDataFetcher",
+        "WebClientConfiguration"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 48
+    },
+    {
+      "path": "navigation/scenarios.md",
+      "category": "navigation",
+      "title": "Task scenarios",
+      "summary": "Maps common engineering tasks to the best starting class and method inside the iom-application library stack.",
+      "primary_for": [
+        "task-scenario-routing"
+      ],
+      "mentions": [
+        "start-here",
+        "class.method",
+        "resolver flow",
+        "validator flow",
+        "persistence flow"
+      ],
+      "scenarios": [
+        "trace amend flow",
+        "find db save",
+        "follow resolver call",
+        "debug date validation",
+        "locate external client",
+        "find the right scenario",
+        "match a user scenario"
+      ],
+      "capabilities": [
+        "task-routing"
+      ],
+      "domains": [
+        "iom-application"
+      ],
+      "entities": [
+        "OrderService",
+        "OrderRepositoryImpl",
+        "ServiceDatesValidator"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 45
+    }
+  ]
+}

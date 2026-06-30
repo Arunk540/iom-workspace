@@ -1,0 +1,730 @@
+{
+  "repo_key": "smds-facilities-service",
+  "generated_at": "2026-06-30T10:13:00Z",
+  "verified_against": "59b572b95e052b35a641bea35f72c4494a6d37e2",
+  "files": [
+    {
+      "path": "domain/customer-access.md",
+      "category": "domain",
+      "title": "Customer access rules",
+      "summary": "Customer codes are both query inputs and authorization constraints, especially for CUST facilities and ForgeRock tokens.",
+      "primary_for": [
+        "smds-customer-access"
+      ],
+      "mentions": [
+        "customercode",
+        "jwtcustomercode",
+        "cust",
+        "forgerock",
+        "tokenScope"
+      ],
+      "scenarios": [
+        "inspect customer authorization",
+        "trace customer code rules",
+        "debug cust facility access",
+        "inspect jwt customer checks",
+        "inspect multi customer behavior"
+      ],
+      "capabilities": [
+        "authorization-modeling"
+      ],
+      "domains": [
+        "smds-facilities"
+      ],
+      "entities": [
+        "CustomerCode",
+        "JwtCustomerCode",
+        "FacilityInput",
+        "FacilitySearch"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 40
+    },
+    {
+      "path": "domain/facility-category.md",
+      "category": "domain",
+      "title": "Facility category",
+      "summary": "Facility categories are modeled as code/name pairs and are searchable for OPS records in the repository layer.",
+      "primary_for": [
+        "smds-facility-category"
+      ],
+      "mentions": [
+        "facilitycategory",
+        "facilitycategories",
+        "code",
+        "name",
+        "ops"
+      ],
+      "scenarios": [
+        "inspect facility categories",
+        "trace category filter",
+        "find category code field",
+        "inspect ops category lookup",
+        "inspect category payload"
+      ],
+      "capabilities": [
+        "domain-modeling"
+      ],
+      "domains": [
+        "smds-facilities"
+      ],
+      "entities": [
+        "FacilityCategory",
+        "FacilitiesDomainResponse"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 42
+    },
+    {
+      "path": "domain/facility.md",
+      "category": "domain",
+      "title": "Facility aggregate",
+      "summary": "`FacilityDomainModel` is the cross-layer carrier for facility lookups, while `FacilitiesDomainResponse` defines the business payload returned to clients.",
+      "primary_for": [
+        "smds-facility-entity"
+      ],
+      "mentions": [
+        "facilitydomainmodel",
+        "facilitiesdomainresponse",
+        "facilitytype",
+        "idtype",
+        "customercodes"
+      ],
+      "scenarios": [
+        "inspect facility entity",
+        "find response fields",
+        "trace domain carrier",
+        "inspect facility payload",
+        "inspect facility search model"
+      ],
+      "capabilities": [
+        "domain-modeling"
+      ],
+      "domains": [
+        "smds-facilities"
+      ],
+      "entities": [
+        "FacilityDomainModel",
+        "FacilitiesDomainResponse",
+        "FacilitiesResponse"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 44
+    },
+    {
+      "path": "domain/geographic-details.md",
+      "category": "domain",
+      "title": "Geographic details",
+      "summary": "Geographic data is modeled as nested location, coordinate, and postal-address objects under each facility response.",
+      "primary_for": [
+        "smds-geographic-details"
+      ],
+      "mentions": [
+        "geographicdetails",
+        "locationdetails",
+        "postaladdress",
+        "geocoordinates",
+        "facilityname"
+      ],
+      "scenarios": [
+        "inspect address fields",
+        "inspect location fields",
+        "find facility name field",
+        "inspect city region country",
+        "inspect nested geography model",
+        "find geographic details",
+        "check geographic data"
+      ],
+      "capabilities": [
+        "domain-modeling"
+      ],
+      "domains": [
+        "smds-facilities"
+      ],
+      "entities": [
+        "GeographicDetails",
+        "LocationDetails",
+        "PostalAddress",
+        "GeoCoordinates"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 44
+    },
+    {
+      "path": "architecture/cross-cutting.md",
+      "category": "architecture",
+      "title": "Cross-cutting concerns",
+      "summary": "Security, reactive execution, OpenAPI metadata, global exception shaping, and metrics/logging are the main cross-cutting mechanisms.",
+      "primary_for": [
+        "facilities-cross-cutting"
+      ],
+      "mentions": [
+        "oauth2",
+        "preauthorize",
+        "webflux",
+        "openapi",
+        "actuator",
+        "log4j2"
+      ],
+      "scenarios": [
+        "inspect auth model",
+        "inspect observability",
+        "inspect error handling",
+        "inspect reactive runtime",
+        "inspect api documentation",
+        "search the facilities",
+        "find facilities details"
+      ],
+      "capabilities": [
+        "cross-cutting-analysis"
+      ],
+      "domains": [
+        "smds-facilities"
+      ],
+      "entities": [
+        "SecurityUtils",
+        "GlobalExceptionHandler",
+        "SmdsFacilitiesApplication",
+        "management.endpoints"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 41
+    },
+    {
+      "path": "architecture/modules.md",
+      "category": "architecture",
+      "title": "Module layout",
+      "summary": "The repo is split into a main `service/` Maven module, a separate `componenttest/` module, database scripts, and deployment assets.",
+      "primary_for": [
+        "facilities-module-layout"
+      ],
+      "mentions": [
+        "service",
+        "componenttest",
+        "postgresql_scripts",
+        "helm",
+        "infrastructure",
+        "spec"
+      ],
+      "scenarios": [
+        "inspect package tree",
+        "locate source module",
+        "find component tests",
+        "find database scripts",
+        "find deployment assets",
+        "understand module layout"
+      ],
+      "capabilities": [
+        "module-mapping"
+      ],
+      "domains": [
+        "smds-facilities"
+      ],
+      "entities": [
+        "service",
+        "componenttest",
+        "postgresql_scripts",
+        "helm",
+        "infrastructure",
+        "spec"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 71
+    },
+    {
+      "path": "stack/stack.md",
+      "category": "stack",
+      "title": "Technology stack",
+      "summary": "The service is a Java 17 Maven build using Spring Boot WebFlux, Spring Security resource server, springdoc OpenAPI, and PostgreSQL via R2DBC.",
+      "primary_for": [
+        "facilities-reactive-stack"
+      ],
+      "mentions": [
+        "java17",
+        "maven",
+        "spring-boot",
+        "webflux",
+        "r2dbc",
+        "postgresql",
+        "springdoc",
+        "junit5",
+        "cucumber"
+      ],
+      "scenarios": [
+        "inspect tech stack",
+        "find build commands",
+        "find test commands",
+        "inspect reactive libraries",
+        "inspect data stack"
+      ],
+      "capabilities": [
+        "stack-discovery"
+      ],
+      "domains": [
+        "smds-facilities"
+      ],
+      "entities": [
+        "SpringBoot",
+        "WebFlux",
+        "R2dbcEntityTemplate",
+        "PostgreSQL",
+        "Maven"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 62
+    },
+    {
+      "path": "runtime/facility-fuzzy-search-flow.md",
+      "category": "runtime",
+      "title": "Facility fuzzy search flow",
+      "summary": "`/facilities/fuzzy-search` is a narrower search path that requires a minimum facility-name string and delegates to a PostgreSQL fuzzy-match query.",
+      "primary_for": [
+        "facilities-fuzzy-search"
+      ],
+      "mentions": [
+        "/facilities/fuzzy-search",
+        "facilityname",
+        "similarity",
+        "trigram",
+        "fuzzy"
+      ],
+      "scenarios": [
+        "trace fuzzy search",
+        "inspect fuzzy validation",
+        "inspect name similarity query",
+        "debug fuzzy search results",
+        "follow fuzzy endpoint flow"
+      ],
+      "capabilities": [
+        "request-flow"
+      ],
+      "domains": [
+        "smds-facilities"
+      ],
+      "entities": [
+        "FacilitySearch",
+        "FacilitiesReactiveRepository",
+        "FacilitiesResponse"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 42
+    },
+    {
+      "path": "runtime/facility-id-lookup-flow.md",
+      "category": "runtime",
+      "title": "Facility id lookup flow",
+      "summary": "`/facilities` resolves JWT claims, validates identifiers, routes by `idType`, enforces CUST rules, and maps active DB rows back to the API response.",
+      "primary_for": [
+        "facility-id-lookup"
+      ],
+      "mentions": [
+        "/facilities",
+        "idtype",
+        "customercode",
+        "sortparam",
+        "facilityintegrator"
+      ],
+      "scenarios": [
+        "trace id lookup flow",
+        "debug idtype routing",
+        "inspect customer code filtering",
+        "inspect response sorting",
+        "follow facility get path"
+      ],
+      "capabilities": [
+        "request-flow"
+      ],
+      "domains": [
+        "smds-facilities"
+      ],
+      "entities": [
+        "FacilityInput",
+        "FacilityDomainModel",
+        "FacilitiesResponse"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 43
+    },
+    {
+      "path": "runtime/facility-search-flow.md",
+      "category": "runtime",
+      "title": "Facility search flow",
+      "summary": "`/facilities/search` validates facility type plus search filters, enforces customer-code rules, and either runs dynamic JSONB criteria or specialized repository queries.",
+      "primary_for": [
+        "facilities-parameter-search"
+      ],
+      "mentions": [
+        "/facilities/search",
+        "cityname",
+        "facilitycategory",
+        "customercode",
+        "dbconnector"
+      ],
+      "scenarios": [
+        "trace search flow",
+        "debug geography filters",
+        "inspect customer search rules",
+        "inspect category search",
+        "inspect dynamic criteria query"
+      ],
+      "capabilities": [
+        "request-flow"
+      ],
+      "domains": [
+        "smds-facilities"
+      ],
+      "entities": [
+        "FacilitySearch",
+        "FacilityDomainModel",
+        "DbConnector",
+        "FacilitiesReactiveRepository"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 43
+    },
+    {
+      "path": "contracts/api-contracts.md",
+      "category": "contracts",
+      "title": "API contracts",
+      "summary": "The REST contract is generated from controller and OpenAPI annotations rather than a checked-in OpenAPI file.",
+      "primary_for": [
+        "facilities-api-contracts"
+      ],
+      "mentions": [
+        "openapi",
+        "authorization",
+        "idtype",
+        "facilitytype",
+        "facilitiesresponse"
+      ],
+      "scenarios": [
+        "inspect api contract",
+        "inspect endpoint parameters",
+        "inspect response codes",
+        "inspect auth requirement",
+        "inspect generated openapi",
+        "find the api contracts",
+        "check contracts definitions"
+      ],
+      "capabilities": [
+        "contract-analysis"
+      ],
+      "domains": [
+        "smds-facilities"
+      ],
+      "entities": [
+        "SmdsFacilitiesController",
+        "FacilitiesResponse",
+        "Error"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 42
+    },
+    {
+      "path": "contracts/db-schemas.md",
+      "category": "contracts",
+      "title": "Database schemas",
+      "summary": "Runtime code is wired to `facility.facility_data_v3`, while checked-in Liquibase scripts create earlier `facility_data` and `facility_data_v2` generations.",
+      "primary_for": [
+        "facilities-db-schema"
+      ],
+      "mentions": [
+        "facility_data_v3",
+        "jsonb",
+        "liquibase",
+        "facility_source_data",
+        "status_code"
+      ],
+      "scenarios": [
+        "inspect db schema",
+        "inspect jsonb columns",
+        "inspect table version drift",
+        "inspect active status filter",
+        "inspect source data tables",
+        "find the db schema"
+      ],
+      "capabilities": [
+        "contract-analysis"
+      ],
+      "domains": [
+        "smds-facilities"
+      ],
+      "entities": [
+        "FacilityData",
+        "facility_data",
+        "facility_data_v2",
+        "facility_data_v3"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 43
+    },
+    {
+      "path": "integrations/identity-providers.md",
+      "category": "integrations",
+      "title": "Identity providers",
+      "summary": "The service relies on external Azure AD and ForgeRock issuer/JWKS endpoints for JWT validation rather than custom outbound business REST calls.",
+      "primary_for": [
+        "facilities-jwt-providers"
+      ],
+      "mentions": [
+        "azure",
+        "forgerock",
+        "oauth2",
+        "issuer-uri",
+        "jwk-set-uri",
+        "authorization"
+      ],
+      "scenarios": [
+        "inspect jwt integration",
+        "inspect auth providers",
+        "inspect issuer endpoints",
+        "inspect jwks endpoints",
+        "inspect bearer auth config",
+        "find identity providers"
+      ],
+      "capabilities": [
+        "integration-analysis"
+      ],
+      "domains": [
+        "smds-facilities"
+      ],
+      "entities": [
+        "AzureAD",
+        "ForgeRock",
+        "Authorization"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 39
+    },
+    {
+      "path": "integrations/postgresql.md",
+      "category": "integrations",
+      "title": "PostgreSQL storage",
+      "summary": "The main runtime dependency is PostgreSQL over R2DBC, with JSONB-heavy query patterns and separate component-test seeding.",
+      "primary_for": [
+        "facilities-postgresql-storage"
+      ],
+      "mentions": [
+        "postgresql",
+        "r2dbc",
+        "jsonb",
+        "facility_data_v3",
+        "testcontainers"
+      ],
+      "scenarios": [
+        "inspect postgres integration",
+        "inspect r2dbc setup",
+        "inspect jsonb queries",
+        "inspect local database setup",
+        "inspect component test database",
+        "find postgresql storage",
+        "check postgresql config"
+      ],
+      "capabilities": [
+        "integration-analysis"
+      ],
+      "domains": [
+        "smds-facilities"
+      ],
+      "entities": [
+        "FacilityData",
+        "R2dbcEntityTemplate",
+        "PostgreSQLContainer"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 42
+    },
+    {
+      "path": "operations/failure-model.md",
+      "category": "operations",
+      "title": "Failure model",
+      "summary": "Most failures are deliberate validation or authorization outcomes, with 500 reserved for uncaught exceptions after the controller/service pipeline.",
+      "primary_for": [
+        "facilities-failure-model"
+      ],
+      "mentions": [
+        "badrequest",
+        "unauthorized",
+        "forbidden",
+        "notfound",
+        "facilityapierror"
+      ],
+      "scenarios": [
+        "inspect failure modes",
+        "inspect validation errors",
+        "inspect forbidden paths",
+        "inspect not found behavior",
+        "inspect error responses",
+        "understand the failure model"
+      ],
+      "capabilities": [
+        "operational-analysis"
+      ],
+      "domains": [
+        "smds-facilities"
+      ],
+      "entities": [
+        "BadRequestException",
+        "DataNotFoundException",
+        "ForbiddenException",
+        "FacilityApiError"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 41
+    },
+    {
+      "path": "operations/monitoring.md",
+      "category": "operations",
+      "title": "Monitoring and diagnostics",
+      "summary": "Observability is built around Actuator health/prometheus endpoints, HTTP latency percentiles, and package-level logging.",
+      "primary_for": [
+        "facilities-monitoring"
+      ],
+      "mentions": [
+        "actuator",
+        "prometheus",
+        "health",
+        "metrics",
+        "logging"
+      ],
+      "scenarios": [
+        "inspect monitoring setup",
+        "inspect prometheus endpoint",
+        "inspect health probes",
+        "inspect request metrics",
+        "inspect log levels",
+        "find monitoring setup"
+      ],
+      "capabilities": [
+        "operational-analysis"
+      ],
+      "domains": [
+        "smds-facilities"
+      ],
+      "entities": [
+        "management.endpoints",
+        "prometheus",
+        "logging.level"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 38
+    },
+    {
+      "path": "navigation/entry-points.md",
+      "category": "navigation",
+      "title": "REST entry points",
+      "summary": "SmdsFacilitiesController exposes three reactive GET endpoints for id lookup, multi-parameter search, and fuzzy name search.",
+      "primary_for": [
+        "facilities-rest-entrypoints"
+      ],
+      "mentions": [
+        "smdsfacilitiescontroller",
+        "/facilities",
+        "/facilities/search",
+        "/facilities/fuzzy-search",
+        "webflux"
+      ],
+      "scenarios": [
+        "find facility endpoint",
+        "inspect search routes",
+        "map rest handlers",
+        "check api paths",
+        "trace controller entrypoints"
+      ],
+      "capabilities": [
+        "route-discovery"
+      ],
+      "domains": [
+        "smds-facilities"
+      ],
+      "entities": [
+        "FacilityInput",
+        "FacilitySearch",
+        "FacilitiesResponse"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 45
+    },
+    {
+      "path": "navigation/key-classes.md",
+      "category": "navigation",
+      "title": "Key classes",
+      "summary": "The service is centered on one controller, two application services, two domain services, and a single integrator/repository boundary.",
+      "primary_for": [
+        "facilities-class-map"
+      ],
+      "mentions": [
+        "application",
+        "domain",
+        "infrastructure",
+        "controller",
+        "repository",
+        "mapper"
+      ],
+      "scenarios": [
+        "find owner class",
+        "map service layers",
+        "inspect request validation",
+        "locate repository queries",
+        "understand response mapping",
+        "find a key class"
+      ],
+      "capabilities": [
+        "class-navigation"
+      ],
+      "domains": [
+        "smds-facilities"
+      ],
+      "entities": [
+        "SmdsFacilitiesController",
+        "RequestValidator",
+        "FacilitiesService",
+        "FacilitiesSearchService",
+        "FacilityIntegrator",
+        "FacilitiesReactiveRepository"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 51
+    },
+    {
+      "path": "navigation/scenarios.md",
+      "category": "navigation",
+      "title": "Scenario routing",
+      "summary": "Use this map to jump from common task phrases to the class and method that owns the behavior.",
+      "primary_for": [
+        "facilities-task-routing"
+      ],
+      "mentions": [
+        "start-here",
+        "class.method",
+        "controller",
+        "service",
+        "integrator",
+        "validator"
+      ],
+      "scenarios": [
+        "trace id lookup",
+        "debug search filters",
+        "follow fuzzy search",
+        "inspect customer authorization",
+        "find database query owner",
+        "find request routing",
+        "trace task routing"
+      ],
+      "capabilities": [
+        "task-routing"
+      ],
+      "domains": [
+        "smds-facilities"
+      ],
+      "entities": [
+        "SmdsFacilitiesController",
+        "FacilitiesService",
+        "FacilitiesSearchService",
+        "FacilityIntegrator"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 47
+    }
+  ]
+}

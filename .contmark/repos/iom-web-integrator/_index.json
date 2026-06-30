@@ -1,0 +1,1194 @@
+{
+  "repo_key": "iom-web-integrator",
+  "generated_at": "2026-06-30T10:13:00Z",
+  "verified_against": "5330b402a2e322f42339c190abba348c2ce2fa9d",
+  "files": [
+    {
+      "path": "domain/booking-request.md",
+      "category": "domain",
+      "title": "BookingRequest bootstrap input",
+      "summary": "`BookingRequest` is the lightweight bootstrap payload used only by `/bookings` to decide whether to create, duplicate, or amend a booking.",
+      "primary_for": [
+        "booking-request-shape"
+      ],
+      "mentions": [
+        "bookingrequest",
+        "autobooking",
+        "duplicate",
+        "amendment"
+      ],
+      "scenarios": [
+        "booking request fields",
+        "ocean booking payload",
+        "duplicate booking payload",
+        "amend booking payload",
+        "booking bootstrap"
+      ],
+      "capabilities": [
+        "domain-model"
+      ],
+      "domains": [
+        "Booking"
+      ],
+      "entities": [
+        "BookingRequest",
+        "Address",
+        "BookingResponse"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 30
+    },
+    {
+      "path": "domain/business-rules.md",
+      "category": "domain",
+      "title": "Business rules response model",
+      "summary": "Business-rule evaluation combines mandatory parties, mandatory documents/references, optional lists, and Project44 onboarding state.",
+      "primary_for": [
+        "business-rules-model"
+      ],
+      "mentions": [
+        "businessrules",
+        "mandatory",
+        "optional",
+        "project44"
+      ],
+      "scenarios": [
+        "business rules payload",
+        "mandatory parties rules",
+        "optional documents list",
+        "project44 customer rules",
+        "rule evaluation model"
+      ],
+      "capabilities": [
+        "domain-model"
+      ],
+      "domains": [
+        "Compliance"
+      ],
+      "entities": [
+        "BusinessRuleResponse",
+        "MandatoryPartyRequest",
+        "MandatoryDocumentAndReferenceRequest"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 32
+    },
+    {
+      "path": "domain/ocean-booking.md",
+      "category": "domain",
+      "title": "Ocean booking enrichment model",
+      "summary": "Ocean booking enrichment builds an inland search request from a TP document by combining GCSS, terminal, location, party, country, commodity, and dangerous-goods data.",
+      "primary_for": [
+        "ocean-booking-model"
+      ],
+      "mentions": [
+        "ocean booking",
+        "tpdoc",
+        "bill of lading",
+        "dangerous goods"
+      ],
+      "scenarios": [
+        "ocean booking model",
+        "tpdoc enrichment",
+        "bill of lading details",
+        "dangerous goods mapping",
+        "ocean reference flow"
+      ],
+      "capabilities": [
+        "domain-model"
+      ],
+      "domains": [
+        "Ocean"
+      ],
+      "entities": [
+        "OceanBookingSearchResponse",
+        "BillOfLoadingSummaryResponse",
+        "DangerousDetailsResponse"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 30
+    },
+    {
+      "path": "domain/service-plan.md",
+      "category": "domain",
+      "title": "ServicePlan aggregate",
+      "summary": "`ServicePlan` is the central API aggregate; offer, order, billing, and repricing flows all transform or enrich this model.",
+      "primary_for": [
+        "service-plan-aggregate"
+      ],
+      "mentions": [
+        "serviceplan",
+        "charges",
+        "haulage",
+        "booking",
+        "repricing"
+      ],
+      "scenarios": [
+        "service plan model",
+        "service plan charges",
+        "service plan haulage",
+        "repricing service plan",
+        "booking aggregate"
+      ],
+      "capabilities": [
+        "domain-model"
+      ],
+      "domains": [
+        "Booking"
+      ],
+      "entities": [
+        "ServicePlan",
+        "Charge",
+        "BookingEquipment"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 32
+    },
+    {
+      "path": "domain/user-preferences.md",
+      "category": "domain",
+      "title": "User preference model",
+      "summary": "Preference APIs are keyed by the email extracted from the bearer token and grouped by product name such as `INLAND`, `INLAND_TASKS`, and `INLAND_AUTO_BOOKING`.",
+      "primary_for": [
+        "user-preference-model"
+      ],
+      "mentions": [
+        "preferences",
+        "user settings",
+        "filters",
+        "product"
+      ],
+      "scenarios": [
+        "user preferences model",
+        "preference product rules",
+        "preference email lookup",
+        "create preference payload",
+        "delete preference payload"
+      ],
+      "capabilities": [
+        "domain-model"
+      ],
+      "domains": [
+        "Preferences"
+      ],
+      "entities": [
+        "UserPreferencesResponse",
+        "PreferenceSchema",
+        "CreatePreferenceRequestSchema"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 30
+    },
+    {
+      "path": "architecture/cross-cutting.md",
+      "category": "architecture",
+      "title": "Cross-cutting concerns",
+      "summary": "Security, exception handling, retries, tracing, feature flags, and cache behavior are centralized in config, controller advice, and webclient utilities.",
+      "primary_for": [
+        "cross-cutting-map"
+      ],
+      "mentions": [
+        "security",
+        "errors",
+        "tracing",
+        "retries",
+        "cache"
+      ],
+      "scenarios": [
+        "cross cutting map",
+        "cross cutting security",
+        "cross cutting errors",
+        "tracing setup",
+        "retry behavior"
+      ],
+      "capabilities": [
+        "architecture"
+      ],
+      "domains": [
+        "Web Integrator"
+      ],
+      "entities": [
+        "SecurityConfig",
+        "WebIntegratorExceptionHandler",
+        "RetryConfiguration"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 36
+    },
+    {
+      "path": "architecture/modules.md",
+      "category": "architecture",
+      "title": "Modules and package layout",
+      "summary": "The source tree is a conventional layered WebFlux service with controllers, services, mappers, webclients, config, and DTO/model packages.",
+      "primary_for": [
+        "module-layout"
+      ],
+      "mentions": [
+        "packages",
+        "modules",
+        "tree"
+      ],
+      "scenarios": [
+        "package tree map",
+        "module layout",
+        "where packages live",
+        "understand source tree",
+        "browse repo modules"
+      ],
+      "capabilities": [
+        "architecture"
+      ],
+      "domains": [
+        "Web Integrator"
+      ],
+      "entities": [
+        "controller",
+        "service",
+        "mapper"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 38
+    },
+    {
+      "path": "stack/stack.md",
+      "category": "stack",
+      "title": "Stack and build commands",
+      "summary": "The service is Kotlin 1.9 on Java 17, Spring Boot 3.2 WebFlux, MapStruct, OpenAPI generation, Micrometer, Resilience4j, and optional Infinispan/LaunchDarkly integrations.",
+      "primary_for": [
+        "stack-overview"
+      ],
+      "mentions": [
+        "kotlin",
+        "spring",
+        "gradle",
+        "webflux",
+        "mapstruct"
+      ],
+      "scenarios": [
+        "stack overview",
+        "stack commands",
+        "build stack",
+        "test stack",
+        "framework overview"
+      ],
+      "capabilities": [
+        "stack"
+      ],
+      "domains": [
+        "Web Integrator"
+      ],
+      "entities": [
+        "Spring Boot",
+        "Gradle",
+        "MapStruct"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 43
+    },
+    {
+      "path": "runtime/booking-creation-flow.md",
+      "category": "runtime",
+      "title": "Booking creation flow",
+      "summary": "`/bookings` is a bootstrap endpoint that selects amendment, duplication, or ocean-reference creation before normalizing the service plan and posting it to order service.",
+      "primary_for": [
+        "booking-creation-flow"
+      ],
+      "mentions": [
+        "booking flow",
+        "autobooking",
+        "duplicate booking",
+        "amend booking"
+      ],
+      "scenarios": [
+        "booking create flow",
+        "duplicate booking flow",
+        "amend booking flow",
+        "ocean booking flow",
+        "create booking trace"
+      ],
+      "capabilities": [
+        "booking-create"
+      ],
+      "domains": [
+        "Booking"
+      ],
+      "entities": [
+        "BookingRequest",
+        "ServicePlan",
+        "BookingResponse"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 36
+    },
+    {
+      "path": "runtime/business-rules-flow.md",
+      "category": "runtime",
+      "title": "Business rules flow",
+      "summary": "Business-rule evaluation fans out to mandatory-party rules, mandatory document/reference rules, and SCM onboarding rules before building a consolidated response.",
+      "primary_for": [
+        "business-rules-flow"
+      ],
+      "mentions": [
+        "business rules",
+        "mandatory docs",
+        "mandatory parties",
+        "project44"
+      ],
+      "scenarios": [
+        "business rules flow",
+        "mandatory parties flow",
+        "mandatory docs flow",
+        "project44 flow",
+        "rules debug path"
+      ],
+      "capabilities": [
+        "business-rules"
+      ],
+      "domains": [
+        "Compliance"
+      ],
+      "entities": [
+        "BusinessRuleRequest",
+        "BusinessRuleResponse"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 35
+    },
+    {
+      "path": "runtime/notification-health-flow.md",
+      "category": "runtime",
+      "title": "Notification and health flow",
+      "summary": "The notification endpoint first checks downstream health across configured services and only returns the feature-banner JSON when every required dependency is up.",
+      "primary_for": [
+        "notification-health-flow"
+      ],
+      "mentions": [
+        "notification banner",
+        "health check",
+        "outage banner",
+        "service down"
+      ],
+      "scenarios": [
+        "notification flow",
+        "health banner flow",
+        "service outage banner",
+        "external health check",
+        "notification endpoint debug"
+      ],
+      "capabilities": [
+        "notification-health"
+      ],
+      "domains": [
+        "Operations"
+      ],
+      "entities": [
+        "ServiceHealthResponse",
+        "HealthStatus"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 33
+    },
+    {
+      "path": "runtime/ocean-booking-enrichment-flow.md",
+      "category": "runtime",
+      "title": "Ocean booking enrichment flow",
+      "summary": "Ocean-reference booking support pulls GCSS bill-of-lading data plus multiple reference-data lookups to synthesize inland search and booking payloads.",
+      "primary_for": [
+        "ocean-booking-flow"
+      ],
+      "mentions": [
+        "ocean reference",
+        "tpdoc lookup",
+        "bill of lading",
+        "dangerous goods"
+      ],
+      "scenarios": [
+        "ocean booking flow",
+        "tpdoc flow",
+        "bill of lading flow",
+        "dangerous goods flow",
+        "ocean reference debug"
+      ],
+      "capabilities": [
+        "ocean-booking"
+      ],
+      "domains": [
+        "Ocean"
+      ],
+      "entities": [
+        "OceanBookingSearchResponse",
+        "BillOfLadingPartyResponse",
+        "LocationAssociation"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 35
+    },
+    {
+      "path": "runtime/offer-search-flow.md",
+      "category": "runtime",
+      "title": "Offer search flow",
+      "summary": "Offer search checks pricing-country flags, maps the search request to downstream V3 models, and optionally merges ocean-booking metadata into the returned service plans.",
+      "primary_for": [
+        "offer-search-flow"
+      ],
+      "mentions": [
+        "offer search",
+        "route search",
+        "search service plans",
+        "amend search"
+      ],
+      "scenarios": [
+        "offer search flow",
+        "service plan search",
+        "amend offer flow",
+        "route quote trace",
+        "offer search debug"
+      ],
+      "capabilities": [
+        "offer-search"
+      ],
+      "domains": [
+        "Offers"
+      ],
+      "entities": [
+        "SearchRequest",
+        "ServicePlan"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 35
+    },
+    {
+      "path": "runtime/order-lifecycle-flow.md",
+      "category": "runtime",
+      "title": "Order lifecycle flow",
+      "summary": "Order lifecycle endpoints load, create, amend, update, and soft-close service plans while coordinating billing costs, vendor mapping, and haulage validation.",
+      "primary_for": [
+        "order-lifecycle-flow"
+      ],
+      "mentions": [
+        "order lifecycle",
+        "service plan update",
+        "soft close booking",
+        "finops update"
+      ],
+      "scenarios": [
+        "order lifecycle flow",
+        "service plan update flow",
+        "soft close flow",
+        "charges update flow",
+        "order status flow"
+      ],
+      "capabilities": [
+        "order-lifecycle"
+      ],
+      "domains": [
+        "Orders"
+      ],
+      "entities": [
+        "ServicePlan",
+        "ServicePlanResponse",
+        "FinancialJobLine"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 35
+    },
+    {
+      "path": "runtime/repricing-flow.md",
+      "category": "runtime",
+      "title": "Repricing flow",
+      "summary": "Manual and bulk repricing both compute a repriced offer, diff mandatory/base charges against the existing service plan, then persist updated charges through order service.",
+      "primary_for": [
+        "repricing-flow"
+      ],
+      "mentions": [
+        "repricing",
+        "price update",
+        "bulk reprice",
+        "manual reprice"
+      ],
+      "scenarios": [
+        "repricing flow",
+        "repricing debug",
+        "repricing charges",
+        "manual repricing",
+        "bulk repricing"
+      ],
+      "capabilities": [
+        "repricing"
+      ],
+      "domains": [
+        "Pricing"
+      ],
+      "entities": [
+        "RepriceRequest",
+        "RepricingSearchRequest",
+        "Charge"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 34
+    },
+    {
+      "path": "runtime/user-preferences-flow.md",
+      "category": "runtime",
+      "title": "User preferences flow",
+      "summary": "Preference CRUD extracts user identity from JWT, validates the allowed product set, and forwards requests to the internal agent-portal user-management API.",
+      "primary_for": [
+        "user-preferences-flow"
+      ],
+      "mentions": [
+        "user preferences",
+        "saved filters",
+        "preference crud",
+        "user settings"
+      ],
+      "scenarios": [
+        "user preferences flow",
+        "user preferences debug",
+        "user settings flow",
+        "create preferences",
+        "delete preferences"
+      ],
+      "capabilities": [
+        "user-preferences"
+      ],
+      "domains": [
+        "Preferences"
+      ],
+      "entities": [
+        "UserPreferencesResponse",
+        "PreferenceSchema"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 32
+    },
+    {
+      "path": "contracts/api-contracts-1.md",
+      "category": "contracts",
+      "title": "API contracts — booking, offers, and rules",
+      "summary": "Inbound HTTP contracts for booking creation, offer search, rules, notification, finance documents, invoicing, and CCD lookup.",
+      "primary_for": [
+        "api-contracts-booking"
+      ],
+      "mentions": [
+        "api",
+        "contracts",
+        "booking",
+        "offers",
+        "rules"
+      ],
+      "scenarios": [
+        "booking contracts",
+        "booking api contract",
+        "offer contracts",
+        "rules contracts",
+        "search contract list"
+      ],
+      "capabilities": [
+        "api-contracts"
+      ],
+      "domains": [
+        "Web Integrator"
+      ],
+      "entities": [
+        "BookingRequest",
+        "ServicePlan",
+        "BusinessRuleRequest"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 44
+    },
+    {
+      "path": "contracts/api-contracts-2.md",
+      "category": "contracts",
+      "title": "API contracts — orders and preferences",
+      "summary": "Inbound HTTP contracts for order lifecycle, exports, repricing application, customer behaviour, and preference CRUD.",
+      "primary_for": [
+        "api-contracts-orders"
+      ],
+      "mentions": [
+        "api",
+        "contracts",
+        "orders",
+        "preferences"
+      ],
+      "scenarios": [
+        "order contracts",
+        "orders api contract",
+        "preferences contracts",
+        "status contracts",
+        "download api contract"
+      ],
+      "capabilities": [
+        "api-contracts"
+      ],
+      "domains": [
+        "Web Integrator"
+      ],
+      "entities": [
+        "ServicePlanResponse",
+        "PreferenceSchema",
+        "Content"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 47
+    },
+    {
+      "path": "integrations/billing-service.md",
+      "category": "integrations",
+      "title": "Billing service integration",
+      "summary": "Billing-service supplies costs, invoice-trigger eligibility, invoice triggering, and soft-close/cost update side effects for bookings.",
+      "primary_for": [
+        "billing-service-integration"
+      ],
+      "mentions": [
+        "billing service",
+        "costs",
+        "invoice trigger",
+        "soft close"
+      ],
+      "scenarios": [
+        "billing service calls",
+        "invoice trigger backend",
+        "cost update backend",
+        "soft close backend",
+        "billing integration debug"
+      ],
+      "capabilities": [
+        "integration-billing-service"
+      ],
+      "domains": [
+        "Billing"
+      ],
+      "entities": [
+        "FinancialJobLine",
+        "InvoiceTriggerRequest",
+        "InvoiceTriggerResponse"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 34
+    },
+    {
+      "path": "integrations/ccd-search.md",
+      "category": "integrations",
+      "title": "CCD search integration",
+      "summary": "CCD contract lookups are delegated to a dedicated downstream service with its own OAuth2 client registration and extended external error mapping.",
+      "primary_for": [
+        "ccd-search-integration"
+      ],
+      "mentions": [
+        "ccd",
+        "contracts",
+        "agreement lookup",
+        "customer scope"
+      ],
+      "scenarios": [
+        "ccd search integration",
+        "ccd search backend",
+        "contract search backend",
+        "agreement integration",
+        "customer scope search"
+      ],
+      "capabilities": [
+        "integration-ccd-search"
+      ],
+      "domains": [
+        "Contracts"
+      ],
+      "entities": [
+        "CcdAgreementResponse",
+        "CcdSearchResponse"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 33
+    },
+    {
+      "path": "integrations/decisioning-rules.md",
+      "category": "integrations",
+      "title": "Decisioning and rules integrations",
+      "summary": "Business-rule evaluation depends on three business-rules endpoints: mandatory parties, mandatory documents/references, and SCM customer onboarding.",
+      "primary_for": [
+        "decisioning-rules-integration"
+      ],
+      "mentions": [
+        "decisioning",
+        "mandatory rules",
+        "scm onboarding",
+        "business rules"
+      ],
+      "scenarios": [
+        "decisioning integration",
+        "mandatory parties backend",
+        "mandatory documents backend",
+        "scm onboarding backend",
+        "business rules dependency"
+      ],
+      "capabilities": [
+        "integration-decisioning"
+      ],
+      "domains": [
+        "Compliance"
+      ],
+      "entities": [
+        "MandatoryPartyRequest",
+        "MandatoryDocumentAndReferenceRequest",
+        "CustomerScmResponse"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 36
+    },
+    {
+      "path": "integrations/gcss-and-reference-data.md",
+      "category": "integrations",
+      "title": "GCSS and reference-data integrations",
+      "summary": "Ocean booking flows fan out to GCSS plus facility, location, commodity, container-type, ocean-carrier, country, IMDG, customer, and vendor reference-data services.",
+      "primary_for": [
+        "gcss-reference-data-integration"
+      ],
+      "mentions": [
+        "gcss",
+        "reference data",
+        "facility",
+        "location",
+        "commodities"
+      ],
+      "scenarios": [
+        "gcss integration map",
+        "reference data calls",
+        "facility backend",
+        "location backend",
+        "dangerous goods backend"
+      ],
+      "capabilities": [
+        "integration-reference-data"
+      ],
+      "domains": [
+        "Ocean"
+      ],
+      "entities": [
+        "BillOfLoadingSummaryResponse",
+        "Facility",
+        "LocationClientResponse"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 36
+    },
+    {
+      "path": "integrations/launchdarkly.md",
+      "category": "integrations",
+      "title": "LaunchDarkly integration",
+      "summary": "LaunchDarkly controls config-rules responses, notification banners, and feature gates such as haulage validation or container soft deletion.",
+      "primary_for": [
+        "launchdarkly-integration"
+      ],
+      "mentions": [
+        "launchdarkly",
+        "feature flags",
+        "notification banner",
+        "config rules"
+      ],
+      "scenarios": [
+        "launchdarkly integration",
+        "launchdarkly flags",
+        "feature flag integration",
+        "notification flag source",
+        "config rules flag source"
+      ],
+      "capabilities": [
+        "integration-launchdarkly"
+      ],
+      "domains": [
+        "Operations"
+      ],
+      "entities": [
+        "FeatureFlagProvider",
+        "LaunchDarklyFeatureProvider"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 33
+    },
+    {
+      "path": "integrations/offer-service.md",
+      "category": "integrations",
+      "title": "Offer service integration",
+      "summary": "Offer-service provides new-booking search, amendment search, repriced offers, offered-service-plan retrieval, and equipment deletion.",
+      "primary_for": [
+        "offer-service-integration"
+      ],
+      "mentions": [
+        "offer service",
+        "repricing backend",
+        "offered plan",
+        "search quotes"
+      ],
+      "scenarios": [
+        "offer service calls",
+        "repricing backend",
+        "offer api integration",
+        "offered service plan api",
+        "quote search backend"
+      ],
+      "capabilities": [
+        "integration-offer-service"
+      ],
+      "domains": [
+        "Offers"
+      ],
+      "entities": [
+        "V3SearchRequest",
+        "V3ServicePlanModel"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 34
+    },
+    {
+      "path": "integrations/order-service.md",
+      "category": "integrations",
+      "title": "Order service integration",
+      "summary": "Order-service is the primary downstream system for service-plan CRUD, status, search, incidents, finops, container associations, and vessel-date updates.",
+      "primary_for": [
+        "order-service-integration"
+      ],
+      "mentions": [
+        "order service",
+        "service plans",
+        "status",
+        "containers"
+      ],
+      "scenarios": [
+        "order service calls",
+        "service plan downstream",
+        "order api integration",
+        "container associations backend",
+        "order search backend"
+      ],
+      "capabilities": [
+        "integration-order-service"
+      ],
+      "domains": [
+        "Orders"
+      ],
+      "entities": [
+        "V3ServicePlanModel",
+        "Content",
+        "ServicePlanStatusResponse"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 34
+    },
+    {
+      "path": "integrations/user-preferences.md",
+      "category": "integrations",
+      "title": "User preferences integration",
+      "summary": "Preferences are stored behind the internal agent portal user-management API and accessed through product-scoped user endpoints.",
+      "primary_for": [
+        "user-preferences-integration"
+      ],
+      "mentions": [
+        "preferences backend",
+        "agent portal",
+        "saved filters",
+        "user settings api"
+      ],
+      "scenarios": [
+        "preferences integration",
+        "agent portal backend",
+        "saved filters backend",
+        "user settings backend",
+        "preference api dependency"
+      ],
+      "capabilities": [
+        "integration-user-preferences"
+      ],
+      "domains": [
+        "Preferences"
+      ],
+      "entities": [
+        "UserPreferencesResponse",
+        "PreferenceSchema"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 33
+    },
+    {
+      "path": "operations/failure-model.md",
+      "category": "operations",
+      "title": "Failure model",
+      "summary": "The service distinguishes validation failures, forbidden access, partial content, partial updates, external dependency errors, and health-related service unavailability.",
+      "primary_for": [
+        "failure-model"
+      ],
+      "mentions": [
+        "errors",
+        "partial content",
+        "validation",
+        "external api"
+      ],
+      "scenarios": [
+        "failure model",
+        "error mapping",
+        "partial update behavior",
+        "validation error rules",
+        "dependency failure handling"
+      ],
+      "capabilities": [
+        "operations-failure-model"
+      ],
+      "domains": [
+        "Operations"
+      ],
+      "entities": [
+        "WebIntegratorExceptionHandler",
+        "PartialContentException",
+        "PartialUpdateException"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 34
+    },
+    {
+      "path": "operations/flags-and-lists.md",
+      "category": "operations",
+      "title": "Flags, lists, and static config",
+      "summary": "Runtime behavior is influenced by LaunchDarkly flags, Spring properties, timezone maps, mandatory charge IDs, and static JSON lookup lists.",
+      "primary_for": [
+        "flags-and-lists"
+      ],
+      "mentions": [
+        "feature flags",
+        "lists",
+        "timezones",
+        "mandatory charges",
+        "roles"
+      ],
+      "scenarios": [
+        "feature flags list",
+        "static lists map",
+        "timezone map",
+        "mandatory charges list",
+        "role property list"
+      ],
+      "capabilities": [
+        "operations-config-flags"
+      ],
+      "domains": [
+        "Operations"
+      ],
+      "entities": [
+        "FeatureFlagProvider",
+        "MandatoryChargesProperties",
+        "TimezoneProperties"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 34
+    },
+    {
+      "path": "operations/monitoring.md",
+      "category": "operations",
+      "title": "Monitoring and observability",
+      "summary": "Actuator, Prometheus, Micrometer tracing, outbound request observation, and the notification health aggregator define the service’s operational visibility.",
+      "primary_for": [
+        "monitoring-setup"
+      ],
+      "mentions": [
+        "monitoring",
+        "metrics",
+        "prometheus",
+        "tracing",
+        "health"
+      ],
+      "scenarios": [
+        "monitoring setup",
+        "prometheus endpoints",
+        "tracing config",
+        "health endpoint setup",
+        "observability debug"
+      ],
+      "capabilities": [
+        "operations-monitoring"
+      ],
+      "domains": [
+        "Operations"
+      ],
+      "entities": [
+        "ServiceHealthResponse",
+        "WebClientRequestObservation"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 33
+    },
+    {
+      "path": "operations/retries.md",
+      "category": "operations",
+      "title": "Retries and circuit breaking",
+      "summary": "All outbound retry behavior is centralized, and billing cost updates add a dedicated circuit breaker on top of the shared retry policy.",
+      "primary_for": [
+        "retry-behavior"
+      ],
+      "mentions": [
+        "retries",
+        "backoff",
+        "circuit breaker",
+        "transient errors"
+      ],
+      "scenarios": [
+        "retry policy",
+        "backoff settings",
+        "circuit breaker rules",
+        "transient error handling",
+        "retry debug"
+      ],
+      "capabilities": [
+        "operations-retries"
+      ],
+      "domains": [
+        "Operations"
+      ],
+      "entities": [
+        "RetryConfiguration",
+        "BillingClient"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 34
+    },
+    {
+      "path": "navigation/entry-points-1.md",
+      "category": "navigation",
+      "title": "Entry points — booking, offer, and search APIs",
+      "summary": "First half of the inbound REST surface, covering booking creation, offer search, business rules, notifications, invoicing, and CCD lookups.",
+      "primary_for": [
+        "entry-point-map"
+      ],
+      "mentions": [
+        "controllers",
+        "rest",
+        "booking",
+        "offers",
+        "search",
+        "notification"
+      ],
+      "scenarios": [
+        "booking endpoint map",
+        "offer endpoint map",
+        "search api map",
+        "find rest handler",
+        "where request enters"
+      ],
+      "capabilities": [
+        "http-entrypoints"
+      ],
+      "domains": [
+        "Web Integrator"
+      ],
+      "entities": [
+        "BookingRequest",
+        "ServicePlan",
+        "BusinessRuleRequest"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 49
+    },
+    {
+      "path": "navigation/entry-points-2.md",
+      "category": "navigation",
+      "title": "Entry points — order and preference APIs",
+      "summary": "Second half of the inbound REST surface, covering order lifecycle, repricing, exports, and user-preference CRUD.",
+      "primary_for": [
+        "entry-point-map"
+      ],
+      "mentions": [
+        "controllers",
+        "orders",
+        "preferences",
+        "reprice",
+        "status"
+      ],
+      "scenarios": [
+        "order endpoint map",
+        "preference endpoint map",
+        "status api map",
+        "where order updates land",
+        "find preference handler"
+      ],
+      "capabilities": [
+        "http-entrypoints"
+      ],
+      "domains": [
+        "Web Integrator"
+      ],
+      "entities": [
+        "ServicePlanResponse",
+        "PreferenceSchema",
+        "RepriceBookingsRequest"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 46
+    },
+    {
+      "path": "navigation/key-classes.md",
+      "category": "navigation",
+      "title": "Key classes by concern",
+      "summary": "Quick concern-to-class routing for the main controllers, services, mappers, config, and clients.",
+      "primary_for": [
+        "key-class-map"
+      ],
+      "mentions": [
+        "navigation",
+        "classes",
+        "concerns"
+      ],
+      "scenarios": [
+        "find key class",
+        "which class owns",
+        "where logic lives",
+        "map concern class",
+        "debug by concern"
+      ],
+      "capabilities": [
+        "navigation"
+      ],
+      "domains": [
+        "Web Integrator"
+      ],
+      "entities": [
+        "OrderService",
+        "OfferService",
+        "SecurityConfig"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 43
+    },
+    {
+      "path": "navigation/scenarios.md",
+      "category": "navigation",
+      "title": "Scenarios to start-here map",
+      "summary": "Task phrases map directly to the controller or service entry point that is most useful for debugging or extending the capability.",
+      "primary_for": [
+        "start-here-scenarios"
+      ],
+      "mentions": [
+        "navigation",
+        "triage",
+        "debug",
+        "start-here"
+      ],
+      "scenarios": [
+        "where to start",
+        "find start class",
+        "debug booking flow",
+        "trace offer path",
+        "trace preference bug"
+      ],
+      "capabilities": [
+        "navigation"
+      ],
+      "domains": [
+        "Web Integrator"
+      ],
+      "entities": [
+        "Controller",
+        "Service"
+      ],
+      "last_updated": "2026-06-30",
+      "lines": 49
+    }
+  ]
+}

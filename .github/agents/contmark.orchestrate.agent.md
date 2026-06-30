@@ -68,9 +68,16 @@ Walk up from `cwd` for `.contmark/workspace.yml`:
 - **`mode: single`** → SINGLE. `$root` = dir of `.contmark`; the one repo's workdir = `$root`.
 - **`mode: workspace` _or `mode` absent_** → WORKSPACE. `$root` = dir of `.contmark`; repos are subdirs. (Absent `mode` = v2 workspace from the old skill — back-compat.)
 
+**Classify + build `$resolve_text` FIRST (the resolver needs nouns, not a bare ID):** classify raw input (no tools) → Jira key/URL = `jira` · GitHub issue URL = `github` · else `prompt`. Bind `$mode` + `$ticket` (reused by Stage 0/1 — do not re-fetch).
+- `jira` → `getJiraIssue($key)` → `$resolve_text = "{key} {summary} {description} {AC titles}"` (trim ~100 words).
+- `github` → `get_issue` → `$resolve_text = "{title} {body}"` (trim ~100 words).
+- `prompt` → `$resolve_text = raw input` (already descriptive).
+
+A bare key/URL alone routes to `ask` (no nouns) — never resolve on the ID. Fetch fails → fall back to the raw input + warn.
+
 **Resolve (one call; indexes read on disk, never in context):**
 ```
-node <$root>/.contmark/resolve-task.js <$root> "<task text>"
+node <$root>/.contmark/resolve-task.js <$root> "$resolve_text"
 ```
 Returns ~350 tokens: `{ route, repo_order, matches:[{repo,path,source?,line?}], entry_files, blast_radius:[{repo,contract,topic,schema_path}], trace }`. The five index files never enter context. `route ∈ symbol|flow|bucket|disambiguation|broad_token|scenario|nav|ask`. Bind `$repo_order, $matches, $entry_files, $blast_radius_repos`. **SINGLE**: `repo_order` = the one repo, `blast_radius = []`.
 
@@ -112,7 +119,7 @@ Returns ~350 tokens: `{ route, repo_order, matches:[{repo,path,source?,line?}], 
 First `- [ ]` = resume point. Mark `[x]` at each gate.
 
 ## Stage 0 — Classify (no tool calls)
-Derive `$mode` and `$plan_file` from raw input:
+`$mode` + `$ticket` already bound in Boot 0 (classify-before-resolve). Here just derive `$plan_file`:
 
 - Question about existing state, no change requested ("is X implemented/done/already there?", "do we have", "does the code", "where is X") → `$mode = inquiry` · no `$plan_file` (read-only; answered at Stage 0.5, never planned/implemented).
 - Jira key / URL → `$mode = jira` · `$plan_file = $workspace_context_dir/{JIRA-KEY}-plan.md`
@@ -139,7 +146,7 @@ Verify the FLOW, not filenames. Never plan or build what already runs.
 Mark `[x] Stage 0.5`.
 
 ## Stage 1 — Plan
-`run_subagent(contmark.plan, {workspace_context_dir: $workspace_context_dir, repo_context_dir: $repo_context_dir, mode, input, stack, modules, features, lessons: read($repo_context_dir/lessons.md), plan_file: $plan_file, existing_coverage: $existing_coverage (Stage 0.5; partial only — covered steps + missing[], plan missing only), previous_repos: $previous_repos (workspace mode only — empty list on first iteration), cross_repo_contracts: $cross_repo_contracts (workspace mode only), workspace_lessons: $workspace_lessons (workspace mode only)})`
+`run_subagent(contmark.plan, {workspace_context_dir: $workspace_context_dir, repo_context_dir: $repo_context_dir, mode, input, ticket: $ticket (Boot 0 — jira/github content already fetched; Planner reuses, does NOT re-fetch), stack, modules, features, lessons: read($repo_context_dir/lessons.md), plan_file: $plan_file, existing_coverage: $existing_coverage (Stage 0.5; partial only — covered steps + missing[], plan missing only), previous_repos: $previous_repos (workspace mode only — empty list on first iteration), cross_repo_contracts: $cross_repo_contracts (workspace mode only), workspace_lessons: $workspace_lessons (workspace mode only)})`
 
 Present plan to user. _"Feedback, or **PLAN APPROVED** to proceed."_ **STOP.**
 

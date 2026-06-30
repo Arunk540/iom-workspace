@@ -68,12 +68,11 @@ Walk up from `cwd` for `.contmark/workspace.yml`:
 - **`mode: single`** → SINGLE. `$root` = dir of `.contmark`; the one repo's workdir = `$root`.
 - **`mode: workspace` _or `mode` absent_** → WORKSPACE. `$root` = dir of `.contmark`; repos are subdirs. (Absent `mode` = v2 workspace from the old skill — back-compat.)
 
-**Classify + build `$resolve_text` FIRST (the resolver needs nouns, not a bare ID):** classify raw input (no tools) → Jira key/URL = `jira` · GitHub issue URL = `github` · else `prompt`. Bind `$mode` + `$ticket` (reused by Stage 0/1 — do not re-fetch).
-- `jira` → `getJiraIssue($key)` → `$resolve_text = "{key} {summary} {description} {AC titles}"` (trim ~100 words).
-- `github` → `get_issue` → `$resolve_text = "{title} {body}"` (trim ~100 words).
-- `prompt` → `$resolve_text = raw input` (already descriptive).
+**Classify + build `$resolve_text` FIRST (the resolver needs SIGNAL nouns — not a bare ID, not a prose dump):** classify raw input (no tools) → Jira key/URL = `jira` · GitHub issue URL = `github` · else `prompt`. Bind `$mode` + `$ticket` = the FULL fetched ticket (reused verbatim by Stage 0/1 — never re-fetch or trim; this is the planning context).
+- `jira` → `getJiraIssue($key)` **including comments** (expand/fields = `comment` — added ACs, decisions, and the affected service are often only in comments); `github` → `get_issue` + issue comments; `prompt` → use raw text. `$ticket` = description **+ comments**.
+- **Extract dense signal** (NOT the whole blob — a dump over-unions buckets): `$resolve_text = summary/title + AC titles ("system should …") + identifiers from body AND comments (CamelCase symbols, `code spans`, proper-noun service/entity names)`. Drop prose, repro steps, environment, stack traces, "as a user" boilerplate.
 
-A bare key/URL alone routes to `ask` (no nouns) — never resolve on the ID. Fetch fails → fall back to the raw input + warn.
+**Resolve, then progressively widen:** run the resolver on `$resolve_text`; `route == ask` (no hit) → append the body's remaining nouns and re-run ONCE; still `ask` → genuinely ambiguous (prompt + STOP). The resolver is a precision cascade (symbol→flow→bucket→disambiguation→broad-token), not a frequency scorer — dense input keeps the route tight; a full dump only inflates the bucket union. Bare key/URL alone → `ask`; never resolve on the ID. Fetch fails → fall back to raw input + warn. `$ticket` is never trimmed.
 
 **Resolve (one call; indexes read on disk, never in context):**
 ```

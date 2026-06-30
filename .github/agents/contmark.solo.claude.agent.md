@@ -16,7 +16,7 @@ user-invocable: true
 1. `Bash: ws=""; d="$(pwd)"; while [ "$d" != "/" ]; do if [ -f "$d/.contmark/workspace.yml" ]; then ws="$d"; break; fi; d="$(dirname "$d")"; done; echo "${ws:-NONE}"`
 2. `NONE` → **LEGACY single-repo** (no resolver; existing behaviour): skip to Boot.
 3. Found → read `mode` from `workspace.yml`. **`single`** → `$root = ws`, the one repo's workdir = `$root`. **`workspace` or `mode` absent** → `$root = ws`, repos are subdirs (absent = v2 back-compat).
-4. **Build `$resolve_text` first** (resolver needs nouns, not an ID): `jira` (key/URL) → `getJiraIssue($key)` → `"{key} {summary} {description} {ACs}"` · `github` (issue URL) → `get_issue` → `"{title} {body}"` · else raw input. Bind `$mode`+`$ticket` (Stage 0/1 reuse, no re-fetch). Bare key/URL alone → `ask`; never resolve on the ID. **Resolve (indexes on disk, never in context):**
+4. **Build `$resolve_text` from DENSE signal** (not a bare ID, not a prose dump — a dump over-unions buckets): `jira` → `getJiraIssue($key)` **incl comments** (added ACs often only there) · `github` → `get_issue`+comments · else raw text. `$resolve_text = summary/title + AC titles + identifiers from body & comments (CamelCase, `code spans`, service/entity names)`; drop prose/repro/env/stack-traces. Bind `$mode`+`$ticket` = FULL issue+comments (Stage 0/1 reuse verbatim — no re-fetch/trim; planning context). Resolve; `route==ask` → append remaining body nouns, re-run ONCE; still `ask` → ambiguous. Bare key/URL alone → `ask`; never resolve on the ID. **Resolve (indexes on disk, never in context):**
    ```
    node <$root>/.contmark/resolve-task.js <$root> "$resolve_text"
    ```

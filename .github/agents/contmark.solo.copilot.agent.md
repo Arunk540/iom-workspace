@@ -20,7 +20,7 @@ user-invocable: true
    ```
    node <$root>/.contmark/resolve-task.js <$root> "$resolve_text"
    ```
-   Returns ~350 tok: `{ route, repo_order, matches:[{repo,path,source?,line?}], entry_files, blast_radius:[{repo,contract,topic,schema_path}], trace }`. The five index files never enter context. `route ∈ symbol|flow|bucket|disambiguation|broad_token|scenario|nav|ask`. Bind `$repo_order/$matches/$entry_files/$blast_radius_repos`. **SINGLE**: `repo_order` = the one repo, `blast_radius = []`.
+   Returns ~350 tok: `{ route, repo_order, matches:[{repo,path,source?,line?}], entry_files, blast_radius:[{repo,contract,topic,schema_path}], glossary_hits:[{matched,canonical,values,owner_repos,source}], trace }`. The five index files never enter context. `route ∈ symbol|flow|bucket|disambiguation|broad_token|scenario|nav|glossary|ask`. Bind `$repo_order/$matches/$entry_files/$blast_radius_repos/$glossary_hits`. **SINGLE**: `repo_order` = the one repo, `blast_radius = []`. **Naming contract:** each `$glossary_hits` entry maps a ticket word to the REAL symbol (`matched → canonical` + enum `values` + `source`); plan/implement MUST bind to `canonical`, never invent a name from the ticket word (ticket "flow" → `transportActivity (EXPORT|IMPORT)`, not a new `flow` field).
 5. **route == "ask"** (exit 3) → WORKSPACE: print `candidates` (`per_repo_summary`); ask _"Which repo applies?"_; **STOP**. SINGLE: do NOT prompt (one repo) — load `navigation/entry-points.md` + `navigation/scenarios.md` and proceed.
 6. Read `<$root>/.contmark/lessons.md` → `$workspace_lessons[]`. Run `node <$root>/.contmark/check-drift.js <$root>` (exit 1 = drift) → report stale mini-skills, hand to `contmark-skill-evolution-loop`. `$repo_order` is already topo-sorted. **OPTIONAL (only if present)** — architecture / cross-system tasks → may load `<$root>/.contmark/diagrams.md` (small, derived from mini-skills, nodes carry `source:line`); skip silently if absent. graphify graphs = human view, never agent context.
 7. **Execution loop** — for each `$repo` in `$repo_order`:
@@ -67,6 +67,8 @@ Verify the FLOW, not filenames. Never plan/build what runs.
 3. Mark each `$req` `covered | missing` with `file:line` proof — covered only if the code performs the step, not on a name match.
 
 `$coverage`: all covered → present · some → partial · none → absent. `$evidence[] = req → file:line | MISSING`.
+
+**Impact — both directions (never one repo):** analyse the whole flow across the workspace. `$repo_order` = core + upstream (parent/source/producer); `$blast_radius_repos` = downstream consumers of a named contract. Code-verify EACH at `source:line`; any genuinely-impacted upstream OR downstream repo is IN SCOPE — append to `$repo_order` (companion PR), never demote to a §Risk (caller-only + "server is a risk" ships a half-feature). Highlight every in-scope repo (direction + file:line) in plan.md §Interpretation & Impact for the human to confirm.
 - `$mode = inquiry` → answer + STOP. Report per-step `$coverage` + `$evidence`. Never plan, implement, or seed `todos.md`.
 - `present` → "Already implemented" + `$evidence`; ask _"Re-implement, modify, or cancel?"_ **STOP.**
 - `partial` → set `$existing_coverage = {covered evidence, missing[]}`; Stage 1 plans ONLY `missing[]`, extending covered code.
@@ -83,8 +85,8 @@ Stack/domain (from `$features`): Maven/Gradle → `*-build-profiles` · Java+Web
 1. `$stack`/`$modules`/`$features` from project.yml; profile absent → detect now (Boot 2), load domain skills via `$features.*`.
 2. `$mode = jira` → reuse `$ticket` (Boot 0) for ACs; `getJiraIssueRemoteIssueLinks` for Confluence only if needed.
 3. **No-prejudge.** Unknown = question. Ask all unknowns as one numbered list; wait. New unknowns → ask again. Answer reveals generic project rule → append `incidents.log`: `domain | <rule> | <evidence>`. **Already-implemented:** honour Stage 0.5 `$existing_coverage` — plan ONLY `missing[]`, extending covered code; covered steps go under §Already Implemented (`file:line`), never the task list.
-4. Write `$plan_file` per `contmark-plan-templates`: §Stack · §CT_MODULE · §ACs · §Already Implemented (Stage 0.5 covered steps) · §Implementation Tasks · §Unit Test Matrix · §CT Scenarios (omit if `$modules.componentTest = none`; note `⚠️ CT skipped`) · a Mermaid `flowchart TD` of the code flow (one node = one change). Scenario filter: _"proves concrete observable outcome?"_ — yes write · no drop. UT = business + explicit error paths · CT = one end-to-end per user journey.
-5. Present plan. _"Feedback, or type **PLAN APPROVED** to proceed."_ **STOP.** On `PLAN APPROVED`: seed `todos.md` with `- [ ]` per task under `### Implement` · `### Unit Test` · `### Component Test`. Mark `[x] Stage 1`. Profile absent → also write `.contmark/project.yml.draft`. Any other reply → apply feedback, rewrite, re-present.
+4. Write `$plan_file` per `contmark-plan-templates`: §Stack · §CT_MODULE · §ACs · §Already Implemented (Stage 0.5 covered steps) · §Implementation Tasks · §Unit Test Matrix · §CT Scenarios (omit if `$modules.componentTest = none`; note `⚠️ CT skipped`) · a Mermaid `flowchart TD` of the code flow (one node = one change). Bind ticket vocabulary to `$glossary_hits` canonical symbols/values — never invent a name. Scenario filter: _"proves concrete observable outcome?"_ — yes write · no drop. UT = business + explicit error paths · CT = one end-to-end per user journey.
+5. Present plan (lead with §Interpretation & Impact — term→symbol bindings + upstream/downstream repos — for verification). _"Feedback, or type **PLAN APPROVED** to proceed."_ **STOP.** On `PLAN APPROVED`: seed `todos.md` with `- [ ]` per task under `### Implement` · `### Unit Test` · `### Component Test`. Mark `[x] Stage 1`. Profile absent → also write `.contmark/project.yml.draft`. **Glossary learning:** feedback that corrected a term/acronym mapping → persist the confirmed, code-verified `aliases→canonical+values+source` to `<$root>/.contmark/_repo_router.json` `glossary[]` (confirmed + grounded only; the one index an agent may write). Any other reply → apply feedback, rewrite, re-present.
 
 ## Stage 1.5 — Jira Subtasks (`$mode = jira` only)
 `createJiraIssue(issueTypeName:"Subtask", parent:{key}, summary:"[Implement|Unit Test|Component Test|Review] {story}")` per active stage. Errors → skip silently.
@@ -123,9 +125,10 @@ WebFlux → StepVerifier for Mono/Flux. Kotlin → `mockito-kotlin` · `runTest{
 1. Resume first `[ ]` under `### Unit Test`. `grep_search` `Stubs.java`/`Stubs.kt` first — reuse builders, never inline test data.
 2. Compile new tests (skip main recompile). Missing production class → **HANDOFF**.
 3. Run all (`$pins.commands.unit_test`, verbatim; absent → build-skill default) → fix until 0 failed. Wrong assertion/pattern → fix test. Same root-cause as prior cycle → append `recurrence | <pattern> | <fix>`. Confirmed production bug → **HANDOFF**.
-4. Coverage ≥ 80%; below → add cases.
+4. **Confirm tests actually RAN — `$n` = count from the report, not exit code.** Gradle `test` is `UP-TO-DATE`-cached: it exits `0` having run ZERO tests (false green — the classic "did it even work?"). Read the real count from `build/test-results/test/*.xml` (Gradle) / `target/surefire-reports/*.xml` (Maven), or the `N tests completed` line. `$n == 0` for a repo with new/changed tests → rerun `./gradlew <module>:test --rerun-tasks` (Gradle) or the module-scoped task from the build skill; still `0` → command/module is wrong, fix it. `TESTS: 0` is a FAILURE, never a pass.
+5. Coverage ≥ 80%; below → add cases.
 
-Gate: `BUILD: ✅ | TESTS: {n} passed, 0 failed | COVERAGE: ≥80% | READY: for next stage`.
+Gate: `BUILD: ✅ | TESTS: {n>0} passed, 0 failed | COVERAGE: ≥80% | READY: for next stage`.
 
 ## Stage 4b — Component Test (skip if `$modules.componentTest = none`; scope: `componenttest/` only)
 Pre-flight (mandatory):
@@ -154,6 +157,7 @@ Production bug from test: append `- [ ] Bug: <unit | scenario> — <expected vs 
 Read `lessons.md` entries `status: captured` + `$waste_payload` from Stage 4c → load `contmark-skill-evolution-loop` → promote (≤10 line patch) → mark `status: promoted`. Nothing to promote → skip. Never blocks.
 
 ## Stage 6 — PR
+**Gate:** Stage 4 must have recorded `TESTS: n>0 passed, 0 failed` (tests actually ran — see Stage 4 step 4). `TESTS: 0` or no UT run for changed code → return to Stage 4, do NOT open the PR. CT may be skipped (`CT_MODULE: absent`); UT may not.
 Delete `$plan_file` + `todos.md` · commit · Read `contmark-pr-delivery-and-triage` → follow exactly. Include `$token_block` (Stage 4c) in PR body. **WORKSPACE:** capture `pr_url`+`commit_sha` → `$previous_repos[]`; PR body lists `Companion PRs:` (all sibling-repo PRs); back-fill earlier PRs via `github/add_issue_comment` after all iterations.
 
 ## Lessons protocol

@@ -6,6 +6,7 @@ description: >-
 tools: ['Bash', 'Read', 'run_in_terminal', 'get_terminal_output', 'show_content', 'list_dir', 'read_file', 'file_search', 'grep_search', 'semantic_search', 'github/*', 'context7/*']
 argument-hint: >-
   Describe WHAT you're looking for and desired thoroughness (quick/medium/thorough).
+model: Claude Sonnet 4.6 (copilot)  
 user-invocable: false
 ---
 

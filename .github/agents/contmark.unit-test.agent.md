@@ -50,9 +50,14 @@ Read `contmark-unit-testing-java` · `{repo_context_dir}/lessons.md` if present.
    Wrong assertion / test pattern → fix in src/test/ · write {repo_context_dir}/lessons.md (format below)
    Confirmed production bug → HANDOFF (see below)
 
-3. Full regression → must be 0 failures
+3. Confirm tests actually RAN — Gradle `test` is UP-TO-DATE-cached and exits 0 with ZERO tests run
+   (false green). Read the count from build/test-results/test/*.xml (Gradle) /
+   target/surefire-reports/*.xml (Maven). n==0 for changed code → rerun `--rerun-tasks` (Gradle) or
+   the module-scoped task from the build skill; still 0 → command/module wrong, fix it. TESTS: 0 = FAIL.
 
-4. Coverage ≥80% → below → add cases, repeat
+4. Full regression → must be 0 failures
+
+5. Coverage ≥80% → below → add cases, repeat
 ```
 
 Lessons — write per Orchestrator lessons policy.
@@ -79,7 +84,7 @@ Do NOT write to {repo_context_dir}/lessons.md on HANDOFF.
 ## Output
 
 ```
-BUILD: ✅ | TESTS: {n} passed, 0 failed | SUITE: ✅ | COVERAGE: {%} | READY: for next stage
+BUILD: ✅ | TESTS: {n>0} passed, 0 failed | SUITE: ✅ | COVERAGE: {%} | READY: for next stage
 ```
 
 ## End-of-turn

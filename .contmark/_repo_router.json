@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-06-30T12:04:05.761Z",
   "workspace": "iom-workspace",
-  "schema_version": 2,
+  "schema_version": 3,
   "request_buckets": {
     "api contract index core": [
       "iom-master-data"
@@ -1599,6 +1599,53 @@
         "iom-order-service-scheduler",
         "iom-web-integrator"
       ]
+    }
+  ],
+  "glossary": [
+    {
+      "aliases": [
+        "flow",
+        "flow type",
+        "flow-type",
+        "service type",
+        "servicetype",
+        "import export",
+        "import/export",
+        "import and export",
+        "direction"
+      ],
+      "canonical": "transportActivity",
+      "values": [
+        "EXPORT",
+        "IMPORT"
+      ],
+      "type": "String enum",
+      "owner_repos": [
+        "iom-web-integrator",
+        "iom-order-service",
+        "iom-offer-service"
+      ],
+      "source": "iom-offer-service SearchRequest.transportActivity (EXPORT|IMPORT); iom-offer-service CalculateRatesRequest.direction (IMPORT|EXPORT)",
+      "notes": "Import/Export is modelled as transportActivity on SearchRequest and direction on the rates request. NEVER introduce a new field named flow/serviceType — bind to transportActivity (EXPORT|IMPORT)."
+    },
+    {
+      "aliases": [
+        "booked container count",
+        "total booked container",
+        "container count",
+        "booked containers",
+        "container history",
+        "container details"
+      ],
+      "canonical": "ContainerDetails",
+      "values": null,
+      "type": "DTO (Flux<ContainerDetails>)",
+      "owner_repos": [
+        "iom-order-service",
+        "iom-web-integrator"
+      ],
+      "source": "iom-order-service GET /v3/service-plans/containers -> Flux<ContainerDetails> (V3OrderController.kt:355-372); iom-web-integrator OfferController enriches offer request with container history",
+      "notes": "The booked-container count comes from order-service /v3/service-plans/containers; web-integrator only enriches the offer request from it. A count/flow change touches BOTH the server (order-service, source of truth) and the caller (web-integrator)."
     }
   ]
 }

@@ -78,7 +78,9 @@ Walk up from `cwd` for `.contmark/workspace.yml`:
 ```
 node <$root>/.contmark/resolve-task.js <$root> "$resolve_text"
 ```
-Returns ~350 tokens: `{ route, repo_order, matches:[{repo,path,source?,line?}], entry_files, blast_radius:[{repo,contract,topic,schema_path}], trace }`. The five index files never enter context. `route ∈ symbol|flow|bucket|disambiguation|broad_token|scenario|nav|ask`. Bind `$repo_order, $matches, $entry_files, $blast_radius_repos`. **SINGLE**: `repo_order` = the one repo, `blast_radius = []`.
+Returns ~350 tokens: `{ route, repo_order, matches:[{repo,path,source?,line?}], entry_files, blast_radius:[{repo,contract,topic,schema_path}], glossary_hits:[{matched,canonical,values,owner_repos,source}], trace }`. The five index files never enter context. `route ∈ symbol|flow|bucket|disambiguation|broad_token|scenario|nav|glossary|ask`. Bind `$repo_order, $matches, $entry_files, $blast_radius_repos, $glossary_hits`. **SINGLE**: `repo_order` = the one repo, `blast_radius = []`.
+
+**Naming contract (`$glossary_hits`) — carry into every stage:** each hit maps a ticket word to the codebase's REAL symbol (`matched → canonical`, its `values`, `source`). When the ticket uses an alias, the plan and implementer MUST bind to `canonical` (and its enum `values`) — NEVER invent a new field/method from the ticket word. Example: ticket says "flow" → `canonical: transportActivity (EXPORT|IMPORT)`; do not create a `flow` field. Pass `$glossary_hits` in every sub-agent payload.
 
 - **route == "ask"** (exit 3) → WORKSPACE: print resolver `candidates` (`per_repo_summary`); ask _"Which repo applies?"_; **STOP**. SINGLE: do NOT prompt (one repo) — load that repo's `navigation/entry-points.md` + `navigation/scenarios.md` and proceed.
 - Read `<$root>/.contmark/lessons.md` → `$workspace_lessons[]`. Run `node <$root>/.contmark/check-drift.js <$root>` (exit 1 = drift) → report stale mini-skills to user; hand the stale set to `contmark-skill-evolution-loop`. No hook/ledger — detection is `verified_against` vs HEAD.
@@ -137,6 +139,8 @@ Verify the FLOW, not filenames. Never plan or build what already runs.
 
 `$coverage`: all covered → present · some → partial · none → absent. `$evidence[] = req → file:line | MISSING`.
 
+**Impact — both directions (never one repo):** analyse the whole flow across the workspace. `$repo_order` = core + upstream (parent/source/producer); `$blast_radius_repos` = downstream consumers of a named contract. Code-verify EACH at `source:line`; any genuinely-impacted upstream OR downstream repo is IN SCOPE — append to `$repo_order` (companion PR), NEVER downgrade a discovered cross-repo dependency to a plan "risk" (caller-only + "server is a risk" ships a half-feature). The Planner highlights every in-scope repo (direction + file:line) in plan.md §Interpretation & Impact for the user to confirm.
+
 - `$mode = inquiry` → answer + STOP. Report per-step `$coverage` + `$evidence`. Never plan, implement, or seed `todos.md`.
 - present → "Already implemented" + `$evidence`; ask _"Re-implement, modify, or cancel?"_ STOP.
 - partial → `$existing_coverage = {covered evidence, missing[]}`; Stage 1 plans ONLY `missing[]`, extending the covered code.
@@ -145,13 +149,13 @@ Verify the FLOW, not filenames. Never plan or build what already runs.
 Mark `[x] Stage 0.5`.
 
 ## Stage 1 — Plan
-`run_subagent(contmark.plan, {workspace_context_dir: $workspace_context_dir, repo_context_dir: $repo_context_dir, mode, input, ticket: $ticket (Boot 0 — jira/github content already fetched; Planner reuses, does NOT re-fetch), stack, modules, features, lessons: read($repo_context_dir/lessons.md), plan_file: $plan_file, existing_coverage: $existing_coverage (Stage 0.5; partial only — covered steps + missing[], plan missing only), previous_repos: $previous_repos (workspace mode only — empty list on first iteration), cross_repo_contracts: $cross_repo_contracts (workspace mode only), workspace_lessons: $workspace_lessons (workspace mode only)})`
+`run_subagent(contmark.plan, {workspace_context_dir: $workspace_context_dir, repo_context_dir: $repo_context_dir, mode, input, ticket: $ticket (Boot 0 — jira/github content already fetched; Planner reuses, does NOT re-fetch), glossary_hits: $glossary_hits (naming contract — bind aliases to canonical symbols/values, never invent names), stack, modules, features, lessons: read($repo_context_dir/lessons.md), plan_file: $plan_file, existing_coverage: $existing_coverage (Stage 0.5; partial only — covered steps + missing[], plan missing only), previous_repos: $previous_repos (workspace mode only — empty list on first iteration), cross_repo_contracts: $cross_repo_contracts (workspace mode only), workspace_lessons: $workspace_lessons (workspace mode only)})`
 
-Present plan to user. _"Feedback, or **PLAN APPROVED** to proceed."_ **STOP.**
+Present plan to user (lead with §Interpretation & Impact — term→symbol bindings + upstream/downstream repos — for verification). _"Feedback, or **PLAN APPROVED** to proceed."_ **STOP.** Feedback that corrects a term/acronym mapping → Planner persists the confirmed, code-verified `aliases→canonical+values+source` to `<$root>/.contmark/_repo_router.json` `glossary[]` (confirmed + grounded only) so future tasks resolve it automatically.
 
 `PLAN APPROVED` →
 1. Read `$plan_file` → extract §Implementation Tasks, §Unit Test Matrix, §CT Scenarios.
-2. Seed `todos.md`: one `- [ ]` per task under `### Implement · ### Unit Test · ### Component Test` (omit CT section if plan signals `CT_MODULE: absent`).
+2. Seed `todos.md`: one `- [ ]` per task under `### Implement · ### Unit Test · ### Component Test` (omit CT section if plan signals `CT_MODULE: absent`; UT is never omitted).
 3. Mark `[x] Stage 1`.
 
 Else → `run_subagent(contmark.plan, REVISE: {feedback}, plan_file: $plan_file, lessons: read(lessons.md))`. Re-present. Loop.
@@ -204,6 +208,7 @@ Read `.github/skills/contmark-skill-evolution-loop/SKILL.md`. Execute its protoc
 ## Stage 6 — PR
 Read `.github/skills/contmark-pr-delivery-and-triage/SKILL.md`. Execute its protocol:
 
+0. **Test gate:** Stage 4 must have returned `TESTS: n>0 passed, 0 failed` (tests actually ran — not a Gradle `UP-TO-DATE` no-op). `TESTS: 0` or no UT for changed code → return to Stage 4, do NOT open the PR. CT may be skipped (`CT_MODULE: absent`); UT may not.
 1. Secrets scan: `grep -rn "password\|secret\|api_key\|token" --include="*.java" --include="*.kt" --include="*.yml" $(git diff --name-only origin/HEAD..HEAD)` → failure: remove immediately, do NOT push.
 2. Delete `$plan_file` + `todos.md`. Commit.
 3. Check for existing open PR on current branch (`github/get_pull_request`). Push branch.

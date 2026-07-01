@@ -1,74 +1,222 @@
 [
   {
-    "topic_or_endpoint": "iom-serviceplan-domain-event-topic.local.v1",
+    "topic_or_endpoint": "REST call",
+    "producer": "iom-web-integrator",
+    "consumers": [
+      "iom-order-service"
+    ],
+    "protocol": "rest",
+    "endpoints": [
+      "/search",
+      "/{servicePlanNumber}/amend",
+      "/{servicePlanNumber}/charges",
+      "/{servicePlanNumber}/containers",
+      "/multi-search",
+      "/search/download",
+      "/containers/download",
+      "/{servicePlanNumber}/status",
+      "/{servicePlanNumber}/incident",
+      "/{servicePlanNumber}/finOpsAction",
+      "/finops-ref-numbers/update",
+      "/cust-behaviour",
+      "/containers",
+      "/{servicePlanNumber}/container-associations",
+      "/{servicePlanNumber}/ocean-transportation-details",
+      "/service-plans/M12345ABCD67/incident",
+      "/service-plans/M123456789",
+      "/service-plans/M123456789?includeDraftRevenues=true&includeCosts=true",
+      "/service-plans",
+      "/service-plans/search",
+      "/service-plans/M123456789/amend",
+      "/service-plans/M123456789/ocean-transportation-details",
+      "/service-plans/M123456789/charges",
+      "/service-plans/M123456789/status",
+      "/service-plans/$servicePlanNumber/containers",
+      "/service-plans/search/download",
+      "/service-plans/containers/download",
+      "/service-plans/finops-ref-numbers/update",
+      "/service-plans/reprice",
+      "/service-plans/multi-search",
+      "/service-plans/multi-search?page=2&size=10"
+    ],
+    "schema_path": "repos/iom-order-service/contracts/api-contracts.md",
+    "payload": null,
+    "source": "iom-web-integrator/src/main/resources/application.yml",
+    "notes": "Deterministically derived from source: iom-web-integrator config references host → iom-order-service. A caller change to a named request contract requires iom-order-service (server) to honour it."
+  },
+  {
+    "topic_or_endpoint": "REST call",
+    "producer": "iom-web-integrator",
+    "consumers": [
+      "iom-offer-service"
+    ],
+    "protocol": "rest",
+    "endpoints": [
+      "/v3/service-plans-queries",
+      "/v3/offered-service-plan/$offeredServicePlanNumber"
+    ],
+    "schema_path": "repos/iom-offer-service/contracts/api-contracts.md",
+    "payload": null,
+    "source": "iom-web-integrator/src/main/resources/application.yml",
+    "notes": "Deterministically derived from source: iom-web-integrator config references host → iom-offer-service. A caller change to a named request contract requires iom-offer-service (server) to honour it."
+  },
+  {
+    "topic_or_endpoint": "REST call",
+    "producer": "iom-web-integrator",
+    "consumers": [
+      "smds-facilities-service"
+    ],
+    "protocol": "rest",
+    "endpoints": [
+      "/search"
+    ],
+    "schema_path": "repos/smds-facilities-service/contracts/api-contracts.md",
+    "payload": null,
+    "source": "iom-web-integrator/src/main/resources/application.yml",
+    "notes": "Deterministically derived from source: iom-web-integrator config references host → smds-facilities-service. A caller change to a named request contract requires smds-facilities-service (server) to honour it."
+  },
+  {
+    "topic_or_endpoint": "REST call",
+    "producer": "iom-web-integrator",
+    "consumers": [
+      "iom-master-data"
+    ],
+    "protocol": "rest",
+    "endpoints": [],
+    "schema_path": "repos/iom-master-data/contracts/api-contracts.md",
+    "payload": null,
+    "source": "iom-web-integrator/src/main/resources/application.yml",
+    "notes": "Deterministically derived from source: iom-web-integrator config references host → iom-master-data. A caller change to a named request contract requires iom-master-data (server) to honour it."
+  },
+  {
+    "topic_or_endpoint": "REST call",
+    "producer": "iom-offer-service",
+    "consumers": [
+      "smds-facilities-service"
+    ],
+    "protocol": "rest",
+    "endpoints": [],
+    "schema_path": "repos/smds-facilities-service/contracts/api-contracts.md",
+    "payload": null,
+    "source": "iom-offer-service/src/main/resources/application.yml",
+    "notes": "Deterministically derived from source: iom-offer-service config references host → smds-facilities-service. A caller change to a named request contract requires smds-facilities-service (server) to honour it."
+  },
+  {
+    "topic_or_endpoint": "REST call",
+    "producer": "iom-offer-service",
+    "consumers": [
+      "iom-master-data"
+    ],
+    "protocol": "rest",
+    "endpoints": [
+      "/sales-objects"
+    ],
+    "schema_path": "repos/iom-master-data/contracts/api-contracts.md",
+    "payload": null,
+    "source": "iom-offer-service/src/main/resources/application.yml",
+    "notes": "Deterministically derived from source: iom-offer-service config references host → iom-master-data. A caller change to a named request contract requires iom-master-data (server) to honour it."
+  },
+  {
+    "topic_or_endpoint": "REST call",
+    "producer": "iom-order-service",
+    "consumers": [
+      "smds-facilities-service"
+    ],
+    "protocol": "rest",
+    "endpoints": [],
+    "schema_path": "repos/smds-facilities-service/contracts/api-contracts.md",
+    "payload": null,
+    "source": "iom-order-service/src/main/resources/application-dev.yaml",
+    "notes": "Deterministically derived from source: iom-order-service config references host → smds-facilities-service. A caller change to a named request contract requires smds-facilities-service (server) to honour it."
+  },
+  {
+    "topic_or_endpoint": "REST call",
+    "producer": "iom-order-service",
+    "consumers": [
+      "iom-master-data"
+    ],
+    "protocol": "rest",
+    "endpoints": [],
+    "schema_path": "repos/iom-master-data/contracts/api-contracts.md",
+    "payload": null,
+    "source": "iom-order-service/src/main/resources/application-dev.yaml",
+    "notes": "Deterministically derived from source: iom-order-service config references host → iom-master-data. A caller change to a named request contract requires iom-master-data (server) to honour it."
+  },
+  {
+    "topic_or_endpoint": "REST call",
+    "producer": "iom-order-service",
+    "consumers": [
+      "iom-offer-service"
+    ],
+    "protocol": "rest",
+    "endpoints": [],
+    "schema_path": "repos/iom-offer-service/contracts/api-contracts.md",
+    "payload": null,
+    "source": "iom-order-service/src/main/resources/application-dev.yaml",
+    "notes": "Deterministically derived from source: iom-order-service config references host → iom-offer-service. A caller change to a named request contract requires iom-offer-service (server) to honour it."
+  },
+  {
+    "topic_or_endpoint": "REST call",
     "producer": "iom-order-service-scheduler",
-    "consumers": ["iom-offer-service", "iom-order-service"],
-    "protocol": "kafka",
-    "schema_path": "repos/iom-order-service-scheduler/contracts/kafka-events.md",
-    "payload": "EventNotification (ServicePlanDomainEvent avro)",
-    "notes": "Scheduler publishes SERVICE_PLAN_CHANGED domain events; consumed by offer-service (links offered plan to service plan number) and order-service (ServicePlanDomainEventConsumer)."
+    "consumers": [
+      "iom-offer-service"
+    ],
+    "protocol": "rest",
+    "endpoints": [],
+    "schema_path": "repos/iom-offer-service/contracts/api-contracts.md",
+    "payload": null,
+    "source": "iom-order-service-scheduler/src/main/resources/application-dev.yaml",
+    "notes": "Deterministically derived from source: iom-order-service-scheduler config references host → iom-offer-service. A caller change to a named request contract requires iom-offer-service (server) to honour it."
+  },
+  {
+    "topic_or_endpoint": "REST call",
+    "producer": "iom-order-service-scheduler",
+    "consumers": [
+      "iom-web-integrator"
+    ],
+    "protocol": "rest",
+    "endpoints": [
+      "/service-plans-queries/service-plans/{servicePlanNumber}/reprice"
+    ],
+    "schema_path": "repos/iom-web-integrator/contracts/api-contracts.md",
+    "payload": null,
+    "source": "iom-order-service-scheduler/src/main/resources/application.yaml",
+    "notes": "Deterministically derived from source: iom-order-service-scheduler config references host → iom-web-integrator. A caller change to a named request contract requires iom-web-integrator (server) to honour it."
+  },
+  {
+    "topic_or_endpoint": "REST call",
+    "producer": "iom-master-data",
+    "consumers": [
+      "smds-facilities-service"
+    ],
+    "protocol": "rest",
+    "endpoints": [],
+    "schema_path": "repos/smds-facilities-service/contracts/api-contracts.md",
+    "payload": null,
+    "source": "iom-master-data/service/src/main/resources/application-dev.yaml",
+    "notes": "Deterministically derived from source: iom-master-data config references host → smds-facilities-service. A caller change to a named request contract requires smds-facilities-service (server) to honour it."
   },
   {
     "topic_or_endpoint": "outbox_messages",
     "producer": "iom-order-service",
-    "consumers": ["iom-order-service-scheduler"],
+    "consumers": [
+      "iom-order-service-scheduler"
+    ],
     "protocol": "outbox-db",
     "schema_path": "repos/iom-order-service/contracts/kafka-events.md",
     "payload": "OutboxMessage (SERVICE_PLAN_CHANGED, SERVICE_PLAN_STATUS_CHANGED, BOOKING_STATUS_CHANGED, REPRICING_REQUIRED)",
     "notes": "Order-service stages outbound domain events into the outbox_messages table instead of producing Kafka directly; the scheduler outbox publisher reads and publishes them to Kafka."
   },
   {
-    "topic_or_endpoint": "REST services.offer.base-url (V3 offer search / reprice / offered-service-plan)",
-    "producer": "iom-web-integrator",
-    "consumers": ["iom-offer-service"],
-    "protocol": "rest",
-    "schema_path": "repos/iom-offer-service/contracts/api-contracts.md",
-    "payload": "V3SearchRequest / V3ServicePlanModel",
-    "notes": "Web-integrator OfferClient calls offer-service (services.offer.base-url -> iom-offer-service) for new-booking search, amendment search, repriced offers, offered-plan retrieval, equipment deletion."
-  },
-  {
-    "topic_or_endpoint": "REST services.order.base-url (/v3/service-plans CRUD / status / search)",
-    "producer": "iom-web-integrator",
-    "consumers": ["iom-order-service"],
-    "protocol": "rest",
-    "schema_path": "repos/iom-order-service/contracts/api-contracts.md",
-    "payload": "V3ServicePlanModel / ServicePlanStatusResponse",
-    "notes": "Web-integrator OrderClient calls order-service (services.order.base-url -> iom-order-service) for service-plan CRUD, status, search, incidents, finops, container associations, vessel-date updates."
-  },
-  {
-    "topic_or_endpoint": "REST DELETE offered-service-plans?numberOfDays= (services.iomofferservice)",
+    "topic_or_endpoint": "iom-serviceplan-domain-event-topic.local.v1",
     "producer": "iom-order-service-scheduler",
-    "consumers": ["iom-offer-service"],
-    "protocol": "rest",
-    "schema_path": "repos/iom-offer-service/contracts/api-contracts.md",
-    "payload": "OfferRecordsCleanUpResponse",
-    "notes": "Scheduler OfferScheduler/OfferClient calls offer-service DELETE to clean up old offered-service-plan records by age."
-  },
-  {
-    "topic_or_endpoint": "REST PATCH /service-plans-queries/service-plans/{servicePlanNumber}/reprice (services.iom-wi)",
-    "producer": "iom-order-service-scheduler",
-    "consumers": ["iom-web-integrator"],
-    "protocol": "rest",
-    "schema_path": "repos/iom-web-integrator/contracts/api-contracts-1.md",
-    "payload": "RepriceRequest -> ServicePlan",
-    "notes": "Scheduler RepricingWorkflow/WebIntegratorClient PATCH-calls web-integrator (services.iom-wi.base-url) to reprice a service plan from a Temporal repricing activity."
-  },
-  {
-    "topic_or_endpoint": "REST ${maersk.masterdata-base-url} (location / charge-types / commodity / sales-object / container-type)",
-    "producer": "iom-offer-service",
-    "consumers": ["iom-master-data"],
-    "protocol": "rest",
-    "schema_path": "repos/iom-master-data/contracts/api-contracts-1.md",
-    "payload": "location / commodity / charge-type / sales-object / container-type lookups",
-    "notes": "Offer-service master-data WebClients resolve geoId locations, charge types, commodity, sales objects and container types from IOM Master Data Service (maersk.masterdata-base-url -> iom-master-data)."
-  },
-  {
-    "topic_or_endpoint": "REST facilities lookup (SMDS facilities)",
-    "producer": "iom-offer-service",
-    "consumers": ["smds-facilities-service"],
-    "protocol": "rest",
-    "schema_path": "repos/smds-facilities-service/contracts/api-contracts.md",
-    "payload": "facility data lookup",
-    "notes": "Offer-service FacilityClient looks up facility data from the SMDS facilities service during offer search location enrichment."
+    "consumers": [
+      "iom-offer-service",
+      "iom-order-service"
+    ],
+    "protocol": "kafka",
+    "schema_path": "repos/iom-order-service-scheduler/contracts/kafka-events.md",
+    "payload": "EventNotification (ServicePlanDomainEvent avro)",
+    "notes": "Scheduler publishes SERVICE_PLAN_CHANGED domain events; consumed by offer-service (links offered plan to service plan number) and order-service (ServicePlanDomainEventConsumer)."
   }
 ]

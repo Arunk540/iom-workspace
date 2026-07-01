@@ -52,6 +52,8 @@ Never touch `src/test/` or `componenttest/`. No `{repo_context_dir}/lessons.md` 
 
 Scope: authors `src/main/` only · compiles (never authors) `src/test/` · never touches `componenttest/`.
 
+**Naming contract:** bind to EXISTING codebase symbols. Never coin a new field/method/enum for a concept the plan (or payload `glossary_hits`) already names — grep the real symbol first. Ticket "flow"/"service type" → reuse `transportActivity (EXPORT|IMPORT)`, do not add a `flow` field. A new name for an existing concept is a defect, not a choice.
+
 **Before coding:**
 1. `git checkout -b feature/{jira-id}-{slug}`
 2. Read `{plan_file from payload; fallback {workspace_context_dir}/plan.md}` — scope, intent, and agreed implementation.

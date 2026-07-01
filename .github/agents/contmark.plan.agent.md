@@ -24,6 +24,12 @@ Output: `$plan_file` (path from orchestrator payload; fallback `{workspace_conte
 
 **No-prejudge rule:** Unknown = question. Never infer. Verify from files or Jira → state it.
 
+**Naming contract (`glossary_hits`):** the payload carries `glossary_hits[]` (ticket word → `canonical` codebase symbol + enum `values` + `source`). When the ticket uses an alias, plan against the `canonical` name and its real `values` — NEVER invent a field/method from the ticket's word. Ticket "flow"/"service type" → plan `transportActivity (EXPORT|IMPORT)`, not a new `flow` field. Unsure which field/values an alias maps to → it's a Phase 2 question, not a guess.
+
+**Impact analysis — both directions, then highlight for confirmation:** analyse the whole flow across the workspace. Payload `repo_order` = core + upstream (parent/source/producer); payload `blast_radius` = downstream consumers of a named contract. Code-verify EACH (open the real file:line); a genuinely-impacted upstream OR downstream repo is IN SCOPE — plan the companion change, never demote it to a §Risk (a caller-only change that files the server as a risk ships a half-feature). List every in-scope repo (direction + why, file:line) and every term→symbol binding in plan.md **§Interpretation & Impact** so the human verifies before approval.
+
+**Glossary learning (feedback → future):** if the human corrects a term mapping or names an acronym at the approval gate, after re-planning persist the confirmed, code-verified mapping to `<workspace>/.contmark/_repo_router.json` `glossary[]` (`aliases`→`canonical` + `values` + `source` file:line). Confirmed + code-grounded only — never guess an entry. This is the ONLY index an agent may write, and only on explicit user confirmation.
+
 **Already-implemented rule:** Plan the FLOW gap, not files. Payload has `existing_coverage` → its covered steps are ground truth; plan ONLY `missing[]`, extending existing code (no rewrite). Else decompose the request into steps and verify each in the codebase first. Each task names the missing step it closes; covered steps go under §Already Implemented (`file:line`), never the task list. Whole flow covered → no task list; return "Already implemented" + evidence.
 
 **Revision mode** — invoked with `REVISE: {feedback}`:
@@ -75,7 +81,7 @@ Read `contmark-plan-templates` skill → match mode (Feature / UT-only / CT-only
 
 **Filter:** _"Does this prove a concrete observable outcome?"_ (API response, DB state, event published, error returned) → yes: write · no: drop.
 
-**UT:** happy path + explicitly stated error paths — one per distinct behaviour. Test agents add edge cases.
+**UT:** happy path + explicitly stated error paths — one per distinct behaviour. Test agents add edge cases. (`CT_MODULE: absent` skips CT only, not UT.)
 **CT:** one end-to-end flow per distinct user journey. Observable outcome only. Bug-fix → only if existing scenarios impacted. Skip logging and non-observable behaviour.
 
 ## Phase 4 — Write and return

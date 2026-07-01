@@ -69,7 +69,7 @@ For each task:
 
 After ALL tasks written — single build pass:
   5. Run `$build_cmd`
-  6. BUILD SUCCESS → emit READY
+  6. BUILD SUCCESS → run §Pre-READY self-review → emit READY
      BUILD FAILURE →
        a. Fix in scope. src/test/ error → fix production code, never touch tests.
        b. Write to {repo_context_dir}/lessons.md per Orchestrator lessons policy. Follow template:
@@ -81,10 +81,19 @@ After ALL tasks written — single build pass:
 ```
 `target: skill` = knowledge gap · `target: agent` = behaviour gap. One entry per pattern. No skip.
 
+## Pre-READY self-review (before emitting READY)
+
+The Reviewer traces the SAME rubric — self-catch here so REMEDIATE collapses to ~0 (a self-fix = one edit; a REMEDIATE = a full implement+review round-trip that re-boots and re-reads everything). Read `contmark-code-review-checklist` §Architectural Violations · §Code Quality (the Reviewer's source of truth — do not restate it). Trace against plan.md:
+- Each AC/scenario → code performs it end-to-end, no stub. One by one.
+- Wiring — REST: `@Valid` on body · service implements logic (not stub) · response shape = plan. Kafka: topic+group · shared topic → discriminator · ack on process AND skip. Temporal: activity in ALL 4 (interface · enum · YAML · worker). Config: new keys in EVERY env profile + Helm values · new beans injectable.
+- Naming: canonical symbols only (`glossary_hits`) — no invented field/method.
+
+Gap → fix now, re-run `$build_cmd`. All trace clean → emit READY.
+
 ## Output
 
 ```
-MODULE: {SERVICE_MODULE} | BUILD: ✅ | STYLE: ✅ | FILES: {list} | READY: for review
+MODULE: {SERVICE_MODULE} | BUILD: ✅ | STYLE: ✅ | SELF-REVIEW: ✅ | FILES: {list} | READY: for review
 ```
 
 ## End-of-turn

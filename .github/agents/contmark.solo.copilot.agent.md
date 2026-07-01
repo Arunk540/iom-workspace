@@ -86,7 +86,7 @@ Stack/domain (from `$features`): Maven/Gradle → `*-build-profiles` · Java+Web
 2. `$mode = jira` → reuse `$ticket` (Boot 0) for ACs; `getJiraIssueRemoteIssueLinks` for Confluence only if needed.
 3. **No-prejudge.** Unknown = question. Ask all unknowns as one numbered list; wait. New unknowns → ask again. Answer reveals generic project rule → append `incidents.log`: `domain | <rule> | <evidence>`. **Already-implemented:** honour Stage 0.5 `$existing_coverage` — plan ONLY `missing[]`, extending covered code; covered steps go under §Already Implemented (`file:line`), never the task list.
 4. Write `$plan_file` per `contmark-plan-templates`: §Stack · §CT_MODULE · §ACs · §Already Implemented (Stage 0.5 covered steps) · §Implementation Tasks · §Unit Test Matrix · §CT Scenarios (omit if `$modules.componentTest = none`; note `⚠️ CT skipped`) · a Mermaid `flowchart TD` of the code flow (one node = one change). Bind ticket vocabulary to `$glossary_hits` canonical symbols/values — never invent a name. Scenario filter: _"proves concrete observable outcome?"_ — yes write · no drop. UT = business + explicit error paths · CT = one end-to-end per user journey.
-5. Present plan (lead with §Interpretation & Impact — term→symbol bindings + upstream/downstream repos — for verification). _"Feedback, or type **PLAN APPROVED** to proceed."_ **STOP.** On `PLAN APPROVED`: seed `todos.md` with `- [ ]` per task under `### Implement` · `### Unit Test` · `### Component Test`. Mark `[x] Stage 1`. Profile absent → also write `.contmark/project.yml.draft`. **Glossary learning:** feedback that corrected a term/acronym mapping → persist the confirmed, code-verified `aliases→canonical+values+source` to `<$root>/.contmark/_repo_router.json` `glossary[]` (confirmed + grounded only; the one index an agent may write). Any other reply → apply feedback, rewrite, re-present.
+5. Present plan (lead with §Interpretation & Impact — term→symbol bindings + upstream/downstream repos — for verification). _"Feedback, or type **PLAN APPROVED** to proceed."_ **STOP.** On `PLAN APPROVED`: seed `todos.md` with `- [ ]` per task under `### Implement` · `### Unit Test` · `### Component Test`. Mark `[x] Stage 1`. Profile absent → also write `.contmark/project.yml.draft`. **Glossary learning:** feedback that corrected a term/acronym mapping → persist the confirmed, code-verified `aliases→canonical+values+source` to `<$root>/.contmark/_repo_router.json` `glossary[]` (confirmed + grounded only; the one index an agent may write). Any other reply → apply feedback, rewrite, re-present — reuse context already loaded this session; do not re-read `lessons.md`/`_pins.yml`/ticket/skills.
 
 ## Stage 1.5 — Jira Subtasks (`$mode = jira` only)
 `createJiraIssue(issueTypeName:"Subtask", parent:{key}, summary:"[Implement|Unit Test|Component Test|Review] {story}")` per active stage. Errors → skip silently.
@@ -97,8 +97,9 @@ Stack/domain (from `$features`): Maven/Gradle → `*-build-profiles` · Java+Web
 3. Per task: smallest complete piece → style + dead-code removed → `>50 lines? simpler refactor if obvious` → `[x]` → next. **No build between tasks.**
 4. All tasks done → single build: run `$build_cmd` (= `$pins.commands.build`, verbatim; absent → build-skill default). Fail → fix in scope (test compile fail → fix production, never tests) → retry. Same root-cause as prior cycle → append `recurrence | <pattern> | <fix>`. Max 2 cycles → append `blocking` + ABORT `PIPELINE BLOCKED — Implement: build failing.`
 5. Sync `application*.yml` + `values*.yml` across profiles (missing → out-of-scope) · commit per `contmark-execution-core` · never push.
+6. **Self-review before gate** — trace Stage 3's rubric now: each AC end-to-end (non-stub) · REST `@Valid`/response shape · Kafka topic+group/discriminator/ack · Temporal 4 places · Config all profiles+Helm+beans · canonical naming (`glossary_hits`). Gap → fix + rebuild. A self-fix = one edit; skipping it = a full Stage 2↔3 REMEDIATE loop.
 
-Gate: `MODULE: {x} | BUILD: ✅ | STYLE: ✅ | FILES: {list} | READY: for review`.
+Gate: `MODULE: {x} | BUILD: ✅ | STYLE: ✅ | SELF-REVIEW: ✅ | FILES: {list} | READY: for review`.
 
 ## Stage 3 — Review
 1. Extract every plan AC as `"When X, system should Y"`.
@@ -114,8 +115,8 @@ Gate: `MODULE: {x} | BUILD: ✅ | STYLE: ✅ | FILES: {list} | READY: for review
 
 Any scenario ❌ or ⚠️ → `Decision: REMEDIATE` (loop Stage 2). Else `Decision: APPROVE`.
 
-### Stage 3 — Early RUNAWAY guard
-Read `.github/skills/contmark-token-usage-prediction/SKILL.md` — §Model cap + §Calculate only. Compute `plan + implement` tokens only. If already exceeds full `pipelineBudget` → `RUNAWAY_PIPELINE`. STOP. Do not proceed to Stage 4.
+### Stage 3 — Early guard
+Read `.github/skills/contmark-token-usage-prediction/SKILL.md` — §Model cap & budgets + §Calculate only. `liveWindow = pipelineBudget = modelCap` (REAL window — no ×2.5). Compute live-thread tokens: `live% = est ÷ modelCap`. `live% ≥ 85%` → `CONTEXT_PRESSURE` — STOP, compact/split. `est > modelCap` → `RUNAWAY_PIPELINE` — STOP. Do not proceed to Stage 4.
 
 ### Stage 3 — Lessons curation (last)
 Append cross-cutting findings as `architectural | <pattern> | <fix>`. Run 3-question filter (Lessons protocol) over `incidents.log` → passes → write `lessons.md` with `status: captured` · delete `incidents.log`.

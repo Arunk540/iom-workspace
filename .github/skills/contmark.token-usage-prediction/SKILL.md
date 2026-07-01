@@ -8,14 +8,31 @@ description: Stage 3 token usage scan — % vs model cap, payload for evolution 
 Runs in Stage 3. `$activeSkill` and agent variables already in working memory.
 Reads active model directly from context — no pre-set required.
 
-## Model cap
+## Model cap & budgets
 
 ```
-claude-*  → 200K  |  gpt-4*  → 128K  |  gemini-*  → 1M  |  default → 128K
-pipelineBudget = modelCap × 2.5
+modelCap (REAL context window):
+  claude-*  → 200K  |  gpt-4*  → 128K  |  gemini-*  → 1M  |  default → 128K
+
+liveWindow     = modelCap        ← what ONE agent thread can hold right now
+pipelineBudget = modelCap        ← cumulative work budget. (Was ×2.5 — that assumed FULLY
+                                   isolated sub-agent windows. False on shared-thread runtimes
+                                   like GitHub Copilot, where the orchestrator thread accumulates
+                                   every payload it sends + every gate it gets back. The ×2.5
+                                   phantom budget reported "37%" while a real 200K window sat at
+                                   92%. Raise above modelCap ONLY if the runtime is verified to
+                                   give each sub-agent an isolated window.)
 stage ceilings (% of pipelineBudget):
   plan 10% | implement 40% | unit-test 20% | component-test 24%
 ```
+
+**Live-window guard — the REAL exhaustion signal. Run FIRST, at every stage boundary (not just Stage 4c):**
+```
+live% = currentThreadTokens ÷ liveWindow × 100
+  ≥ 70% → WARN + trim: persist blobs (ticket, plan) to disk, pass PATHS not contents
+  ≥ 85% → CONTEXT_PRESSURE — STOP before the next sub-agent call; compact or split the task
+```
+`pipeline%` alone is a lagging, cumulative metric — it reports healthy while the live window fills. `live%` is what actually protects a run.
 
 ## Calculate
 
@@ -49,19 +66,21 @@ output = assistant msgs + tool call args
 ## Show %
 
 ```
-call%     = thisCallTokens ÷ modelCap × 100
-pipeline% = totalTokens ÷ pipelineBudget × 100
-stage%    = stageTokens ÷ stageCeiling × 100
+live%     = currentThreadTokens ÷ liveWindow    × 100   ← check FIRST, every stage boundary
+call%     = thisCallTokens      ÷ modelCap       × 100
+pipeline% = totalTokens         ÷ pipelineBudget × 100
+stage%    = stageTokens         ÷ stageCeiling   × 100
 ```
 
-Print — append block to PR body in Stage 4:
+Print — append block to PR body in Stage 4 (budgets shown for claude modelCap 200K):
 ```
-plan        21K /  50K  42%
-implement   98K / 200K  49%  [$kafkaSkill]  ⚠ one-shot 62% (target 80%)
-unit-test   41K / 100K  41%
-pipeline   184K / 500K  37%
+live       178K / 200K  89%  ⚠ CONTEXT_PRESSURE — compact before next stage
+plan        18K /  20K  90%
+implement   96K /  80K 120%  [$kafkaSkill]  ⚠ over ceiling · one-shot 62% (target 80%)
+unit-test   34K /  40K  85%
+pipeline   192K / 200K  96%  ⚠ approaching RUNAWAY
 ```
-`pipeline% > 100` → `RUNAWAY_PIPELINE`. STOP. Do not proceed to Stage 4.
+`live% ≥ 85%` → `CONTEXT_PRESSURE`. STOP before the next sub-agent call. `pipeline% > 100` → `RUNAWAY_PIPELINE`. STOP. Do not proceed to Stage 4. (Both now measure against the REAL window — no ×2.5 inflation.)
 
 ## Waste signals
 
@@ -92,9 +111,9 @@ Pass payload to `skill-evolution-loop` (already loaded in Stage 3).
 ## Execute
 
 ```
-1. Model   — read active model from context → set modelCap + pipelineBudget
+1. Model   — read active model from context → set modelCap, liveWindow, pipelineBudget
 2. Count   — scan all messages + tool results + schemas, attribute to stage
-3. Show %  — build token block, flag RUNAWAY_PIPELINE if pipeline% > 100
+3. Show %  — live% FIRST (flag CONTEXT_PRESSURE if ≥ 85%), then build token block, flag RUNAWAY_PIPELINE if pipeline% > 100
 4. Scan    — detect all 8 signals, record $agent + $activeSkill at each occurrence
 5. Hint    — read matching lessons.md entry for each signal at threshold
 6. Payload — pass to skill-evolution-loop for each signal at threshold

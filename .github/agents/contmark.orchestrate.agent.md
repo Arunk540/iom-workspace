@@ -33,16 +33,22 @@ user-invocable: true
 Coordinates; never writes production code. Sub-agents commit; orchestrator pushes and creates PR.
 
 ## Standard payload
-Before every `run_subagent` call: read each file listed and embed full contents in the task — never pass path strings.
+Pass **paths, not blobs.** Sub-agents already read `plan.md`/`todos.md`/`lessons.md` from disk themselves (they hold `read_file` + both context dirs), so re-embedding full file contents into every stage payload re-sends the same plan+ticket ~10× across Stages 1–4b + HANDOFF retries — the single largest token amplifier on shared-thread runtimes. Embed ONLY what the sub-agent cannot read from disk: gate outputs, `glossary_hits`, HANDOFF findings, and `$ticket_digest`. **No context is lost** — the full plan, todos, lessons, and ticket all live on disk at the paths below; a sub-agent that needs the whole thing reads it. Full-blob embed is allowed ONLY when the runtime guarantees isolated sub-agent windows AND `live% < 50%`.
 
 ```
-workspace_context_dir: $workspace_context_dir   ← plan + todos live here (workspace-root)
-repo_context_dir:      $repo_context_dir        ← lessons + incidents live here (per-repo)
-plan:    read($plan_file)                       ← full plan contents (under $workspace_context_dir)
-todos:   read($workspace_context_dir/todos.md)  ← full task list (workspace-root)
-stack:   $stack · $modules · $features
-lessons: read($repo_context_dir/lessons.md)     ← omit if file absent (per-repo)
+workspace_context_dir: $workspace_context_dir       ← plan + todos live here (workspace-root)
+repo_context_dir:      $repo_context_dir            ← lessons + incidents live here (per-repo)
+plan_file:     $plan_file                           ← PATH — sub-agent reads it (never embed)
+todos_file:    $workspace_context_dir/todos.md      ← PATH — sub-agent reads it (never embed)
+ticket_file:   $ticket_file                         ← PATH to FULL persisted ticket (Boot 0)
+ticket_digest: $ticket_digest                       ← ≤15-line signal digest; full ticket on disk
+stack:         $stack · $modules · $features
+glossary_hits: $glossary_hits                       ← naming contract (alias→canonical+values)
+lessons_file:  $repo_context_dir/lessons.md         ← PATH — omit if file absent (per-repo)
 ```
+
+## Live-window checkpoint (`$ckpt`)
+Run this inline at THREE points — after Boot 0, after Stage 1, and at Stage 3b — never wait for the Stage 4c scan (detection there trails the entire burn). Estimate live-thread tokens = all conversation chars ÷ 3.5; `live% = est ÷ modelCap` (REAL window: claude-* 200K · gpt-4* 128K · gemini-* 1M · default 128K). `live% ≥ 70%` → trim now: confirm payloads pass PATHS not blobs, ticket is on disk. `live% ≥ 85%` → `CONTEXT_PRESSURE` — STOP, compact or split the task before the next sub-agent call. Cheap; no skill load.
 
 ## Lessons protocol
 Sub-agents write directly to `$repo_context_dir/lessons.md` on each correction, HANDOFF, or domain gap (per-repo, accumulates). Incidents append to `$repo_context_dir/incidents.md`. Plan + todos updates go to `$workspace_context_dir/` (task-scoped). Sub-agents never assume `.contmark/` relative to their cwd — both dirs come from the payload.
@@ -68,11 +74,12 @@ Walk up from `cwd` for `.contmark/workspace.yml`:
 - **`mode: single`** → SINGLE. `$root` = dir of `.contmark`; the one repo's workdir = `$root`.
 - **`mode: workspace` _or `mode` absent_** → WORKSPACE. `$root` = dir of `.contmark`; repos are subdirs. (Absent `mode` = v2 workspace from the old skill — back-compat.)
 
-**Classify + build `$resolve_text` FIRST (the resolver needs SIGNAL nouns — not a bare ID, not a prose dump):** classify raw input (no tools) → Jira key/URL = `jira` · GitHub issue URL = `github` · else `prompt`. Bind `$mode` + `$ticket` = the FULL fetched ticket (reused verbatim by Stage 0/1 — never re-fetch or trim; this is the planning context).
+**Classify + build `$resolve_text` FIRST (the resolver needs SIGNAL nouns — not a bare ID, not a prose dump):** classify raw input (no tools) → Jira key/URL = `jira` · GitHub issue URL = `github` · else `prompt`. Bind `$mode` + `$ticket` = the FULL fetched ticket (never re-fetch or trim — this is the planning context).
 - `jira` → `getJiraIssue($key)` **including comments** (expand/fields = `comment` — added ACs, decisions, and the affected service are often only in comments); `github` → `get_issue` + issue comments; `prompt` → use raw text. `$ticket` = description **+ comments**.
-- **Extract dense signal** (NOT the whole blob — a dump over-unions buckets): `$resolve_text = summary/title + AC titles ("system should …") + identifiers from body AND comments (CamelCase symbols, `code spans`, proper-noun service/entity names)`. Drop prose, repro steps, environment, stack traces, "as a user" boilerplate.
+- **Persist once, never re-embed:** write the FULL `$ticket` to `$ticket_file = $workspace_context_dir/{JIRA-KEY | gh-{n} | slug}-ticket.md`. Bind the path. The full ticket now lives on disk — the Planner reads `$ticket_file` whole (no context loss); downstream stages carry only `$ticket_digest` + the path. Trimming the PAYLOAD ≠ losing context: nothing is discarded, the complete ticket is always one `read_file` away.
+- **Extract dense signal** (NOT the whole blob — a dump over-unions buckets): `$resolve_text = summary/title + AC titles ("system should …") + identifiers from body AND comments (CamelCase symbols, `code spans`, proper-noun service/entity names)`. Drop prose, repro steps, environment, stack traces, "as a user" boilerplate. Bind `$ticket_digest = $resolve_text + AC titles` (≤15 lines) — the payload-safe pointer to the on-disk full ticket.
 
-**Resolve, then progressively widen:** run the resolver on `$resolve_text`; `route == ask` (no hit) → append the body's remaining nouns and re-run ONCE; still `ask` → genuinely ambiguous (prompt + STOP). The resolver is a precision cascade (symbol→flow→bucket→disambiguation→broad-token), not a frequency scorer — dense input keeps the route tight; a full dump only inflates the bucket union. Bare key/URL alone → `ask`; never resolve on the ID. Fetch fails → fall back to raw input + warn. `$ticket` is never trimmed.
+**Resolve, then progressively widen:** run the resolver on `$resolve_text`; `route == ask` (no hit) → append the body's remaining nouns and re-run ONCE; still `ask` → genuinely ambiguous (prompt + STOP). The resolver is a precision cascade (symbol→flow→bucket→disambiguation→broad-token), not a frequency scorer — dense input keeps the route tight; a full dump only inflates the bucket union. Bare key/URL alone → `ask`; never resolve on the ID. Fetch fails → fall back to raw input + warn. `$ticket` is never trimmed — it is persisted whole to `$ticket_file`; downstream payloads carry `$ticket_digest` + the path (pointer, not a trim), so no context is lost.
 
 **Resolve (one call; indexes read on disk, never in context):**
 ```
@@ -98,6 +105,8 @@ Returns ~350 tokens: `{ route, repo_order, matches:[{repo,path,source?,line?}], 
 **WORKSPACE — blast-radius reconciliation** (per `$blast_radius_repos`): producer diff touched the topic's `schema_path` (`.avsc`/`.proto`/`.json`) or serialization? **YES** → append consumer to `$repo_order`, run full pipeline (companion PR). **NO** → Reviewer records `Downstream consumer <X> verified unaffected (contract <topic> not modified)`. Never skip silently. After loop: post a sibling-PR summary on each `$repo.pr_url`.
 
 **Forbidden:** reading whole `_global_index.json` unfiltered; loading mini-skills outside `$matches`; writing inside any `<repo>/.contmark/` in workspace mode.
+
+Run `$ckpt` now (end of Boot 0 + Discovery) — this is where the "17% before planning" burn shows up; catch it before the Planner.
 
 ## Boot
 1. **Context dirs** — SINGLE/WORKSPACE: set in Boot 0 (`$repo_context_dir/_pins.yml` already read). LEGACY: `$workspace_context_dir = $repo_context_dir = .contmark`; `mkdir -p .contmark` if absent. Path resolution: `plan.md`/`{slug}-plan.md`/`todos.md` → `$workspace_context_dir`; `lessons.md`/`incidents.md` → `$repo_context_dir`. Every payload includes both.
@@ -139,6 +148,8 @@ Verify the FLOW, not filenames. Never plan or build what already runs.
 
 `$coverage`: all covered → present · some → partial · none → absent. `$evidence[] = req → file:line | MISSING`.
 
+**Carry `$evidence[]` file:line anchors into the plan** (via `existing_coverage` + plan §Interpretation): downstream agents open code AT `source:line` from these anchors instead of re-grepping/re-scanning the flow. Discovery reads the source ONCE; Planner/Implementer/Reviewer reuse the anchors. This is the fix for `REPEATED_READ` (same file opened 3+×, zero edits between) — the top cross-stage waste signal.
+
 **Impact — both directions (never one repo):** analyse the whole flow across the workspace. `$repo_order` = core + upstream (parent/source/producer); `$blast_radius_repos` = downstream consumers of a named contract. Code-verify EACH at `source:line`; any genuinely-impacted upstream OR downstream repo is IN SCOPE — append to `$repo_order` (companion PR), NEVER downgrade a discovered cross-repo dependency to a plan "risk" (caller-only + "server is a risk" ships a half-feature). The Planner highlights every in-scope repo (direction + file:line) in plan.md §Interpretation & Impact for the user to confirm.
 
 - `$mode = inquiry` → answer + STOP. Report per-step `$coverage` + `$evidence`. Never plan, implement, or seed `todos.md`.
@@ -149,16 +160,16 @@ Verify the FLOW, not filenames. Never plan or build what already runs.
 Mark `[x] Stage 0.5`.
 
 ## Stage 1 — Plan
-`run_subagent(contmark.plan, {workspace_context_dir: $workspace_context_dir, repo_context_dir: $repo_context_dir, mode, input, ticket: $ticket (Boot 0 — jira/github content already fetched; Planner reuses, does NOT re-fetch), glossary_hits: $glossary_hits (naming contract — bind aliases to canonical symbols/values, never invent names), stack, modules, features, lessons: read($repo_context_dir/lessons.md), plan_file: $plan_file, existing_coverage: $existing_coverage (Stage 0.5; partial only — covered steps + missing[], plan missing only), previous_repos: $previous_repos (workspace mode only — empty list on first iteration), cross_repo_contracts: $cross_repo_contracts (workspace mode only), workspace_lessons: $workspace_lessons (workspace mode only)})`
+`run_subagent(contmark.plan, {workspace_context_dir: $workspace_context_dir, repo_context_dir: $repo_context_dir, mode, input, ticket_file: $ticket_file (Boot 0 — FULL ticket persisted on disk; Planner reads it whole, does NOT re-fetch), ticket_digest: $ticket_digest (signal summary — the Planner reads $ticket_file for full ACs/comments), glossary_hits: $glossary_hits (naming contract — bind aliases to canonical symbols/values, never invent names), stack, modules, features, lessons_file: $repo_context_dir/lessons.md (PATH — Planner reads it), plan_file: $plan_file, existing_coverage: $existing_coverage (Stage 0.5; partial only — covered steps + missing[], plan missing only), previous_repos: $previous_repos (workspace mode only — empty list on first iteration), cross_repo_contracts: $cross_repo_contracts (workspace mode only), workspace_lessons: $workspace_lessons (workspace mode only)})`
 
 Present plan to user (lead with §Interpretation & Impact — term→symbol bindings + upstream/downstream repos — for verification). _"Feedback, or **PLAN APPROVED** to proceed."_ **STOP.** Feedback that corrects a term/acronym mapping → Planner persists the confirmed, code-verified `aliases→canonical+values+source` to `<$root>/.contmark/_repo_router.json` `glossary[]` (confirmed + grounded only) so future tasks resolve it automatically.
 
 `PLAN APPROVED` →
 1. Read `$plan_file` → extract §Implementation Tasks, §Unit Test Matrix, §CT Scenarios.
 2. Seed `todos.md`: one `- [ ]` per task under `### Implement · ### Unit Test · ### Component Test` (omit CT section if plan signals `CT_MODULE: absent`; UT is never omitted).
-3. Mark `[x] Stage 1`.
+3. Mark `[x] Stage 1`. Run `$ckpt` (post-plan checkpoint — before entering the implement/test loop).
 
-Else → `run_subagent(contmark.plan, REVISE: {feedback}, plan_file: $plan_file, lessons: read(lessons.md))`. Re-present. Loop.
+Else → `run_subagent(contmark.plan, REVISE: {feedback}, plan_file: $plan_file})` — pass the PATH only; the Planner reads `$plan_file` once and re-gathers nothing (no lessons/`_pins`/ticket re-read). Do NOT `read(lessons.md)` here — REVISE does not use it. Re-present from the Planner's returned plan; re-read `$plan_file` only if it wasn't returned. Loop.
 
 ## Stage 1.5 — Jira subtasks (`$mode = jira` only)
 `createJiraIssue` per active stage: `[Implement|Unit Test|Component Test|Review] {story}`. Errors → skip.
@@ -166,7 +177,7 @@ Else → `run_subagent(contmark.plan, REVISE: {feedback}, plan_file: $plan_file,
 ## Stage 2 — Implement
 `run_subagent(contmark.implement, {standard payload, mode: Plan})`
 
-Gate: `MODULE: … | BUILD: ✅ | STYLE: ✅ | FILES: <list> | READY: for review`
+Gate: `MODULE: … | BUILD: ✅ | STYLE: ✅ | SELF-REVIEW: ✅ | FILES: <list> | READY: for review` (SELF-REVIEW = Implementer traced the Reviewer's rubric pre-handoff → Stage 3a should APPROVE first pass; REMEDIATE now the exception, not the norm)
 `PIPELINE BLOCKED` → ABORT. Mark `[x] Stage 2`.
 
 ## Stage 3 — Review + early guard + curation
@@ -175,7 +186,7 @@ Gate: `MODULE: … | BUILD: ✅ | STYLE: ✅ | FILES: <list> | READY: for review
 `REMEDIATE` → `run_subagent(contmark.implement, {standard payload, HANDOFF: {failing scenarios, file:line findings, required fixes from Reviewer}})`. Max 2 cycles. Third → ABORT.
 `APPROVE` → mark `[x] Stage 3`. Continue to 3b.
 
-**3b. Early RUNAWAY guard** (inline — no skill load) — Estimate total tokens: all conversation chars / 3.5. `pipelineBudget = modelCap * 2.5` (claude-* = 500K, gpt-4* = 320K, default = 320K). Estimate > `pipelineBudget` → `RUNAWAY_PIPELINE`. STOP. Do not proceed to Stage 4.
+**3b. Guard** (inline — no skill load) — Estimate live-thread tokens: all conversation chars ÷ 3.5. `liveWindow = pipelineBudget = modelCap` — the REAL window, NOT ×2.5 (claude-* = 200K, gpt-4* = 128K, gemini-* = 1M, default = 128K). `live% = est ÷ modelCap`: ≥ 85% → `CONTEXT_PRESSURE` — STOP, compact/split before Stage 4. `est > modelCap` → `RUNAWAY_PIPELINE` — STOP. (The old ×2.5 = 500K phantom budget hid exhaustion: "37%" on it was 92% of a real 200K window — which is why tokens "vanished" mid-run.)
 
 **3c. Lessons curation** — Append Reviewer cross-cutting findings as new `status: draft` entries to `lessons.md`. Run 3-question filter over all `status: draft` entries: all YES → `status: captured`; else → delete.
 

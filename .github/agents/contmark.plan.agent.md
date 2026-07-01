@@ -33,14 +33,13 @@ Output: `$plan_file` (path from orchestrator payload; fallback `{workspace_conte
 **Already-implemented rule:** Plan the FLOW gap, not files. Payload has `existing_coverage` → its covered steps are ground truth; plan ONLY `missing[]`, extending existing code (no rewrite). Else decompose the request into steps and verify each in the codebase first. Each task names the missing step it closes; covered steps go under §Already Implemented (`file:line`), never the task list. Whole flow covered → no task list; return "Already implemented" + evidence.
 
 **Revision mode** — invoked with `REVISE: {feedback}`:
-Read `$plan_file` (from payload; fallback `{workspace_context_dir}/plan.md`) → apply feedback → rewrite → run Phase 4. Skip Phases 1–3.
+Read `$plan_file` **ONCE** (from payload; fallback `{workspace_context_dir}/plan.md`) → apply feedback → rewrite → run Phase 4. **Skip Phases 1–3 entirely — do NOT re-read `lessons.md`, `_pins.yml`, `todos.md`, `contmark-project-context`, the ticket, or any mini-skill.** That context is already baked into the plan you are editing; re-gathering it is the top REVISE token leak (one feedback loop re-boots the whole context). The only read is `$plan_file`; the only write is the revised `$plan_file`.
 
 ## Phase 1 — Gather context (before any human interaction)
 
-Read always:
-- `{repo_context_dir}/lessons.md` — if present, apply every rule before anything else
+Read always (each file **at most once per run** — never re-open a file already read):
+- `{repo_context_dir}/lessons.md` — per-repo; if present, apply every rule before anything else. `workspace_lessons` already arrives in the payload (Boot 0 read the workspace `lessons.md`) — apply it, do NOT re-read the workspace file.
 - `contmark-project-context` — if `.github/skills/planning/contmark-project-context/SKILL.md` or `.claude/skills/planning/contmark-project-context/SKILL.md` present (read whichever exists)
-- 
 Read after Phase 2 only — load when confirmed in scope:
 - `contmark-component-testing-cucumber` → CT scenarios confirmed needed
 - `contmark-db-migration-guardrails` → entity/table/column change confirmed
@@ -56,7 +55,7 @@ Detect CT module (mandatory): find `componenttest/` or `component-test/`.
 - Found → `CT_MODULE: present`
 - Not found → `CT_MODULE: absent` — skip all CT scenarios, note `⚠️ CT Module: not found — CT Scenarios skipped.`
 
-Fetch external context: prefer payload `ticket` (Boot 0 already fetched issue **+ comments**) — reuse, do NOT re-fetch; absent → `getJiraIssue($key)` including comments (added ACs/decisions often live there) for ACs. Framework docs via Context7 MCP if needed.
+Fetch external context: read the FULL ticket from payload `ticket_file` (Boot 0 persisted the issue **+ comments** to disk — read it whole for every AC/comment; `ticket_digest` is only a signal pointer, never the sole source). Reuse, do NOT re-fetch; `ticket_file` absent → `getJiraIssue($key)` including comments (added ACs/decisions often live there) for ACs. Framework docs via Context7 MCP if needed.
 
 ## Phase 2 — Clarify (blocking)
 

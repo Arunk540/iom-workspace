@@ -27,9 +27,14 @@ Stage-scoped. Loaded on demand — not at boot. Baseline (paths, lessons format,
 | `UT-only` | unit test keywords | ✅ | ❌ | ❌ | ✅ | ❌ |
 | `CT-only` | component test keywords | ✅ | ❌ | ❌ | ❌ | ✅* |
 | `test` | both UT + CT keywords | ✅ | ❌ | ❌ | ✅ | ✅* |
+| `quick` | trivial surface — eligibility below | ❌ | ✅ | self† | ✅ | ❌ |
 
 *CT only when `_pins.yml` `modules.componentTest: present`. Always skip on `none`/absent.
 UT and CT run **sequentially** (UT then CT) — zero file overlap, both independently resumable.
+
+†**`quick`** — decided AFTER Stage 0.5 (evidence, never keywords alone). ALL true: single repo · `$req` ≤2 · touch surface ≤2 files (from anchors) · no contract/API/schema/topic/migration/config/security surface · nothing new (endpoint/consumer/workflow).
+Pipeline: micro-plan inline (≤10 lines: files · change per file · UT rows) at the SAME human gate → Implement → UT → PR; Reviewer = implementer Pre-READY self-review.
+**Escalation:** post-implement diff >2 files OR touches an excluded surface → full Review (+ CT if due) before PR — never ship an escaped quick silently.
 
 ## Agent Phase Ownership (Stage 0/1)
 

@@ -64,12 +64,15 @@ Verify the FLOW, not filenames.
 `$coverage`: present / partial / absent. `$evidence[] = req → file:line | MISSING` — carry anchors into the plan; never re-grep later.
 **Impact — both directions:** upstream in `$repo_order`, downstream in `$blast_radius_repos`; code-verify EACH; genuinely-impacted repo → IN SCOPE, append to `$repo_order`, never a §Risk.
 - `inquiry` → answer + evidence, STOP · present → "Already implemented" + evidence, ask _"Re-implement, modify, or cancel?"_, STOP · partial → plan ONLY `missing[]` · absent → plan full flow. Mark `[x]`.
+- partial/absent + `execution-extras §quick` ALL true → `$mode = quick`.
+- Task exceeds `quick` bounds → advise ONCE, then continue: _"Medium+ task in a single window — if your runtime has `run_subagent`, `@contmark.orchestrate` is cheaper and safer."_
 
 ## Skills — on-demand (skip if `$skills.*` set)
 Stage 1 `contmark-plan-templates` · 3 `contmark-code-review-checklist` · 4 `contmark-unit-testing-java` · 4c `contmark-token-usage-prediction` · 5 `contmark-skill-evolution-loop` · 6 `contmark-pr-delivery-and-triage` · routing/lessons `contmark-execution-extras`.
 Stack/domain (from `$features`): Maven/Gradle → `*-build-profiles` · Java+WebFlux/MVC → `contmark-spring-java-conventions` + (`contmark-java-reactive-patterns`/`contmark-spring-mvc-patterns`) · Kotlin → `contmark-kotlin-conventions` · Kafka/`.avsc` → `contmark-kafka-consumer-patterns` · Temporal → `contmark-temporal-workflow-patterns` · entity/migration → `contmark-db-migration-guardrails` · CT → `contmark-component-testing-cucumber`.
 
 ## Stage 1 — Grill + Plan (human gate)
+**Quick mode:** skip steps 3–4 — micro-plan inline (≤10 lines: files · change per file · UT rows) presented WITH the grill questions at ONE gate. Approved → write `$plan_file`, seed todos (`### Implement · ### Unit Test`) → Stage 2 → Stage 4 → Stage 6 (skip 1.5, 3, 4b — Stage 2 self-review stands in). Escalate per `execution-extras §quick`.
 1. Reuse `$ticket` (Boot 0); `getJiraIssueRemoteIssueLinks` for Confluence only if needed.
 2. **GRILL the user — one numbered list, blocking:** (a) every low-confidence/unmapped term as options — `"{term}" → (a) {canonical} ({values}, {file:line}) — recommended · (b) {alt} · (c) tell me`; (b) every ≥2-implementation step (existing mechanism vs new build is ALWAYS one) — options + trade-off + recommendation; (c) edge cases and boundaries the ticket leaves open. Wait. New unknowns → ask again. Never assume; never silently bind. Reusable rule revealed → `incidents.log`: `domain | <rule> | <evidence>`.
 3. Honour Stage 0.5: plan ONLY `missing[]`; covered steps → §Already Implemented (`file:line`).

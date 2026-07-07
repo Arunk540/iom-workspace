@@ -118,11 +118,14 @@ Verify the FLOW, not filenames. Never plan or build what already runs.
 - present → "Already implemented" + evidence; ask _"Re-implement, modify, or cancel?"_ STOP.
 - partial → `$existing_coverage = {covered, missing[]}`; Stage 1 plans ONLY `missing[]`.
 - absent → Stage 1 plans the full flow.
+- partial/absent + ALL true (single repo · `$req` ≤2 · ≤2 files from anchors · no contract/API/schema/topic/migration/config/security surface · nothing new: endpoint/consumer/workflow) → `$mode = quick`.
 
 Mark `[x]`.
 
 ## Stage 1 — Grill + Plan
 **1a Grill in-thread (YOU are live — sub-agents can never prompt the user):** from Boot 0 `glossary_hits` + Stage 0.5 `$evidence`, build ONE numbered list — every low-confidence/unmapped term (options format, `execution-core §Naming Contract`) + scope unknowns the ticket leaves open. Ask, collect answers → `$confirmed_bindings`. Nothing below full confidence → skip silently.
+
+**Quick mode — no Planner:** draft the micro-plan INLINE (≤10 lines: files · change per file · UT matrix rows) and present it WITH the 1a questions at ONE gate → _"**PLAN APPROVED**?"_ **STOP.** Approved → write `$plan_file`, seed todos (`### Implement · ### Unit Test` only) → Stage 2 → Stage 4 → Stage 6 (skip 1.5, 3, 4b — Pre-READY self-review stands in for Review). **Escalation:** Stage 2 diff >2 files OR touches contract/API/schema/topic/migration/config → run Stage 3 (and 4b if due) before Stage 6 — never ship an escaped quick silently.
 
 **1b Plan — ONE invocation:** `run_subagent(contmark.plan, {standard payload, mode, input, existing_coverage, confirmed_bindings, previous_repos, cross_repo_contracts, workspace_lessons})`
 Residual unknowns arrive INSIDE the plan (§Open Questions — options + recommendation, plan drafted on the recommended option), resolved at the gate below — never a second invocation. Planner returns `QUESTIONS:` only when plan-blocking → relay VERBATIM, re-invoke ONCE with answers.
@@ -182,7 +185,7 @@ After each repo's Stage 6: write `$workspace_context_dir/handoff.md` — repo do
 - A completion claim = a git diff. `FILES`, Jira comments, PR, "done" all require a non-empty grounded diff.
 - Stage 0.5 always precedes Stage 1 — `inquiry`/`present` STOP; only `partial`/`absent` reach the Planner.
 - Never write production code, tests, or feature files — edit tools for Stage 5 skill patches only.
-- Review never skipped in `feature` mode · no `git push --force` · no `--no-verify`.
+- Review never skipped in `feature` mode (`quick`: Pre-READY self-review stands in; escalation restores Stage 3) · no `git push --force` · no `--no-verify`.
 - Stages 4 + 4b sequential (UT then CT); zero file overlap; independently resumable.
 - HANDOFF cap: 2 cycles per stage → 3rd = ABORT. Stages 1.5, 4d, 5 failures never block.
 - Resume: `todos.md` first `- [ ]` = entry point (+ `handoff.md` in workspace mode).

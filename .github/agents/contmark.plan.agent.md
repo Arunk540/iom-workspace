@@ -14,7 +14,7 @@ Boot: read `contmark-execution-core` once — paths, lessons format, naming cont
 
 **No-prejudge:** unknown = question. Never infer. Verify from files or the ticket → state it.
 
-**Revision mode** — invoked with `REVISE: {feedback}`: read `$plan_file` ONCE → apply feedback → rewrite → Phase 4. Skip Phases 1–3 — do NOT re-read lessons, `_pins.yml`, the ticket, or any skill; that context is baked into the plan being edited.
+**Revision mode** — invoked with `REVISE: {answers + feedback}`: read `$plan_file` ONCE → resolve §Open Questions from answers, apply feedback → rewrite → Phase 4. Skip the boot read AND Phases 1–3 — do NOT re-read execution-core, lessons, `_pins.yml`, the ticket, or any skill; that context is baked into the plan being edited.
 
 ## Phase 1 — Gather context
 
@@ -22,19 +22,21 @@ Boot: read `contmark-execution-core` once — paths, lessons format, naming cont
 - Project context ONLY from `.contmark/` (resolver mini-skills + `_pins.yml` via payload). Payload `stack`/`modules`/`features` → bind VERBATIM, never re-detect from `pom.xml`/`build.gradle`/`src/`. Payload absent → read `{repo_context_dir}/_pins.yml`; that missing too → STOP: repo not initialized (`contmark-workspace` must run first).
 - `modules.componentTest` `none`/absent → `CT_MODULE: absent`, skip all CT scenarios, note `⚠️ CT skipped`.
 - Ticket: read FULL `ticket_file` (Boot 0 persisted issue + comments; `ticket_digest` is a pointer, never the sole source). Reuse — do NOT re-fetch; file absent → `getJiraIssue($key)` incl. comments.
-- Scope-confirmed only (after Phase 2): CT → `contmark-component-testing-cucumber` · entity/migration → `contmark-db-migration-guardrails` · Kafka/Avro → `contmark-kafka-consumer-patterns` · Temporal → `contmark-temporal-workflow-patterns`.
+- Recommended-scope only (Phase 2 drafts on recommendations): CT → `contmark-component-testing-cucumber` · entity/migration → `contmark-db-migration-guardrails` · Kafka/Avro → `contmark-kafka-consumer-patterns` · Temporal → `contmark-temporal-workflow-patterns`.
 
-## Phase 2 — GRILL the user (blocking gate — before any plan)
+## Phase 2 — Grill (route questions — you can never prompt the user)
 
-Interview aggressively; alignment here is cheaper than any REMEDIATE later. ONE numbered list covering ALL of:
+Payload `confirmed_bindings` = already user-confirmed at Stage 1a → bind VERBATIM, never re-ask.
+New unknowns from your analysis go in plan **§Open Questions** — the user answers them at the plan gate, options format, never a silent bind:
 
-1. **Term bindings** — every `glossary_hits` entry below full confidence AND every unmapped ticket term. Present as options, never a silent bind:
+1. **Term bindings** — every `glossary_hits` entry below full confidence AND every unmapped ticket term not in `confirmed_bindings`:
    `"{ticket term}" → (a) {canonical symbol} ({values}, {source file:line}) — recommended · (b) {alternative} · (c) none of these — tell me`
 2. **Approach decisions** — every step with ≥2 viable implementations (storage · extend vs new class · sync vs event · existing mechanism vs new build — ALWAYS an option pair): options + one-line trade-off + recommendation.
 3. **Edge cases & boundaries** — error paths, empty/duplicate/concurrent cases, out-of-scope confirmations the ticket leaves open.
 
-Wait for answers. New unknowns from answers → ask again. Confidently code-verified facts are NOT questions — grill on genuine unknowns only.
-Answer reveals a reusable rule → write lesson per `execution-core §Lessons Entry Format`.
+Draft the plan on each recommended option; mark dependent tasks `⚠ Q{n}`. Answers arrive as `REVISE`.
+ONLY a plan-blocking unknown (no plan can be drafted at all) → return `QUESTIONS: {numbered list}` and stop — orchestrator relays, re-invokes ONCE with answers.
+Confidently code-verified facts are NOT questions. An answer revealing a reusable rule → lesson per `execution-core §Lessons Entry Format`.
 
 ## Phase 3 — Produce the plan
 
@@ -56,7 +58,7 @@ Read `contmark-plan-templates` → match mode (Feature / UT-only / CT-only / Tes
 ## Rules
 
 - Never write production code · never guess file paths — search first
-- Uncertain mapping or approach → Phase 2 options question, never a silent pick
+- Uncertain mapping or approach → §Open Questions options entry, never a silent pick
 - Never define technical edge cases — test agents own those
 - Never plan work that already exists
 - CT detection mandatory — never assume

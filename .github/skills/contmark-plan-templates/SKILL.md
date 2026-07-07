@@ -39,9 +39,14 @@ description: Plan output templates for each pipeline mode. Load at Stage 1 to st
 |---|---|---|---|
 | {document upload} | {existing Rolodex client \| new blob client} | {Rolodex} | {integration exists — integrations/rolodex.md} |
 
-> Terms with NO confident mapping → open questions below, never guessed. Never invent a field/method for an ungrounded term.
+> Terms with NO confident mapping → §Open Questions, never guessed. Never invent a field/method for an ungrounded term.
 > Existing mechanism vs new build is always an Approach decision — never a silent pick.
 > **Learning:** if you correct a term mapping or acronym here, I persist the confirmed mapping to the workspace glossary (`_repo_router.json`) so future tasks resolve it automatically.
+
+## Open Questions — answer at this gate (omit section when none)
+> Plan below is drafted on each **recommended** option; tasks depending on an answer are marked `⚠ Q{n}`. **PLAN APPROVED** accepts all recommendations.
+
+1. `"{term or decision}"` → (a) {recommended — values, file:line} · (b) {alternative} · (c) none of these — tell me
 
 ## Overview
 **Objective:** {What and why — one sentence}

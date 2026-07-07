@@ -32,6 +32,7 @@ Then **STOP**. Never degrade inline — no discovery, planning, code, or tests i
 
 ## Standard payload
 **Paths, not blobs.** Sub-agents read `plan.md`/`todos.md`/`lessons.md` from disk themselves. Embed ONLY what disk can't provide: gate outputs, `glossary_hits`, HANDOFF findings, `$ticket_digest`. Sub-agent returns ≤20 lines — findings as `file:line` pointers, never diffs or logs (full artifacts live on disk).
+**No echo:** a sub-agent return or HANDOFF appears ONCE in this thread — never re-quote it into a later payload or message; downstream reads plan/todos/handoff from disk. User grill answers live in the plan (§Interpretation & Impact), never re-relayed per stage.
 
 ```
 workspace_context_dir: $workspace_context_dir     ← plan + todos (task-scoped)
@@ -120,15 +121,16 @@ Verify the FLOW, not filenames. Never plan or build what already runs.
 
 Mark `[x]`.
 
-## Stage 1 — Plan
-`run_subagent(contmark.plan, {standard payload, mode, input, existing_coverage, previous_repos, cross_repo_contracts, workspace_lessons})`
+## Stage 1 — Grill + Plan
+**1a Grill in-thread (YOU are live — sub-agents can never prompt the user):** from Boot 0 `glossary_hits` + Stage 0.5 `$evidence`, build ONE numbered list — every low-confidence/unmapped term (options format, `execution-core §Naming Contract`) + scope unknowns the ticket leaves open. Ask, collect answers → `$confirmed_bindings`. Nothing below full confidence → skip silently.
 
-**Grill relay:** Planner Phase 2 questions (numbered, with options + recommendation) → present to the user VERBATIM, collect answers, pass back. Loop until the Planner has no open questions — alignment before code, always.
+**1b Plan — ONE invocation:** `run_subagent(contmark.plan, {standard payload, mode, input, existing_coverage, confirmed_bindings, previous_repos, cross_repo_contracts, workspace_lessons})`
+Residual unknowns arrive INSIDE the plan (§Open Questions — options + recommendation, plan drafted on the recommended option), resolved at the gate below — never a second invocation. Planner returns `QUESTIONS:` only when plan-blocking → relay VERBATIM, re-invoke ONCE with answers.
 
-Present plan — lead with the Mermaid flow + §Interpretation & Impact (term→symbol bindings, in-scope repos). _"Feedback, or **PLAN APPROVED** to proceed."_ **STOP.**
+Present plan — lead with the Mermaid flow + §Interpretation & Impact + §Open Questions. _"Answer open questions / feedback, or **PLAN APPROVED** (accepts recommended options)."_ **STOP.**
 - Term/acronym correction → Planner persists confirmed mapping to `_repo_router.json` `glossary[]`.
 - `PLAN APPROVED` → read `$plan_file` → seed `todos.md` (one `- [ ]` per task under `### Implement · ### Unit Test · ### Component Test`; omit CT on `CT_MODULE: absent`; UT never omitted). Mark `[x]`. Run `$ckpt`.
-- Else → `run_subagent(contmark.plan, REVISE: {feedback}, plan_file: $plan_file)` — PATH only; Planner re-reads nothing else. Re-present. Loop.
+- Else → batch ALL answers + feedback into ONE `run_subagent(contmark.plan, REVISE: {answers + feedback}, plan_file: $plan_file)` — PATH only; REVISE skips boot + Phases 1–3. Re-present. Loop.
 
 ## Stage 1.5 — Jira subtasks (`jira` only)
 `createJiraIssue` per active stage: `[Implement|Unit Test|Component Test|Review] {story}`. Errors → skip.

@@ -33,14 +33,26 @@ description: Plan output templates for each pipeline mode. Load at Stage 1 to st
 | {iom-order-service} | upstream (source) | {owns GET /v3/service-plans/containers — the count source} |
 | {iom-offer-service} | downstream (consumer) | {pricing slabs evaluated per flow} |
 
+**Approach decisions — every step with ≥2 viable implementations** (omit section when none):
+
+| Decision | Options | Recommended | Why |
+|---|---|---|---|
+| {document upload} | {existing Rolodex client \| new blob client} | {Rolodex} | {integration exists — integrations/rolodex.md} |
+
 > Terms with NO confident mapping → open questions below, never guessed. Never invent a field/method for an ungrounded term.
+> Existing mechanism vs new build is always an Approach decision — never a silent pick.
 > **Learning:** if you correct a term mapping or acronym here, I persist the confirmed mapping to the workspace glossary (`_repo_router.json`) so future tasks resolve it automatically.
 
 ## Overview
-**Objective:** {What and why — one paragraph}
+**Objective:** {What and why — one sentence}
 
-### Request Flow
-{ASCII diagram showing data flow: Actor → Controller → Service → Repository → Response. Adapt for Kafka/Temporal/external APIs.}
+### Change Flow (mandatory — the plan's spine; the human reads THIS, not prose)
+```mermaid
+flowchart TD
+  {One node per change, short labels, file:line on each node.
+   Actor → Controller → Service → Repository → Response; adapt for Kafka/Temporal/external APIs.
+   Mark nodes: [NEW] · [MODIFY] · [existing — untouched].}
+```
 
 **Success Criteria:**
 - [ ] {Testable business criterion}
@@ -48,17 +60,19 @@ description: Plan output templates for each pipeline mode. Load at Stage 1 to st
 **Boundaries:** Always: {X} | Ask first: {Y} | Never: {Z}
 
 ## Implementation Tasks
-### Task 1: {Title}
+> Vertical slices — each task delivers ONE AC end-to-end (entry → logic → persist/emit → contract) and is independently buildable. Never layer-by-layer.
+
+### Task 1: {AC it closes}
 - **Files:** CREATE {paths} | MODIFY {paths}
 - **AC:** {What must be true when done}
 - **Verify:** compiles, no checkstyle violations
 
 ## Unit Test Matrix
-> One row per implementation task. `CT_MODULE: absent` skips CT only, not UT. Use canonical glossary names (e.g. `transportActivity: EXPORT|IMPORT`), never a ticket-invented name.
+> One row per implementation task. Expected = concrete VALUE/state (executable assertion), not prose. `CT_MODULE: absent` skips CT only, not UT. Canonical glossary names only.
 
-| # | Class Under Test | Business Scenario | Expected Behavior |
-|---|------------------|-------------------|-------------------|
-| 1 | {Class} | {scenario} | {expected} |
+| # | Class Under Test | Given / When | Then (concrete expected value) |
+|---|------------------|--------------|-------------------------------|
+| 1 | {Class} | {precondition / action} | {e.g. `status=201`, `transportActivity=EXPORT`, event on `{topic}`} |
 
 ## Component Test Scenarios
 > Only if CT_MODULE: present. Otherwise: ⚠️ CT Module: not found — CT Scenarios skipped.
@@ -75,7 +89,7 @@ Then {outcome — status code + business state}
 |------|--------|------------|
 
 ## Implementation Order
-models → mappers → services → controller → config
+Task 1 → Task N — vertical slices in AC priority order; within a slice: model → wiring → contract.
 ```
 
 ## UT-only Mode

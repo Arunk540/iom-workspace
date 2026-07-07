@@ -29,7 +29,7 @@ features:
   avro: false
 
 contmark_skills:
-  always:  [project-context, execution-core]
+  always:  [execution-core]
   stack:   [spring-java-conventions]
   build:   [maven-build-profiles]
   domain:  []

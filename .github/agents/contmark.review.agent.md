@@ -3,7 +3,7 @@ name: contmark.review
 description: >-
   Autonomous six-axis code reviewer with scenario correctness validation.
   Routes Critical findings to Implementer. No human interaction.
-tools: ['read_file', 'get_errors', 'run_in_terminal', 'get_terminal_output', 'show_content', 'list_dir', 'file_search', 'grep_search', 'validate_cves', 'open_file']
+tools: ['read_file', 'get_errors', 'run_in_terminal', 'bash', 'get_terminal_output', 'show_content', 'list_dir', 'file_search', 'grep_search', 'validate_cves', 'open_file']
 user-invocable: false
 ---
 

@@ -4,7 +4,7 @@ description: >
   Creates reviewer-friendly GitHub PRs with trunk-based development,
   atomic commits, quality gates, and structured PR descriptions.
 version: 3.0.0
-tools: ['insert_edit_into_file', 'replace_string_in_file', 'create_file', 'run_in_terminal', 'get_terminal_output', 'get_errors', 'list_dir', 'read_file', 'file_search', 'grep_search', 'show_content', 'github/create_branch', 'github/push_files', 'github/create_pull_request', 'github/get_pull_request', 'github/get_pull_request_status', 'github/update_pull_request_branch', 'github/add_issue_comment']
+tools: ['insert_edit_into_file', 'replace_string_in_file', 'create_file', 'run_in_terminal', 'bash', 'get_terminal_output', 'get_errors', 'list_dir', 'read_file', 'file_search', 'grep_search', 'show_content', 'github/create_branch', 'github/push_files', 'github/create_pull_request', 'github/get_pull_request', 'github/get_pull_request_status', 'github/update_pull_request_branch', 'github/add_issue_comment']
 user-invocable: false
 ---
 

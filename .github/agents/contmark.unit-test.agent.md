@@ -3,7 +3,7 @@ name: contmark.unit-test
 description: >-
   Autonomous unit tester. Writes src/test/ only. Compiles new tests (skip main),
   runs ALL unit tests until 0 failures and ≥80% coverage.
-tools: ['insert_edit_into_file', 'replace_string_in_file', 'create_file', 'run_in_terminal', 'get_terminal_output', 'get_errors', 'list_dir', 'read_file', 'file_search', 'grep_search', 'apply_patch', 'open_file']
+tools: ['insert_edit_into_file', 'replace_string_in_file', 'create_file', 'run_in_terminal', 'bash', 'get_terminal_output', 'get_errors', 'list_dir', 'read_file', 'file_search', 'grep_search', 'apply_patch', 'open_file']
 user-invocable: false
 ---
 

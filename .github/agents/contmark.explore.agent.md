@@ -3,7 +3,7 @@ name: contmark.explore
 description: >-
   Read-only codebase investigation — trace flows, locate definitions, explain
   domain behavior, identify where new work should land. Never modifies files.
-tools: ['run_in_terminal', 'get_terminal_output', 'show_content', 'list_dir', 'read_file', 'file_search', 'grep_search', 'semantic_search', 'github/search_code', 'github/get_file_contents']
+tools: ['run_in_terminal', 'bash', 'get_terminal_output', 'show_content', 'list_dir', 'read_file', 'file_search', 'grep_search', 'semantic_search', 'github/search_code', 'github/get_file_contents']
 argument-hint: >-
   Describe WHAT you're looking for and desired thoroughness (quick/medium/thorough).
 user-invocable: false

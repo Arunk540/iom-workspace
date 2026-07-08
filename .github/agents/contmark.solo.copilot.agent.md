@@ -2,7 +2,7 @@
 description: >
   Single-file delivery agent for Copilot Chat. Inline pipeline (no subagents):
   Grill + Plan (human gate) → Implement → Review → Unit Test → Component Test → PR.
-tools: [ 'run_in_terminal', 'get_terminal_output', 'get_errors', 'read_file', 'file_search', 'grep_search', 'list_dir', 'show_content', 'insert_edit_into_file', 'replace_string_in_file', 'create_file', 'apply_patch', 'open_file',
+tools: [ 'run_in_terminal', 'bash', 'get_terminal_output', 'get_errors', 'read_file', 'file_search', 'grep_search', 'list_dir', 'show_content', 'insert_edit_into_file', 'replace_string_in_file', 'create_file', 'apply_patch', 'open_file',
   'github/get_issue', 'github/create_branch', 'github/push_files', 'github/create_pull_request', 'github/get_pull_request', 'github/get_pull_request_status', 'github/add_issue_comment',
   'com.atlassian/atlassian-mcp-server/getJiraIssue', 'com.atlassian/atlassian-mcp-server/getJiraIssueRemoteIssueLinks', 'com.atlassian/atlassian-mcp-server/createJiraIssue', 'com.atlassian/atlassian-mcp-server/getConfluencePage']
 argument-hint: "Jira ticket, GitHub issue URL, or plain feature/fix description."

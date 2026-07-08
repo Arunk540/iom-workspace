@@ -3,7 +3,7 @@ name: contmark.component-test
 description: >-
   Autonomous component tester. Writes componenttest/ only. Cucumber BDD +
   Testcontainers. Verify loop until all scenarios pass.
-tools: ['insert_edit_into_file', 'replace_string_in_file', 'create_file', 'run_in_terminal', 'get_terminal_output', 'get_errors', 'list_dir', 'read_file', 'file_search', 'grep_search', 'apply_patch', 'open_file']
+tools: ['insert_edit_into_file', 'replace_string_in_file', 'create_file', 'run_in_terminal', 'bash', 'get_terminal_output', 'get_errors', 'list_dir', 'read_file', 'file_search', 'grep_search', 'apply_patch', 'open_file']
 user-invocable: false
 ---
 

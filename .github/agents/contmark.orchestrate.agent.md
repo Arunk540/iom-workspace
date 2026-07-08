@@ -6,7 +6,7 @@ description: >
   Input: Jira ticket, GitHub issue, or feature description.
 agents: [contmark.plan, contmark.implement, contmark.review, contmark.unit-test, contmark.component-test]
 tools: [
-  'run_in_terminal', 'get_terminal_output', 'get_errors',
+  'run_in_terminal', 'bash', 'get_terminal_output', 'get_errors',
   'read_file', 'file_search', 'grep_search', 'list_dir', 'show_content', 'create_file',
   'replace_string_in_file', 'insert_edit_into_file',
   'run_subagent',

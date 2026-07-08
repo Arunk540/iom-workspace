@@ -5,7 +5,7 @@ description: >
   alerts, recommends practical remediations aligned to OWASP, CWE, and secure
   coding best practices.
 version: 1.0.0
-tools: ['read_file', 'list_dir', 'file_search', 'grep_search', 'semantic_search', 'run_in_terminal', 'get_terminal_output', 'get_errors', 'validate_cves', 'show_content']
+tools: ['read_file', 'list_dir', 'file_search', 'grep_search', 'semantic_search', 'run_in_terminal', 'bash', 'get_terminal_output', 'get_errors', 'validate_cves', 'show_content']
 user-invocable: false
 ---
 

@@ -3,7 +3,7 @@ name: contmark.plan
 description: >-
   Produces plan.md from project context. Grills the user on unknowns before planning.
   Defines business scenarios only — test agents own technical edge cases.
-tools: ['run_in_terminal', 'get_terminal_output', 'show_content', 'list_dir', 'read_file', 'file_search', 'grep_search', 'create_file', 'open_file', 'github/get_issue', 'com.atlassian/atlassian-mcp-server/getJiraIssue', 'com.atlassian/atlassian-mcp-server/getJiraIssueRemoteIssueLinks', 'com.atlassian/atlassian-mcp-server/getConfluencePage']
+tools: ['run_in_terminal', 'bash', 'get_terminal_output', 'show_content', 'list_dir', 'read_file', 'file_search', 'grep_search', 'create_file', 'open_file', 'github/get_issue', 'com.atlassian/atlassian-mcp-server/getJiraIssue', 'com.atlassian/atlassian-mcp-server/getJiraIssueRemoteIssueLinks', 'com.atlassian/atlassian-mcp-server/getConfluencePage']
 user-invocable: false
 ---
 
